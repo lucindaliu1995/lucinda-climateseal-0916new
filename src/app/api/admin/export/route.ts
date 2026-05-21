@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSession } from '@/lib/admin-auth';
-import { listContactSubmissions, listReferralUses, listWhitepaperSubmissions } from '@/lib/admin-store';
+import {
+  listConsultantPartnerApplications,
+  listContactSubmissions,
+  listReferralUses,
+  listWhitepaperSubmissions,
+} from '@/lib/admin-store';
 
 function escapeCsv(value: unknown): string {
   const stringValue = String(value ?? '');
@@ -28,7 +33,7 @@ export async function GET(request: NextRequest) {
   }
 
   const type = request.nextUrl.searchParams.get('type');
-  if (type !== 'contacts' && type !== 'whitepapers' && type !== 'referrals') {
+  if (type !== 'contacts' && type !== 'whitepapers' && type !== 'referrals' && type !== 'consultant-applications') {
     return NextResponse.json({ error: 'Invalid export type' }, { status: 400 });
   }
 
@@ -36,7 +41,9 @@ export async function GET(request: NextRequest) {
     ? await listContactSubmissions()
     : type === 'whitepapers'
       ? await listWhitepaperSubmissions()
-      : await listReferralUses();
+      : type === 'referrals'
+        ? await listReferralUses()
+        : await listConsultantPartnerApplications();
 
   const csv = rowsToCsv(rows as Record<string, unknown>[]);
 

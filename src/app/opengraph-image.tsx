@@ -31,7 +31,7 @@ export default async function OpenGraphImage() {
           padding: '64px 72px',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: 'Georgia, serif',
+          fontFamily: 'Arial, Helvetica, sans-serif',
         }}
       >
         <div

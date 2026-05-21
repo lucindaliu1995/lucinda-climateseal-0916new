@@ -173,26 +173,26 @@ export default async function AboutPage() {
   };
 
   return (
-    <main className="bg-[#F7F3EA] text-[#123F3D]">
+    <main className="bg-[#FAF8F3] text-[#123F3D]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
 
-      <section className="border-b border-[#d7ddd6] bg-[#F7F3EA]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-20">
-          <div className="space-y-8">
-            <div className="inline-flex border border-[#cfd7cf] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#496966]">
+      <section className="border-b border-[#d7ddd6] bg-[#faf8f3]">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-16">
+          <div className="space-y-6">
+            <p className="cs-section-eyebrow">
               {copy.eyebrow}
-            </div>
-            <div className="space-y-5">
-              <h1 className="max-w-4xl font-lora text-4xl font-bold leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:text-[3.6rem]">
+            </p>
+            <div className="space-y-4">
+              <h1 className="max-w-3xl font-lora !text-[clamp(2.15rem,3.1vw,2.75rem)] font-semibold leading-[1.08] text-[#123F3D]">
                 {copy.heroTitle}
               </h1>
-              <p className="max-w-3xl text-lg leading-8 text-[#57716d]">{copy.heroBody}</p>
+              <p className="max-w-2xl text-[16px] leading-7 text-[#57716d] sm:text-[17px]">{copy.heroBody}</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               {copy.stats.map((item) => (
-                <div key={item.label} className="border border-[#d6ddd6] bg-white p-5">
-                  <div className="text-2xl font-semibold tracking-[-0.02em] text-[#123F3D]">{item.value}</div>
+                <div key={item.label} className="cs-glass-panel p-5">
+                  <div className="text-xl font-semibold text-[#123F3D]">{item.value}</div>
                   <p className="mt-2 text-sm leading-6 text-[#5f7672]">{item.label}</p>
                 </div>
               ))}
@@ -200,7 +200,7 @@ export default async function AboutPage() {
           </div>
 
           <div className="grid gap-5 self-start">
-            <div className="relative min-h-[420px] overflow-hidden border border-[#d6ddd6] bg-[#0f4746]">
+            <div className="relative min-h-[360px] overflow-hidden rounded-[0.55rem] border border-[#d6ddd6] bg-[#0f4746]">
               <Image
                 src="/polar-bears.png"
                 alt="Climate Seal mission visual with polar bears"
@@ -209,25 +209,25 @@ export default async function AboutPage() {
                 unoptimized={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f4746] via-[#0f4746]/25 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-[#0f4746]/92 p-6 text-white">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#BEE5DB]">{copy.missionLabel}</p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-[-0.02em]">{copy.missionTitle}</h2>
-                <p className="mt-3 text-sm leading-7 text-white/78">{copy.missionBody}</p>
+              <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-[#0f4746]/92 p-5 text-white">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#BEE5DB]">{copy.missionLabel}</p>
+                <h2 className="mt-2 font-lora text-[1.75rem] font-semibold leading-tight">{copy.missionTitle}</h2>
+                <p className="mt-2 text-sm leading-6 text-white/78">{copy.missionBody}</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-[#d7ddd6] bg-white">
+      <section className="border-b border-[#d7ddd6] bg-[#fcfbf8]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5d7b76]">{copy.principlesEyebrow}</p>
+            <p className="cs-section-eyebrow">{copy.principlesEyebrow}</p>
             <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.principlesTitle}</h2>
           </div>
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {copy.principles.map((item, index) => (
-              <article key={item.title} className="border border-[#d7ddd6] bg-[#FBF9F4] p-7">
+              <article key={item.title} className="rounded-[0.55rem] border border-[#d7ddd6] bg-[#FBF9F4] p-7">
                 <div className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5f7a76]">0{index + 1}</div>
                 <h3 className="mt-4 text-2xl font-semibold tracking-[-0.02em] text-[#123F3D]">{item.title}</h3>
                 <p className="mt-4 text-base leading-7 text-[#5f7672]">{item.description}</p>
@@ -237,15 +237,15 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-[#d7ddd6] bg-[#F4EFE4]">
+      <section className="border-b border-[#d7ddd6] bg-[#f7f4ec]">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5f7a76]">{copy.footprintEyebrow}</p>
+            <p className="cs-section-eyebrow">{copy.footprintEyebrow}</p>
             <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.footprintTitle}</h2>
           </div>
           <div className="grid gap-4">
             {copy.footprintItems.map((item) => (
-              <div key={item} className="border border-[#d7ddd6] bg-white px-5 py-4 text-base leading-7 text-[#486662]">
+              <div key={item} className="cs-glass-panel px-5 py-4 text-base leading-7 text-[#486662]">
                 {item}
               </div>
             ))}
@@ -253,16 +253,17 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-[#F7F3EA]">
+      <section className="bg-[#faf8f3]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="border border-[#d7ddd6] bg-white p-8 sm:p-10">
-            <h2 className="font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.ctaTitle}</h2>
+          <div className="cs-glass-panel p-8 sm:p-10">
+            <p className="cs-section-eyebrow">{locale === 'zh' ? '下一步' : 'Next step'}</p>
+            <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.ctaTitle}</h2>
             <p className="mt-4 max-w-3xl text-base leading-7 text-[#5f7672]">{copy.ctaBody}</p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link href="/products" className="border border-[#123F3D] bg-[#123F3D] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
+              <Link href="/products" className="rounded-[0.5rem] border border-[#123F3D] bg-[#123F3D] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
                 {copy.ctaPrimary}
               </Link>
-              <Link href="/contact" className="border border-[#123F3D] px-6 py-3 text-center font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
+              <Link href="/contact" className="rounded-[0.5rem] border border-[#123F3D] px-6 py-3 text-center font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
                 {copy.ctaSecondary}
               </Link>
             </div>

@@ -9,63 +9,63 @@ const content = {
   en: {
     title: 'Pricing',
     description:
-      'View Climate Seal pricing for self-service, done-for-you delivery, and enterprise carbon accounting workflows across Product Carbon Footprint, Scope 3, and LCA use cases.',
+      'View Climate Seal pricing for Free Start, Professional, and Enterprise carbon accounting workflows across Product Carbon Footprint, Scope 3, and LCA use cases.',
     eyebrow: 'Pricing',
-    heroTitle: 'Choose the lightest way to start, then scale into deeper carbon workflows.',
+    heroTitle: 'Choose the right way to start your carbon reporting workflow.',
     heroBody:
-      'Climate Seal pricing is designed around project maturity, data readiness, and collaboration complexity, not one generic SaaS box.',
+      'Every plan starts with a conversation so we can understand your report scope, data readiness, and whether Climate Seal is the right fit.',
     plans: [
       {
-        name: 'Self-Service',
-        price: '$120 / month',
-        description: 'For teams that want to run a first Product Carbon Footprint or accounting pilot themselves.',
+        name: 'Free Start',
+        price: 'Limited report credits',
+        description: 'For teams that want to try Climate Seal with a simple product carbon footprint before committing.',
         features: [
-          'AI-guided accounting setup, parsing, matching, and review flow',
-          'Good fit for first internal pilots or early customer delivery needs',
-          'Best when a team wants to learn the workflow while keeping cost light',
+          'Includes a limited amount of credits to complete one simple PCF workflow.',
+          'Best for testing data readiness, report structure, and how Climate Seal fits into your current carbon reporting process.',
+          'All trials start after speaking with our team.',
         ],
         accent: 'border-[#b9d9d8]',
-        cta: 'Talk about self-service',
+        cta: 'Talk to the team',
       },
       {
-        name: 'Done-For-You',
-        price: '$300 / report',
-        description: 'For project-based delivery when speed matters more than building internal execution first.',
+        name: 'Professional',
+        price: 'From $299 / month',
+        description: 'For consultants, experts, and small teams delivering recurring carbon accounting work with AI.',
         features: [
-          'Share product, BOM, energy, logistics, or supplier inputs and we move faster',
-          'Best for RFQs, customer requests, export response, and urgent reporting',
-          'Useful when teams want credible outputs without carrying the full workload internally',
+          'Access the full Climate Seal accounting workflow, with support for multiple regulations, standards, and methodologies.',
+          'Pricing is based on token / credit usage, so teams can scale report delivery according to actual project volume.',
+          'Best for professionals who want to increase delivery capacity without adding more manual workload.',
         ],
         accent: 'border-[#8ece8f]',
-        cta: 'Talk about done-for-you',
+        cta: 'Talk to the team',
       },
       {
         name: 'Enterprise',
         price: 'Custom',
-        description: 'For multi-product, multi-team, or supplier-network programs that need a long-term operating system.',
+        description: 'For corporates managing carbon data across products, suppliers, business units, or compliance programs.',
         features: [
-          'Supports supplier coordination, broader data governance, and ongoing delivery',
-          'Better fit for Scope 3, procurement, cross-factory programs, and integrations',
-          'Designed for teams that need traceability, repeatability, and scale over time',
+          'Built for supplier management, internal data governance, multi-product reporting, and cross-team review.',
+          'Includes enterprise-ready workflows such as supplier data collection, custom factor databases, approval controls, traceability packages, and reusable product data models.',
+          'Best for companies that need a long-term carbon compliance operating system, not only individual reports.',
         ],
         accent: 'border-[#123F3D]',
-        cta: 'Talk about enterprise',
+        cta: 'Talk to the team',
       },
     ],
     fitEyebrow: 'How to choose',
-    fitTitle: 'If you are unsure where to start, this is usually the right logic.',
+    fitTitle: 'If you are unsure where to start, this is usually the simplest decision logic.',
     fitNotes: [
       {
-        title: 'Start small when the goal is to prove the workflow',
-        description: 'If your first priority is delivering one PCF or testing a first carbon workflow internally, self-service or done-for-you is usually enough.',
+        title: 'Start free when you need a first report trial',
+        description: 'If your first priority is seeing how Climate Seal handles your files and report scope, Free Start is the lightest path.',
       },
       {
-        title: 'Move faster when time matters more than internal bandwidth',
-        description: 'If deadlines are tight, done-for-you often creates the quickest path because it reduces coordination overhead inside the team.',
+        title: 'Move to Professional when the work becomes recurring',
+        description: 'If you expect ongoing report preparation, Professional gives you a more regular monthly workflow starting from $299/month.',
       },
       {
         title: 'Move enterprise when the challenge becomes coordination',
-        description: 'Once multiple products, suppliers, sites, or teams are involved, the problem becomes governance and collaboration, not only reporting.',
+        description: 'Once multiple products, suppliers, sites, or teams are involved, the challenge becomes governance and collaboration, not only reporting.',
       },
     ],
     leversTitle: 'What usually changes price, speed, and implementation shape',
@@ -80,19 +80,20 @@ const content = {
       },
       {
         title: 'Collaboration complexity',
-        description: 'Once multiple teams or suppliers are involved, the project starts to need a shared operating workflow, not just a one-off output.',
+        description: 'Once multiple teams or suppliers are involved, the work starts to need a shared operating workflow, not just a one-off output.',
       },
     ],
     ctaTitle: 'Want help choosing the right entry point?',
     ctaBody:
-      'Send us your carbon accounting scope, target market, and current data readiness. We can help you decide whether to start with a pilot, a delivery project, or a broader enterprise setup.',
+      'Send us your carbon accounting scope, target market, and current data readiness. We can help you decide whether to start with a free report trial, a professional monthly workflow, or a broader enterprise setup.',
     ctaPrimary: 'Contact the team',
     ctaSecondary: 'Read resources first',
+    partnerPricingCta: 'Explore Early Access Preferential Pricing',
     breadcrumbHome: 'Home',
     breadcrumbCurrent: 'Pricing',
     faq1q: 'How do I choose the right plan?',
     faq1a:
-      'If you need to validate a first carbon workflow, start with Self-Service or Done-For-You. If you need supplier coordination, multiple products, or integration, Enterprise is usually the better fit.',
+      'If you need to validate a first report workflow, start with Free Start. If you expect recurring report work, Professional starts from $299/month. If you need supplier coordination, multiple products, or integration, Enterprise is usually the better fit.',
     faq2q: 'Do you support pilots or demos?',
     faq2a:
       'Yes. We can help evaluate your product complexity, target market, and data readiness to recommend a lighter pilot path before scaling up.',
@@ -100,59 +101,59 @@ const content = {
   zh: {
     title: '价格方案',
     description:
-      '查看 Climate Seal 面向自助试点、代执行交付和企业级碳核算协同的价格方案，覆盖产品碳足迹、Scope 3 与 LCA 场景。',
+      '查看 Climate Seal 面向免费开始、专业版和企业版碳核算工作流的价格方案，覆盖产品碳足迹、Scope 3 与 LCA 场景。',
     eyebrow: 'Pricing',
-    heroTitle: '先选择最轻的启动方式，再逐步扩展到更深的碳工作流。',
+    heroTitle: '选择最适合你启动碳报告工作流的方式。',
     heroBody:
-      'Climate Seal 的定价不是把所有情况塞进一个 SaaS 盒子，而是根据项目成熟度、数据准备度和协同复杂度来设计起点。',
+      '每一种方案都先从沟通开始，我们会了解你的报告范围、数据准备度和适配场景，再建议合适的入口。',
     plans: [
       {
-        name: 'Self-Service',
-        price: '$120 / month',
-        description: '适合希望自己先跑通首个产品碳足迹或核算试点的团队。',
+        name: '免费开始',
+        price: '有限报告点数',
+        description: '适合先用一个简单产品碳足迹工作流试用 Climate Seal，再决定是否继续的团队。',
         features: [
-          'AI 引导完成核算设定、解析、匹配与复核流程',
-          '适合内部首个试点或早期客户交付需求',
-          '适合希望先学会流程、同时保持较轻预算的团队',
+          '包含有限点数，可完成一个简单 PCF 工作流。',
+          '适合测试数据准备度、报告结构和现有碳报告流程适配方式。',
+          '所有试用都需要先与团队沟通。',
         ],
         accent: 'border-[#b9d9d8]',
-        cta: '咨询自助方案',
+        cta: '联系团队',
       },
       {
-        name: 'Done-For-You',
-        price: '$300 / report',
-        description: '适合更看重交付速度、暂时不想先搭内部执行能力的项目型需求。',
+        name: '专业版',
+        price: '$299 / 月起',
+        description: '适合顾问、专家和小团队用 AI 持续交付碳核算工作。',
         features: [
-          '提供产品、BOM、能耗、物流或供应商输入后，由我们更快推进',
-          '适合 RFQ、客户要求、出口响应与紧急报告任务',
-          '适合想拿到可信结果、又不想把全部工作量留在内部的团队',
+          '访问完整 Climate Seal 核算工作流，支持多种法规、标准和方法学。',
+          '价格基于 token / credit 使用量，可按实际项目量扩展报告交付。',
+          '适合希望提升交付能力、减少人工负担的专业团队。',
         ],
         accent: 'border-[#8ece8f]',
-        cta: '咨询代执行方案',
+        cta: '联系团队',
       },
       {
-        name: 'Enterprise',
-        price: 'Custom',
-        description: '适合多产品、多团队或供应商网络项目，需要长期运行机制的场景。',
+        name: '企业版',
+        price: '定制',
+        description: '适合管理产品、供应商、业务单元或合规项目碳数据的企业。',
         features: [
-          '支持供应商协同、更广的数据治理与持续交付',
-          '更适合 Scope 3、采购协同、跨工厂项目与系统集成',
-          '适合需要追溯性、可重复性和长期规模化能力的团队',
+          '面向供应商管理、内部数据治理、多产品报告和跨团队复核。',
+          '包含供应商数据收集、自定义因子库、审批控制、追溯包和可复用产品数据模型。',
+          '适合需要长期碳合规操作系统，而不只是单份报告的企业。',
         ],
         accent: 'border-[#123F3D]',
-        cta: '咨询企业方案',
+        cta: '联系团队',
       },
     ],
     fitEyebrow: 'How to choose',
     fitTitle: '如果你不确定从哪一个开始，通常可以这样判断。',
     fitNotes: [
       {
-        title: '先证明流程时，先从轻的方式开始',
-        description: '如果你的第一目标是交付一个 PCF 或在内部证明流程可行，自助或代执行通常就足够。',
+        title: '如果要先验证一份报告，从免费开始',
+        description: '如果你的第一目标是看 Climate Seal 如何处理你的文件和报告范围，免费开始是最轻的入口。',
       },
       {
-        title: '当时间比内部带宽更紧时，优先追求速度',
-        description: '如果时间压力大，Done-For-You 往往更快，因为它能减少团队内部的协调负担。',
+        title: '如果工作会持续发生，进入专业版',
+        description: '如果你预计会持续准备报告，专业版提供更稳定的月度工作流，价格从 $299/月起。',
       },
       {
         title: '当问题变成协同治理时，就进入企业级模式',
@@ -176,14 +177,15 @@ const content = {
     ],
     ctaTitle: '想一起判断最合适的起点？',
     ctaBody:
-      '把你的核算范围、目标市场和当前数据准备情况告诉我们，我们可以帮你判断更适合试点、按报告交付，还是进入企业级协同。',
+      '把你的核算范围、目标市场和当前数据准备情况告诉我们，我们可以帮你判断更适合从免费试用、专业版月度工作流，还是企业级协同开始。',
     ctaPrimary: '联系团队',
     ctaSecondary: '先看资料库',
+    partnerPricingCta: '探索早期合作优惠价格',
     breadcrumbHome: '首页',
     breadcrumbCurrent: '价格方案',
     faq1q: '如何选择合适的方案？',
     faq1a:
-      '如果你要验证首个碳工作流，可从 Self-Service 或 Done-For-You 开始；如果涉及供应商协同、多产品线或系统集成，Enterprise 通常更合适。',
+      '如果你要验证首个报告工作流，可以从免费开始；如果预计持续使用，专业版从 $299/月起；如果涉及供应商协同、多产品线或系统集成，企业版通常更合适。',
     faq2q: '是否支持试点或演示？',
     faq2a:
       '支持。我们可以根据你的产品复杂度、目标市场和数据准备情况，建议更轻的试点路径，再决定是否扩展。',
@@ -248,28 +250,35 @@ export default async function PricingPage() {
   };
 
   return (
-    <main className="bg-[#F7F3EA] text-[#123F3D]">
+    <main className="bg-[#FAF8F3] text-[#123F3D]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <section className="border-b border-[#d7ddd6] bg-white">
+      <section className="border-b border-[#d7ddd6] bg-[#fcfbf8]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex border border-[#d1d8d2] bg-[#F8F6F1] px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#587671]">
+            <p className="cs-section-eyebrow">
               {copy.eyebrow}
-            </div>
+            </p>
             <h1 className="mt-6 font-lora text-4xl font-bold tracking-[-0.02em] sm:text-5xl lg:text-[3.5rem]">{copy.heroTitle}</h1>
             <p className="mt-6 text-lg leading-8 text-[#5f7672]">{copy.heroBody}</p>
+            <Link
+              href="/consultant-partner-program"
+              className="mt-6 inline-flex items-center justify-center rounded-[0.55rem] border border-[#b8c9c3] bg-white px-5 py-2.5 text-sm font-semibold text-[#215b57] transition hover:border-[#215b57] hover:bg-[#f3f7f3]"
+            >
+              {copy.partnerPricingCta}
+              <span className="ml-2" aria-hidden="true">→</span>
+            </Link>
           </div>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {copy.plans.map((plan) => (
-              <article key={plan.name} className={`flex h-full flex-col border ${plan.accent} bg-[#FBF9F4] p-7`}>
+              <article key={plan.name} className={`flex h-full flex-col rounded-[0.55rem] border ${plan.accent} bg-[#FBF9F4] p-7`}>
                 <div>
                   <h2 className="text-2xl font-semibold tracking-[-0.02em]">{plan.name}</h2>
-                  <p className="mt-3 text-sm leading-7 text-[#5f7672]">{plan.description}</p>
+                  <p className="mt-3 text-[15px] leading-7 text-[#5f7672] sm:text-[16px]">{plan.description}</p>
                   <div className="mt-6 text-4xl font-semibold tracking-[-0.03em]">{plan.price}</div>
-                  <ul className="mt-6 space-y-3 text-sm leading-7 text-[#5f7672]">
+                  <ul className="mt-6 space-y-3 text-[15px] leading-7 text-[#5f7672] sm:text-[16px]">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex gap-3">
                         <span className="mt-1 text-[#1d7c72]">+</span>
@@ -278,58 +287,68 @@ export default async function PricingPage() {
                     ))}
                   </ul>
                 </div>
-                <Link href="/contact" className="mt-8 border border-[#123F3D] bg-[#123F3D] px-5 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
+                <Link href="/contact" className="mt-8 rounded-[0.5rem] border border-[#123F3D] bg-[#123F3D] px-5 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
                   {plan.cta}
                 </Link>
+                {plan.name === (locale === 'zh' ? '专业版' : 'Professional') ? (
+                  <Link
+                    href="/consultant-partner-program"
+                    className="mt-3 rounded-[0.5rem] border border-[#b8c9c3] px-5 py-3 text-center text-sm font-semibold text-[#215b57] transition hover:border-[#215b57] hover:bg-white"
+                  >
+                    {copy.partnerPricingCta}
+                  </Link>
+                ) : null}
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-[#d7ddd6] bg-[#F7F3EA]">
+      <section className="border-b border-[#d7ddd6] bg-[#f7f4ec]">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5f7a76]">{copy.fitEyebrow}</p>
+            <p className="cs-section-eyebrow">{copy.fitEyebrow}</p>
             <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.fitTitle}</h2>
           </div>
           <div className="grid gap-4">
             {copy.fitNotes.map((note) => (
-              <article key={note.title} className="border border-[#d7ddd6] bg-white p-6">
+              <article key={note.title} className="cs-glass-panel p-6">
                 <h3 className="text-xl font-semibold tracking-[-0.02em]">{note.title}</h3>
-                <p className="mt-3 text-base leading-7 text-[#5f7672]">{note.description}</p>
+                <p className="mt-3 text-[16px] leading-7 text-[#5f7672] sm:text-[17px]">{note.description}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-[#d7ddd6] bg-white">
+      <section className="border-b border-[#d7ddd6] bg-[#fcfbf8]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
-            <h2 className="font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.leversTitle}</h2>
+            <p className="cs-section-eyebrow">{locale === 'zh' ? '价格变量' : 'Pricing levers'}</p>
+            <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.leversTitle}</h2>
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {copy.levers.map((item) => (
-              <article key={item.title} className="border border-[#d7ddd6] bg-[#FBF9F4] p-6">
+              <article key={item.title} className="rounded-[0.55rem] border border-[#d7ddd6] bg-[#FBF9F4] p-6">
                 <h3 className="text-xl font-semibold tracking-[-0.02em]">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#5f7672]">{item.description}</p>
+                <p className="mt-3 text-[15px] leading-7 text-[#5f7672] sm:text-[16px]">{item.description}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#F7F3EA]">
+      <section className="bg-[#faf8f3]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="border border-[#d7ddd6] bg-white p-8 sm:p-10">
-            <h2 className="font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.ctaTitle}</h2>
-            <p className="mt-4 max-w-3xl text-base leading-7 text-[#5f7672]">{copy.ctaBody}</p>
+          <div className="cs-glass-panel p-8 sm:p-10">
+            <p className="cs-section-eyebrow">{locale === 'zh' ? '下一步' : 'Next step'}</p>
+            <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.ctaTitle}</h2>
+            <p className="mt-4 max-w-3xl text-[16px] leading-7 text-[#5f7672] sm:text-[17px]">{copy.ctaBody}</p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link href="/contact" className="border border-[#123F3D] bg-[#123F3D] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
+              <Link href="/contact" className="rounded-[0.5rem] border border-[#123F3D] bg-[#123F3D] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
                 {copy.ctaPrimary}
               </Link>
-              <Link href="/resources" className="border border-[#123F3D] px-6 py-3 text-center font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
+              <Link href="/resources" className="rounded-[0.5rem] border border-[#123F3D] px-6 py-3 text-center font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
                 {copy.ctaSecondary}
               </Link>
             </div>

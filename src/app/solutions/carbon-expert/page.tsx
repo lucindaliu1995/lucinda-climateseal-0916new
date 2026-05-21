@@ -21,6 +21,19 @@ export default function CarbonExpertSolutionPage() {
   const ctaBody = language === 'zh'
     ? '如果你正在交付复杂 PCF、LCA 或审计准备项目，Climate Seal 可以帮助团队更快完成建模、核验与交付。'
     : 'If your team delivers complex PCF, LCA, or audit-prep work, Climate Seal can help you move faster through modeling, review, and delivery.';
+  const partnerProgram = language === 'zh'
+    ? {
+        eyebrow: '顾问合作计划',
+        title: '给顾问与精品咨询机构的下一步',
+        body: '会员价、cashback 与认证路径。',
+        cta: '查看合作计划',
+      }
+    : {
+        eyebrow: 'Consultant Partner Program',
+        title: 'A next step for consultants and boutique advisory firms',
+        body: 'Member pricing, cashback, and the Certified Consultant path.',
+        cta: 'See the program',
+      };
   const heroHighlights = language === 'zh'
     ? [
         'AI 引导方法学与建模',
@@ -43,7 +56,6 @@ export default function CarbonExpertSolutionPage() {
           : 'Instantly map your operations to the right regulations (such as GHG protocol or ISO 14067). Lock in your rule set to accelerate audits and ensure accurate reporting.',
         gradient: "from-purple-500/25 to-violet-500/25",
         background: "bg-gradient-to-b from-purple-600/70 to-purple-800/70",
-        staticMediaSrc: "/reg-advisor.png",
         dynamicMediaSrc: "/videos/video1-card.mp4"
       },
       {
@@ -53,7 +65,6 @@ export default function CarbonExpertSolutionPage() {
           : 'Intelligently parse and standardize Bill of Materials (BOM) and supply chain data. Eliminate manual data cleaning and receive analysis-ready information on time, every time.',
         gradient: "from-emerald-500/25 to-green-600/25",
         background: "bg-gradient-to-b from-green-600/70 to-green-800/70",
-        staticMediaSrc: "/data-intake-steward.png",
         dynamicMediaSrc: "/videos/video2-card.mp4"
       },
       {
@@ -63,7 +74,6 @@ export default function CarbonExpertSolutionPage() {
           : 'Automatically batch-match emission factors and compute your Product Carbon Footprint (PCF) from BOM, energy, and logistics data. Move beyond manual calculations to bulk, auditable results.',
         gradient: "from-sky-500/25 to-blue-600/25",
         background: "bg-gradient-to-b from-blue-600/70 to-blue-800/70",
-        staticMediaSrc: "/pcf-modeler.png",
         dynamicMediaSrc: "/videos/video3-card.mp4"
       },
       {
@@ -73,7 +83,6 @@ export default function CarbonExpertSolutionPage() {
           : 'Perform automated field-level risk checks and uncertainty analysis on your product carbon reports. Get actionable fix hints to pass verification the first time and build stakeholder trust.',
         gradient: "from-orange-500/25 to-amber-600/25",
         background: "bg-gradient-to-b from-orange-600/70 to-orange-800/70",
-        staticMediaSrc: "/qa-anomaly-detector.png",
         dynamicMediaSrc: "/videos/video4-card.mp4"
       },
       ...(assistants.reportGenerator ? [{
@@ -81,7 +90,6 @@ export default function CarbonExpertSolutionPage() {
         summary: assistants.reportGenerator.description,
         gradient: "from-indigo-500/25 to-purple-500/25",
         background: "bg-gradient-to-b from-indigo-600/70 to-indigo-800/70",
-        staticMediaSrc: "/external-verifier.png",
         dynamicMediaSrc: "/videos/video1-card.mp4"
       }] : []),
       ...(assistants.dataValidator ? [{
@@ -91,7 +99,6 @@ export default function CarbonExpertSolutionPage() {
           : 'Our AI Risk Screener identifies and ranks your top 10 sustainability exposures, then delivers a prioritized 90-day plan with cost and ROI data (USD/tCO₂e) to focus your spending on what matters most.',
         gradient: "from-rose-500/25 to-pink-500/25",
         background: "bg-gradient-to-b from-rose-600/70 to-rose-800/70",
-        staticMediaSrc: "/risk-screener.png",
         dynamicMediaSrc: "/videos/video2-card.mp4"
       }] : [])
     ];
@@ -101,12 +108,12 @@ export default function CarbonExpertSolutionPage() {
     <div className="min-h-screen bg-[var(--brand-bg)] text-[var(--brand-ink)]">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[var(--brand-bg-soft)] py-14 lg:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(196,226,220,0.38),transparent_18%),radial-gradient(circle_at_82%_18%,rgba(214,221,216,0.34),transparent_24%),linear-gradient(180deg,rgba(239,236,229,0.98)_0%,rgba(245,243,238,1)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(205,221,230,0.44),transparent_18%),radial-gradient(circle_at_82%_18%,rgba(227,236,241,0.38),transparent_24%),linear-gradient(180deg,rgba(239,244,247,0.98)_0%,rgba(245,243,238,1)_100%)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative grid gap-7 lg:grid-cols-[minmax(0,0.95fr)_minmax(340px,0.72fr)] lg:items-center">
             <div className="text-center lg:text-left">
-              <div className="mb-4 inline-flex items-center gap-2 border border-[var(--brand-border)] bg-white/80 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--brand-accent-strong)] shadow-[0_10px_24px_rgba(18,63,61,0.05)] sm:px-4 sm:py-2 sm:text-[11px]">
-                <span className="h-2 w-2 rounded-full bg-[var(--brand-accent-strong)]" />
+              <div className="mb-4 inline-flex items-center gap-2 rounded-[0.45rem] border border-[#cdd8df] bg-[#f3f7f9]/92 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#345a6b] shadow-[0_10px_24px_rgba(92,123,139,0.08)] sm:px-4 sm:py-2 sm:text-[11px]">
+                <span className="h-2 w-2 rounded-full bg-[#345a6b]" />
                 {language === 'zh' ? 'Carbon Expert 解决方案' : 'Carbon Expert Solution'}
               </div>
               <motion.h1 
@@ -126,10 +133,10 @@ export default function CarbonExpertSolutionPage() {
               {heroDescription}
             </motion.p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-                <Link href="/#contact" className="inline-flex items-center justify-center border border-[var(--brand-accent-strong)] bg-[var(--brand-accent-strong)] px-7 py-3.5 text-base font-semibold text-white transition hover:bg-[color:rgba(18,63,61,0.88)]">
+                <Link href="/#contact" className="inline-flex items-center justify-center rounded-[0.5rem] border border-[#345a6b] bg-[#345a6b] px-7 py-3.5 text-base font-semibold text-white transition hover:bg-[#2a4958]">
                   {language === 'zh' ? '预约演示' : 'Book a Demo'}
                 </Link>
-                <a href="#features" className="inline-flex items-center justify-center border border-[var(--brand-border)] bg-white/80 px-7 py-3.5 text-base font-semibold text-[var(--brand-ink)] transition hover:bg-white">
+                <a href="#features" className="inline-flex items-center justify-center rounded-[0.5rem] border border-[#cfd8df] bg-white/86 px-7 py-3.5 text-base font-semibold text-[#345a6b] transition hover:bg-white">
                   {language === 'zh' ? '查看功能演示' : 'See Key Features'}
                 </a>
               </div>
@@ -139,15 +146,15 @@ export default function CarbonExpertSolutionPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.15 }}
-              className="border border-[var(--brand-border)] bg-[var(--brand-surface)] p-4 shadow-[0_18px_36px_rgba(18,63,61,0.06)] sm:p-5"
+              className="rounded-[0.55rem] border border-[#cfd8df] bg-[linear-gradient(165deg,rgba(241,246,248,0.96),rgba(251,248,242,0.98))] p-4 shadow-[0_18px_36px_rgba(92,123,139,0.08)] sm:p-5"
             >
-              <div className="overflow-hidden border border-[var(--brand-border)] bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(239,236,229,0.92))] p-4">
+              <div className="overflow-hidden rounded-[0.5rem] border border-[#dae3e9] bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(239,244,247,0.92))] p-4">
                 <Image src="/pcf-modeler.png" alt="Carbon Expert platform preview" width={960} height={640} className="h-auto w-full object-cover" />
               </div>
               <div className="mt-4 space-y-2.5">
                 {heroHighlights.map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-sm leading-6 text-[var(--brand-muted)]">
-                    <span className="mt-2 h-2 w-2 rounded-full bg-[var(--brand-accent-strong)]" />
+                  <div key={item} className="flex items-start gap-3 text-[15px] leading-6 text-[var(--brand-muted)]">
+                    <span className="mt-2 h-2 w-2 rounded-full bg-[#345a6b]" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -192,7 +199,7 @@ export default function CarbonExpertSolutionPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)] transition-shadow hover:shadow-[0_14px_28px_rgba(18,63,61,0.06)]"
+                  className="rounded-[0.55rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center bg-[var(--brand-accent-strong)]/10 font-bold text-[var(--brand-accent-strong)]">
@@ -239,32 +246,59 @@ export default function CarbonExpertSolutionPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
+              className="rounded-[0.55rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
             >
               <div className="mb-3 text-2xl font-bold text-[var(--brand-ink)]">{persona.stat}</div>
-              <p className="text-sm font-normal text-[var(--brand-muted)]">{persona.statDescription}</p>
+              <p className="text-[15px] leading-6 font-normal text-[var(--brand-muted)]">{persona.statDescription}</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
+              className="rounded-[0.55rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
             >
               <div className="mb-3 text-2xl font-bold text-[var(--brand-ink)]">{persona.secondStatDescription}</div>
-              <p className="text-sm font-normal text-[var(--brand-muted)]">{persona.thirdStatDescription}</p>
+              <p className="text-[15px] leading-6 font-normal text-[var(--brand-muted)]">{persona.thirdStatDescription}</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
+              className="rounded-[0.55rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
             >
               <div className="mb-3 text-2xl font-bold text-[var(--brand-ink)]">{persona.fourthStat}</div>
-              <p className="text-sm font-normal text-[var(--brand-muted)]">{persona.fourthStatDescription}</p>
+              <p className="text-[15px] leading-6 font-normal text-[var(--brand-muted)]">{persona.fourthStatDescription}</p>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-[var(--brand-bg)] py-4 lg:py-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/consultant-partner-program"
+            className="group block rounded-[0.55rem] border border-[var(--brand-border)] bg-[linear-gradient(145deg,rgba(18,63,61,0.98),rgba(15,71,70,0.95))] p-6 text-white shadow-[0_18px_34px_rgba(18,63,61,0.12)] transition duration-300 hover:border-white/14 hover:shadow-[0_24px_40px_rgba(18,63,61,0.16)] sm:p-8"
+          >
+            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#cfe7dc]">
+              {partnerProgram.eyebrow}
+            </div>
+            <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-end">
+              <div className="max-w-2xl">
+                <h2 className="font-lora text-[1.8rem] font-bold leading-[1] tracking-[-0.02em] text-white sm:text-[2.05rem]">
+                  {partnerProgram.title}
+                </h2>
+                <p className="mt-3 max-w-lg text-[14px] leading-6 text-white/72 sm:text-[15px]">
+                  {partnerProgram.body}
+                </p>
+              </div>
+              <div className="inline-flex items-center gap-2 self-end text-sm font-semibold text-[#d8efe7] sm:text-[14px] lg:justify-self-end">
+                <span>{partnerProgram.cta}</span>
+                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 
@@ -280,13 +314,13 @@ export default function CarbonExpertSolutionPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/#contact" 
-              className="border border-[var(--brand-accent-strong)] bg-[var(--brand-accent-strong)] px-8 py-4 text-lg font-semibold text-white transition duration-300 hover:bg-[color:rgba(18,63,61,0.88)]"
+              className="rounded-[0.5rem] border border-[var(--brand-accent-strong)] bg-[var(--brand-accent-strong)] px-8 py-4 text-lg font-semibold text-white transition duration-300 hover:bg-[color:rgba(18,63,61,0.88)]"
             >
               {language === 'zh' ? '联系我们' : 'Contact Us'}
             </Link>
             <Link 
               href="/" 
-              className="rounded-full border border-[var(--brand-border)] bg-[var(--brand-surface)] px-8 py-4 text-lg font-semibold text-[var(--brand-ink)] transition duration-300 hover:bg-white"
+              className="rounded-[0.5rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] px-8 py-4 text-lg font-semibold text-[var(--brand-ink)] transition duration-300 hover:bg-white"
             >
               {language === 'zh' ? '返回首页' : 'Back to Home'}
             </Link>

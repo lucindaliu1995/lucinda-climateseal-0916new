@@ -611,12 +611,12 @@ export const translations: Record<TranslationLocale, TranslationData> = {
     resourcesPage: {
       whitepapers: {
         title: 'Whitepapers',
-        subtitle: 'Deep-dive playbooks and compliance kits. Unlock download access after a quick form so we can share the latest updates and companion assets.',
+        subtitle: 'Deeper playbooks, compliance kits, and operating documents for teams building credible carbon workflows.',
         cta: 'Download the whitepaper'
       },
       articles: {
         title: 'Articles & Insights',
-        subtitle: 'Practical guides, regulatory breakdowns, and product carbon footprint playbooks from the Climate Seal team.'
+        subtitle: 'Practical guides, regulatory breakdowns, and operating notes from the Climate Seal team.'
       },
       form: {
         title: 'Get the whitepaper',
@@ -1014,24 +1014,24 @@ export const translations: Record<TranslationLocale, TranslationData> = {
         subtitle: 'Choose the right plan to start your carbon footprint journey',
         plans: {
           free: {
-            title: 'Self-Service',
-            description: 'Use the AI Agent independently to generate reports',
-            price: '$120',
-            features: ['200 BOM lines emission factor matching (equivalent to PCF 2-4 reports)', 'Guided by Climate Seal AI agent from start-to-finish', 'Generate an audit-ready report within 4 hours'],
+            title: 'Free Start',
+            description: 'For teams that want to try Climate Seal with a simple product carbon footprint before committing',
+            price: 'Limited report credits',
+            features: ['Includes a limited amount of credits to complete one simple PCF workflow', 'Best for testing data readiness, report structure, and process fit', 'All trials start after speaking with our team'],
             button: 'Contact Sales'
           },
           standard: {
-            title: 'Done-For-You',
-            description: 'You provide the data, and we handle the rest',
-            price: '$300',
-            features: ['Simply provide 3 files (product description; BOM file; energy consumption data)', 'We deliver an audit-ready report in 48 hours'],
+            title: 'Professional',
+            description: 'For consultants, experts, and small teams delivering recurring carbon accounting work with AI',
+            price: 'From $99 / month',
+            features: ['Access the full Climate Seal accounting workflow across multiple regulations, standards, and methodologies', 'Pricing is based on token / credit usage so teams can scale by project volume', 'Best for increasing delivery capacity without adding more manual workload'],
             button: 'Contact Sales'
           },
           enterprise: {
             title: 'Enterprise',
-            description: 'Custom solutions for large organizations',
+            description: 'For corporates managing carbon data across products, suppliers, business units, or compliance programs',
             price: 'Custom',
-            features: ['Supply chain mgmt (standard component in all enterprise account)', 'ERP/CRM integration'],
+            features: ['Built for supplier management, internal data governance, multi-product reporting, and cross-team review', 'Includes supplier data collection, custom factor databases, approval controls, traceability packages, and reusable product data models', 'Best for companies that need a long-term carbon compliance operating system'],
             button: 'Contact Sales'
           }
         }
@@ -1827,24 +1827,24 @@ export const translations: Record<TranslationLocale, TranslationData> = {
         subtitle: '选择合适的方案开始您的碳足迹之旅',
         plans: {
           free: {
-            title: '自助服务',
-            description: '独立使用AI智能体生成报告',
-            price: '$120',
-            features: ['200个BOM行排放因子匹配（相当于PCF 2-4个报告）', 'Climate Seal AI智能体全程指导', '4小时内生成审计就绪报告'],
+            title: '免费开始',
+            description: '适合先用一个简单产品碳足迹工作流试用 Climate Seal，再决定是否继续',
+            price: '有限报告点数',
+            features: ['包含有限点数，可完成一个简单 PCF 工作流', '适合测试数据准备度、报告结构和流程适配方式', '所有试用都需要先与团队沟通'],
             button: '联系销售'
           },
           standard: {
-            title: '代客服务',
-            description: '您提供数据，我们处理其余一切',
-            price: '$300',
-            features: ['只需提供3个文件（产品描述；BOM文件；能耗数据）', '我们将在48小时内交付审计就绪的报告'],
+            title: '专业版',
+            description: '适合顾问、专家和小团队用 AI 持续交付碳核算工作',
+            price: '$99 / 月起',
+            features: ['访问完整 Climate Seal 核算工作流，支持多种法规、标准和方法学', '价格基于 token / credit 使用量，可按实际项目量扩展', '适合提升交付能力并减少人工负担'],
             button: '联系销售'
           },
           enterprise: {
             title: '企业版',
-            description: '为大型组织定制解决方案',
+            description: '适合管理产品、供应商、业务单元或合规项目碳数据的企业',
             price: '定制',
-            features: ['供应链管理（所有企业账户的标准组件）', 'ERP/CRM集成'],
+            features: ['面向供应商管理、内部数据治理、多产品报告和跨团队复核', '包含供应商数据收集、自定义因子库、审批控制、追溯包和可复用产品数据模型', '适合需要长期碳合规操作系统，而不只是单份报告的企业'],
             button: '联系销售'
           }
         }

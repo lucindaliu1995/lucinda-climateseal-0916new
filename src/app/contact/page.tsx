@@ -169,24 +169,24 @@ export default async function ContactPage() {
   };
 
   return (
-    <main className="bg-[#F7F3EA] text-[#123F3D]">
+    <main className="bg-[#FAF8F3] text-[#123F3D]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
 
-      <section className="border-b border-[#d7ddd6] bg-white">
+      <section className="border-b border-[#d7ddd6] bg-[#fcfbf8]">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-20">
           <div className="space-y-6">
-            <div className="inline-flex border border-[#d1d8d2] bg-[#F8F6F1] px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#587671]">
+            <p className="cs-section-eyebrow">
               {copy.eyebrow}
-            </div>
-            <h1 className="font-lora text-4xl font-bold leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:text-[3.45rem]">
+            </p>
+            <h1 className="font-lora text-balance text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-[3.45rem]">
               {copy.heroTitle}
             </h1>
             <p className="text-lg leading-8 text-[#5f7672]">{copy.heroBody}</p>
 
             <div className="grid gap-4 pt-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               {copy.contactWays.map((item) => (
-                <div key={item.label} className="border border-[#d7ddd6] bg-[#FBF9F4] px-5 py-4">
+                <div key={item.label} className="rounded-[0.55rem] border border-[#d7ddd6] bg-[#FBF9F4] px-5 py-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#5f7a76]">{item.label}</p>
                   <p className="mt-2 text-sm leading-7 text-[#486662]">{item.value}</p>
                 </div>
@@ -194,10 +194,10 @@ export default async function ContactPage() {
             </div>
           </div>
 
-          <div className="border border-[#d7ddd6] bg-[#FBF9F4] p-8 text-[#123F3D]">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5f7a76]">{copy.prepEyebrow}</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.02em]">{copy.prepTitle}</h2>
-            <ul className="mt-6 space-y-3 text-sm leading-7 text-[#5f7672]">
+          <div className="rounded-[0.55rem] border border-[#d7ddd6] bg-[#FBF9F4] p-8 text-[#123F3D]">
+            <p className="cs-section-eyebrow">{copy.prepEyebrow}</p>
+            <h2 className="mt-4 font-lora text-balance text-3xl font-semibold leading-tight">{copy.prepTitle}</h2>
+            <ul className="mt-6 space-y-3 text-[15px] leading-7 text-[#5f7672] sm:text-[16px]">
               {copy.prepItems.map((item) => (
                 <li key={item} className="flex gap-3 border-b border-[#dde2dc] pb-3 last:border-b-0 last:pb-0">
                   <span className="mt-1 text-[#1d7c72]">+</span>
@@ -205,7 +205,7 @@ export default async function ContactPage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 border border-[#123F3D] bg-[#123F3D] p-5 text-white">
+            <div className="mt-8 rounded-[0.55rem] border border-[#123F3D] bg-[#123F3D] p-5 text-white">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#BEE5DB]">{copy.fastLabel}</p>
               <p className="mt-3 text-sm leading-7 text-white/82">{copy.fastBody}</p>
             </div>
@@ -213,16 +213,16 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section className="border-b border-[#d7ddd6] bg-[#F7F3EA]">
+      <section className="border-b border-[#d7ddd6] bg-[#f7f4ec]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5f7a76]">{copy.processEyebrow}</p>
-            <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.processTitle}</h2>
+            <p className="cs-section-eyebrow">{copy.processEyebrow}</p>
+            <h2 className="mt-4 font-lora text-balance text-3xl font-semibold leading-tight sm:text-4xl">{copy.processTitle}</h2>
           </div>
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {copy.process.map((step) => (
-              <article key={step.title} className="border border-[#d7ddd6] bg-white p-7">
-                <h3 className="text-2xl font-semibold tracking-[-0.02em]">{step.title}</h3>
+              <article key={step.title} className="cs-glass-panel p-7">
+                <h3 className="font-lora text-balance text-2xl font-semibold leading-tight">{step.title}</h3>
                 <p className="mt-4 text-base leading-7 text-[#5f7672]">{step.description}</p>
               </article>
             ))}
@@ -230,15 +230,16 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-[#fcfbf8]">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
           <div>
-            <h2 className="font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.linksTitle}</h2>
+            <p className="cs-section-eyebrow">{locale === 'zh' ? '更多页面' : 'More paths'}</p>
+            <h2 className="mt-4 font-lora text-balance text-3xl font-semibold leading-tight sm:text-4xl">{copy.linksTitle}</h2>
             <p className="mt-4 text-base leading-7 text-[#5f7672]">{copy.linksBody}</p>
           </div>
           <div className="grid gap-4">
             {copy.links.map((item) => (
-              <Link key={item.href} href={item.href} className="border border-[#d7ddd6] bg-[#FBF9F4] px-6 py-4 font-medium text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
+              <Link key={item.href} href={item.href} className="rounded-[0.5rem] border border-[#d7ddd6] bg-[#FBF9F4] px-6 py-4 font-medium text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
                 {item.label}
               </Link>
             ))}

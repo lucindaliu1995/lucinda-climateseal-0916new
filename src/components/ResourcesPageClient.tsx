@@ -101,7 +101,7 @@ export default function ResourcesPageClient({
   const displayArticles = filteredArticles.length ? filteredArticles : articles;
 
   return (
-    <div className="min-h-screen bg-[#F7F3EA] text-[#123F3D]">
+    <div className="min-h-screen bg-[#FAF8F3] text-[#123F3D]">
       <Script id="jsonld-breadcrumb-sr" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify({
           '@context': 'https://schema.org',
@@ -129,30 +129,30 @@ export default function ResourcesPageClient({
         })}
       </Script>
 
-      <section className="border-b border-[#d7ddd6] bg-white px-4 pt-28 pb-14 sm:px-6 lg:px-8">
+      <section className="border-b border-[#d7ddd6] bg-[#fcfbf8] px-4 pt-28 pb-14 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-4xl">
-            <div className="inline-flex border border-[#d1d8d2] bg-[#F8F6F1] px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#587671]">
+            <p className="cs-section-eyebrow">
               {language === 'zh' ? '资源中心' : 'Resource Center'}
-            </div>
+            </p>
             <h1 className="mt-6 font-lora text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-[#123F3D] sm:text-5xl lg:text-[3.5rem]">
-              {language === 'zh' ? '解决方案资源中心' : 'Solution Resources'}
+              {language === 'zh' ? '碳核算与合规资源中心' : 'Carbon Accounting Resource Center'}
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#5f7672]">
               {language === 'zh'
                 ? '围绕产品碳足迹、Scope 3、LCA、法规方法学、供应链协同与审计交付，持续整理更适合业务团队使用的资料。'
-                : 'Explore practical resources for Product Carbon Footprint, Scope 3, LCA, methodology, supplier collaboration, and verification-ready carbon delivery.'}
+                : 'Explore practical guidance on Product Carbon Footprint, Scope 3, LCA methods, supplier collaboration, and verification-ready carbon delivery.'}
             </p>
           </div>
         </div>
       </section>
 
       {whitepapers.length > 0 && (
-        <section className="border-b border-[#d7ddd6] bg-[#F7F3EA] px-4 py-12 sm:px-6 lg:px-8">
+        <section className="border-b border-[#d7ddd6] bg-[#f7f4ec] px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5f7a76]">
-                {language === 'zh' ? '精选白皮书' : 'Featured whitepapers'}
+              <p className="cs-section-eyebrow">
+                {language === 'zh' ? '重点白皮书' : 'Featured documents'}
               </p>
               <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] text-[#123F3D] sm:text-4xl">
                 {t.resourcesPage.whitepapers.title}
@@ -169,9 +169,9 @@ export default function ResourcesPageClient({
                 return (
                   <div
                     key={whitepaper.id}
-                    className="group grid gap-4 border border-[#d7ddd6] bg-white p-4 transition-colors duration-200 hover:border-[#b7c5bc] lg:grid-cols-[160px_minmax(0,1fr)]"
+                    className="group cs-glass-panel grid gap-5 p-5 transition-colors duration-200 hover:border-[#b7c5bc] lg:grid-cols-[180px_minmax(0,1fr)]"
                   >
-                    <div className="relative h-40 overflow-hidden border border-[#d7ddd6] bg-[#F8F6F1]">
+                    <div className="relative h-44 overflow-hidden rounded-[0.5rem] border border-[#d7ddd6] bg-[#F8F6F1]">
                       <SafeImage
                         src={whitepaper.thumbnail}
                         alt={`${getWhitepaperTitle(whitepaper)} thumbnail`}
@@ -179,21 +179,21 @@ export default function ResourcesPageClient({
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                         fallbackSrc="/logo.jpg"
                       />
-                      <div className="absolute top-2 left-2 border border-[#b7c5bc] bg-white px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#456864]">
+                      <div className="absolute top-2 left-2 rounded-[0.4rem] border border-[#b7c5bc] bg-white px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#456864]">
                         {language === 'zh' ? '白皮书' : 'Whitepaper'}
                       </div>
                     </div>
 
                     <div className="min-w-0 space-y-3">
                       <div className="space-y-1">
-                        <h3 className="font-lora text-2xl font-bold leading-tight tracking-[-0.02em] text-[#123F3D]">{getWhitepaperTitle(whitepaper)}</h3>
+                        <h3 className="font-lora text-[1.75rem] font-bold leading-tight tracking-[-0.02em] text-[#123F3D]">{getWhitepaperTitle(whitepaper)}</h3>
                         <p className="text-sm text-[#6a817d]">{formatDate(whitepaper.publishDate)}</p>
-                        <p className="text-sm leading-7 text-[#5f7672]">{getWhitepaperIntro(whitepaper)}</p>
+                        <p className="text-[15px] leading-7 text-[#5f7672] sm:text-[16px]">{getWhitepaperIntro(whitepaper)}</p>
                       </div>
 
-                      <div className="border border-[#dde2dc] bg-[#FBF9F4] p-3">
+                      <div className="rounded-[0.45rem] border border-[#dde2dc] bg-[#FBF9F4] p-3">
                         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#5f7a76] mb-2">
-                          {language === 'zh' ? '下载可获得' : "What you'll get"}
+                          {language === 'zh' ? '内容包括' : 'Included in this document'}
                         </p>
                         <ul className="space-y-1 text-sm text-[#5f7672]">
                           {displayBenefits.map((benefit, index) => (
@@ -212,7 +212,7 @@ export default function ResourcesPageClient({
 
                       <div className="flex flex-wrap gap-2">
                         {whitepaper.topics.slice(0, 2).map((topic) => (
-                          <span key={topic} className="border border-[#d7ddd6] bg-[#F8F6F1] px-2 py-1 text-[11px] uppercase tracking-[0.14em] text-[#5f7672]">
+                          <span key={topic} className="rounded-[0.35rem] border border-[#d7ddd6] bg-[#F8F6F1] px-2 py-1 text-[10px] uppercase tracking-[0.16em] text-[#5f7672]">
                             {topic}
                           </span>
                         ))}
@@ -220,9 +220,9 @@ export default function ResourcesPageClient({
 
                       <Link
                         href={`/resources/whitepapers/${whitepaper.id}`}
-                        className="inline-flex items-center gap-2 border border-[#123F3D] px-4 py-2 text-sm font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white"
+                        className="inline-flex items-center gap-2 rounded-[0.5rem] border border-[#123F3D] px-4 py-2 text-sm font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white"
                       >
-                        {language === 'zh' ? '查看并下载' : 'View & download'}
+                        {language === 'zh' ? '查看文档' : 'Open document'}
                       </Link>
                     </div>
                   </div>
@@ -233,20 +233,20 @@ export default function ResourcesPageClient({
         </section>
       )}
 
-      <section className="border-b border-[#d7ddd6] bg-white px-4 py-10 sm:px-6 lg:px-8">
+      <section className="border-b border-[#d7ddd6] bg-[#fcfbf8] px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`border px-4 py-2 text-sm font-medium transition ${selectedCategory === 'all' ? 'border-[#123F3D] bg-[#123F3D] text-white' : 'border-[#d7ddd6] bg-[#F8F6F1] text-[#123F3D] hover:border-[#b7c5bc]'}`}
+              className={`rounded-[0.5rem] border px-4 py-2 text-sm font-medium transition ${selectedCategory === 'all' ? 'border-[#123F3D] bg-[#123F3D] text-white' : 'border-[#d7ddd6] bg-[#F8F6F1] text-[#123F3D] hover:border-[#b7c5bc]'}`}
             >
-              {language === 'zh' ? '全部' : 'All'}
+              {language === 'zh' ? '全部内容' : 'All resources'}
             </button>
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`border px-4 py-2 text-sm font-medium transition ${selectedCategory === category.id ? 'border-[#123F3D] bg-[#123F3D] text-white' : 'border-[#d7ddd6] bg-[#F8F6F1] text-[#123F3D] hover:border-[#b7c5bc]'}`}
+                className={`rounded-[0.5rem] border px-4 py-2 text-sm font-medium transition ${selectedCategory === category.id ? 'border-[#123F3D] bg-[#123F3D] text-white' : 'border-[#d7ddd6] bg-[#F8F6F1] text-[#123F3D] hover:border-[#b7c5bc]'}`}
               >
                 {getCategoryName(category)}
               </button>
@@ -263,15 +263,15 @@ export default function ResourcesPageClient({
         </div>
       </section>
 
-      <section className="bg-[#F7F3EA] px-4 py-12 sm:px-6 lg:px-8">
+      <section className="bg-[#faf8f3] px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
             {displayArticles.map((article) => (
               <div
                 key={article.id}
-                className="group overflow-hidden border border-[#d7ddd6] bg-white transition-colors duration-200 hover:border-[#b7c5bc]"
+                className="group cs-glass-panel overflow-hidden transition-colors duration-200 hover:border-[#b7c5bc]"
               >
-                <div className="relative h-52 border-b border-[#d7ddd6] bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(239,236,229,0.92))]">
+                <div className="relative h-48 border-b border-[#d7ddd6] bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(239,236,229,0.92))]">
                   {article.coverImage ? (
                     <Image
                       src={article.coverImage}
@@ -284,14 +284,14 @@ export default function ResourcesPageClient({
                   ) : null}
 
                   <div className="absolute top-4 left-4">
-                    <span className="border border-[#b7c5bc] bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#456864]">
+                    <span className="rounded-[0.4rem] border border-[#b7c5bc] bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#456864]">
                       {language === 'zh' ? article.categoryZh : article.category}
                     </span>
                   </div>
 
                   {article.featured ? (
                     <div className="absolute top-4 right-4">
-                      <span className="border border-[#d6c47a] bg-[#fff7d8] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6f5c1b]">
+                      <span className="rounded-[0.4rem] border border-[#d6c47a] bg-[#fff7d8] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6f5c1b]">
                         {language === 'zh' ? '推荐' : 'Featured'}
                       </span>
                     </div>
@@ -300,13 +300,13 @@ export default function ResourcesPageClient({
 
                 <div className="p-6">
                   <p className="mb-3 text-sm text-[#6a817d]">{formatDate(article.publishDate)}</p>
-                  <h3 className="mb-3 font-lora text-2xl font-bold leading-tight tracking-[-0.02em] text-[#123F3D]">{getArticleTitle(article)}</h3>
-                  <p className="mb-5 text-sm leading-7 text-[#5f7672] line-clamp-4">{getArticleExcerpt(article)}</p>
+                  <h3 className="mb-2 font-lora text-[1.45rem] font-bold leading-tight tracking-[-0.02em] text-[#123F3D]">{getArticleTitle(article)}</h3>
+                  <p className="mb-5 text-[15px] leading-7 text-[#5f7672] line-clamp-3 sm:text-[16px]">{getArticleExcerpt(article)}</p>
                   <Link
                     href={`/resources/${article.id}`}
-                    className="inline-flex items-center border border-[#123F3D] px-4 py-2 text-sm font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white"
+                    className="inline-flex items-center rounded-[0.5rem] border border-[#123F3D] px-4 py-2 text-sm font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white"
                   >
-                    {language === 'zh' ? '阅读全文' : 'Read article'}
+                    {language === 'zh' ? '查看文章' : 'Open article'}
                   </Link>
                 </div>
               </div>

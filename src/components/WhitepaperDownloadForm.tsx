@@ -94,7 +94,7 @@ export default function WhitepaperDownloadForm({
 
   return (
     <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-lg">
-      <h2 className="text-2xl font-bold text-slate-900 mb-2 font-lora">
+      <h2 className="mb-2 font-lora text-balance text-2xl font-semibold leading-tight text-slate-900">
         {language === 'zh' ? '下载白皮书' : 'Download Whitepaper'}
       </h2>
       <p className="text-slate-600 mb-6 text-sm">

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import FAQAccordion, { FaqItem } from '@/components/FAQAccordion';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -16,7 +16,17 @@ interface FAQClientProps {
 
 export default function FAQClient({ zhGroups, enGroups }: FAQClientProps) {
   const { language } = useLanguage();
-  const groups = language === 'zh' ? zhGroups : enGroups;
+  const sourceGroups = language === 'zh' ? zhGroups : enGroups;
+  const groups = useMemo<FAQGroup[]>(() => {
+    const allItems = sourceGroups.flatMap((group) => group.items);
+    return [
+      {
+        name: language === 'zh' ? '全部' : 'All',
+        items: allItems,
+      },
+      ...sourceGroups,
+    ];
+  }, [language, sourceGroups]);
 
   const mapItems = (g: FAQGroup): FaqItem[] => g.items.map((it) => ({ question: it.q, answer: it.a.join('\n') }));
 
@@ -35,7 +45,7 @@ export default function FAQClient({ zhGroups, enGroups }: FAQClientProps) {
 
   return (
     <div>
-      <div className="sticky top-20 z-10 border-b border-[#d7ddd6] bg-[#F7F3EA]/95 backdrop-blur-xl">
+      <div className="sticky top-20 z-10 border-b border-[#d7ddd6] bg-[#faf8f3]/92 backdrop-blur-xl">
         <div className="mx-auto max-w-5xl overflow-x-auto">
           <div className="flex gap-3 py-4" id="faq-tabs">
             {groups.map((g, idx) => (
@@ -47,7 +57,7 @@ export default function FAQClient({ zhGroups, enGroups }: FAQClientProps) {
                     history.pushState(null, '', `#faq-${idx}`);
                   }
                 }}
-                className={`border px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
+                className={`rounded-[0.5rem] border px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
                   active === idx ? 'border-[#123F3D] bg-[#123F3D] text-white' : 'border-[#d7ddd6] bg-white text-[#123F3D] hover:border-[#b7c5bc]'
                 }`}
               >

@@ -67,12 +67,32 @@ export type ReferralUse = {
   notes?: string;
 };
 
+export type ConsultantPartnerApplication = {
+  id: string;
+  submittedAt: string;
+  name: string;
+  email: string;
+  company: string;
+  countryRegion: string;
+  consultantType: 'carbon' | 'esg' | 'lca' | 'sustainability' | 'boutique_firm' | 'other';
+  teamSize: string;
+  clientIndustries: string[];
+  projectTypes: string[];
+  expectedProjectsNext3Months: string;
+  wantsReferralAccess: boolean;
+  website?: string;
+  linkedin?: string;
+  message?: string;
+  status: 'new' | 'reviewing' | 'accepted' | 'rejected';
+};
+
 const ADMIN_DATA_DIR = path.join(process.cwd(), 'data', 'admin');
 const CONTACTS_FILE = path.join(ADMIN_DATA_DIR, 'contact-submissions.json');
 const WHITEPAPERS_FILE = path.join(ADMIN_DATA_DIR, 'whitepaper-submissions.json');
 const ASSETS_FILE = path.join(ADMIN_DATA_DIR, 'uploaded-assets.json');
 const REFERRAL_OWNERS_FILE = path.join(ADMIN_DATA_DIR, 'referral-owners.json');
 const REFERRAL_USES_FILE = path.join(ADMIN_DATA_DIR, 'referral-uses.json');
+const CONSULTANT_APPLICATIONS_FILE = path.join(ADMIN_DATA_DIR, 'consultant-partner-applications.json');
 
 async function ensureAdminDir() {
   await fs.mkdir(ADMIN_DATA_DIR, { recursive: true });
@@ -167,4 +187,23 @@ export async function updateReferralUse(
   const uses = await listReferralUses();
   const nextUses = uses.map((use) => (use.id === referralUseId ? { ...use, ...updates } : use));
   await writeJsonFile(REFERRAL_USES_FILE, nextUses);
+}
+
+export async function saveConsultantPartnerApplication(application: ConsultantPartnerApplication) {
+  await appendJsonRow(CONSULTANT_APPLICATIONS_FILE, application);
+}
+
+export async function listConsultantPartnerApplications(): Promise<ConsultantPartnerApplication[]> {
+  return readJsonFile<ConsultantPartnerApplication>(CONSULTANT_APPLICATIONS_FILE);
+}
+
+export async function updateConsultantPartnerApplication(
+  applicationId: string,
+  updates: Partial<Omit<ConsultantPartnerApplication, 'id' | 'submittedAt'>>
+) {
+  const applications = await listConsultantPartnerApplications();
+  const nextApplications = applications.map((application) =>
+    application.id === applicationId ? { ...application, ...updates } : application
+  );
+  await writeJsonFile(CONSULTANT_APPLICATIONS_FILE, nextApplications);
 }

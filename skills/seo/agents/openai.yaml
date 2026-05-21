@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO"
+  short_description: "Improve climate-tech pages for search"
+  default_prompt: "Use $seo to audit and improve this climate-tech page for search."

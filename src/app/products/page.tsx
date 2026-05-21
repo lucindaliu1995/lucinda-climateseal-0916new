@@ -221,16 +221,16 @@ export default async function ProductsPage() {
   };
 
   return (
-    <main className="bg-[#F7F3EA] text-[#123F3D]">
+    <main className="bg-[#FAF8F3] text-[#123F3D]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
 
-      <section className="border-b border-[#d7ddd6] bg-white">
+      <section className="border-b border-[#d7ddd6] bg-[#fcfbf8]">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_0.95fr] lg:px-8 lg:py-20">
           <div className="space-y-7">
-            <div className="inline-flex border border-[#d1d8d2] bg-[#F8F6F1] px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#587671]">
+            <p className="cs-section-eyebrow">
               {copy.eyebrow}
-            </div>
+            </p>
             <div className="space-y-5">
               <h1 className="font-lora text-4xl font-bold leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:text-[3.5rem]">
                 {copy.heroTitle}
@@ -239,14 +239,14 @@ export default async function ProductsPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               {copy.heroHighlights.map((item) => (
-                <div key={item} className="border border-[#d7ddd6] bg-[#FBF9F4] px-5 py-4 text-sm leading-6 text-[#486662]">
+                <div key={item} className="rounded-[0.55rem] border border-[#d7ddd6] bg-[#FBF9F4] px-5 py-4 text-sm leading-6 text-[#486662]">
                   {item}
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="border border-[#d7ddd6] bg-[#0f4746] p-6 text-white">
+          <div className="rounded-[0.55rem] border border-[#d7ddd6] bg-[#0f4746] p-6 text-white">
             <div className="grid gap-4 border-b border-white/10 pb-5 sm:grid-cols-3">
               <div>
                 <p className="text-[11px] uppercase tracking-[0.24em] text-white/60">Coverage</p>
@@ -263,7 +263,7 @@ export default async function ProductsPage() {
             </div>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
               {copy.coverageItems.map((item, index) => (
-                <div key={item} className="border border-white/10 bg-white/5 p-4">
+                <div key={item} className="rounded-[0.5rem] border border-white/10 bg-white/5 p-4">
                   <div className="text-xs font-semibold uppercase tracking-[0.24em] text-[#BEE5DB]">0{index + 1}</div>
                   <p className="mt-3 text-sm leading-7 text-white/78">{item}</p>
                 </div>
@@ -273,36 +273,36 @@ export default async function ProductsPage() {
         </div>
       </section>
 
-      <section className="border-b border-[#d7ddd6] bg-[#F7F3EA]">
+      <section className="border-b border-[#d7ddd6] bg-[#f7f4ec]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5f7a76]">{copy.modulesEyebrow}</p>
+            <p className="cs-section-eyebrow">{copy.modulesEyebrow}</p>
             <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.modulesTitle}</h2>
           </div>
           <div className="mt-10 grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
             {copy.modules.map((module) => (
-              <article key={module.title} className="border border-[#d7ddd6] bg-white p-6">
+              <article key={module.title} className="cs-glass-panel p-6">
                 <h3 className="text-2xl font-semibold tracking-[-0.02em] text-[#123F3D]">{module.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-[#5f7672]">{module.description}</p>
+                <p className="mt-4 text-[15px] leading-7 text-[#5f7672] sm:text-[16px]">{module.description}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-[#d7ddd6] bg-white">
+      <section className="border-b border-[#d7ddd6] bg-[#fcfbf8]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5f7a76]">{copy.useCasesEyebrow}</p>
+            <p className="cs-section-eyebrow">{copy.useCasesEyebrow}</p>
             <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.useCasesTitle}</h2>
             <p className="mt-4 text-base leading-7 text-[#5f7672]">{copy.useCasesBody}</p>
           </div>
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {copy.useCases.map((item) => (
-              <article key={item.title} className="border border-[#d7ddd6] bg-[#FBF9F4] p-7">
+              <article key={item.title} className="rounded-[0.55rem] border border-[#d7ddd6] bg-[#FBF9F4] p-7">
                 <h3 className="text-2xl font-semibold tracking-[-0.02em] text-[#123F3D]">{item.title}</h3>
                 <p className="mt-4 text-base leading-7 text-[#5f7672]">{item.summary}</p>
-                <Link href={item.href} className="mt-6 inline-flex border border-[#123F3D] px-5 py-3 font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
+                <Link href={item.href} className="mt-6 inline-flex rounded-[0.5rem] border border-[#123F3D] px-5 py-3 font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
                   {item.cta}
                 </Link>
               </article>
@@ -311,16 +311,17 @@ export default async function ProductsPage() {
         </div>
       </section>
 
-      <section className="bg-[#F7F3EA]">
+      <section className="bg-[#faf8f3]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="border border-[#d7ddd6] bg-white p-8 sm:p-10">
-            <h2 className="font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.ctaTitle}</h2>
+          <div className="cs-glass-panel p-8 sm:p-10">
+            <p className="cs-section-eyebrow">{locale === 'zh' ? '下一步' : 'Next step'}</p>
+            <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.ctaTitle}</h2>
             <p className="mt-4 max-w-3xl text-base leading-7 text-[#5f7672]">{copy.ctaBody}</p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link href="/pricing" className="border border-[#123F3D] bg-[#123F3D] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
+              <Link href="/pricing" className="rounded-[0.5rem] border border-[#123F3D] bg-[#123F3D] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
                 {copy.ctaPrimary}
               </Link>
-              <Link href="/contact" className="border border-[#123F3D] px-6 py-3 text-center font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
+              <Link href="/contact" className="rounded-[0.5rem] border border-[#123F3D] px-6 py-3 text-center font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
                 {copy.ctaSecondary}
               </Link>
             </div>

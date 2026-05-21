@@ -52,21 +52,21 @@ export default async function FAQPage({ searchParams }: { searchParams: Promise<
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F3EA] text-[#123F3D]">
+    <div className="min-h-screen bg-[#FAF8F3] text-[#123F3D]">
       <Script id="jsonld-faq" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(jsonLd)}
       </Script>
       <div className="mx-auto max-w-7xl px-4 pt-28 pb-16 sm:px-6 sm:pt-32 lg:px-8">
         <div className="max-w-4xl">
-          <div className="inline-flex border border-[#d1d8d2] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#587671]">
+          <p className="cs-section-eyebrow">
             FAQ
-          </div>
+          </p>
           <h1 className="mt-6 font-lora text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-[#123F3D] sm:text-5xl lg:text-[3.4rem]">
             {dict.title}
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[#5f7672]">
             {locale === 'en'
-              ? 'Questions around Product Carbon Footprint, Scope 3, methodologies, data preparation, verification, and how Climate Seal fits different workflows.'
+              ? 'Straight answers on Product Carbon Footprint, Scope 3, methodology choices, data preparation, verification readiness, and how Climate Seal fits different operating models.'
               : '围绕产品碳足迹、Scope 3、方法学、数据准备、第三方验证以及 Climate Seal 适用场景的常见问题。'}
           </p>
         </div>

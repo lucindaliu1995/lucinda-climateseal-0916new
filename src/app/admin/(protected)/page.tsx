@@ -1,13 +1,21 @@
 import Link from 'next/link';
-import { listContactSubmissions, listReferralOwners, listReferralUses, listUploadedAssets, listWhitepaperSubmissions } from '@/lib/admin-store';
+import {
+  listConsultantPartnerApplications,
+  listContactSubmissions,
+  listReferralOwners,
+  listReferralUses,
+  listUploadedAssets,
+  listWhitepaperSubmissions,
+} from '@/lib/admin-store';
 
 export default async function AdminOverviewPage() {
-  const [contacts, whitepapers, assets, referralOwners, referralUses] = await Promise.all([
+  const [contacts, whitepapers, assets, referralOwners, referralUses, consultantApplications] = await Promise.all([
     listContactSubmissions(),
     listWhitepaperSubmissions(),
     listUploadedAssets(),
     listReferralOwners(),
     listReferralUses(),
+    listConsultantPartnerApplications(),
   ]);
 
   const cards = [
@@ -30,6 +38,11 @@ export default async function AdminOverviewPage() {
       label: 'Referral uses',
       value: referralUses.length,
       href: '/admin/referrals',
+    },
+    {
+      label: 'Consultant applications',
+      value: consultantApplications.length,
+      href: '/admin/consultant-applications',
     },
   ];
 
@@ -85,6 +98,21 @@ export default async function AdminOverviewPage() {
             <p><strong>Credited:</strong> {referralUses.filter((use) => use.status === 'credited').length}</p>
             <p><strong>Open review:</strong> {referralUses.filter((use) => use.status === 'new' || use.status === 'qualified').length}</p>
           </div>
+        </div>
+
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-xl font-semibold text-slate-900">Recent consultant application</h2>
+          {consultantApplications[0] ? (
+            <div className="mt-4 space-y-2 text-sm text-slate-700">
+              <p><strong>Name:</strong> {consultantApplications[0].name}</p>
+              <p><strong>Company:</strong> {consultantApplications[0].company}</p>
+              <p><strong>Region:</strong> {consultantApplications[0].countryRegion}</p>
+              <p><strong>Type:</strong> {consultantApplications[0].consultantType}</p>
+              <p><strong>Status:</strong> {consultantApplications[0].status}</p>
+            </div>
+          ) : (
+            <p className="mt-4 text-sm text-slate-500">No consultant applications yet.</p>
+          )}
         </div>
       </section>
     </div>

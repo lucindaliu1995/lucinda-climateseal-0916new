@@ -79,12 +79,12 @@ export default function BrandOwnerSolutionPage() {
     <div className="min-h-screen bg-[var(--brand-bg)] text-[var(--brand-ink)]">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[var(--brand-bg-soft)] py-14 lg:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(196,226,220,0.38),transparent_18%),radial-gradient(circle_at_82%_18%,rgba(214,221,216,0.34),transparent_24%),linear-gradient(180deg,rgba(239,236,229,0.98)_0%,rgba(245,243,238,1)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(192,224,203,0.48),transparent_18%),radial-gradient(circle_at_82%_18%,rgba(221,236,228,0.42),transparent_24%),linear-gradient(180deg,rgba(236,244,239,0.98)_0%,rgba(245,243,238,1)_100%)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative grid gap-7 lg:grid-cols-[minmax(0,0.95fr)_minmax(340px,0.72fr)] lg:items-center">
             <div className="text-center lg:text-left">
-              <div className="mb-4 inline-flex items-center gap-2 border border-[var(--brand-border)] bg-white/80 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--brand-accent-strong)] shadow-[0_10px_24px_rgba(18,63,61,0.05)] sm:px-4 sm:py-2 sm:text-[11px]">
-                <span className="h-2 w-2 rounded-full bg-[var(--brand-accent-strong)]" />
+              <div className="mb-4 inline-flex items-center gap-2 rounded-[0.45rem] border border-[#bfd4c7] bg-[#f3f8f4]/92 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#2b615b] shadow-[0_10px_24px_rgba(69,118,98,0.08)] sm:px-4 sm:py-2 sm:text-[11px]">
+                <span className="h-2 w-2 rounded-full bg-[#2b615b]" />
                 {language === 'zh' ? 'Brand Owner 解决方案' : 'Brand Owner Solution'}
               </div>
               <motion.h1 
@@ -104,10 +104,10 @@ export default function BrandOwnerSolutionPage() {
               {heroDescription}
             </motion.p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-                <Link href="/#contact" className="inline-flex items-center justify-center border border-[var(--brand-accent-strong)] bg-[var(--brand-accent-strong)] px-7 py-3.5 text-base font-semibold text-white transition hover:bg-[color:rgba(18,63,61,0.88)]">
+                <Link href="/#contact" className="inline-flex items-center justify-center rounded-[0.5rem] border border-[#2b615b] bg-[#2b615b] px-7 py-3.5 text-base font-semibold text-white transition hover:bg-[#234f4a]">
                   {language === 'zh' ? '预约演示' : 'Book a Demo'}
                 </Link>
-                <a href="#features" className="inline-flex items-center justify-center border border-[var(--brand-border)] bg-white/80 px-7 py-3.5 text-base font-semibold text-[var(--brand-ink)] transition hover:bg-white">
+                <a href="#features" className="inline-flex items-center justify-center rounded-[0.5rem] border border-[#c8d8cf] bg-white/86 px-7 py-3.5 text-base font-semibold text-[#1d4f4a] transition hover:bg-white">
                   {language === 'zh' ? '查看功能演示' : 'See Key Features'}
                 </a>
               </div>
@@ -117,15 +117,15 @@ export default function BrandOwnerSolutionPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.15 }}
-              className="border border-[var(--brand-border)] bg-[var(--brand-surface)] p-4 shadow-[0_18px_36px_rgba(18,63,61,0.06)] sm:p-5"
+              className="rounded-[0.55rem] border border-[#c8d8cf] bg-[linear-gradient(165deg,rgba(243,248,244,0.96),rgba(251,248,242,0.98))] p-4 shadow-[0_18px_36px_rgba(69,118,98,0.08)] sm:p-5"
             >
-              <div className="overflow-hidden border border-[var(--brand-border)] bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(239,236,229,0.92))] p-4">
+              <div className="overflow-hidden rounded-[0.5rem] border border-[#d5e2da] bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(236,244,239,0.92))] p-4">
                 <Image src="/goal-manager.png" alt="Brand Owner platform preview" width={960} height={640} className="h-auto w-full object-cover" />
               </div>
               <div className="mt-4 space-y-2.5">
                 {heroHighlights.map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-sm leading-6 text-[var(--brand-muted)]">
-                    <span className="mt-2 h-2 w-2 rounded-full bg-[var(--brand-accent-strong)]" />
+                  <div key={item} className="flex items-start gap-3 text-[15px] leading-6 text-[var(--brand-muted)]">
+                    <span className="mt-2 h-2 w-2 rounded-full bg-[#2b615b]" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -170,7 +170,7 @@ export default function BrandOwnerSolutionPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)] transition-shadow hover:shadow-[0_14px_28px_rgba(18,63,61,0.06)]"
+                  className="rounded-[0.55rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center bg-[var(--brand-accent-strong)]/10 font-bold text-[var(--brand-accent-strong)]">
@@ -217,30 +217,30 @@ export default function BrandOwnerSolutionPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
+              className="rounded-[0.55rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
             >
               <div className="mb-3 text-2xl font-bold text-[var(--brand-ink)]">{persona.stat}</div>
-              <p className="text-sm font-normal text-[var(--brand-muted)]">{persona.statDescription}</p>
+              <p className="text-[15px] leading-6 font-normal text-[var(--brand-muted)]">{persona.statDescription}</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
+              className="rounded-[0.55rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
             >
               <div className="mb-3 text-2xl font-bold text-[var(--brand-ink)]">{persona.secondStatDescription}</div>
-              <p className="text-sm font-normal text-[var(--brand-muted)]">{persona.thirdStatDescription}</p>
+              <p className="text-[15px] leading-6 font-normal text-[var(--brand-muted)]">{persona.thirdStatDescription}</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
+              className="rounded-[0.55rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] p-6 shadow-[0_12px_24px_rgba(18,63,61,0.04)]"
             >
               <div className="mb-3 text-2xl font-bold text-[var(--brand-ink)]">{persona.fourthStat}</div>
-              <p className="text-sm font-normal text-[var(--brand-muted)]">{persona.fourthStatDescription}</p>
+              <p className="text-[15px] leading-6 font-normal text-[var(--brand-muted)]">{persona.fourthStatDescription}</p>
             </motion.div>
           </div>
         </div>
@@ -258,13 +258,13 @@ export default function BrandOwnerSolutionPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/#contact" 
-              className="border border-[var(--brand-accent-strong)] bg-[var(--brand-accent-strong)] px-8 py-4 text-lg font-semibold text-white transition duration-300 hover:bg-[color:rgba(18,63,61,0.88)]"
+              className="rounded-[0.5rem] border border-[var(--brand-accent-strong)] bg-[var(--brand-accent-strong)] px-8 py-4 text-lg font-semibold text-white transition duration-300 hover:bg-[color:rgba(18,63,61,0.88)]"
             >
               {language === 'zh' ? '联系我们' : 'Contact Us'}
             </Link>
             <Link 
               href="/" 
-              className="rounded-full border border-[var(--brand-border)] bg-[var(--brand-surface)] px-8 py-4 text-lg font-semibold text-[var(--brand-ink)] transition duration-300 hover:bg-white"
+              className="rounded-[0.5rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] px-8 py-4 text-lg font-semibold text-[var(--brand-ink)] transition duration-300 hover:bg-white"
             >
               {language === 'zh' ? '返回首页' : 'Back to Home'}
             </Link>

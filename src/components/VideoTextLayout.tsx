@@ -15,12 +15,10 @@ type Item = {
 
 function AutoVideo({ 
   src, 
-  className, 
-  fallbackSrc 
+  className,
 }: { 
   src: string; 
-  className?: string; 
-  fallbackSrc?: string 
+  className?: string;
 }) {
   const [ref, setRef] = useState<HTMLVideoElement | null>(null);
   const [hasError, setHasError] = useState(false);
@@ -42,20 +40,10 @@ function AutoVideo({
     setHasError(true);
   };
 
-  // If video fails and we have a fallback image, show that
-  if (hasError && fallbackSrc) {
+  if (hasError) {
     return (
-      <figure className="m-0">
-        <img
-          src={fallbackSrc}
-          className={className}
-          alt="AI agent demo"
-          style={{
-            objectFit: 'contain',
-            objectPosition: 'center'
-          }}
-        />
-        <figcaption className="sr-only">AI agent demo image</figcaption>
+      <figure className="flex h-full w-full items-center justify-center bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(239,236,229,0.92))]">
+        <figcaption className="sr-only">AI agent demo video unavailable</figcaption>
       </figure>
     );
   }
@@ -104,9 +92,8 @@ export default function VideoTextLayout({
   return (
     <div className={`space-y-12 md:space-y-24 ${className}`}>
       {items.map((item, index) => {
-        // Use dynamic video if available, otherwise fall back to static image or media
+        // Prefer demo video only. Static media is intentionally not used for these cards.
         const videoSrc = item.dynamicMediaSrc || item.mediaSrc;
-        const fallbackSrc = item.staticMediaSrc;
         const isVideo = videoSrc?.endsWith(".mp4");
 
         return (
@@ -120,21 +107,12 @@ export default function VideoTextLayout({
           >
             {/* Video/Media Section - Left Side */}
             <div className="w-full flex-shrink-0 md:w-[55%] lg:w-[50%]">
-              <div className="relative overflow-hidden border border-[var(--brand-border)] bg-[var(--brand-surface)] shadow-[0_14px_28px_rgba(18,63,61,0.05)]">
+              <div className="relative overflow-hidden rounded-[0.55rem] border border-[var(--brand-border)] bg-[var(--brand-surface)] shadow-[0_14px_28px_rgba(18,63,61,0.05)]">
                 {isVideo && videoSrc ? (
                   <div className="flex aspect-video w-full items-center justify-center bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(239,236,229,0.92))]">
                     <AutoVideo 
                       src={videoSrc} 
-                      fallbackSrc={fallbackSrc}
                       className="w-full h-full" 
-                    />
-                  </div>
-                ) : fallbackSrc ? (
-                  <div className="flex aspect-video w-full items-center justify-center bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(239,236,229,0.92))]">
-                    <img 
-                      src={fallbackSrc} 
-                      alt={item.title} 
-                      className="w-full h-full object-contain" 
                     />
                   </div>
                 ) : (

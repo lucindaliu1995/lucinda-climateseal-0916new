@@ -5,6 +5,7 @@ const items = [
   { href: '/admin/articles', label: 'Articles' },
   { href: '/admin/whitepapers', label: 'Whitepapers' },
   { href: '/admin/referrals', label: 'Referrals' },
+  { href: '/admin/consultant-applications', label: 'Consultant Applications' },
   { href: '/admin/forms', label: 'Contact Forms' },
   { href: '/admin/downloads', label: 'Whitepaper Downloads' },
   { href: '/admin/assets', label: 'Assets' },

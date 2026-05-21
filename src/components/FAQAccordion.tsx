@@ -19,7 +19,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
   };
 
   return (
-    <div className="mx-auto w-full max-w-5xl border border-[#d7ddd6] bg-white">
+    <div className="cs-glass-panel mx-auto w-full max-w-5xl overflow-hidden">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         return (
@@ -31,7 +31,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
               aria-expanded={isOpen}
               aria-controls={`faq-panel-${index}`}
             >
-              <span className="font-lora text-xl font-bold leading-8 tracking-[-0.02em] text-[#123F3D] sm:text-2xl">{item.question}</span>
+              <span className="font-lora text-[1.28rem] font-bold leading-8 tracking-[-0.02em] text-[#123F3D] sm:text-[1.5rem]">{item.question}</span>
               <svg
                 className={`mt-1 h-5 w-5 flex-shrink-0 text-[#5f7672] transition-transform duration-200 ${
                   isOpen ? 'rotate-180' : 'rotate-0'
