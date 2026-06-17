@@ -600,9 +600,9 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       login: 'login'
     },
     hero: {
-      title: 'AI Agent for Product Carbon Footprint Accounting & Assurance',
-      subtitle: 'Upload the files you have. Climate Seal\'s AI agent parses the data, supports LCA modeling, automates factor matching, and highlights missing pieces so teams can deliver audit-ready carbon accounting faster.',
-      description: 'Product Carbon Footprint, Scope 3, and Project Carbon - Support product, corporate, and project carbon workflows in one platform.\nISO 14067 and GHG Protocol aligned - Built for standards-aligned delivery with more frameworks coming.\nCradle-to-grave and cradle-to-cradle - Support lifecycle boundaries without forcing teams into manual spreadsheet workflows.',
+      title: 'The AI Workspace for Credible Carbon Accounting',
+      subtitle: 'Climate Seal uses professional-grade AI to help teams model, review, and document product carbon, corporate carbon, Scope 3, and project carbon workflows with transparent evidence trails.',
+      description: 'Product, corporate, and project carbon - Support multiple carbon accounting workflows in one flexible platform.\nCredible and transparent by design - Preserve assumptions, factor choices, data gaps, and evidence trails for review.\nISO 14067 and GHG Protocol aligned - Built for standards-aligned delivery with more frameworks coming.',
       getStarted: 'Book a Demo with First Report Free',
       learnMore: 'Learn More',
       trustedBy: 'Trusted by'
@@ -635,7 +635,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
         scrollingText2: 'Use Credit At Low Cost'
       },
       personas: {
-        title: 'Designed for Every Team',
+        title: 'Carbon Accounting, Supercharged for Every Team',
         carbonExpert: {
           title: 'Carbon/ESG Professionals',
           role: 'ESG/Sustainability/Carbon/Consulting Expert',
@@ -1413,9 +1413,9 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       login: '登录'
     },
     hero: {
-      title: 'AI智能体：产品碳足迹核算与保障（Accounting & Assurance）',
-      subtitle: '在数天内生成核验级的产品碳足迹（PCF）成果，而非数月。借助 Climate Seal 的 AI 智能体，显著降低成本与复杂度。',
-      description: '零门槛上手——引导式流程与自动化数据处理，让任何角色都能完成专业核算。\n时间与成本减半——以天为单位完成传统需数月的工作，成本仅为其一小部分。\n核验就绪保证——遵循 GHG Protocol、ISO 14067、CBAM 等主流框架与法规，生成可核验的合规成果。',
+      title: '可信碳核算的 AI 工作台',
+      subtitle: 'Climate Seal 用专业级 AI 帮助团队建模、复核和记录产品碳、企业碳、Scope 3 与项目碳工作流，并保留透明证据链。',
+      description: '产品碳、企业碳与项目碳——在同一套灵活平台中支持多类碳核算工作流。\n可信且透明——保留假设、因子选择、数据缺口与证据链，便于复核。\n对齐 ISO 14067 与 GHG Protocol——围绕主流标准交付，并持续扩展更多框架。',
       getStarted: '预约演示，首份报告免费',
       learnMore: '了解更多',
       trustedBy: '信赖我们的客户'
@@ -1448,7 +1448,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
         scrollingText2: 'Use Credit At Low Cost'
       },
       personas: {
-        title: '为每个团队设计',
+        title: '为每个团队升级碳核算',
         carbonExpert: {
           title: '碳/ESG专业人士',
           role: 'ESG/可持续/碳/咨询专家',

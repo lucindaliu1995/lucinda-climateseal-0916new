@@ -9,9 +9,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
   const urls = [
     '/',
+    '/about',
+    '/products',
+    '/pricing',
+    '/contact',
     '/resources',
     '/faq',
     '/privacy',
+    '/consultant-partner-program',
+    '/referral-program',
     '/solutions/carbon-expert',
     '/solutions/brand-owner',
     '/solutions/supply-chain',

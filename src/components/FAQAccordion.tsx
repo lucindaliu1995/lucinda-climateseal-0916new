@@ -8,7 +8,7 @@ export interface FaqItem {
 }
 
 interface FAQAccordionProps {
-  items: FaqItem[];
+  items: readonly FaqItem[];
 }
 
 export default function FAQAccordion({ items }: FAQAccordionProps) {

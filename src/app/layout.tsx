@@ -24,11 +24,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const isZh = isChineseLanguage(language);
 
   const title = isZh
-    ? 'Climate Seal | AI产品碳足迹与供应链碳管理平台'
-    : 'Product Carbon Footprint Platform | Climate Seal';
+    ? 'Climate Seal | 可信碳核算的 AI 工作台'
+    : 'AI Carbon Accounting Workspace | Climate Seal';
   const description = isZh
-    ? 'Climate Seal 用 AI 自动化产品碳足迹、LCA、供应链碳数据协同与合规交付，帮助团队以更低成本完成审计级报告和客户交付。'
-    : 'Climate Seal is an AI-powered product carbon footprint platform and PCF software that turns fragmented BOM and supplier data into verification-ready carbon reports. Use AI carbon accounting software to support modeling, defensible factor matching, evidence tracking, and review workflows.';
+    ? 'Climate Seal 用专业级 AI 支持产品碳、企业碳、Scope 3 与项目碳工作流，帮助团队完成可信、透明、可复核的碳报告交付。'
+    : 'Automate carbon accounting from BOM and supplier data into verification-ready PCF, Scope 3, CBAM and EPD reports with AI agents.';
 
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),
@@ -134,7 +134,7 @@ export default async function RootLayout({
             name: "Climate Seal",
             url: (process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),
             logo: new URL("/logo.jpg", process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com").toString(),
-            description: "Climate Seal is an AI-powered product carbon footprint platform and PCF software that turns fragmented BOM and supplier data into verification-ready carbon reports.",
+            description: "Automate carbon accounting from BOM and supplier data into verification-ready PCF, Scope 3, CBAM and EPD reports with AI agents.",
             foundingDate: "2024",
             sameAs: [
               "https://twitter.com/ClimateSeal",
@@ -155,7 +155,7 @@ export default async function RootLayout({
             name: "Climate Seal AI Platform",
             applicationCategory: "BusinessApplication",
             operatingSystem: "Web",
-            description: "Climate Seal is an AI-powered product carbon footprint platform and AI carbon accounting software for verification-ready reporting.",
+            description: "Automate carbon accounting from BOM and supplier data into verification-ready PCF, Scope 3, CBAM and EPD reports with AI agents.",
             url: (process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),
             offers: {
               "@type": "Offer",

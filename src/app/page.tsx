@@ -17,45 +17,45 @@ export default function Home() {
       href: '/solutions/brand-owner',
       icon: Building2,
       label: language === 'zh' ? '品牌与采购团队' : 'Brands & Procurement',
-      title: language === 'zh' ? '管理供应商碳数据与减排计划' : 'Manage supplier carbon data and abatement planning',
+      title: language === 'zh' ? '管理企业、供应商与采购相关碳数据' : 'Coordinate corporate sustainability and procurement carbon data',
       panelClass:
         'border-[#c8d8cf] bg-[linear-gradient(165deg,rgba(231,241,235,0.95),rgba(251,248,242,0.98))] hover:border-[#8eaea1] hover:shadow-[0_18px_30px_rgba(86,130,113,0.12)]',
       badgeClass: 'bg-[#dcebe3] text-[#2b615b]',
       ctaClass: 'text-[#2b615b]',
       summary:
         language === 'zh'
-          ? '帮助品牌、采购与可持续团队更快收集供应商数据、识别质量风险，并推进可执行的减排计划。'
-          : 'Help brand, procurement, and sustainability teams collect supplier data faster, identify quality risks, and move credible abatement plans forward.',
+          ? '帮助品牌、采购与可持续团队用更简单的问题收集业务数据，并在后台形成可复核的 Scope 3、供应商和产品碳工作流。'
+          : 'Help brand, procurement, and sustainability teams collect business data through simple questions while Climate Seal builds review-ready Scope 3, supplier, and product carbon workflows in the background.',
       cta: language === 'zh' ? '查看品牌方案' : 'See brand solution',
     },
     {
       href: '/solutions/supply-chain',
       icon: Factory,
       label: language === 'zh' ? '供应商与出口企业' : 'Suppliers & Exporters',
-      title: language === 'zh' ? '更快交付可信的产品碳足迹结果' : 'Deliver credible product carbon footprints faster',
+      title: language === 'zh' ? '向客户交付透明、可信的碳数据' : 'Respond to buyers with transparent carbon outputs',
       panelClass:
         'border-[#ddd0bb] bg-[linear-gradient(165deg,rgba(248,241,228,0.96),rgba(251,248,242,0.98))] hover:border-[#c7b28e] hover:shadow-[0_18px_30px_rgba(170,132,76,0.12)]',
       badgeClass: 'bg-[#efe3ce] text-[#7a5a27]',
       ctaClass: 'text-[#7a5a27]',
       summary:
         language === 'zh'
-          ? '帮助工厂、供应商与出口企业用更低的执行成本准备审计就绪的 PCF、证据包与客户交付材料。'
-          : 'Help factories, suppliers, and exporters produce audit-ready PCFs, evidence packs, and buyer submissions with less manual work.',
+          ? '帮助工厂、供应商与出口企业准备 PCF、CBAM、EPD 和客户要求的数据包，并保留可直接给买方或核验方查看的审计账本。'
+          : 'Help factories, suppliers, and exporters prepare PCF, CBAM, EPD, and buyer-requested data packages with an audit ledger that buyers or verifiers can review directly.',
       cta: language === 'zh' ? '查看供应商方案' : 'See supplier solution',
     },
     {
       href: '/solutions/carbon-expert',
       icon: BadgeCheck,
       label: language === 'zh' ? '碳与 ESG 专业团队' : 'Carbon & ESG Teams',
-      title: language === 'zh' ? '提升建模、因子匹配与质量审查效率' : 'Speed up modeling, factor matching, and quality review',
+      title: language === 'zh' ? '提升专业交付能力，不降低复核质量' : 'Deliver more carbon work without lowering review quality',
       panelClass:
         'border-[#cfd8df] bg-[linear-gradient(165deg,rgba(234,240,243,0.96),rgba(251,248,242,0.98))] hover:border-[#9fb1bf] hover:shadow-[0_18px_30px_rgba(92,123,139,0.12)]',
       badgeClass: 'bg-[#dce7ec] text-[#345a6b]',
       ctaClass: 'text-[#345a6b]',
       summary:
         language === 'zh'
-          ? '帮助碳顾问、LCA 与 ESG 专业团队减少重复计算工作，把时间投入到高价值判断、审核与交付质量。'
-          : 'Help consultants and in-house carbon teams reduce repetitive calculation work and focus expert time on judgment, review, and delivery quality.',
+          ? '帮助碳顾问、LCA 与 ESG 专业团队减少数据整理、因子匹配和证据归档工作，同时保留方法学判断、人工确认和最终交付控制权。'
+          : 'Help consultants and in-house carbon teams reduce data cleanup, factor matching, and evidence organization while keeping control of methodology, human confirmation, and final delivery.',
       cta: language === 'zh' ? '查看专家方案' : 'See expert solution',
     },
   ];
@@ -77,89 +77,89 @@ export default function Home() {
   const platformCoverage = language === 'zh'
     ? {
         eyebrow: 'Platform coverage',
-        title: '一套 AI 平台，覆盖产品与企业碳核算工作流',
-        description: 'Climate Seal 不只服务 Product Carbon Footprint。它也支持 Scope 3 企业碳核算与 Project Carbon 场景，并把标准支持和生命周期边界能力放进同一套 AI 工作流里。',
+        title: '一套工作台，覆盖产品、企业与项目碳核算',
+        description: 'Climate Seal 用专业级 AI 在后台处理建模、因子匹配、证据追踪和复核逻辑，前台只向业务团队提出可以回答的业务问题。',
         cards: [
           {
             label: 'Accounting coverage',
             title: '覆盖多类碳核算场景',
-            description: '支持 Product Carbon Footprint、Scope 3 企业碳核算与 Project Carbon，不需要为不同交付场景切换不同工具。',
-            items: ['Product Carbon Footprint', 'Scope 3 企业碳核算', 'Project Carbon'],
+            description: '支持产品碳、企业碳和项目碳，不需要为不同交付场景切换不同工具。',
+            items: ['Product Carbon', 'Corporate Carbon', 'Project Carbon'],
           },
           {
-            label: 'Standards supported',
-            title: '围绕主流方法学和合规框架交付',
-            description: '当前支持 ISO 14067 与 GHG Protocol，并为后续标准扩展预留统一的建模与复核逻辑。',
-            items: ['ISO 14067', 'GHG Protocol'],
+            label: 'Standards and regulations',
+            title: '对齐标准、方法学与法规要求',
+            description: '围绕 ISO 14067、GHG Protocol、PAS 2050、EPD、CBAM 等框架组织核算逻辑、边界、证据与报告输出。',
+            items: ['ISO 14067', 'GHG Protocol', 'PAS 2050', 'EPD', 'CBAM'],
           },
           {
-            label: 'Lifecycle boundaries',
-            title: '支持不同生命周期边界',
-            description: '无论是 cradle-to-grave 还是 cradle-to-cradle，团队都可以在同一系统里推进边界设定、建模和交付。',
-            items: ['Cradle-to-grave', 'Cradle-to-cradle'],
+            label: 'Review and control',
+            title: '保留原始数据、因子选择与审计账本',
+            description: 'AI 不会在未经人工确认时修改任何原始数据。因子库可上传，因子可替换，每一步都进入审计账本。',
+            items: ['Original data kept', 'Factor control', 'Audit ledger'],
           },
         ],
       }
     : {
         eyebrow: 'Platform coverage',
-        title: 'One AI Platform for Product and Corporate Carbon Workflows',
-        description: 'Climate Seal does not only support Product Carbon Footprints. It also covers Scope 3 corporate carbon accounting and Project Carbon workflows, while keeping standards support and lifecycle boundaries inside the same AI-led system.',
+        title: 'One Workspace for Product, Corporate, and Project Carbon Accounting',
+        description: 'Turn fragmented BOM and supplier data into verification-ready carbon reports with built-in AI agents for automated modeling, factor matching, evidence tracking, and review workflows.',
         cards: [
           {
             label: 'Accounting coverage',
             title: 'Cover multiple carbon accounting scenarios',
-            description: 'Support Product Carbon Footprint, Scope 3 corporate carbon accounting, and Project Carbon work without switching between disconnected tools.',
-            items: ['Product Carbon Footprint', 'Scope 3 Carbon Accounting', 'Project Carbon'],
+            description: 'Support product carbon, corporate carbon, and project carbon work without switching between disconnected tools.',
+            items: ['Product Carbon', 'Corporate Carbon', 'Project Carbon'],
           },
           {
-            label: 'Standards supported',
+            label: 'Standards and regulations',
             title: 'Deliver around mainstream methods and compliance frameworks',
-            description: 'Today the platform supports ISO 14067 and GHG Protocol-aligned workflows, with a shared system for modeling and review as coverage expands.',
-            items: ['ISO 14067', 'GHG Protocol'],
+            description: 'Structure boundaries, evidence, calculations, and outputs around ISO 14067, GHG Protocol, PAS 2050, EPD, CBAM, and more.',
+            items: ['ISO 14067', 'GHG Protocol', 'PAS 2050', 'EPD', 'CBAM'],
           },
           {
-            label: 'Lifecycle boundaries',
-            title: 'Handle different lifecycle boundaries in one place',
-            description: 'Whether the work is cradle-to-grave or cradle-to-cradle, teams can move through boundary setup, modeling, and delivery inside the same system.',
-            items: ['Cradle-to-grave', 'Cradle-to-cradle'],
+            label: 'Review and control',
+            title: 'Keep source data, factor choices, and audit trails under control',
+            description: 'AI never modifies original data without human confirmation. Upload your own database, change factors when needed, and keep every step in the audit ledger.',
+            items: ['Original data kept', 'Factor control', 'Audit ledger'],
           },
         ],
       };
   const impactCards = language === 'zh'
     ? [
         {
-          title: '更快的流程与结果交付',
-          description: '把从原始数据到可审阅结果的流程推进得更快，同时减少返工和反复确认。',
+          title: '让业务团队也能参与',
+          description: '界面提出业务问题，而不是把用户推入复杂建模参数；专业核算逻辑由 AI 在后台推进。',
         },
         {
-          title: '更少人工核算',
-          description: '减少手工查因子、整理文件、来回确认和重复建模的工作量。',
+          title: '减少重复人工工作',
+          description: '减少手工整理数据、查找因子、归档证据、追踪版本和反复确认的工作量。',
         },
         {
-          title: '更可信的输出',
-          description: '通过结构化建模、风险提示和审计留痕提高交付一致性与可复核性。',
+          title: '保留专业判断与控制',
+          description: '用户可以上传自己的因子库，也可以在已有选择时更换因子；AI 不会未经确认修改原始数据。',
         },
         {
-          title: '更好的供应链协同',
-          description: '让品牌方、制造商与供应商围绕同一套更清晰的碳数据流程协作。',
+          title: '完整审计账本',
+          description: '每个输入、因子、假设、修改和证据链接都会被记录，便于第三方核验方或买方直接复核。',
         },
       ]
     : [
         {
-          title: 'Faster workflow and result delivery',
-          description: 'Move from raw data to review-ready outputs faster while reducing rework and repeated back-and-forth.',
+          title: 'Business teams can participate',
+          description: 'The interface asks business questions instead of pushing users into complex modeling settings, while professional accounting logic runs in the background.',
         },
         {
-          title: 'Less manual carbon work',
-          description: 'Reduce manual factor lookup, document cleanup, repetitive coordination, and spreadsheet-heavy modeling work.',
+          title: 'Less repetitive manual work',
+          description: 'Reduce manual data cleanup, factor lookup, evidence filing, version tracking, and repeated follow-up.',
         },
         {
-          title: 'More credible outputs',
-          description: 'Deliver traceable reports and complete supporting data packages that are ready to send for third-party verification.',
+          title: 'Professional judgment stays in control',
+          description: 'Upload your own factor database or change factors when your team already has approved choices. AI never modifies source data without confirmation.',
         },
         {
-          title: 'Better supplier collaboration',
-          description: 'Help brands, manufacturers, and suppliers work from a clearer shared carbon workflow.',
+          title: 'Complete audit ledger',
+          description: 'Every input, factor, assumption, edit, and evidence link is logged so third-party verifiers or buyers can review the workflow directly.',
         },
       ];
   const referralProgram = language === 'zh'
@@ -175,30 +175,30 @@ export default function Home() {
       };
   const homepagePricingSection = language === 'zh'
     ? {
-        title: '从适合你碳报告需求的工作流开始',
-        subtitle: '从一次试用报告开始，或按月使用个人方案；更复杂的供应链与企业项目可与团队定制。',
+        title: '从适合你碳核算需求的工作流开始',
+        subtitle: '从一次试用报告开始，或按月使用专业工作流；更复杂的产品、企业、供应链与项目碳工作可与团队定制。',
       }
     : {
-        title: 'Start with the right workflow for your carbon reporting needs',
-        subtitle: 'Start with a simple PCF trial, move into a professional monthly workflow, or talk with us about a larger enterprise program.',
+        title: 'Start with the right workflow for your carbon accounting needs',
+        subtitle: 'Start with a simple report trial, move into a professional monthly workflow, or talk with us about larger product, corporate, supply chain, and project carbon programs.',
       };
   const homepagePricingCards = [
     {
       title: language === 'zh' ? '免费开始' : 'Free Start',
       description: language === 'zh'
         ? '适合先用 1 份报告试用 Climate Seal，判断数据准备度、交付路径和适用场景。'
-        : 'For teams that want to try Climate Seal with a simple product carbon footprint before committing.',
+        : 'For teams that want to try Climate Seal with one simple carbon accounting workflow before committing.',
       price: language === 'zh' ? '有限报告点数' : 'Limited report credits',
       cadence: '',
       features: language === 'zh'
         ? [
-            '包含有限点数，可完成一个简单 PCF 工作流',
-            '适合测试数据准备度、报告结构和现有碳报告流程适配方式',
+            '包含有限点数，可完成一个简单碳核算工作流',
+            '适合测试数据准备度、报告结构和现有碳核算流程适配方式',
             '所有试用都需要先与团队沟通',
           ]
         : [
-            'Includes a limited amount of credits to complete one simple PCF workflow.',
-            'Best for testing data readiness, report structure, and how Climate Seal fits into your current carbon reporting process.',
+            'Includes a limited amount of credits to complete one simple carbon accounting workflow.',
+            'Best for testing data readiness, report structure, and how Climate Seal fits into your current carbon accounting process.',
             'All trials start after speaking with our team',
           ],
       button: language === 'zh' ? '联系团队' : 'Talk to the team',
@@ -213,20 +213,20 @@ export default function Home() {
     {
       title: language === 'zh' ? '专业版' : 'Professional',
       description: language === 'zh'
-        ? '适合需要持续使用 AI 工作流，定期生成 PCF、CCF 或相关碳报告材料的个人或小团队。'
-        : 'For consultants, experts, and small teams delivering recurring carbon accounting work with AI.',
+        ? '适合需要持续使用 AI 工作流，定期生成产品碳、企业碳或项目碳交付材料的个人或小团队。'
+        : 'For consultants, experts, and small teams delivering recurring product, corporate, or project carbon work with AI.',
       price: language === 'zh' ? '$299 起' : 'from $299',
       cadence: language === 'zh' ? '/月 /账户' : '/Month /Account',
       features: language === 'zh'
         ? [
             '访问完整 Climate Seal 核算工作流，支持多种法规、标准和方法学',
             '价格基于 token / credit 使用量，可按实际项目量扩展报告交付',
-            '适合希望提升交付能力、减少人工负担的专业团队',
+            '适合希望提升交付能力、减少人工负担，同时保留专业判断的团队',
           ]
         : [
             'Access the full Climate Seal accounting workflow, with support for multiple regulations, standards, and methodologies.',
             'Pricing is based on token / credit usage, so teams can scale report delivery according to actual project volume.',
-            'Best for professionals who want to increase delivery capacity without adding more manual workload.',
+            'Best for professionals who want to increase delivery capacity without losing control of expert judgment.',
           ],
       button: language === 'zh' ? '联系团队' : 'Talk to the team',
       cardClass: 'cs-card-dark',
@@ -240,19 +240,19 @@ export default function Home() {
     {
       title: language === 'zh' ? '企业版' : 'Enterprise',
       description: language === 'zh'
-        ? '适合多团队、多产品线或供应商规模协同，需要长期运营机制的企业。'
-        : 'For corporates managing carbon data across products, suppliers, business units, or compliance programs.',
+        ? '适合多团队、多产品线、供应商或项目规模协同，需要长期运营机制的企业。'
+        : 'For organizations managing carbon data across products, suppliers, business units, projects, or compliance programs.',
       price: language === 'zh' ? '定制' : 'Custom',
       cadence: '',
       features: language === 'zh'
         ? [
-            '面向供应商管理、内部数据治理、多产品报告和跨团队复核',
-            '包含供应商数据收集、自定义因子库、审批控制、追溯包和可复用产品数据模型',
+            '面向供应商管理、内部数据治理、多产品和多项目报告，以及跨团队复核',
+            '包含供应商数据收集、自定义因子库、审批控制、审计账本和可复用数据模型',
             '适合需要长期碳合规操作系统，而不只是单份报告的企业',
           ]
         : [
-            'Built for supplier management, internal data governance, multi-product reporting, and cross-team review.',
-            'Includes enterprise-ready workflows such as supplier data collection, custom factor databases, approval controls, traceability packages, and reusable product data models.',
+            'Built for supplier management, internal data governance, multi-product and multi-project reporting, and cross-team review.',
+            'Includes supplier data collection, custom factor databases, approval controls, audit ledgers, and reusable data models.',
             'Best for companies that need a long-term carbon compliance operating system, not only individual reports.',
           ],
       button: language === 'zh' ? '联系团队' : 'Talk to the team',
@@ -270,8 +270,8 @@ export default function Home() {
         {
           href: '/resources',
           label: '法规与方法',
-          title: '围绕 PCF、Scope 3 与碳合规持续学习',
-          description: '查看产品碳足迹、边界定义、因子使用、供应链协同与合规交付相关的文章和白皮书。',
+          title: '围绕产品、企业与项目碳核算持续学习',
+          description: '查看边界定义、因子使用、供应链协同、审计账本与合规交付相关的文章和白皮书。',
           cta: '进入资源中心',
           image: '/images/articles/Product-Carbon-Footprint.jpg',
         },
@@ -279,7 +279,7 @@ export default function Home() {
           href: '/resources/whitepapers/ai-carbon-operations-playbook',
           label: '精选白皮书',
           title: '获取 AI Carbon Operations Playbook',
-          description: '了解团队如何用 AI 改善数据收集、建模复核与碳交付节奏。',
+          description: '了解团队如何用 AI 改善数据收集、因子匹配、审计追踪与碳交付节奏。',
           cta: '查看白皮书',
           image: '/images/whitepapers/ai-carbon-operations-playbook-cover.jpg',
         },
@@ -288,8 +288,8 @@ export default function Home() {
         {
           href: '/resources',
           label: 'Methods and compliance',
-          title: 'Keep learning across PCF, Scope 3, and carbon compliance',
-          description: 'Explore articles and whitepapers on product carbon footprints, boundaries, factor usage, supplier engagement, and audit-ready delivery.',
+          title: 'Keep learning across product, corporate, and project carbon accounting',
+          description: 'Explore articles and whitepapers on boundaries, factor usage, supplier engagement, audit ledgers, and compliance-ready delivery.',
           cta: 'Visit the resource center',
           image: '/images/articles/Product-Carbon-Footprint.jpg',
         },
@@ -297,159 +297,158 @@ export default function Home() {
           href: '/resources/whitepapers/ai-carbon-operations-playbook',
           label: 'Featured whitepaper',
           title: 'Read the AI Carbon Operations Playbook',
-          description: 'See how teams can use AI to improve data collection, modeling review, and carbon delivery workflows.',
+          description: 'See how teams can use AI to improve data collection, factor matching, audit trails, and carbon delivery workflows.',
           cta: 'View whitepaper',
           image: '/images/whitepapers/ai-carbon-operations-playbook-cover.jpg',
         },
       ];
   const heroStages = language === 'zh'
-    ? ['Targets & Scope', 'Raw Data', 'Accounting Model', 'Data Risk', 'Results & Output']
-    : ['Targets & Scope', 'Raw Data', 'Accounting Model', 'Data Risk', 'Results & Output'];
+    ? ['目标与边界', '原始数据', 'AI 建模', '透明追溯', '报告输出']
+    : ['Targets & Scope', 'Raw Data', 'AI Modeling', 'Traceability', 'Report Output'];
   const heroTaskFeed = language === 'zh'
     ? [
-        '补全核算范围',
-        '解析 BOM 与原始文件',
-        '标记高风险数据点',
-        '整理审计就绪输出',
+        '识别产品、企业与项目核算边界',
+        '解析 BOM、供应商与运营数据',
+        '保留因子选择与假设依据',
+        '整理透明、可复核的交付包',
       ]
     : [
-        'Complete accounting scope',
-        'Parse BOM and source files',
-        'Flag higher-risk data points',
-        'Prepare audit-ready output',
+        'Identify product, corporate, and project boundaries',
+        'Parse BOM, supplier, and operating data',
+        'Preserve factor choices and assumptions',
+        'Package transparent, review-ready outputs',
       ];
   const heroCopilotMeta = language === 'zh'
     ? [
-        { label: 'Active tasks', value: '04' },
-        { label: 'Missing fields', value: '03' },
+        { label: 'Workflows', value: '03' },
+        { label: 'Standards', value: '02+' },
         { label: 'Risk flags', value: '07' },
       ]
     : [
-        { label: 'Active tasks', value: '04' },
-        { label: 'Missing fields', value: '03' },
+        { label: 'Workflows', value: '03' },
+        { label: 'Standards', value: '02+' },
         { label: 'Risk flags', value: '07' },
       ];
   const heroRightPanel = language === 'zh'
     ? {
-        title: 'Accounting Requirements & Standards',
-        cardTitle: 'Project Dataset',
-        object: 'Client files',
-        formTitle: 'Regulation & Accounting Scope',
+        title: 'Transparent Carbon Accounting Workspace',
+        cardTitle: 'Flexible accounting scope',
+        object: 'Product, corporate, and project carbon data',
+        formTitle: 'Standards, Scope & Evidence',
         fields: [
-          { label: 'ISO 14067 (2018)', value: 'Selected' },
-          { label: 'Accounting Boundary', value: 'Cradle-to-grave' },
-          { label: 'Functional Unit', value: 'Defined' },
-          { label: 'Benchmark Value', value: 'Calculated' },
+          { label: 'Product Carbon', value: 'PCF / LCA' },
+          { label: 'Corporate Carbon', value: 'Scope 1/2/3' },
+          { label: 'Project Carbon', value: 'Boundary set' },
+          { label: 'Evidence Trail', value: 'Traceable' },
         ],
-        tabs: ['Requirement', 'Raw Data', 'BOM Structure', 'Data Risk'],
+        tabs: ['Product Carbon', 'Corporate Carbon', 'Project Carbon', 'Audit Trail'],
       }
     : {
-        title: 'Accounting Requirements & Standards',
-        cardTitle: 'Project Dataset',
-        object: 'Client files',
-        formTitle: 'Regulation & Accounting Scope',
+        title: 'Transparent Carbon Accounting Workspace',
+        cardTitle: 'Flexible accounting scope',
+        object: 'Product, corporate, and project carbon data',
+        formTitle: 'Standards, Scope & Evidence',
         fields: [
-          { label: 'ISO 14067 (2018)', value: 'Selected' },
-          { label: 'Accounting Boundary', value: 'Cradle-to-grave' },
-          { label: 'Functional Unit', value: 'Defined' },
-          { label: 'Benchmark Value', value: 'Calculated' },
+          { label: 'Product Carbon', value: 'PCF / LCA' },
+          { label: 'Corporate Carbon', value: 'Scope 1/2/3' },
+          { label: 'Project Carbon', value: 'Boundary set' },
+          { label: 'Evidence Trail', value: 'Traceable' },
         ],
-        tabs: ['Requirement', 'Raw Data', 'BOM Structure', 'Data Risk'],
+        tabs: ['Product Carbon', 'Corporate Carbon', 'Project Carbon', 'Audit Trail'],
       };
   const heroWorkspaceRows = language === 'zh'
     ? [
-        { label: 'BOM rows imported', value: '19', status: 'Parsed' },
-        { label: 'Scope stages selected', value: '5', status: 'Ready' },
-        { label: 'High-risk points', value: '7', status: 'Review' },
+        { label: 'Product datasets mapped', value: '19', status: 'Parsed' },
+        { label: 'Corporate scopes aligned', value: '3', status: 'Ready' },
+        { label: 'Assumptions needing review', value: '7', status: 'Review' },
       ]
     : [
-        { label: 'BOM rows imported', value: '19', status: 'Parsed' },
-        { label: 'Scope stages selected', value: '5', status: 'Ready' },
-        { label: 'High-risk points', value: '7', status: 'Review' },
+        { label: 'Product datasets mapped', value: '19', status: 'Parsed' },
+        { label: 'Corporate scopes aligned', value: '3', status: 'Ready' },
+        { label: 'Assumptions needing review', value: '7', status: 'Review' },
       ];
 
   const productSection = language === 'zh'
     ? {
-        title: '上传文件，让 AI 完成碳核算重活',
+        title: '回答业务问题，让 AI 完成专业碳核算重活',
         subtitle:
-          '上传产品、供应商或项目相关文件后，AI 会自动解析数据、辅助 LCA 建模、完成因子匹配，并标记缺失信息与风险点。团队需要做的更多是回答问题、补充缺口、确认关键判断，而不是手工推进整套碳核算流程。',
+          '上传产品、供应商、运营或项目相关文件后，Climate Seal AI 会用专业算法解析数据、建立核算逻辑、从现有数据库中匹配最合适的因子，并标记缺口与风险点。用户看到的是业务问题，而不是复杂建模界面。',
         summaryTitle: '为什么企业选择 Climate Seal',
         summaryItems: [
-          '从上传文件开始，而不是从空白模型和人工整理开始',
-          'AI 负责解析、建模支持、因子匹配和缺口识别',
-          '团队只在 AI 要求补充、确认或复核时介入',
+          '从业务文件和业务问题开始，而不是从空白模型和手工整理开始',
+          'AI 用数据库和专业算法完成因子匹配、边界判断和缺口识别',
+          '团队可上传自己的因子库，也可以在已有选择时更换因子',
+          'AI 不会未经人工确认修改任何原始数据，所有动作进入审计账本',
         ],
         cta: '立即免费开始',
         capabilitiesTitle: '核心能力',
       capabilities: [
           {
             number: '01',
-            title: '自动文件解析与数据整理',
+            title: '业务问题驱动的数据收集',
             description:
-              '支持多种文档与数据来源，自动整理成更适合碳核算与复核的结构化输入。',
+              '把复杂核算需求转化为业务团队可以回答的问题，并把文件、表格和补充说明整理成可核算输入。',
           },
           {
             number: '02',
-            title: 'AI 辅助 LCA 建模与边界设置',
+            title: '专业算法匹配最合适因子',
             description:
-              '围绕产品类型、交付场景、生命周期边界和方法学要求，帮助团队更快推进建模。',
+              '基于产品、材料、工艺、地区、边界和标准要求，从现有数据库中找到最合适的排放因子，并保留依据。',
           },
           {
             number: '03',
-            title: '自动化因子匹配与风险评分',
+            title: '灵活因子库与人工确认',
             description:
-              '结合产品、工艺、材料和地区语境支持更可信的因子筛选，并对关键数据点给出风险与复核信号。',
+              '支持用户上传自己的数据库，也支持在已有企业或客户指定因子时更换因子；原始数据不会被 AI 自动覆盖。',
           },
           {
             number: '04',
-            title: '缺口识别与审计就绪交付',
+            title: '完整审计账本与可复核交付',
             description:
-              '当信息缺失时引导团队补充或确认，并沉淀更适合客户、采购方和第三方复核的交付结果。',
+              '每个输入、假设、因子、修改和证据链接都会被记录，便于第三方核验方或买方直接复核。',
           },
         ],
       }
     : {
-        title: 'Upload files. Let AI do the carbon accounting work.',
+        title: 'Answer business questions. Let AI do the professional carbon accounting work.',
         subtitle:
-          'Upload product, supplier, or project files, and the AI agent parses the data, supports LCA modeling, automates factor matching, and flags missing pieces. Teams spend more time answering questions, filling gaps, and confirming key assumptions instead of pushing the whole carbon accounting process manually.',
+          'Upload product, supplier, operating, or project files, and Climate Seal AI parses the data, builds the accounting logic, uses professional algorithms to match the best available emission factors from existing databases, and flags gaps or risks. Users answer business questions, not complex modeling prompts.',
         summaryTitle: 'Why teams choose Climate Seal',
         summaryItems: [
-          'Start from uploaded files instead of blank models and manual cleanup',
-          'Let AI handle parsing, modeling support, factor matching, and gap detection',
-          'Bring people in only when confirmation, supplementation, or review is needed',
+          'Start from business files and business questions instead of blank models and manual cleanup',
+          'Use database-backed algorithms for factor matching, boundary logic, and gap detection',
+          'Upload your own factor database or change factors when your team has approved choices',
+          'AI never modifies original data without human confirmation, and every action is logged',
         ],
         cta: 'Start Free Today',
         capabilitiesTitle: 'Core capabilities',
         capabilities: [
           {
             number: '01',
-            title: 'Automated document parsing',
+            title: 'Business-question data collection',
             description:
-              'Organize different document types into more structured accounting inputs without manual reformatting.',
+              'Translate technical accounting requirements into business questions and organize files, spreadsheets, and clarifications into usable carbon accounting inputs.',
           },
           {
             number: '02',
-            title: 'AI-assisted LCA modeling and boundaries',
+            title: 'Algorithmic best-match factor selection',
             description:
-              'Move faster through lifecycle boundaries, methodology choices, and model setup across different carbon accounting scenarios.',
+              'Use product, material, process, geography, boundary, and standards context to find the best matching emission factor from the available database, with rationale saved for review.',
           },
           {
             number: '03',
-            title: 'Find defensible emission factors faster',
+            title: 'Flexible factor databases and human confirmation',
             description:
-              'Climate Seal suggests factors based on material, process, geography, and data quality — with rationale saved for review.',
+              'Upload your own database or change factors when your team already has approved choices. AI never overwrites original data without human confirmation.',
           },
           {
             number: '04',
-            title: 'Gap detection and verification-ready outputs',
+            title: 'Complete audit ledger and review-ready delivery',
             description:
-              'When information is missing, the platform asks for confirmation or extra inputs and helps teams package review-ready outputs faster.',
+              'Log every input, assumption, factor, edit, and evidence link so third-party verifiers or buyers can review the workflow directly.',
           },
       ],
-      sectionTitle:
-        language === 'zh'
-          ? '把零散数据与文件变成可核验的碳报告'
-          : 'Turn Messy Data and Files Into Verification-Ready Carbon Reports',
+      sectionTitle: 'Turn Business Inputs Into Transparent, Review-Ready Carbon Accounting',
       };
   return (
     <>
@@ -461,22 +460,41 @@ export default function Home() {
         <div className="relative z-10 mx-auto grid min-h-[58vh] w-full max-w-[1320px] items-start gap-8 px-4 pb-10 pt-32 sm:px-6 sm:pb-12 sm:pt-36 md:grid-cols-[minmax(0,0.82fr)_minmax(480px,1.18fr)] md:gap-6 md:pt-40 lg:min-h-[62vh] lg:grid-cols-[minmax(0,0.72fr)_minmax(560px,1.08fr)] lg:gap-9 lg:pb-12 lg:pt-40">
           <div className="order-1 px-1 text-center text-[var(--brand-ink)] sm:px-2 lg:pr-4 lg:text-left">
             <div className="mx-auto max-w-[42rem] lg:mx-0 lg:pt-1">
-            <h1 className="font-lora relative z-20 mb-4 block max-w-[17ch] !text-[clamp(2.9rem,4.25vw,3.5rem)] font-semibold leading-[0.98] text-[#123F3D] sm:mb-5">
+            <h1
+              aria-label={language === 'zh' ? '可信碳核算的 AI 工作台' : 'The AI Workspace for Credible Carbon Accounting'}
+              className="font-lora relative z-20 mb-4 block max-w-[24ch] !text-[clamp(2.9rem,4.25vw,3.5rem)] font-semibold leading-[0.98] text-[#123F3D] sm:mb-5"
+            >
               {language === 'zh' ? (
-                'AI驱动的产品碳足迹平台'
+                <>
+                  <span className="block">可信碳核算</span>
+                  <span className="block">AI 工作台</span>
+                </>
               ) : (
                 <>
-                  <span className="block">AI-Powered</span>
-                  <span className="block">Product Carbon</span>
-                  <span className="block">Footprint Platform</span>
+                  <span className="block">AI Carbon</span>
+                  <span className="block">Accounting</span>
+                  <span className="block">Workspace</span>
                 </>
               )}
             </h1>
             <p className="mb-5 max-w-[35rem] whitespace-pre-line text-[17px] font-medium leading-[1.65] text-[var(--brand-ink)]/88 sm:text-[18px] lg:mb-8 lg:mx-0">
               {language === 'zh'
-                ? '把零散的 BOM 与供应商数据转化为可核验的碳报告，并用内置 AI agent 支持建模、因子匹配、证据追踪与审阅流程。'
-                : 'Turn fragmented BOM and supplier data into verification-ready carbon reports with built-in AI agents for modeling, factor matching, evidence tracking, and review workflows.'}
+                ? 'Climate Seal 把零散的产品、企业与项目碳数据转化为可信、透明、可复核的核算工作流。AI 在后台处理专业建模、因子匹配、证据追踪与审阅逻辑，前台只向团队提出业务问题。'
+                : 'Turn fragmented BOM and supplier data into verification-ready carbon reports with built-in AI agents for automated modeling, factor matching, evidence tracking, and review workflows.'}
             </p>
+            <div className="mb-5 flex flex-wrap justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--brand-accent-strong)] lg:mb-7 lg:justify-start">
+              {(language === 'zh'
+                ? ['Product Carbon', 'Corporate Carbon', 'Project Carbon', 'Transparent by design']
+                : ['Product Carbon', 'Corporate Carbon', 'Project Carbon', 'Transparent by design']
+              ).map((item) => (
+                <span
+                  key={item}
+                  className="rounded-[0.45rem] border border-[rgba(18,63,61,0.14)] bg-white/58 px-2.5 py-1.5"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
             {/* Mobile: show only short headings */}
             <div className="mb-6 space-y-1.5 text-center text-sm font-light opacity-90 sm:text-base md:hidden">
               {t.hero.description.split('\n').map((line, idx) => (
@@ -533,10 +551,10 @@ export default function Home() {
             <div className="cs-glass-panel relative flex min-h-[620px] flex-col overflow-hidden sm:aspect-[16/11.6] sm:min-h-[560px] lg:min-h-[600px]">
               <div className="shrink-0 border-b border-[rgba(18,63,61,0.1)] bg-[#fcfbf8] px-3 py-2">
                 <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold text-[var(--brand-muted)]">
-                  <span className="text-[var(--brand-ink)]">{language === 'zh' ? '核算任务' : 'Accounting Task'}</span>
-                  <span className="rounded-[0.4rem] bg-[#0f6a63] px-2.5 py-1 text-white">{language === 'zh' ? 'Data Processing' : 'Data Processing'}</span>
-                  <span>{language === 'zh' ? 'Progress 62%' : 'Progress 62%'}</span>
-                  <span className="rounded-[0.4rem] border border-[rgba(18,63,61,0.12)] px-2.5 py-1 text-[var(--brand-accent-strong)]">ISO 14067</span>
+                  <span className="text-[var(--brand-ink)]">{language === 'zh' ? '核算工作台' : 'Accounting Workspace'}</span>
+                  <span className="rounded-[0.4rem] bg-[#0f6a63] px-2.5 py-1 text-white">{language === 'zh' ? 'Traceability Build' : 'Traceability Build'}</span>
+                  <span>{language === 'zh' ? 'Confidence 82%' : 'Confidence 82%'}</span>
+                  <span className="rounded-[0.4rem] border border-[rgba(18,63,61,0.12)] px-2.5 py-1 text-[var(--brand-accent-strong)]">GHG Protocol · ISO 14067</span>
                 </div>
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {heroStages.map((stage, index) => (
@@ -832,7 +850,7 @@ export default function Home() {
               {language === 'zh' ? '解决方案导航' : 'Solution Paths'}
             </p>
             <h2 className="mt-3 font-lora text-balance text-[2.2rem] font-bold text-[var(--brand-ink)] sm:text-[2.45rem]">
-              {language === 'zh' ? '面向每个团队的产品碳足迹解决方案' : 'Product Carbon Footprint Solutions for Every Team'}
+              {language === 'zh' ? '面向三类团队的碳核算工作流' : 'Carbon Accounting Workflows for Three Core Teams'}
             </h2>
           </div>
 
@@ -898,7 +916,7 @@ export default function Home() {
               {language === 'zh' ? '平台差异' : 'Platform Difference'}
             </p>
             <h2 className="mt-3 font-lora text-balance text-[2.2rem] font-bold text-[var(--brand-ink)] sm:text-[2.45rem]">
-              {language === 'zh' ? '为什么 Climate Seal 不同于传统碳核算工具' : 'Why Climate Seal Is Different From Traditional Carbon Accounting Tools'}
+              {language === 'zh' ? '为什么 Climate Seal 不只是传统碳核算工具' : 'Why Climate Seal Is More Than a Traditional Carbon Accounting Tool'}
             </h2>
           </motion.div>
         </div>
@@ -919,10 +937,26 @@ export default function Home() {
                 transition={{ duration: 0.45, delay: index * 0.08 }}
               >
                 <div className="inline-flex rounded-[0.45rem] bg-[var(--brand-highlight)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--brand-accent-strong)]">
-                  {index === 0 ? (language === 'zh' ? 'Automated' : 'Automated') : index === 1 ? (language === 'zh' ? 'Review' : 'Review') : (language === 'zh' ? 'Delivery' : 'Delivery')}
+                  {index === 0 ? (language === 'zh' ? 'Flexible' : 'Flexible') : index === 1 ? (language === 'zh' ? 'Controlled' : 'Controlled') : (language === 'zh' ? 'Traceable' : 'Traceable')}
                 </div>
-                <h3 className="mt-4 text-[1.35rem] font-semibold leading-tight text-[var(--brand-ink)]">{card.title}</h3>
-                <p className="mt-3 text-[15px] leading-7 text-[var(--brand-muted)]">{card.description}</p>
+                <h3 className="mt-4 text-[1.35rem] font-semibold leading-tight text-[var(--brand-ink)]">
+                  {language === 'zh'
+                    ? ['灵活因子库与工作流', 'AI 不会擅自改动原始数据', '完整审计账本'][index]
+                    : ['Flexible factor databases and workflows', 'AI never changes source data alone', 'Complete audit ledger'][index]}
+                </h3>
+                <p className="mt-3 text-[15px] leading-7 text-[var(--brand-muted)]">
+                  {language === 'zh'
+                    ? [
+                        '使用 Climate Seal 数据库、上传你自己的因子库，或在已有客户/企业指定因子时更换选择。',
+                        'AI 可以整理、匹配、检查和生成计算逻辑，但不会在没有人工确认时覆盖任何原始数据。',
+                        '每个输入、因子、假设、证据和修改都会被记录，便于第三方核验方或买方直接复核。',
+                      ][index]
+                    : [
+                        'Use the Climate Seal database, upload your own factor database, or change factor choices when buyers or internal teams already have approved options.',
+                        'AI can organize, match, check, and build calculation logic, but it never overwrites original data without human confirmation.',
+                        'Every input, factor, assumption, evidence file, and edit is logged so third-party verifiers or buyers can review the workflow directly.',
+                      ][index]}
+                </p>
               </motion.article>
             ))}
           </div>
@@ -957,7 +991,7 @@ export default function Home() {
               {language === 'zh' ? 'Business impact' : 'Business impact'}
             </p>
             <h2 className="mt-3 font-lora text-balance text-[2.2rem] font-bold text-[var(--brand-ink)] sm:text-[2.45rem]">
-              {language === 'zh' ? '减少人工碳核算工作并提高报告质量' : 'Reduce Manual Carbon Accounting Work and Improve Report Quality'}
+              {language === 'zh' ? '让专业碳核算更快、更透明、更容易协作' : 'Make Professional Carbon Accounting Faster, More Transparent, and Easier to Collaborate On'}
             </h2>
           </motion.div>
           <div className="cs-glass-panel mt-8 overflow-hidden md:grid md:grid-cols-2 xl:grid-cols-4">
@@ -982,7 +1016,7 @@ export default function Home() {
                 {language === 'zh' ? 'Resources' : 'Resources'}
               </p>
               <h2 className="mt-2 font-lora text-balance text-[1.85rem] font-bold text-[var(--brand-ink)] sm:text-[2.1rem]">
-                {language === 'zh' ? '围绕产品碳足迹、Scope 3 与合规的资源' : 'Resources on Product Carbon Footprints, Scope 3, and Compliance'}
+                {language === 'zh' ? '围绕产品、企业、项目碳核算与合规的资源' : 'Resources on Product, Corporate, Project Carbon Accounting, and Compliance'}
               </h2>
             </div>
             <Link
@@ -1170,7 +1204,7 @@ export default function Home() {
             <p className="cs-section-eyebrow">
               {language === 'zh' ? '常见问题' : 'FAQs'}
             </p>
-            <h2 className="mt-3 font-lora text-balance text-[2.2rem] font-bold text-[var(--brand-ink)] sm:text-[2.45rem]">{language === 'zh' ? '产品碳足迹平台常见问题' : 'Product Carbon Footprint Platform FAQs'}</h2>
+            <h2 className="mt-3 font-lora text-balance text-[2.2rem] font-bold text-[var(--brand-ink)] sm:text-[2.45rem]">{language === 'zh' ? 'AI 碳核算工作台常见问题' : 'AI Carbon Accounting Workspace FAQs'}</h2>
           </div>
           <div className="space-y-3">
             {t.faq?.groups

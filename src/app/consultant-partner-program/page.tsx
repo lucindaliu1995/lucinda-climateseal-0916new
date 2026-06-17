@@ -753,7 +753,7 @@ export default async function ConsultantPartnerProgramPage() {
                     {item.label}
                   </p>
                   <h3 className="mt-1.5 text-[1.08rem] font-semibold leading-7 text-[#123F3D]">{item.title}</h3>
-                  {item.accent ? (
+                  {'accent' in item && item.accent ? (
                     <p className="mt-1 text-[0.98rem] font-semibold leading-6 text-[#215b57]">{item.accent}</p>
                   ) : null}
                   <p className="mt-1.5 text-[1.02rem] leading-7 text-[#486662]">{item.description}</p>
