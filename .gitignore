@@ -78,6 +78,5 @@ business_plan_0419_extracted.txt
 electricity_data_extracted.xlsx
 electricity_monthly_summary.csv
 # Local secrets and runtime admin data
-src/config/api-keys.js
 data/admin/*.json
 src/app/page.tsx.backup

@@ -420,18 +420,32 @@ export interface TranslationData {
     subtitle: string;
     aiAgent: {
       title: string;
+      time?: string;
       steps: string;
+      cost?: string;
+      team?: string;
       stepList: string[];
     };
     consultant: {
       title: string;
+      time?: string;
       steps: string;
+      cost?: string;
+      team?: string;
       stepList: string[];
     };
     traditional: {
       title: string;
+      time?: string;
       steps: string;
+      cost?: string;
+      team?: string;
       stepList: string[];
+    };
+    savings?: {
+      costReduction: string;
+      timeReduction: string;
+      expertiseRequired: string;
     };
   };
   

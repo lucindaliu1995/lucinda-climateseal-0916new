@@ -3,6 +3,19 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+type ComparisonOption = {
+  title?: string;
+  time?: string;
+  steps?: string;
+  cost?: string;
+  stepList?: string[];
+};
+
+const buildMeta = (option: ComparisonOption | undefined, fallback: string[]) => {
+  const values = [option?.time, option?.cost, option?.steps].filter(Boolean);
+  return (values.length > 0 ? values : fallback).join(' · ');
+};
+
 const ComparisonSection = () => {
   const { t } = useLanguage();
   const comparisonData = t?.comparison;
@@ -36,20 +49,20 @@ const ComparisonSection = () => {
         <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
           <TimelinePanel
             title={comparisonData.consultant?.title || 'Carbon Software + Carbon Experts'}
-            meta={`${comparisonData.consultant?.time || '1-2 months'} · ${comparisonData.consultant?.steps || '11 steps'}`}
+            meta={buildMeta(comparisonData.consultant, ['1-2 months', '11 steps'])}
             steps={comparisonData.consultant?.stepList || []}
             isZh={t?.nav?.home === '首页'}
           />
           <TimelinePanel
             title={comparisonData.aiAgent?.title || 'Climate Seal AI'}
-            meta={`${comparisonData.aiAgent?.time || '4 hours'} · ${comparisonData.aiAgent?.cost || '$100'} · ${comparisonData.aiAgent?.steps || '4 steps'}`}
+            meta={buildMeta(comparisonData.aiAgent, ['4 hours', '$100', '4 steps'])}
             steps={comparisonData.aiAgent?.stepList || []}
             isZh={t?.nav?.home === '首页'}
             featured
           />
           <TimelinePanel
             title={comparisonData.traditional?.title || 'Traditional Consultancy'}
-            meta={`${comparisonData.traditional?.time || '3-6 months'} · ${comparisonData.traditional?.cost || '$50K-100K'} · ${comparisonData.traditional?.steps || '12 steps'}`}
+            meta={buildMeta(comparisonData.traditional, ['3-6 months', '$50K-100K', '12 steps'])}
             steps={comparisonData.traditional?.stepList || []}
             isZh={t?.nav?.home === '首页'}
           />
