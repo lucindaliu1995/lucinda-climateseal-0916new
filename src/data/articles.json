@@ -155,54 +155,6 @@
       "publishDate": "2026-06-22",
       "downloadUrl": "/whitepapers/supply-chain-carbon-management-white-paper.pdf",
       "formRecipient": "whitepapers@climateseal.com"
-    },
-    {
-      "id": "ai-carbon-operations-playbook",
-      "title": "AI Carbon Operations Playbook: From BOM to Audit-Ready PCF in Weeks",
-      "titleZh": "AI 碳运营行动手册：BOM 到可审计 PCF 的快速交付路径",
-      "thumbnail": "/images/whitepapers/ai-carbon-operations-playbook-cover.jpg",
-      "intro": "How AI orchestration, automated factor matching, and dynamic QA reduce the carbon reporting cycle by 90%—with a proven rollout sequence and roles.",
-      "introZh": "通过 AI 协同、自动因子匹配与动态质控，将碳报告周期缩短 90% 的方法与落地步骤，覆盖跨部门职责与时间表。",
-      "whatYouGet": [
-        "4-phase implementation roadmap that takes you from data triage to verified PCFs",
-        "Tech stack reference architecture (ingestion, modeling, evidence packs)",
-        "KPI dashboard template for executives and sustainability leaders",
-        "Checklist for audit-ready documentation (ISO 14067 / GHG Product Standard)"
-      ],
-      "whatYouGetZh": [
-        "涵盖数据梳理到核查交付的 4 阶段落地路线图",
-        "技术栈参考架构（数据接入、建模、证据包生成）",
-        "管理层与可持续负责人共用的 KPI 看板模板",
-        "对齐 ISO 14067 / GHG 产品标准的可审计材料清单"
-      ],
-      "topics": ["pcf", "automation", "audit"],
-      "publishDate": "2025-09-30",
-      "downloadUrl": "/whitepapers/ai-carbon-operations-playbook.pdf",
-      "formRecipient": "whitepapers@climateseal.com"
-    },
-    {
-      "id": "cbam-proof-kit",
-      "title": "CBAM Proof Kit: Evidence, Data Models, and Supplier Playbooks",
-      "titleZh": "CBAM 合规工具包：证据链、数据模型与供应商手册",
-      "thumbnail": "/images/whitepapers/cbam-proof-kit-cover.jpg",
-      "intro": "Everything you need to deliver bulletproof CBAM filings—data models, supplier questionnaires, uncertainty scoring, and audit workflows.",
-      "introZh": "交付可经受审查的 CBAM 报告所需的一切：数据模型、供应商问卷、不确定性评分与审计流程。",
-      "whatYouGet": [
-        "CBAM data model mapped to customs templates and Climate Seal outputs",
-        "Supplier onboarding pack with multi-language questionnaires and SLAs",
-        "Uncertainty and quality scoring framework aligned with EU guidelines",
-        "Audit workflow with evidence checklist and remediation playbooks"
-      ],
-      "whatYouGetZh": [
-        "对齐海关模板与 Climate Seal 输出的 CBAM 数据模型",
-        "多语言供应商入驻包（问卷 + 服务等级协议）",
-        "符合欧盟指南的不确定性与数据质量评分框架",
-        "包含证据清单与整改手册的审计流程"
-      ],
-      "topics": ["cbam", "compliance", "supplier"],
-      "publishDate": "2025-08-12",
-      "downloadUrl": "/whitepapers/cbam-proof-kit.pdf",
-      "formRecipient": "whitepapers@climateseal.com"
     }
   ],
   "categories": [

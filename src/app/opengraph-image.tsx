@@ -107,7 +107,7 @@ export default async function OpenGraphImage() {
                 color: 'rgba(255,255,255,0.95)',
               }}
             >
-              Credibility Drives Better Climate.
+              The AI Workspace for Credible Carbon Accounting.
             </div>
           </div>
         </div>

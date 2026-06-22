@@ -276,12 +276,12 @@ export default function Home() {
           image: '/images/articles/Product-Carbon-Footprint.jpg',
         },
         {
-          href: '/resources/whitepapers/ai-carbon-operations-playbook',
+          href: '/resources/whitepapers/supply-chain-carbon-management-white-paper',
           label: '精选白皮书',
-          title: '获取 AI Carbon Operations Playbook',
-          description: '了解团队如何用 AI 改善数据收集、因子匹配、审计追踪与碳交付节奏。',
+          title: '获取供应链碳管理白皮书',
+          description: '了解如何建立供应商 PCF 数据包、证据链、KPI 治理与可审计的供应链碳管理流程。',
           cta: '查看白皮书',
-          image: '/images/whitepapers/ai-carbon-operations-playbook-cover.jpg',
+          image: '/images/whitepapers/supply-chain-carbon-management-white-paper-cover.jpg',
         },
       ]
     : [
@@ -294,12 +294,12 @@ export default function Home() {
           image: '/images/articles/Product-Carbon-Footprint.jpg',
         },
         {
-          href: '/resources/whitepapers/ai-carbon-operations-playbook',
+          href: '/resources/whitepapers/supply-chain-carbon-management-white-paper',
           label: 'Featured whitepaper',
-          title: 'Read the AI Carbon Operations Playbook',
-          description: 'See how teams can use AI to improve data collection, factor matching, audit trails, and carbon delivery workflows.',
+          title: 'Read the Supply Chain Carbon Management White Paper',
+          description: 'Build supplier PCF data packs, evidence chains, KPI governance, and audit-ready workflows for scalable supply-chain carbon management.',
           cta: 'View whitepaper',
-          image: '/images/whitepapers/ai-carbon-operations-playbook-cover.jpg',
+          image: '/images/whitepapers/supply-chain-carbon-management-white-paper-cover.jpg',
         },
       ];
   const heroStages = language === 'zh'

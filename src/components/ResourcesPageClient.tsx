@@ -89,7 +89,6 @@ export default function ResourcesPageClient({
   const getCategoryName = (category: ArticleCategory) => (language === 'zh' ? category.nameZh : category.name);
   const getWhitepaperTitle = (whitepaper: WhitepaperItem) => (language === 'zh' ? whitepaper.titleZh : whitepaper.title);
   const getWhitepaperIntro = (whitepaper: WhitepaperItem) => (language === 'zh' ? whitepaper.introZh : whitepaper.intro);
-  const getWhitepaperBenefits = (whitepaper: WhitepaperItem) => (language === 'zh' ? whitepaper.whatYouGetZh : whitepaper.whatYouGet);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -147,31 +146,111 @@ export default function ResourcesPageClient({
         </div>
       </section>
 
-      {whitepapers.length > 0 && (
-        <section className="border-b border-[#d7ddd6] bg-[#f7f4ec] px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            <div className="max-w-3xl">
-              <p className="cs-section-eyebrow">
-                {language === 'zh' ? '重点白皮书' : 'Featured documents'}
-              </p>
-              <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] text-[#123F3D] sm:text-4xl">
-                {t.resourcesPage.whitepapers.title}
-              </h2>
-              <p className="mt-4 text-base leading-7 text-[#5f7672]">{t.resourcesPage.whitepapers.subtitle}</p>
+      <section className="bg-[#faf8f3] px-4 py-10 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 xl:grid-cols-[minmax(0,1fr)_360px]">
+          <div className="min-w-0 space-y-8">
+            <div className="border-b border-[#d7ddd6] pb-7">
+              <p className="cs-section-eyebrow">{t.resourcesPage.articles.title}</p>
+              <p className="mt-4 max-w-3xl text-base leading-7 text-[#5f7672]">{t.resourcesPage.articles.subtitle}</p>
+              <div className="mt-6 -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0">
+                <button
+                  onClick={() => setSelectedCategory('all')}
+                  className={`flex-none whitespace-nowrap rounded-[0.5rem] border px-4 py-2 text-sm font-medium transition ${selectedCategory === 'all' ? 'border-[#123F3D] bg-[#123F3D] text-white' : 'border-[#d7ddd6] bg-[#F8F6F1] text-[#123F3D] hover:border-[#b7c5bc]'}`}
+                >
+                  {language === 'zh' ? '全部内容' : 'All resources'}
+                </button>
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`flex-none whitespace-nowrap rounded-[0.5rem] border px-4 py-2 text-sm font-medium transition ${selectedCategory === category.id ? 'border-[#123F3D] bg-[#123F3D] text-white' : 'border-[#d7ddd6] bg-[#F8F6F1] text-[#123F3D] hover:border-[#b7c5bc]'}`}
+                  >
+                    {getCategoryName(category)}
+                  </button>
+                ))}
+              </div>
+
+              {selectedCategory !== 'all' ? (
+                <p className="mt-4 max-w-3xl text-base leading-7 text-[#5f7672]">
+                  {(categoryDescriptions[selectedCategory]?.[language === 'zh' ? 'zh' : 'en']) || ''}
+                </p>
+              ) : null}
             </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2">
-              {whitepapers.map((whitepaper) => {
-                const benefits = getWhitepaperBenefits(whitepaper);
-                const displayBenefits = benefits.slice(0, 3);
-                const hasMore = benefits.length > 3;
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+              {displayArticles.map((article) => (
+                <div
+                  key={article.id}
+                  className="group cs-glass-panel overflow-hidden transition-colors duration-200 hover:border-[#b7c5bc]"
+                >
+                  <div className="relative h-44 border-b border-[#d7ddd6] bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(239,236,229,0.92))]">
+                    {article.coverImage ? (
+                      <Image
+                        src={article.coverImage}
+                        alt={`${getArticleTitle(article)} - cover image`}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxAAPwCdABmX/9k="
+                      />
+                    ) : null}
 
-                return (
+                    <div className="absolute top-4 left-4">
+                      <span className="rounded-[0.4rem] border border-[#b7c5bc] bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#456864]">
+                        {language === 'zh' ? article.categoryZh : article.category}
+                      </span>
+                    </div>
+
+                    {article.featured ? (
+                      <div className="absolute top-4 right-4">
+                        <span className="rounded-[0.4rem] border border-[#d6c47a] bg-[#fff7d8] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6f5c1b]">
+                          {language === 'zh' ? '推荐' : 'Featured'}
+                        </span>
+                      </div>
+                    ) : null}
+                  </div>
+
+                  <div className="p-6">
+                    <p className="mb-3 text-sm text-[#6a817d]">{formatDate(article.publishDate)}</p>
+                    <h3 className="mb-2 font-lora text-[1.45rem] font-bold leading-tight tracking-[-0.02em] text-[#123F3D]">{getArticleTitle(article)}</h3>
+                    <p className="mb-5 text-[15px] leading-7 text-[#5f7672] line-clamp-3 sm:text-[16px]">{getArticleExcerpt(article)}</p>
+                    <Link
+                      href={`/resources/${article.id}`}
+                      className="inline-flex items-center rounded-[0.5rem] border border-[#123F3D] px-4 py-2 text-sm font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white"
+                    >
+                      {language === 'zh' ? '查看文章' : 'Open article'}
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {displayArticles.length === 0 ? (
+              <p className="py-10 text-center text-[#6a817d]">
+                {language === 'zh' ? '当前分类下暂无文章。' : 'No articles are available for this category yet.'}
+              </p>
+            ) : null}
+          </div>
+
+          {whitepapers.length > 0 && (
+            <aside className="space-y-4 xl:sticky xl:top-28 xl:self-start">
+              <div className="border-b border-[#d7ddd6] pb-4">
+                <p className="cs-section-eyebrow">
+                  {language === 'zh' ? '重点白皮书' : 'Featured documents'}
+                </p>
+                <h2 className="mt-3 font-lora text-2xl font-bold tracking-[-0.02em] text-[#123F3D]">
+                  {t.resourcesPage.whitepapers.title}
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-[#5f7672]">{t.resourcesPage.whitepapers.subtitle}</p>
+              </div>
+
+              <div className="space-y-3">
+                {whitepapers.map((whitepaper) => (
                   <div
                     key={whitepaper.id}
-                    className="group cs-glass-panel grid gap-5 p-5 transition-colors duration-200 hover:border-[#b7c5bc] lg:grid-cols-[180px_minmax(0,1fr)]"
+                    className="group cs-glass-panel grid grid-cols-[72px_minmax(0,1fr)] gap-3 p-4 transition-colors duration-200 hover:border-[#b7c5bc]"
                   >
-                    <div className="relative h-44 overflow-hidden rounded-[0.5rem] border border-[#d7ddd6] bg-[#F8F6F1]">
+                    <div className="relative h-24 overflow-hidden rounded-[0.45rem] border border-[#d7ddd6] bg-[#F8F6F1]">
                       <SafeImage
                         src={whitepaper.thumbnail}
                         alt={`${getWhitepaperTitle(whitepaper)} thumbnail`}
@@ -179,40 +258,20 @@ export default function ResourcesPageClient({
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                         fallbackSrc="/logo.jpg"
                       />
-                      <div className="absolute top-2 left-2 rounded-[0.4rem] border border-[#b7c5bc] bg-white px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#456864]">
-                        {language === 'zh' ? '白皮书' : 'Whitepaper'}
-                      </div>
                     </div>
 
-                    <div className="min-w-0 space-y-3">
-                      <div className="space-y-1">
-                        <h3 className="font-lora text-[1.75rem] font-bold leading-tight tracking-[-0.02em] text-[#123F3D]">{getWhitepaperTitle(whitepaper)}</h3>
-                        <p className="text-sm text-[#6a817d]">{formatDate(whitepaper.publishDate)}</p>
-                        <p className="text-[15px] leading-7 text-[#5f7672] sm:text-[16px]">{getWhitepaperIntro(whitepaper)}</p>
-                      </div>
-
-                      <div className="rounded-[0.45rem] border border-[#dde2dc] bg-[#FBF9F4] p-3">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#5f7a76] mb-2">
-                          {language === 'zh' ? '内容包括' : 'Included in this document'}
+                    <div className="min-w-0 space-y-2">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#6a817d]">
+                          {language === 'zh' ? '白皮书' : 'Whitepaper'} · {formatDate(whitepaper.publishDate)}
                         </p>
-                        <ul className="space-y-1 text-sm text-[#5f7672]">
-                          {displayBenefits.map((benefit, index) => (
-                            <li key={index} className="flex items-start gap-2">
-                              <span className="mt-0.5 text-[#1d7c72] flex-shrink-0">+</span>
-                              <span>{benefit}</span>
-                            </li>
-                          ))}
-                          {hasMore ? (
-                            <li className="text-[#6a817d] italic">
-                              {language === 'zh' ? `+ ${benefits.length - 3} 更多` : `+ ${benefits.length - 3} more`}
-                            </li>
-                          ) : null}
-                        </ul>
+                        <h3 className="mt-1 font-lora text-base font-bold leading-tight text-[#123F3D] line-clamp-2">{getWhitepaperTitle(whitepaper)}</h3>
+                        <p className="mt-1 text-sm leading-6 text-[#5f7672] line-clamp-2">{getWhitepaperIntro(whitepaper)}</p>
                       </div>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5">
                         {whitepaper.topics.slice(0, 2).map((topic) => (
-                          <span key={topic} className="rounded-[0.35rem] border border-[#d7ddd6] bg-[#F8F6F1] px-2 py-1 text-[10px] uppercase tracking-[0.16em] text-[#5f7672]">
+                          <span key={topic} className="rounded-[0.35rem] border border-[#d7ddd6] bg-[#F8F6F1] px-2 py-0.5 text-[10px] uppercase tracking-[0.14em] text-[#5f7672]">
                             {topic}
                           </span>
                         ))}
@@ -220,104 +279,16 @@ export default function ResourcesPageClient({
 
                       <Link
                         href={`/resources/whitepapers/${whitepaper.id}`}
-                        className="inline-flex items-center gap-2 rounded-[0.5rem] border border-[#123F3D] px-4 py-2 text-sm font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white"
+                        className="inline-flex items-center rounded-[0.45rem] border border-[#123F3D] px-3 py-1.5 text-xs font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white"
                       >
                         {language === 'zh' ? '查看文档' : 'Open document'}
                       </Link>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      <section className="border-b border-[#d7ddd6] bg-[#fcfbf8] px-4 py-10 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap gap-3">
-            <button
-              onClick={() => setSelectedCategory('all')}
-              className={`rounded-[0.5rem] border px-4 py-2 text-sm font-medium transition ${selectedCategory === 'all' ? 'border-[#123F3D] bg-[#123F3D] text-white' : 'border-[#d7ddd6] bg-[#F8F6F1] text-[#123F3D] hover:border-[#b7c5bc]'}`}
-            >
-              {language === 'zh' ? '全部内容' : 'All resources'}
-            </button>
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`rounded-[0.5rem] border px-4 py-2 text-sm font-medium transition ${selectedCategory === category.id ? 'border-[#123F3D] bg-[#123F3D] text-white' : 'border-[#d7ddd6] bg-[#F8F6F1] text-[#123F3D] hover:border-[#b7c5bc]'}`}
-              >
-                {getCategoryName(category)}
-              </button>
-            ))}
-          </div>
-
-          {selectedCategory !== 'all' ? (
-            <div className="mt-6 max-w-4xl">
-              <p className="text-base leading-7 text-[#5f7672]">
-                {(categoryDescriptions[selectedCategory]?.[language === 'zh' ? 'zh' : 'en']) || ''}
-              </p>
-            </div>
-          ) : null}
-        </div>
-      </section>
-
-      <section className="bg-[#faf8f3] px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {displayArticles.map((article) => (
-              <div
-                key={article.id}
-                className="group cs-glass-panel overflow-hidden transition-colors duration-200 hover:border-[#b7c5bc]"
-              >
-                <div className="relative h-48 border-b border-[#d7ddd6] bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(239,236,229,0.92))]">
-                  {article.coverImage ? (
-                    <Image
-                      src={article.coverImage}
-                      alt={`${getArticleTitle(article)} - cover image`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                      placeholder="blur"
-                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxAAPwCdABmX/9k="
-                    />
-                  ) : null}
-
-                  <div className="absolute top-4 left-4">
-                    <span className="rounded-[0.4rem] border border-[#b7c5bc] bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#456864]">
-                      {language === 'zh' ? article.categoryZh : article.category}
-                    </span>
-                  </div>
-
-                  {article.featured ? (
-                    <div className="absolute top-4 right-4">
-                      <span className="rounded-[0.4rem] border border-[#d6c47a] bg-[#fff7d8] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6f5c1b]">
-                        {language === 'zh' ? '推荐' : 'Featured'}
-                      </span>
-                    </div>
-                  ) : null}
-                </div>
-
-                <div className="p-6">
-                  <p className="mb-3 text-sm text-[#6a817d]">{formatDate(article.publishDate)}</p>
-                  <h3 className="mb-2 font-lora text-[1.45rem] font-bold leading-tight tracking-[-0.02em] text-[#123F3D]">{getArticleTitle(article)}</h3>
-                  <p className="mb-5 text-[15px] leading-7 text-[#5f7672] line-clamp-3 sm:text-[16px]">{getArticleExcerpt(article)}</p>
-                  <Link
-                    href={`/resources/${article.id}`}
-                    className="inline-flex items-center rounded-[0.5rem] border border-[#123F3D] px-4 py-2 text-sm font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white"
-                  >
-                    {language === 'zh' ? '查看文章' : 'Open article'}
-                  </Link>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          {displayArticles.length === 0 ? (
-            <p className="py-10 text-center text-[#6a817d]">
-              {language === 'zh' ? '当前分类下暂无文章。' : 'No articles are available for this category yet.'}
-            </p>
-          ) : null}
+            </aside>
+          )}
         </div>
       </section>
     </div>
