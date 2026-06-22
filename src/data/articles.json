@@ -129,6 +129,34 @@
   ],
   "whitepapers": [
     {
+      "id": "supply-chain-carbon-management-white-paper",
+      "title": "Supply Chain Carbon Management White Paper",
+      "titleZh": "Supply Chain Carbon Management White Paper",
+      "thumbnail": "/images/whitepapers/supply-chain-carbon-management-white-paper-cover.jpg",
+      "intro": "A practical operating model for supplier product carbon footprints: minimum ISO 14067 PCF data packs, three-table supplier intake, evidence chains, KPI governance, benchmark cases, rollout roadmaps, and audit-ready templates for scaling supply-chain carbon management.",
+      "introZh": "A practical operating model for supplier product carbon footprints: minimum ISO 14067 PCF data packs, three-table supplier intake, evidence chains, KPI governance, benchmark cases, rollout roadmaps, and audit-ready templates for scaling supply-chain carbon management.",
+      "whatYouGet": [
+        "Minimum viable ISO 14067 PCF pack with BOM, energy, logistics, factor traceability, assumptions, and change logs",
+        "Supplier operating model covering no-training intake, automated checks, evidence chains, dashboard KPIs, and governance rules",
+        "Benchmark lessons from Walmart, Apple, Unilever, battery passport, EPD, and public procurement programs",
+        "30/60/90/180/365-day implementation roadmap plus RACI, QA rules, audit package checklist, and supplier email templates"
+      ],
+      "whatYouGetZh": [
+        "Minimum viable ISO 14067 PCF pack with BOM, energy, logistics, factor traceability, assumptions, and change logs",
+        "Supplier operating model covering no-training intake, automated checks, evidence chains, dashboard KPIs, and governance rules",
+        "Benchmark lessons from Walmart, Apple, Unilever, battery passport, EPD, and public procurement programs",
+        "30/60/90/180/365-day implementation roadmap plus RACI, QA rules, audit package checklist, and supplier email templates"
+      ],
+      "topics": [
+        "supply-chain",
+        "pcf",
+        "audit"
+      ],
+      "publishDate": "2026-06-22",
+      "downloadUrl": "/whitepapers/supply-chain-carbon-management-white-paper.pdf",
+      "formRecipient": "whitepapers@climateseal.com"
+    },
+    {
       "id": "ai-carbon-operations-playbook",
       "title": "AI Carbon Operations Playbook: From BOM to Audit-Ready PCF in Weeks",
       "titleZh": "AI 碳运营行动手册：BOM 到可审计 PCF 的快速交付路径",
