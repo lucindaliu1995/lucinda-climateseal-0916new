@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { neon } from '@neondatabase/serverless';
 
 export type ContactSubmission = {
   id: string;
@@ -94,6 +95,234 @@ const REFERRAL_OWNERS_FILE = path.join(ADMIN_DATA_DIR, 'referral-owners.json');
 const REFERRAL_USES_FILE = path.join(ADMIN_DATA_DIR, 'referral-uses.json');
 const CONSULTANT_APPLICATIONS_FILE = path.join(ADMIN_DATA_DIR, 'consultant-partner-applications.json');
 
+let cachedDatabaseUrl = '';
+let cachedSql: ReturnType<typeof neon> | null = null;
+let ensureContactTablesPromise: Promise<void> | null = null;
+
+function getDatabaseUrl() {
+  return process.env.NETLIFY_DATABASE_URL || process.env.DATABASE_URL || '';
+}
+
+function getSqlClient() {
+  const databaseUrl = getDatabaseUrl();
+
+  if (!databaseUrl) {
+    return null;
+  }
+
+  if (cachedSql && cachedDatabaseUrl === databaseUrl) {
+    return cachedSql;
+  }
+
+  cachedDatabaseUrl = databaseUrl;
+  cachedSql = neon(databaseUrl);
+  ensureContactTablesPromise = null;
+  return cachedSql;
+}
+
+async function ensureContactTables() {
+  const sql = getSqlClient();
+
+  if (!sql) {
+    return null;
+  }
+
+  ensureContactTablesPromise ??= (async () => {
+    await sql`
+      CREATE TABLE IF NOT EXISTS contact_submissions (
+        id text PRIMARY KEY,
+        submitted_at timestamptz NOT NULL,
+        name text NOT NULL,
+        email text NOT NULL,
+        phone text NOT NULL,
+        company text NOT NULL,
+        industry text NOT NULL,
+        message text NOT NULL,
+        referral_code text,
+        referral_owner_id text,
+        referral_owner_name text,
+        payload jsonb NOT NULL
+      )
+    `;
+
+    await sql`
+      CREATE TABLE IF NOT EXISTS referral_uses (
+        id text PRIMARY KEY,
+        created_at timestamptz NOT NULL,
+        referral_code text NOT NULL,
+        referral_owner_id text NOT NULL,
+        referral_owner_name text NOT NULL,
+        referred_name text NOT NULL,
+        referred_email text NOT NULL,
+        referred_company text NOT NULL,
+        source text NOT NULL,
+        contact_submission_id text NOT NULL,
+        status text NOT NULL,
+        reward_value_usd integer NOT NULL,
+        notes text,
+        payload jsonb NOT NULL
+      )
+    `;
+  })();
+
+  await ensureContactTablesPromise;
+  return sql;
+}
+
+function normalizePayload<T>(payload: unknown): T {
+  return (typeof payload === 'string' ? JSON.parse(payload) : payload) as T;
+}
+
+function logStoreWarning(event: string, error: unknown) {
+  console.info(`[admin-store] ${event}`, {
+    message: error instanceof Error ? error.message : 'unknown error',
+  });
+}
+
+async function saveContactSubmissionToDatabase(submission: ContactSubmission): Promise<boolean> {
+  const sql = await ensureContactTables();
+
+  if (!sql) {
+    return false;
+  }
+
+  await sql`
+    INSERT INTO contact_submissions (
+      id,
+      submitted_at,
+      name,
+      email,
+      phone,
+      company,
+      industry,
+      message,
+      referral_code,
+      referral_owner_id,
+      referral_owner_name,
+      payload
+    )
+    VALUES (
+      ${submission.id},
+      ${submission.submittedAt},
+      ${submission.name},
+      ${submission.email},
+      ${submission.phone},
+      ${submission.company},
+      ${submission.industry},
+      ${submission.message},
+      ${submission.referralCode ?? null},
+      ${submission.referralOwnerId ?? null},
+      ${submission.referralOwnerName ?? null},
+      ${JSON.stringify(submission)}::jsonb
+    )
+    ON CONFLICT (id) DO UPDATE SET
+      submitted_at = EXCLUDED.submitted_at,
+      name = EXCLUDED.name,
+      email = EXCLUDED.email,
+      phone = EXCLUDED.phone,
+      company = EXCLUDED.company,
+      industry = EXCLUDED.industry,
+      message = EXCLUDED.message,
+      referral_code = EXCLUDED.referral_code,
+      referral_owner_id = EXCLUDED.referral_owner_id,
+      referral_owner_name = EXCLUDED.referral_owner_name,
+      payload = EXCLUDED.payload
+  `;
+
+  return true;
+}
+
+async function listContactSubmissionsFromDatabase(): Promise<ContactSubmission[] | null> {
+  const sql = await ensureContactTables();
+
+  if (!sql) {
+    return null;
+  }
+
+  const rows = await sql`
+    SELECT payload
+    FROM contact_submissions
+    ORDER BY submitted_at DESC
+  ` as Array<{ payload: unknown }>;
+
+  return rows.map((row) => normalizePayload<ContactSubmission>(row.payload));
+}
+
+async function saveReferralUseToDatabase(referralUse: ReferralUse): Promise<boolean> {
+  const sql = await ensureContactTables();
+
+  if (!sql) {
+    return false;
+  }
+
+  await sql`
+    INSERT INTO referral_uses (
+      id,
+      created_at,
+      referral_code,
+      referral_owner_id,
+      referral_owner_name,
+      referred_name,
+      referred_email,
+      referred_company,
+      source,
+      contact_submission_id,
+      status,
+      reward_value_usd,
+      notes,
+      payload
+    )
+    VALUES (
+      ${referralUse.id},
+      ${referralUse.createdAt},
+      ${referralUse.referralCode},
+      ${referralUse.referralOwnerId},
+      ${referralUse.referralOwnerName},
+      ${referralUse.referredName},
+      ${referralUse.referredEmail},
+      ${referralUse.referredCompany},
+      ${referralUse.source},
+      ${referralUse.contactSubmissionId},
+      ${referralUse.status},
+      ${referralUse.rewardValueUsd},
+      ${referralUse.notes ?? null},
+      ${JSON.stringify(referralUse)}::jsonb
+    )
+    ON CONFLICT (id) DO UPDATE SET
+      created_at = EXCLUDED.created_at,
+      referral_code = EXCLUDED.referral_code,
+      referral_owner_id = EXCLUDED.referral_owner_id,
+      referral_owner_name = EXCLUDED.referral_owner_name,
+      referred_name = EXCLUDED.referred_name,
+      referred_email = EXCLUDED.referred_email,
+      referred_company = EXCLUDED.referred_company,
+      source = EXCLUDED.source,
+      contact_submission_id = EXCLUDED.contact_submission_id,
+      status = EXCLUDED.status,
+      reward_value_usd = EXCLUDED.reward_value_usd,
+      notes = EXCLUDED.notes,
+      payload = EXCLUDED.payload
+  `;
+
+  return true;
+}
+
+async function listReferralUsesFromDatabase(): Promise<ReferralUse[] | null> {
+  const sql = await ensureContactTables();
+
+  if (!sql) {
+    return null;
+  }
+
+  const rows = await sql`
+    SELECT payload
+    FROM referral_uses
+    ORDER BY created_at DESC
+  ` as Array<{ payload: unknown }>;
+
+  return rows.map((row) => normalizePayload<ReferralUse>(row.payload));
+}
+
 async function ensureAdminDir() {
   await fs.mkdir(ADMIN_DATA_DIR, { recursive: true });
 }
@@ -124,7 +353,23 @@ async function appendJsonRow<T>(filePath: string, row: T) {
 }
 
 export async function saveContactSubmission(submission: ContactSubmission) {
-  await appendJsonRow(CONTACTS_FILE, submission);
+  let savedToDatabase = false;
+
+  try {
+    savedToDatabase = await saveContactSubmissionToDatabase(submission);
+  } catch (error) {
+    logStoreWarning('contact database save failed', error);
+  }
+
+  try {
+    await appendJsonRow(CONTACTS_FILE, submission);
+  } catch (error) {
+    logStoreWarning('contact file save failed', error);
+
+    if (!savedToDatabase) {
+      throw error;
+    }
+  }
 }
 
 export async function saveWhitepaperSubmission(submission: WhitepaperSubmission) {
@@ -136,6 +381,15 @@ export async function saveUploadedAsset(asset: UploadedAsset) {
 }
 
 export async function listContactSubmissions(): Promise<ContactSubmission[]> {
+  try {
+    const databaseRows = await listContactSubmissionsFromDatabase();
+    if (databaseRows) {
+      return databaseRows;
+    }
+  } catch (error) {
+    logStoreWarning('contact database list failed', error);
+  }
+
   return readJsonFile<ContactSubmission>(CONTACTS_FILE);
 }
 
@@ -173,10 +427,35 @@ export async function updateReferralOwner(
 }
 
 export async function saveReferralUse(referralUse: ReferralUse) {
-  await appendJsonRow(REFERRAL_USES_FILE, referralUse);
+  let savedToDatabase = false;
+
+  try {
+    savedToDatabase = await saveReferralUseToDatabase(referralUse);
+  } catch (error) {
+    logStoreWarning('referral use database save failed', error);
+  }
+
+  try {
+    await appendJsonRow(REFERRAL_USES_FILE, referralUse);
+  } catch (error) {
+    logStoreWarning('referral use file save failed', error);
+
+    if (!savedToDatabase) {
+      throw error;
+    }
+  }
 }
 
 export async function listReferralUses(): Promise<ReferralUse[]> {
+  try {
+    const databaseRows = await listReferralUsesFromDatabase();
+    if (databaseRows) {
+      return databaseRows;
+    }
+  } catch (error) {
+    logStoreWarning('referral use database list failed', error);
+  }
+
   return readJsonFile<ReferralUse>(REFERRAL_USES_FILE);
 }
 

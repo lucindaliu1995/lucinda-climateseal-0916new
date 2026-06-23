@@ -9,9 +9,12 @@ import {
   isValidPhone,
   logApiEvent,
   normalizeText,
+  serverError,
   validateRequiredFields,
 } from '@/lib/api';
 import { findReferralOwnerByCode, saveContactSubmission, saveReferralUse } from '@/lib/admin-store';
+
+export const runtime = 'nodejs';
 
 // 初始化Resend（如果有API key的话）
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
@@ -21,15 +24,95 @@ const FALLBACK_CONTACT = {
   phone: '+86 15652618365',
 };
 
-function successWithFallback() {
+function getEmailRecipients() {
+  const recipients = (process.env.EMAIL_TO || '')
+    .split(',')
+    .map((email) => email.trim())
+    .filter(isValidEmail);
+
+  return Array.from(new Set(recipients));
+}
+
+function hasSmtpConfig() {
+  return Boolean(
+    process.env.EMAIL_HOST &&
+    process.env.EMAIL_PORT &&
+    process.env.EMAIL_USER &&
+    process.env.EMAIL_PASS &&
+    process.env.EMAIL_FROM
+  );
+}
+
+function hasResendConfig() {
+  return Boolean(resend && process.env.RESEND_FROM_EMAIL);
+}
+
+function getResendClient() {
+  return resend && process.env.RESEND_FROM_EMAIL ? resend : null;
+}
+
+function hasEmailConfig() {
+  return getEmailRecipients().length > 0 && (hasResendConfig() || hasSmtpConfig());
+}
+
+function emailUnavailable(requestId: string, detail: string) {
+  const message = 'Contact email is not available right now. Please email us directly.';
+
   return NextResponse.json(
     {
-      success: true,
-      fallback: true,
+      success: false,
+      error: message,
+      message,
+      detail,
       contactInfo: FALLBACK_CONTACT,
+      requestId,
     },
-    { status: 200 }
+    { status: 503 }
   );
+}
+
+function emailDeliveryFailed(requestId: string, detail: string) {
+  const message = 'Contact form received, but email delivery failed. Please email us directly.';
+
+  return NextResponse.json(
+    {
+      success: false,
+      error: message,
+      message,
+      detail,
+      contactInfo: FALLBACK_CONTACT,
+      requestId,
+    },
+    { status: 502 }
+  );
+}
+
+async function trySaveSubmission(
+  requestId: string,
+  submission: Parameters<typeof saveContactSubmission>[0]
+) {
+  try {
+    await saveContactSubmission(submission);
+    logApiEvent('send-contact-email', requestId, 'contact-submission-saved');
+  } catch (error) {
+    logApiEvent('send-contact-email', requestId, 'contact-submission-save-failed-nonblocking', {
+      message: error instanceof Error ? error.message : 'unknown error',
+    });
+  }
+}
+
+async function trySaveReferralUse(
+  requestId: string,
+  referralUse: Parameters<typeof saveReferralUse>[0]
+) {
+  try {
+    await saveReferralUse(referralUse);
+    logApiEvent('send-contact-email', requestId, 'referral-use-saved');
+  } catch (error) {
+    logApiEvent('send-contact-email', requestId, 'referral-use-save-failed-nonblocking', {
+      message: error instanceof Error ? error.message : 'unknown error',
+    });
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -62,15 +145,30 @@ export async function POST(request: NextRequest) {
       return badRequest(requestId, 'Please provide a valid phone number');
     }
 
-    const referralOwner = referralCode ? await findReferralOwnerByCode(referralCode) : null;
+    let referralOwner = null;
 
-    if (referralCode && !referralOwner) {
-      return badRequest(requestId, 'Referral code not found or inactive');
+    if (referralCode) {
+      try {
+        referralOwner = await findReferralOwnerByCode(referralCode);
+
+        if (!referralOwner) {
+          logApiEvent('send-contact-email', requestId, 'referral-code-not-found-nonblocking', {
+            referralCode,
+          });
+        }
+      } catch (error) {
+        logApiEvent('send-contact-email', requestId, 'referral-owner-lookup-failed-nonblocking', {
+          referralCode,
+          message: error instanceof Error ? error.message : 'unknown error',
+        });
+      }
     }
 
-    await saveContactSubmission({
+    const submittedAtIso = new Date().toISOString();
+
+    await trySaveSubmission(requestId, {
       id: requestId,
-      submittedAt: new Date().toISOString(),
+      submittedAt: submittedAtIso,
       name,
       email,
       phone,
@@ -83,9 +181,9 @@ export async function POST(request: NextRequest) {
     });
 
     if (referralOwner) {
-      await saveReferralUse({
+      await trySaveReferralUse(requestId, {
         id: `${requestId}-ref`,
-        createdAt: new Date().toISOString(),
+        createdAt: submittedAtIso,
         referralCode: referralOwner.referralCode,
         referralOwnerId: referralOwner.id,
         referralOwnerName: referralOwner.name,
@@ -100,21 +198,20 @@ export async function POST(request: NextRequest) {
     }
 
     logApiEvent('send-contact-email', requestId, 'received', {
-      hasResendConfig: Boolean(resend && process.env.RESEND_FROM_EMAIL),
-      hasSmtpConfig: Boolean(process.env.EMAIL_HOST && process.env.EMAIL_USER && process.env.EMAIL_PASS),
+      hasResendConfig: hasResendConfig(),
+      hasSmtpConfig: hasSmtpConfig(),
       industry,
       hasReferral: Boolean(referralOwner),
+      recipients: getEmailRecipients(),
+      hasDatabaseConfig: Boolean(process.env.NETLIFY_DATABASE_URL || process.env.DATABASE_URL),
     });
 
-    // 检查是否配置了邮件服务
-    const hasEmailConfig = (
-      (resend && process.env.RESEND_FROM_EMAIL) || 
-      (process.env.EMAIL_HOST && process.env.EMAIL_USER && process.env.EMAIL_PASS)
-    );
-
-    if (!hasEmailConfig) {
-      logApiEvent('send-contact-email', requestId, 'fallback-no-email-config');
-      return successWithFallback();
+    if (!hasEmailConfig()) {
+      logApiEvent('send-contact-email', requestId, 'failed-no-email-config');
+      return emailUnavailable(
+        requestId,
+        'Missing EMAIL_TO plus RESEND_API_KEY/RESEND_FROM_EMAIL, or EMAIL_TO plus complete SMTP EMAIL_HOST/EMAIL_PORT/EMAIL_USER/EMAIL_PASS/EMAIL_FROM configuration.'
+      );
     }
 
     const safeName = escapeHtml(name);
@@ -197,17 +294,19 @@ export async function POST(request: NextRequest) {
       </div>
     `;
 
-    // 如果配置了Resend，使用Resend发送
-    if (resend && process.env.RESEND_FROM_EMAIL) {
+    const recipients = getEmailRecipients();
+
+    // 如果配置了Resend，优先使用 Resend 发送。
+    const resendClient = getResendClient();
+
+    if (resendClient) {
       try {
-        const { data, error } = await resend.emails.send({
-          from: process.env.RESEND_FROM_EMAIL,
-          to: [
-            process.env.EMAIL_TO || 'xuguang.ma@climateseal.net',
-            'michaelmaplus@gmail.com' // 同时发送到Gmail备份
-          ],
+        const { data, error } = await resendClient.emails.send({
+          from: process.env.RESEND_FROM_EMAIL!,
+          to: recipients,
           subject: `新的联系表单提交 - ${safeName}`,
           html: emailTemplate,
+          replyTo: email,
         });
 
         if (error) {
@@ -219,7 +318,7 @@ export async function POST(request: NextRequest) {
 
         logApiEvent('send-contact-email', requestId, 'sent-via-resend');
         return NextResponse.json(
-          { success: true, data },
+          { success: true, deliveryProvider: 'resend', data },
           { status: 200 }
         );
       } catch (resendError) {
@@ -229,7 +328,17 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 回退到原来的nodemailer方式
+    if (!hasSmtpConfig()) {
+      logApiEvent('send-contact-email', requestId, 'failed-no-smtp-config-after-resend', {
+        recipients,
+      });
+      return emailDeliveryFailed(
+        requestId,
+        'Resend delivery failed and SMTP fallback is not fully configured.'
+      );
+    }
+
+    // 回退到 nodemailer SMTP。
     try {
       const nodemailer = await import('nodemailer');
       
@@ -237,7 +346,7 @@ export async function POST(request: NextRequest) {
       const transporter = nodemailer.default.createTransport({
         host: process.env.EMAIL_HOST,
         port: parseInt(process.env.EMAIL_PORT || '587'),
-        secure: false,
+        secure: process.env.EMAIL_PORT === '465',
         auth: {
           user: process.env.EMAIL_USER,
           pass: process.env.EMAIL_PASS,
@@ -247,7 +356,8 @@ export async function POST(request: NextRequest) {
       // 邮件内容
       const mailOptions = {
         from: process.env.EMAIL_FROM,
-        to: process.env.EMAIL_TO || 'xuguang.ma@climateseal.net',
+        to: recipients,
+        replyTo: email,
         subject: `新的联系表单提交 - ${safeName}`,
         html: emailTemplate,
       };
@@ -257,20 +367,23 @@ export async function POST(request: NextRequest) {
 
       logApiEvent('send-contact-email', requestId, 'sent-via-smtp');
       return NextResponse.json(
-        { success: true },
+        { success: true, deliveryProvider: 'smtp' },
         { status: 200 }
       );
     } catch (nodemailerError) {
-      logApiEvent('send-contact-email', requestId, 'smtp-fallback-response', {
+      logApiEvent('send-contact-email', requestId, 'smtp-send-failed', {
         message: nodemailerError instanceof Error ? nodemailerError.message : 'unknown error',
       });
-      return successWithFallback();
+      return emailDeliveryFailed(
+        requestId,
+        nodemailerError instanceof Error ? nodemailerError.message : 'SMTP delivery failed.'
+      );
     }
 
   } catch (error) {
-    logApiEvent('send-contact-email', requestId, 'unhandled-fallback-response', {
+    logApiEvent('send-contact-email', requestId, 'unhandled-error', {
       message: error instanceof Error ? error.message : 'unknown error',
     });
-    return successWithFallback();
+    return serverError(requestId);
   }
 }
