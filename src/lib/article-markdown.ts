@@ -7,6 +7,15 @@ export function slugify(value: string): string {
     .replace(/-+/g, '-');
 }
 
+function createUniqueSlug(value: string, seen: Map<string, number>): string {
+  const baseSlug = slugify(value) || 'section';
+  const count = seen.get(baseSlug) || 0;
+
+  seen.set(baseSlug, count + 1);
+
+  return count === 0 ? baseSlug : `${baseSlug}-${count + 1}`;
+}
+
 export function renderMarkdown(raw: string): string {
   const linkClass = 'text-emerald-600 underline hover:text-emerald-700 transition-colors';
   let text = raw
@@ -32,6 +41,7 @@ export function renderMarkdown(raw: string): string {
 
   const lines = text.split('\n');
   const html: string[] = [];
+  const seenHeadingIds = new Map<string, number>();
   let inUL = false;
   let inOL = false;
   let inBlockquote = false;
@@ -61,7 +71,7 @@ export function renderMarkdown(raw: string): string {
       closeBlockquote();
       const level = Math.min(6, headingMatch[1].length);
       const content = headingMatch[2].trim();
-      const id = slugify(content);
+      const id = createUniqueSlug(content, seenHeadingIds);
       html.push(`<h${level} id="${id}" class="text-2xl md:text-3xl font-bold text-slate-900 mb-6 mt-12 first:mt-0">${content}</h${level}>`);
       continue;
     }
@@ -116,6 +126,7 @@ export function renderMarkdown(raw: string): string {
 
 export function extractToc(raw: string): { level: number; text: string; id: string }[] {
   const text = raw.replace(/\\n/g, '\n').replace(/\r\n?/g, '\n');
+  const seenHeadingIds = new Map<string, number>();
 
   return text
     .split('\n')
@@ -124,6 +135,6 @@ export function extractToc(raw: string): { level: number; text: string; id: stri
     .map((match) => ({
       level: match[1].length,
       text: match[2].trim(),
-      id: slugify(match[2].trim()),
+      id: createUniqueSlug(match[2].trim(), seenHeadingIds),
     }));
 }

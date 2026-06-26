@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getMeaningfulArticleById, getMeaningfulArticles, type ArticleItem } from '@/lib/content';
+import { getAllCategories, getMeaningfulArticleById, getMeaningfulArticles, type ArticleItem } from '@/lib/content';
 import { extractToc, renderMarkdown } from '@/lib/article-markdown';
 import type { Language } from '@/lib/i18n';
 import { isChineseLanguage, resolveLanguage } from '@/lib/language';
@@ -24,6 +24,26 @@ type PageProps = {
 
 function getArticleContent(article: ArticleItem, language: Language): string {
   return isChineseLanguage(language) ? article.contentZh : article.content;
+}
+
+function removeDuplicatedArticleHeading(content: string, title: string): string {
+  const normalizedTitle = title.trim();
+
+  if (!normalizedTitle) {
+    return content;
+  }
+
+  const headingPattern = new RegExp(`^#\\s+${normalizedTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*\\n+`, 'i');
+
+  return content.replace(headingPattern, '');
+}
+
+function getArticleCategoryLabel(article: ArticleItem, language: Language): string {
+  const category = getAllCategories().find((item) => item.id === article.category);
+
+  return isChineseLanguage(language)
+    ? article.categoryZh || category?.nameZh || article.category
+    : category?.name || article.category;
 }
 
 export function generateStaticParams() {
@@ -67,7 +87,9 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
 
   const articleTitle = getLocalizedTitle(article, language);
   const articleDescription = getLocalizedSummary(article, language);
-  const cleanedContent = getArticleContent(article, language).replace(/^CTA:?\s*$/gim, '');
+  const articleCategoryLabel = getArticleCategoryLabel(article, language);
+  const cleanedContent = removeDuplicatedArticleHeading(getArticleContent(article, language), articleTitle)
+    .replace(/^CTA:?\s*$/gim, '');
   const toc = extractToc(cleanedContent);
   const html = renderMarkdown(cleanedContent);
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
@@ -104,7 +126,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
           <div className="mb-6">
             <div className="flex flex-wrap gap-4 items-center mb-4">
               <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-semibold">
-                {isChineseLanguage(language) ? article.categoryZh : article.category}
+                {articleCategoryLabel}
               </span>
               <span className="text-slate-500 text-sm">{formatResourceDate(article.publishDate, language)}</span>
               {article.featured && (

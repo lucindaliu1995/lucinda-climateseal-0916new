@@ -87,6 +87,13 @@ export default function ResourcesPageClient({
   const getArticleTitle = (article: ArticleItem) => (language === 'zh' ? article.titleZh : article.title);
   const getArticleExcerpt = (article: ArticleItem) => (language === 'zh' ? article.excerptZh : article.excerpt);
   const getCategoryName = (category: ArticleCategory) => (language === 'zh' ? category.nameZh : category.name);
+  const getArticleCategoryName = (article: ArticleItem) => {
+    const category = categories.find((item) => item.id === article.category);
+
+    return language === 'zh'
+      ? article.categoryZh || category?.nameZh || article.category
+      : category?.name || article.category;
+  };
   const getWhitepaperTitle = (whitepaper: WhitepaperItem) => (language === 'zh' ? whitepaper.titleZh : whitepaper.title);
   const getWhitepaperIntro = (whitepaper: WhitepaperItem) => (language === 'zh' ? whitepaper.introZh : whitepaper.intro);
 
@@ -197,7 +204,7 @@ export default function ResourcesPageClient({
 
                     <div className="absolute top-4 left-4">
                       <span className="rounded-[0.4rem] border border-[#b7c5bc] bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#456864]">
-                        {language === 'zh' ? article.categoryZh : article.category}
+                        {getArticleCategoryName(article)}
                       </span>
                     </div>
 
