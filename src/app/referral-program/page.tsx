@@ -354,13 +354,13 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: `${copy.title} | Climate Seal`,
       description: copy.description,
-      images: [{ url: '/new-contact-logo.png', width: 1200, height: 630 }],
+      images: [{ url: '/climate-seal-logo-green.png', width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${copy.title} | Climate Seal`,
       description: copy.description,
-      images: ['/new-contact-logo.png'],
+      images: ['/climate-seal-logo-green.png'],
     },
   };
 }

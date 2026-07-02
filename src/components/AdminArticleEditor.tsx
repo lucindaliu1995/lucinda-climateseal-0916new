@@ -311,7 +311,7 @@ export default function AdminArticleEditor({ categories, articles, assets }: Adm
                           alt={asset.originalFilename}
                           fill
                           className="object-cover"
-                          fallbackSrc="/logo.jpg"
+                          fallbackSrc="/climate-seal-logo-green.png"
                         />
                       </div>
                       <div className="bg-white p-3">
@@ -432,7 +432,7 @@ export default function AdminArticleEditor({ categories, articles, assets }: Adm
                     alt="Article cover preview"
                     fill
                     className="object-cover"
-                    fallbackSrc="/logo.jpg"
+                    fallbackSrc="/climate-seal-logo-green.png"
                   />
                 ) : null}
               </div>

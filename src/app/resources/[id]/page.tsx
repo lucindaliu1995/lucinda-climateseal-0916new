@@ -63,7 +63,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const title = getLocalizedTitle(article, language);
   const description = getLocalizedSummary(article, language);
   const canonical = `/resources/${id}`;
-  const image = article.coverImage || '/logo.jpg';
+  const image = article.coverImage || '/climate-seal-logo-green.png';
 
   return createResourceDetailMetadata({
     canonical,
@@ -107,7 +107,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
     title: articleTitle,
     description: articleDescription,
     publishDate: article.publishDate,
-    image: article.coverImage || '/logo.jpg',
+    image: article.coverImage || '/climate-seal-logo-green.png',
   });
 
   return (
@@ -143,7 +143,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
 
           <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-8">
             <Image
-              src={article.coverImage || '/logo.jpg'}
+              src={article.coverImage || '/climate-seal-logo-green.png'}
               alt={`${articleTitle} - cover image`}
               fill
               className="object-cover"
@@ -232,7 +232,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
                 >
                   <div className="relative h-48 bg-slate-100">
                     <Image
-                      src={relatedArticle.coverImage || '/logo.jpg'}
+                      src={relatedArticle.coverImage || '/climate-seal-logo-green.png'}
                       alt={`${getLocalizedTitle(relatedArticle, language)} - cover image`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"

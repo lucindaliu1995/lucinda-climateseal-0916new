@@ -128,7 +128,7 @@ export default function ResourcesPageClient({
             position: index + 1,
             url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com'}/resources/${article.id}`,
             name: language === 'zh' ? article.titleZh : article.title,
-            image: article.coverImage || `${process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com'}/logo.jpg`,
+            image: article.coverImage || `${process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com'}/climate-seal-logo-green.png`,
             datePublished: article.publishDate,
             description: language === 'zh' ? article.excerptZh : article.excerpt,
           })),
@@ -263,7 +263,7 @@ export default function ResourcesPageClient({
                         alt={`${getWhitepaperTitle(whitepaper)} thumbnail`}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                        fallbackSrc="/logo.jpg"
+                        fallbackSrc="/climate-seal-logo-green.png"
                       />
                     </div>
 

@@ -123,7 +123,7 @@ export function createResourceArticleJsonLd(options: DetailJsonLdOptions) {
       name: 'Climate Seal',
       logo: {
         '@type': 'ImageObject',
-        url: `${options.baseUrl}/logo.jpg`,
+        url: `${options.baseUrl}/climate-seal-logo-green.png`,
       },
     },
   };

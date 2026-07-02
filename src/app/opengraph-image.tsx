@@ -10,14 +10,14 @@ export const size = {
 };
 export const contentType = 'image/png';
 
-async function getIconDataUri() {
-  const iconPath = path.join(process.cwd(), 'public', 'favicon.png');
-  const iconBuffer = await readFile(iconPath);
-  return `data:image/png;base64,${iconBuffer.toString('base64')}`;
+async function getLogoDataUri() {
+  const logoPath = path.join(process.cwd(), 'public', 'climate-seal-logo-white.png');
+  const logoBuffer = await readFile(logoPath);
+  return `data:image/png;base64,${logoBuffer.toString('base64')}`;
 }
 
 export default async function OpenGraphImage() {
-  const iconSrc = await getIconDataUri();
+  const logoSrc = await getLogoDataUri();
 
   return new ImageResponse(
     (
@@ -28,89 +28,23 @@ export default async function OpenGraphImage() {
           height: '100%',
           background: '#003f3a',
           color: 'white',
-          padding: '64px 72px',
+          padding: '72px 88px',
           alignItems: 'center',
           justifyContent: 'center',
           fontFamily: 'Arial, Helvetica, sans-serif',
         }}
       >
-        <div
+        <img
+          src={logoSrc}
+          alt="Climate Seal"
+          width={1000}
+          height={398}
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 40,
-            width: '100%',
-            maxWidth: 1040,
+            width: 1000,
+            height: 398,
+            objectFit: 'contain',
           }}
-        >
-          <img
-            src={iconSrc}
-            alt="Climate Seal emblem"
-            width={180}
-            height={180}
-            style={{
-              width: 180,
-              height: 180,
-              objectFit: 'contain',
-            }}
-          />
-
-          <div
-            style={{
-              width: 4,
-              height: 220,
-              background: 'rgba(255,255,255,0.92)',
-              borderRadius: 999,
-            }}
-          />
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              flex: 1,
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                fontFamily: 'Arial, sans-serif',
-                fontSize: 72,
-                fontWeight: 700,
-                lineHeight: 1,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                marginBottom: 24,
-              }}
-            >
-              Climate Seal
-            </div>
-
-            <div
-              style={{
-                width: 420,
-                height: 4,
-                background: 'rgba(255,255,255,0.88)',
-                borderRadius: 999,
-                marginBottom: 24,
-              }}
-            />
-
-            <div
-              style={{
-                display: 'flex',
-                fontFamily: 'Arial, sans-serif',
-                fontSize: 30,
-                fontWeight: 500,
-                lineHeight: 1.2,
-                color: 'rgba(255,255,255,0.95)',
-              }}
-            >
-              The AI Workspace for Credible Carbon Accounting.
-            </div>
-          </div>
-        </div>
+        />
       </div>
     ),
     {

@@ -254,7 +254,7 @@ export default function AdminWhitepaperEditor({ whitepapers, assets }: Props) {
                   className={`overflow-hidden rounded-2xl border text-left transition ${form.thumbnail === asset.url ? 'border-emerald-400 ring-2 ring-emerald-200' : 'border-slate-200 hover:border-slate-300'}`}
                 >
                   <div className="relative aspect-[4/3] bg-slate-200">
-                    <SafeImage src={asset.url} alt={asset.originalFilename} fill className="object-cover" fallbackSrc="/logo.jpg" />
+                    <SafeImage src={asset.url} alt={asset.originalFilename} fill className="object-cover" fallbackSrc="/climate-seal-logo-green.png" />
                   </div>
                   <div className="bg-white p-3 text-xs text-slate-600 line-clamp-2">{asset.originalFilename}</div>
                 </button>

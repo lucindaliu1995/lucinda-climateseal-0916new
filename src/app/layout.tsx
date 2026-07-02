@@ -123,7 +123,7 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
         {/* Preload hero assets if needed (keep minimal to avoid over-preload) */}
-        <link rel="preload" as="image" href="/favicon.png" />
+        <link rel="preload" as="image" href="/climate-seal-logo-white.png" />
         {/* RSS link for content discovery */}
         <link rel="alternate" type="application/rss+xml" title="Climate Seal RSS" href="/rss.xml" />
         {/* Organization JSON-LD（仅注入元信息，不影响视觉） */}
@@ -133,7 +133,7 @@ export default async function RootLayout({
             "@type": "Organization",
             name: "Climate Seal",
             url: (process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),
-            logo: new URL("/logo.jpg", process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com").toString(),
+            logo: new URL("/climate-seal-logo-green.png", process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com").toString(),
             description: "Automate carbon accounting from BOM and supplier data into verification-ready PCF, Scope 3, CBAM and EPD reports with AI agents.",
             foundingDate: "2024",
             sameAs: [

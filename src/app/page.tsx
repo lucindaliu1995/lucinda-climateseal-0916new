@@ -103,7 +103,7 @@ export default function Home() {
     : {
         eyebrow: 'Platform coverage',
         title: 'One Workspace for Product, Corporate, and Project Carbon Accounting',
-        description: 'Turn fragmented BOM and supplier data into verification-ready carbon reports with built-in AI agents for automated modeling, factor matching, evidence tracking, and review workflows.',
+        description: 'Transform fragmented product and supplier data into credible, verification-ready carbon reports, powered by AI agents for data organization, carbon modeling, factor matching, risk assessment, and transparent reporting.',
         cards: [
           {
             label: 'Accounting coverage',
@@ -480,7 +480,7 @@ export default function Home() {
             <p className="mb-5 max-w-[35rem] whitespace-pre-line text-[17px] font-medium leading-[1.65] text-[var(--brand-ink)]/88 sm:text-[18px] lg:mb-8 lg:mx-0">
               {language === 'zh'
                 ? 'Climate Seal 把零散的产品、企业与项目碳数据转化为可信、透明、可复核的核算工作流。AI 在后台处理专业建模、因子匹配、证据追踪与审阅逻辑，前台只向团队提出业务问题。'
-                : 'Turn fragmented BOM and supplier data into verification-ready carbon reports with built-in AI agents for automated modeling, factor matching, evidence tracking, and review workflows.'}
+                : 'Transform fragmented product and supplier data into credible, verification-ready carbon reports, powered by AI agents for data organization, carbon modeling, factor matching, risk assessment, and transparent reporting.'}
             </p>
             <div className="mb-5 flex flex-wrap justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--brand-accent-strong)] lg:mb-7 lg:justify-start">
               {(language === 'zh'

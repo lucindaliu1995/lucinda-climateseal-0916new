@@ -11,7 +11,7 @@ type SafeImageProps = Omit<ImageProps, 'src'> & {
 export default function SafeImage({
   src,
   alt,
-  fallbackSrc = '/logo.jpg',
+  fallbackSrc = '/climate-seal-logo-green.png',
   onError,
   ...props
 }: SafeImageProps) {

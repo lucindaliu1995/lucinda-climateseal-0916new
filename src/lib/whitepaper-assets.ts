@@ -3,7 +3,7 @@ import path from 'node:path';
 import type { WhitepaperItem } from '@/lib/content';
 
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
-const DEFAULT_WHITEPAPER_THUMBNAIL = '/logo.jpg';
+const DEFAULT_WHITEPAPER_THUMBNAIL = '/climate-seal-logo-green.png';
 
 function getPublicAssetPath(assetUrl: string): string | null {
   if (!assetUrl || !assetUrl.startsWith('/')) {
