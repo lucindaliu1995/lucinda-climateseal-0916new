@@ -26,6 +26,12 @@ export function renderMarkdown(raw: string): string {
 
   text = text.replace(/\r\n?/g, '\n');
 
+  text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_match, alt, url) => (
+    `<figure class="my-10 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-3">
+      <img src="${url}" alt="${alt}" class="w-full rounded-xl" loading="lazy" />
+    </figure>`
+  ));
+
   text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, url) => {
     if (typeof url === 'string' && url.startsWith('#')) {
       return `<a href="${url}" class="${linkClass}">${label}</a>`;
