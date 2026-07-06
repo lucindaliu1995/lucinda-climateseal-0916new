@@ -370,9 +370,10 @@ export default function Home() {
 
   const productSection = language === 'zh'
     ? {
-        title: '回答业务问题，让 AI 完成专业碳核算重活',
-        subtitle:
-          '上传产品、供应商、运营或项目相关文件后，Climate Seal AI 会用专业算法解析数据、建立核算逻辑、从现有数据库中匹配最合适的因子，并标记缺口与风险点。用户看到的是业务问题，而不是复杂建模界面。',
+        sectionEyebrow: 'AI 驱动碳核算工作流',
+        sectionTitle: '从混乱供应商文件到可复核碳数据',
+        sectionSubtitle:
+          'ClimateSeal 帮助可持续团队和企业在产品、供应商和业务单元之间收集、结构化、计算和复核碳数据，并用 AI 执行、专家控制和完整审计轨迹支撑交付。',
         summaryTitle: '为什么企业选择 Climate Seal',
         summaryItems: [
           '从业务文件和业务问题开始，而不是从空白模型和手工整理开始',
@@ -380,39 +381,40 @@ export default function Home() {
           '团队可上传自己的因子库，也可以在已有选择时更换因子',
           'AI 不会未经人工确认修改任何原始数据，所有动作进入审计账本',
         ],
-        cta: '立即免费开始',
+        cta: '预约工作流演示',
         capabilitiesTitle: '核心能力',
-      capabilities: [
+        capabilities: [
           {
             number: '01',
-            title: '业务问题驱动的数据收集',
+            title: '混乱文件接收与 AI 澄清',
             description:
-              '把复杂核算需求转化为业务团队可以回答的问题，并把文件、表格和补充说明整理成可核算输入。',
+              '上传 BOM、规格书、Excel、PDF、能源记录、运输数据、供应商文件、发票和支持证据。ClimateSeal 会提取碳相关数据，识别缺失或不清楚的内容，并转化为面向供应商、业务团队或顾问的结构化澄清问题。',
           },
           {
             number: '02',
-            title: '专业算法匹配最合适因子',
+            title: '专家可控的结构化核算模型',
             description:
-              '基于产品、材料、工艺、地区、边界和标准要求，从现有数据库中找到最合适的排放因子，并保留依据。',
+              'ClimateSeal 会把产品边界、排放源、单位、分配逻辑、假设和缺失源检查组织成结构化核算模型。AI 准备技术底稿，专家保留关键方法学和复核决策控制权。',
           },
           {
             number: '03',
-            title: '灵活因子库与人工确认',
+            title: '带依据、质量与风险的因子匹配',
             description:
-              '支持用户上传自己的数据库，也支持在已有企业或客户指定因子时更换因子；原始数据不会被 AI 自动覆盖。',
+              'AI 会根据材料、工艺、地区、标准和数据库上下文建议排放因子。每个匹配都包含因子来源、选择依据、匹配质量、风险等级和复核状态，帮助团队快速识别哪些项目可靠、哪些需要进一步确认。',
           },
           {
             number: '04',
-            title: '完整审计账本与可复核交付',
+            title: '可复核报告与完整审计账本',
             description:
-              '每个输入、假设、因子、修改和证据链接都会被记录，便于第三方核验方或买方直接复核。',
+              '生成可交付给客户或内部使用的报告草稿，同时形成完整审计账本。账本记录原始数据、单位换算、公式、因子选择、假设、证据、风险等级、结果和确认状态，让最终输出更容易复核、解释和验证。',
           },
         ],
       }
     : {
-        title: 'Answer business questions. Let AI do the professional carbon accounting work.',
-        subtitle:
-          'Upload product, supplier, operating, or project files, and Climate Seal AI parses the data, builds the accounting logic, uses professional algorithms to match the best available emission factors from existing databases, and flags gaps or risks. Users answer business questions, not complex modeling prompts.',
+        sectionEyebrow: 'AI-LED CARBON WORKFLOW',
+        sectionTitle: 'From Messy Supplier Files to Review-Ready Carbon Data',
+        sectionSubtitle:
+          'ClimateSeal helps sustainability teams and enterprises collect, structure, calculate, and review carbon data across products, suppliers, and business units — with AI execution, expert control, and a complete audit trail.',
         summaryTitle: 'Why teams choose Climate Seal',
         summaryItems: [
           'Start from business files and business questions instead of blank models and manual cleanup',
@@ -420,35 +422,34 @@ export default function Home() {
           'Upload your own factor database or change factors when your team has approved choices',
           'AI never modifies original data without human confirmation, and every action is logged',
         ],
-        cta: 'Start Free Today',
+        cta: 'Book a workflow demo',
         capabilitiesTitle: 'Core capabilities',
         capabilities: [
           {
             number: '01',
-            title: 'Business-question data collection',
+            title: 'Messy file intake and AI clarification',
             description:
-              'Translate technical accounting requirements into business questions and organize files, spreadsheets, and clarifications into usable carbon accounting inputs.',
+              'Upload BOMs, specifications, Excel sheets, PDFs, energy records, transport data, supplier files, invoices, and supporting evidence. ClimateSeal extracts carbon-relevant data, identifies missing or unclear items, and turns them into structured clarification questions for suppliers, business teams, or consultants.',
           },
           {
             number: '02',
-            title: 'Algorithmic best-match factor selection',
+            title: 'Structured accounting model for expert control',
             description:
-              'Use product, material, process, geography, boundary, and standards context to find the best matching emission factor from the available database, with rationale saved for review.',
+              'ClimateSeal organizes product boundaries, emission sources, units, allocation logic, assumptions, and missing-source checks into a structured accounting model. AI prepares the technical groundwork, while experts stay in control of key methodology and review decisions.',
           },
           {
             number: '03',
-            title: 'Flexible factor databases and human confirmation',
+            title: 'Factor matching with rationale, quality, and risk',
             description:
-              'Upload your own database or change factors when your team already has approved choices. AI never overwrites original data without human confirmation.',
+              'AI suggests emission factors based on material, process, geography, standard, and database context. Each match includes the factor source, selection rationale, match quality, risk level, and review status, so teams can quickly identify which items are reliable and which require further confirmation.',
           },
           {
             number: '04',
-            title: 'Complete audit ledger and review-ready delivery',
+            title: 'Review-ready report and audit ledger',
             description:
-              'Log every input, assumption, factor, edit, and evidence link so third-party verifiers or buyers can review the workflow directly.',
+              'Generate a client-ready or internal report draft, together with a complete audit ledger. The ledger records original data, conversions, formulas, factor choices, assumptions, evidence, risk levels, results, and confirmation status, making the final output easier to review, explain, and verify.',
           },
-      ],
-      sectionTitle: 'Turn Business Inputs Into Transparent, Review-Ready Carbon Accounting',
+        ],
       };
   return (
     <>
@@ -461,19 +462,20 @@ export default function Home() {
           <div className="order-1 px-1 text-center text-[var(--brand-ink)] sm:px-2 lg:pr-4 lg:text-left">
             <div className="mx-auto max-w-[42rem] lg:mx-0 lg:pt-1">
             <h1
-              aria-label={language === 'zh' ? '可信碳核算的 AI 工作台' : 'The AI Workspace for Credible Carbon Accounting'}
-              className="font-lora relative z-20 mb-4 block max-w-[24ch] !text-[clamp(2.9rem,4.25vw,3.5rem)] font-semibold leading-[0.98] text-[#123F3D] sm:mb-5"
+              aria-label={language === 'zh' ? '面向可持续专业人士的 AI 碳管理工作台' : 'AI-Powered Carbon Management Workspace for Sustainability Professionals'}
+              className="font-lora relative z-20 mb-4 block max-w-[26ch] text-[2.35rem] font-semibold leading-[1.04] text-[#123F3D] sm:mb-5 sm:text-[2.8rem] lg:text-[3rem]"
             >
               {language === 'zh' ? (
                 <>
-                  <span className="block">可信碳核算</span>
-                  <span className="block">AI 工作台</span>
+                  <span className="block">面向可持续专业人士的</span>
+                  <span className="block">AI 碳管理工作台</span>
                 </>
               ) : (
                 <>
-                  <span className="block">AI Carbon</span>
-                  <span className="block">Accounting</span>
-                  <span className="block">Workspace</span>
+                  <span className="block">AI-Powered Carbon</span>
+                  <span className="block">Management Workspace</span>
+                  <span className="block">for Sustainability</span>
+                  <span className="block">Professionals</span>
                 </>
               )}
             </h1>
@@ -793,11 +795,14 @@ export default function Home() {
             className="mx-auto max-w-3xl text-center"
           >
             <p className="cs-section-eyebrow">
-              {language === 'zh' ? 'AI-led workflow' : 'AI-led workflow'}
+              {productSection.sectionEyebrow}
             </p>
             <h2 className="mt-3 font-lora text-balance text-[2.2rem] font-bold text-[var(--brand-ink)] sm:text-[2.45rem]">
               {productSection.sectionTitle}
             </h2>
+            <p className="mt-4 text-[16px] leading-7 text-[var(--brand-muted)] sm:text-[17px]">
+              {productSection.sectionSubtitle}
+            </p>
           </motion.div>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
