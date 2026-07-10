@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">CBAM export workflow for Chinese companies</title>
+  <desc id="desc">A simplified workflow showing how Chinese producers provide embedded emissions data to EU importers, who report emissions, buy CBAM certificates, and reflect carbon cost in trade pricing.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .panel { fill: #ffffff; stroke: #d7ddd6; stroke-width: 2; }
+      .box { fill: #f4f0e8; stroke: #b7c5bc; stroke-width: 1.5; }
+      .box-alt { fill: #e8f3ef; stroke: #9bb9ad; stroke-width: 1.5; }
+      .num { fill: #0f6a63; font: 700 18px Arial, sans-serif; }
+      .label { fill: #123f3d; font: 700 20px Arial, sans-serif; }
+      .small { fill: #5f7672; font: 500 15px Arial, sans-serif; }
+      .arrow { stroke: #0f6a63; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .dashed { stroke-dasharray: 8 8; }
+      .title { fill: #123f3d; font: 700 34px Arial, sans-serif; }
+      .subtitle { fill: #5f7672; font: 500 18px Arial, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f6a63"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="520" rx="28"/>
+  <rect class="panel" x="36" y="36" width="1128" height="448" rx="24"/>
+
+  <text class="title" x="600" y="88" text-anchor="middle">How CBAM Pressure Moves Through Export Trade</text>
+  <text class="subtitle" x="600" y="120" text-anchor="middle">From Chinese production data to EU carbon cost and supplier competitiveness</text>
+
+  <g transform="translate(72 172)">
+    <rect class="box" x="0" y="0" width="152" height="116" rx="18"/>
+    <text class="num" x="22" y="34">01</text>
+    <text class="label" x="22" y="66">Chinese</text>
+    <text class="label" x="22" y="92">producer</text>
+  </g>
+  <g transform="translate(248 172)">
+    <rect class="box" x="0" y="0" width="152" height="116" rx="18"/>
+    <text class="num" x="22" y="34">02</text>
+    <text class="label" x="22" y="66">CBAM goods</text>
+    <text class="small" x="22" y="92">Steel, aluminium...</text>
+  </g>
+  <g transform="translate(424 172)">
+    <rect class="box-alt" x="0" y="0" width="152" height="116" rx="18"/>
+    <text class="num" x="22" y="34">03</text>
+    <text class="label" x="22" y="66">EU importer</text>
+    <text class="small" x="22" y="92">Requests data</text>
+  </g>
+  <g transform="translate(600 172)">
+    <rect class="box-alt" x="0" y="0" width="152" height="116" rx="18"/>
+    <text class="num" x="22" y="34">04</text>
+    <text class="label" x="22" y="66">Embedded</text>
+    <text class="label" x="22" y="92">emissions</text>
+  </g>
+  <g transform="translate(776 172)">
+    <rect class="box-alt" x="0" y="0" width="152" height="116" rx="18"/>
+    <text class="num" x="22" y="34">05</text>
+    <text class="label" x="22" y="66">CBAM</text>
+    <text class="label" x="22" y="92">certificates</text>
+  </g>
+  <g transform="translate(952 172)">
+    <rect class="box" x="0" y="0" width="152" height="116" rx="18"/>
+    <text class="num" x="22" y="34">06</text>
+    <text class="label" x="22" y="66">Trade price</text>
+    <text class="small" x="22" y="92">Cost signal</text>
+  </g>
+
+  <path class="arrow" d="M224 230 H246"/>
+  <path class="arrow" d="M400 230 H422"/>
+  <path class="arrow" d="M576 230 H598"/>
+  <path class="arrow" d="M752 230 H774"/>
+  <path class="arrow" d="M928 230 H950"/>
+
+  <g transform="translate(240 344)">
+    <rect class="box" x="0" y="0" width="312" height="82" rx="18"/>
+    <text class="label" x="24" y="34">Better actual data</text>
+    <text class="small" x="24" y="60">Lower uncertainty and stronger buyer trust</text>
+  </g>
+  <g transform="translate(648 344)">
+    <rect class="box" x="0" y="0" width="312" height="82" rx="18"/>
+    <text class="label" x="24" y="34">Lower-carbon production</text>
+    <text class="small" x="24" y="60">A new export competitiveness lever</text>
+  </g>
+
+  <path class="arrow dashed" d="M324 288 V340"/>
+  <path class="arrow" d="M552 385 H646"/>
+  <path class="arrow dashed" d="M952 385 C1060 385 1088 310 1088 288"/>
+</svg>
