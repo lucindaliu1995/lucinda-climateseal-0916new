@@ -138,8 +138,8 @@ export default function PrivacyPolicy() {
                   </p>
                   <div className="bg-[#9ef894]/10 p-4 rounded-lg border border-[#9ef894]/20">
                     <p className="text-[#9ef894] font-semibold">Climate Seal</p>
-                    <p className="text-white/80">Email: privacy@climateseal.com</p>
-                    <p className="text-white/80">Website: www.climateseal.com</p>
+                    <p className="text-white/80">Email: privacy@climateseal.net</p>
+                    <p className="text-white/80">Website: climate-seal.com</p>
                   </div>
                 </div>
               </section>
