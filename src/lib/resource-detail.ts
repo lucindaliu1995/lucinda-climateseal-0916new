@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { Language } from '@/lib/i18n';
-import { buildLanguageAlternates, isChineseLanguage } from '@/lib/language';
+import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage } from '@/lib/language';
 
 type LocalizedRecord = {
   title: string;
@@ -17,6 +17,7 @@ type LocalizedSummaryRecord = LocalizedRecord & {
 type DetailMetadataOptions = {
   canonical: string;
   language: Language;
+  hasChineseVersion: boolean;
   title: string;
   description: string;
   image: string;
@@ -57,9 +58,16 @@ export function createResourceDetailMetadata(options: DetailMetadataOptions): Me
     title: options.title,
     description: options.description,
     alternates: {
-      canonical: options.canonical,
-      languages: buildLanguageAlternates(options.canonical),
+      canonical: buildLocalizedCanonical(
+        options.canonical,
+        options.language,
+        options.hasChineseVersion
+      ),
+      languages: buildLanguageAlternates(options.canonical, options.hasChineseVersion),
     },
+    ...(isChineseLanguage(options.language) && !options.hasChineseVersion
+      ? { robots: { index: false, follow: true } }
+      : {}),
     openGraph: {
       title: options.title,
       description: options.description,
@@ -73,6 +81,13 @@ export function createResourceDetailMetadata(options: DetailMetadataOptions): Me
       images: [options.image],
     },
   };
+}
+
+export function getAvailableResourceLanguage(
+  language: Language,
+  hasChineseVersion: boolean
+): Language {
+  return isChineseLanguage(language) && !hasChineseVersion ? 'en' : language;
 }
 
 export function createMissingResourceMetadata(title: string): Metadata {

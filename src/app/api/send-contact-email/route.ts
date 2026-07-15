@@ -20,7 +20,7 @@ export const runtime = 'nodejs';
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 const FALLBACK_CONTACT = {
-  email: 'xuguang.ma@climateseal.net',
+  email: 'xuguang.ma@climate-seal.net',
   phone: '+86 15652618365',
 };
 

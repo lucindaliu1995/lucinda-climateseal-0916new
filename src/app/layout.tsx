@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Script from 'next/script';
 import TitleUpdater from "@/components/TitleUpdater";
-import { buildLanguageAlternates, isChineseLanguage, resolveLanguage } from "@/lib/language";
+import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage, resolveLanguage } from "@/lib/language";
 
 const sourceSansPro = Source_Sans_3({
   variable: "--font-source-sans",
@@ -42,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
       follow: process.env.NODE_ENV === 'production'
     },
     alternates: {
-      canonical: "/",
+      canonical: buildLocalizedCanonical("/", language),
       languages: buildLanguageAlternates("/")
     },
     keywords: [
@@ -77,7 +77,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Climate Seal",
       title,
       description,
-      url: "/",
+      url: buildLocalizedCanonical("/", language),
       images: [
         {
           url: "/opengraph-image",
@@ -132,6 +132,7 @@ export default async function RootLayout({
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "Climate Seal",
+            legalName: "Climate Seal (Beijing) Technology Co., Ltd.",
             url: (process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),
             logo: new URL("/climate-seal-logo-green.png", process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com").toString(),
             description: "Automate carbon accounting from BOM and supplier data into verification-ready PCF, Scope 3, CBAM and EPD reports with AI agents.",
@@ -143,7 +144,7 @@ export default async function RootLayout({
             contactPoint: {
               "@type": "ContactPoint",
               contactType: "customer service",
-              email: "contact@climate-seal.com"
+              email: "contact@climate-seal.net"
             }
           })}
         </Script>

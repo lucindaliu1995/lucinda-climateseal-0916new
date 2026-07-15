@@ -14,7 +14,7 @@ const content = {
     rows: [
       {
         value: '60+',
-        title: 'carbon asset process models',
+        title: 'carbon accounting workflow models',
         description: 'Reusable process logic for product and operational carbon accounting workflows.',
       },
       {
@@ -44,7 +44,7 @@ const content = {
     rows: [
       {
         value: '60+',
-        title: '碳资产流程模型',
+        title: '碳核算工作流模型',
         description: '覆盖产品与运营类碳核算场景的可复用流程逻辑。',
       },
       {

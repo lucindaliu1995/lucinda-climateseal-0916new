@@ -137,8 +137,8 @@ export default function PrivacyPolicy() {
                     'If you have any questions about this Privacy Policy, please contact us at:'}
                   </p>
                   <div className="bg-[#9ef894]/10 p-4 rounded-lg border border-[#9ef894]/20">
-                    <p className="text-[#9ef894] font-semibold">Climate Seal</p>
-                    <p className="text-white/80">Email: privacy@climateseal.net</p>
+                    <p className="text-[#9ef894] font-semibold">Operated by Climate Seal (Beijing) Technology Co., Ltd.</p>
+                    <p className="text-white/80">Email: privacy@climate-seal.net</p>
                     <p className="text-white/80">Website: climate-seal.com</p>
                   </div>
                 </div>

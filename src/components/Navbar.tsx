@@ -14,6 +14,7 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const navItems = [
@@ -71,20 +72,19 @@ const Navbar = () => {
     setIsSolutionsOpen(!isSolutionsOpen);
   };
 
-  const handleSolutionNavigate = (href: string) => {
-    setIsOpen(false);
-    setIsSolutionsOpen(false);
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-    router.push(href);
+  const handleSolutionNavigate = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    window.location.assign(href);
   };
 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      const isInsideDesktopMenu = dropdownRef.current?.contains(target);
+      const isInsideMobileMenu = mobileDropdownRef.current?.contains(target);
+
+      if (!isInsideDesktopMenu && !isInsideMobileMenu) {
         setIsSolutionsOpen(false);
       }
     };
@@ -106,6 +106,11 @@ const Navbar = () => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+    setIsSolutionsOpen(false);
+  }, [pathname]);
 
   return (
     <nav className="fixed z-50 w-full border-b border-white/10 bg-[#003531]/95 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-xl">
@@ -160,7 +165,7 @@ const Navbar = () => {
                           onMouseLeave={handleMouseLeave}
                         >
                           {item.dropdownItems?.map((dropdownItem) => (
-                            <Link
+                            <a
                               key={dropdownItem.href}
                               href={dropdownItem.href}
                               className="block px-5 py-3 font-source-sans text-[0.94rem] font-medium text-white/90 transition duration-200 hover:bg-white/10 hover:text-[#d6e8df]"
@@ -170,13 +175,10 @@ const Navbar = () => {
                                   timeoutRef.current = null;
                                 }
                               }}
-                              onClick={(event) => {
-                                event.preventDefault();
-                                handleSolutionNavigate(dropdownItem.href);
-                              }}
+                              onClick={(event) => handleSolutionNavigate(event, dropdownItem.href)}
                             >
                               {dropdownItem.name}
-                            </Link>
+                            </a>
                           ))}
                         </div>
                       )}
@@ -218,6 +220,10 @@ const Navbar = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center rounded-md p-2 text-white/90 hover:bg-white/10 hover:text-[#d6e8df]"
+              aria-label={isOpen
+                ? (language === 'zh' ? '关闭导航菜单' : 'Close navigation menu')
+                : (language === 'zh' ? '打开导航菜单' : 'Open navigation menu')}
+              aria-expanded={isOpen}
             >
               {isOpen ? (
                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -250,7 +256,7 @@ const Navbar = () => {
                 // Dropdown menu handling for mobile
                 if (item.hasDropdown) {
                   return (
-                    <div key={item.name}>
+                    <div key={item.name} ref={mobileDropdownRef}>
                       <button
                         onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
                         className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left font-source-sans text-base font-semibold text-white/90 hover:bg-white/10 hover:text-[#d6e8df]"
@@ -261,17 +267,14 @@ const Navbar = () => {
                       {isSolutionsOpen && (
                         <div className="pl-4 space-y-1">
                           {item.dropdownItems?.map((dropdownItem) => (
-                            <Link
+                            <a
                               key={dropdownItem.href}
                               href={dropdownItem.href}
                               className="block rounded-md px-3 py-2 font-source-sans text-sm font-medium text-white/70 hover:bg-white/10 hover:text-[#d6e8df]"
-                              onClick={(event) => {
-                                event.preventDefault();
-                                handleSolutionNavigate(dropdownItem.href);
-                              }}
+                              onClick={(event) => handleSolutionNavigate(event, dropdownItem.href)}
                             >
                               {dropdownItem.name}
-                            </Link>
+                            </a>
                           ))}
                         </div>
                       )}

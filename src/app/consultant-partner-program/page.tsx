@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { headers } from 'next/headers';
 import HomeContactSection from '@/components/HomeContactSection';
 import KnowHowNumbersSection from '@/components/KnowHowNumbersSection';
-import { buildLanguageAlternates, isChineseLanguage, resolveLanguage } from '@/lib/language';
+import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage, resolveLanguage } from '@/lib/language';
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
 
@@ -563,7 +563,8 @@ const content = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const headerList = await headers();
-  const locale = isChineseLanguage(resolveLanguage(headerList.get('x-language'))) ? 'zh' : 'en';
+  const language = resolveLanguage(headerList.get('x-language'));
+  const locale = isChineseLanguage(language) ? 'zh' : 'en';
   const copy = content[locale];
 
   return {
@@ -572,7 +573,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: copy.description,
     alternates: {
-      canonical: '/consultant-partner-program',
+      canonical: buildLocalizedCanonical('/consultant-partner-program', language),
       languages: buildLanguageAlternates('/consultant-partner-program'),
     },
     openGraph: {

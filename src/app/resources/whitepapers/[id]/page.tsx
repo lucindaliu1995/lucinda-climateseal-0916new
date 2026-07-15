@@ -1,11 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 import SafeImage from '@/components/SafeImage';
 import WhitepaperDownloadForm from '@/components/WhitepaperDownloadForm';
-import { getAllWhitepapers, getWhitepaperById, type WhitepaperItem } from '@/lib/content';
+import {
+  getAllWhitepapers,
+  getWhitepaperById,
+  hasChineseWhitepaperVersion,
+  type WhitepaperItem,
+} from '@/lib/content';
 import type { Language } from '@/lib/i18n';
-import { isChineseLanguage, resolveLanguage } from '@/lib/language';
+import { isChineseLanguage, LANGUAGE_HEADER, resolveLanguage } from '@/lib/language';
 import {
   buildResourcePageUrl,
   createMissingResourceMetadata,
@@ -13,6 +19,7 @@ import {
   createResourceBreadcrumbJsonLd,
   createResourceDetailMetadata,
   formatResourceDate,
+  getAvailableResourceLanguage,
   getLocalizedTitle,
 } from '@/lib/resource-detail';
 import { getWhitepaperDownloadUrl, getWhitepaperThumbnailSrc, hasWhitepaperDownloadAsset } from '@/lib/whitepaper-assets';
@@ -37,13 +44,16 @@ export function generateStaticParams() {
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  const language = resolveLanguage(resolvedSearchParams?.lang);
+  const headerList = await headers();
+  const requestedLanguage = resolveLanguage(resolvedSearchParams?.lang || headerList.get(LANGUAGE_HEADER));
   const whitepaper = getWhitepaperById(id);
 
   if (!whitepaper) {
     return createMissingResourceMetadata('Whitepaper Not Found');
   }
 
+  const hasChineseVersion = hasChineseWhitepaperVersion(whitepaper);
+  const language = getAvailableResourceLanguage(requestedLanguage, hasChineseVersion);
   const title = getLocalizedTitle(whitepaper, language);
   const description = getWhitepaperIntro(whitepaper, language);
   const canonical = `/resources/whitepapers/${id}`;
@@ -51,7 +61,8 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 
   return createResourceDetailMetadata({
     canonical,
-    language,
+    language: requestedLanguage,
+    hasChineseVersion,
     title,
     description,
     image,
@@ -62,12 +73,18 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 export default async function WhitepaperDetailPage({ params, searchParams }: PageProps) {
   const { id } = await params;
   const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  const language = resolveLanguage(resolvedSearchParams?.lang);
+  const headerList = await headers();
+  const requestedLanguage = resolveLanguage(resolvedSearchParams?.lang || headerList.get(LANGUAGE_HEADER));
   const whitepaper = getWhitepaperById(id);
 
   if (!whitepaper) {
     notFound();
   }
+
+  const language = getAvailableResourceLanguage(
+    requestedLanguage,
+    hasChineseWhitepaperVersion(whitepaper)
+  );
 
   const title = getLocalizedTitle(whitepaper, language);
   const intro = getWhitepaperIntro(whitepaper, language);
@@ -91,7 +108,7 @@ export default async function WhitepaperDetailPage({ params, searchParams }: Pag
   });
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" lang={isChineseLanguage(language) ? 'zh-CN' : 'en'}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 

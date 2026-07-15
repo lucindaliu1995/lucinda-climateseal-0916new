@@ -38,7 +38,7 @@ const EMPTY_STATE: EditorState = {
   topics: '',
   publishDate: new Date().toISOString().slice(0, 10),
   downloadUrl: '',
-  formRecipient: 'whitepapers@climateseal.com',
+  formRecipient: 'whitepapers@climate-seal.net',
   published: true,
 };
 

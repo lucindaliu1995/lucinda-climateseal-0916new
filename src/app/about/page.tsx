@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { headers } from 'next/headers';
-import { buildLanguageAlternates, isChineseLanguage, resolveLanguage } from '@/lib/language';
+import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage, resolveLanguage } from '@/lib/language';
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
 
@@ -117,14 +117,15 @@ const content = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const headerList = await headers();
-  const locale = isChineseLanguage(resolveLanguage(headerList.get('x-language'))) ? 'zh' : 'en';
+  const language = resolveLanguage(headerList.get('x-language'));
+  const locale = isChineseLanguage(language) ? 'zh' : 'en';
   const copy = content[locale];
 
   return {
     title: copy.title,
     description: copy.description,
     alternates: {
-      canonical: '/about',
+      canonical: buildLocalizedCanonical('/about', language),
       languages: buildLanguageAlternates('/about'),
     },
     openGraph: {
@@ -159,6 +160,7 @@ export default async function AboutPage() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Climate Seal',
+    legalName: 'Climate Seal (Beijing) Technology Co., Ltd.',
     url: siteUrl,
     logo: `${siteUrl}/climate-seal-logo-green.png`,
     description: copy.orgDescription,
@@ -166,7 +168,7 @@ export default async function AboutPage() {
       {
         '@type': 'ContactPoint',
         contactType: 'sales',
-        email: 'xuguang.ma@climateseal.net',
+        email: 'xuguang.ma@climate-seal.net',
         telephone: '+86 15652618365',
       },
     ],

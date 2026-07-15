@@ -41,6 +41,11 @@ export type WhitepaperItem = {
 const PLACEHOLDER_ARTICLE_PATTERN =
   /This is a sample article|This is another sample article|这是示例文章内容|示例文章|示例文章内容|这是另一个关于/i;
 
+function hasSubstantiveChineseText(value: string): boolean {
+  const chineseCharacters = value.match(/[\u3400-\u9fff]/g) || [];
+  return chineseCharacters.length >= 80;
+}
+
 export function getAllArticles(): ArticleItem[] {
   const baseArticles = ((articlesData as { articles?: ArticleItem[] }).articles || []).slice();
   const managedArticles = listManagedArticles()
@@ -82,6 +87,10 @@ export function getMeaningfulArticleById(id: string): ArticleItem | undefined {
   return getMeaningfulArticles().find((article) => article.id === id);
 }
 
+export function hasChineseArticleVersion(article: ArticleItem): boolean {
+  return hasSubstantiveChineseText(article.contentZh || '');
+}
+
 export function getAllWhitepapers(): WhitepaperItem[] {
   const baseWhitepapers = ((articlesData as { whitepapers?: WhitepaperItem[] }).whitepapers || []).slice();
   const managedWhitepapers = listManagedWhitepapers()
@@ -110,4 +119,10 @@ export function getAllCategories(): ArticleCategory[] {
 
 export function getWhitepaperById(id: string): WhitepaperItem | undefined {
   return getAllWhitepapers().find((whitepaper) => whitepaper.id === id);
+}
+
+export function hasChineseWhitepaperVersion(whitepaper: WhitepaperItem): boolean {
+  return hasSubstantiveChineseText(
+    `${whitepaper.titleZh || ''}\n${whitepaper.introZh || ''}\n${whitepaper.whatYouGetZh.join('\n')}`
+  );
 }

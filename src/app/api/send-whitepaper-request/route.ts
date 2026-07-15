@@ -152,7 +152,7 @@ export async function POST(request: NextRequest) {
           });
 
           // Also send notification to admin
-          const adminEmail = whitepaper?.formRecipient || process.env.EMAIL_TO || 'xuguang.ma@climateseal.net';
+          const adminEmail = whitepaper?.formRecipient || process.env.EMAIL_TO || 'xuguang.ma@climate-seal.net';
           const adminTemplate = `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <h2>New Whitepaper Download Request</h2>
@@ -211,7 +211,7 @@ export async function POST(request: NextRequest) {
         });
 
         // Send admin notification
-        const adminEmail = whitepaper?.formRecipient || process.env.EMAIL_TO || 'xuguang.ma@climateseal.net';
+        const adminEmail = whitepaper?.formRecipient || process.env.EMAIL_TO || 'xuguang.ma@climate-seal.net';
         await transporter.sendMail({
           from: process.env.EMAIL_FROM,
           to: adminEmail,

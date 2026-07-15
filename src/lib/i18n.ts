@@ -653,9 +653,9 @@ export const translations: Record<TranslationLocale, TranslationData> = {
         carbonExpert: {
           title: 'Carbon/ESG Professionals',
           role: 'ESG/Sustainability/Carbon/Consulting Expert',
-          needs: 'Accelerate Life Cycle Assessment (LCA) calculations and carbon reporting with AI-powered automation, achieving 95% accuracy and reducing project timelines from weeks to hours.',
-          stat: '1-Minute LCA & 95% Accuracy',
-          statDescription: 'Slash Waiting Time & Ensure Confidence',
+          needs: 'Reduce repetitive LCA and carbon reporting work with structured AI support for data preparation, factor matching, modeling, risk review, and evidence organization.',
+          stat: 'Structured AI-Assisted LCA Workflow',
+          statDescription: 'Reduce repetitive setup and review work',
           secondStatDescription: 'Auto Batch Factor Matching',
           thirdStatDescription: 'Ensure Auditable & Comparable Data',
           fourthStat: 'DQR+ Industry Data & Field Validation',
@@ -689,7 +689,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
         brandOwner: {
           title: 'Brands & Procurement Leaders',
           role: 'Sustainability Leader',
-          needs: 'Streamline supply chain carbon management with automated data collection, reduce compliance costs, and achieve SBTi targets through AI-powered carbon footprint tracking and supplier engagement.',
+          needs: 'Streamline supply chain carbon management with structured data collection, Scope 3 tracking, supplier engagement, and evidence for target-setting and reduction planning.',
           stat: '≈$100 / 4 Hours per SKU',
           statDescription: 'Slash Compliance Cost & Time',
           secondStatDescription: 'Built-in Data Quality Gates',
@@ -711,7 +711,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
             },
             {
               title: 'Securing Decarbonization Funding',
-              description: 'Without a clear Marginal Abatement Cost Curve (MACC) or proven ROI, critical decarbonization projects get shelved, stalling SBTi and CSRD goals.'
+              description: 'Without transparent assumptions, cost estimates, and emissions impact, decarbonization proposals are difficult for leadership to review, compare, and fund.'
             }
           ],
           testimonial: '"Climate Seal transformed our supply chain carbon management from a compliance burden into a competitive advantage."',
@@ -725,9 +725,9 @@ export const translations: Record<TranslationLocale, TranslationData> = {
           stat: '3 Files & One Simple Workflow.',
           statDescription: 'Reduce Compliance Cost Significantly',
           secondStatDescription: 'Auto-Matching & Built-in Validation',
-          thirdStatDescription: '90%+ Pass on First Submission',
-          fourthStat: '4-Hour, Audit-Ready PCF',
-          fourthStatDescription: 'Meet requirements effortlessly',
+          thirdStatDescription: 'Review Risks Before Submission',
+          fourthStat: 'Traceable PCF Delivery Package',
+          fourthStatDescription: 'Structured for buyer and verifier review',
           painPoints: [
             {
               title: 'Missed Tender Deadlines',
@@ -769,15 +769,15 @@ export const translations: Record<TranslationLocale, TranslationData> = {
             },
             supplyChainAnalyzer: {
               title: 'Risk & Quality Sentinel',
-              description: 'Field-level quality and risk checks, uncertainty bands, and fix hints—pass verification first time with fewer reworks and more credible conclusions.'
+              description: 'Field-level quality and risk checks, uncertainty signals, and fix hints help experts identify issues before third-party review.'
             },
             reportGenerator: {
-              title: 'External Cross-Check Verifier',
-              description: 'Cross-verifies reported values against third-party reports and public datasets, returns confidence-rated matches with evidence links in minutes, and flags conflicts for rapid resolution.'
+              title: 'Report & Evidence Packager',
+              description: 'Organizes calculations, factor records, assumptions, supporting evidence, and review status into a traceable report draft and handoff package.'
             },
             dataValidator: {
-              title: 'Risk Screener',
-              description: 'Scores regulatory/disclosure/supply-chain/reputation risk, ranks the top 10 exposures, and produces a 90-day remediation plan with marginal abatement costs (USD/tCO₂e) and ROI.'
+              title: 'Review Risk Screener',
+              description: 'Flags material data gaps, weak assumptions, uncertain factor matches, and other review risks, then organizes them into a prioritized expert follow-up list.'
             }
           },
           brandOwner: {
@@ -794,8 +794,8 @@ export const translations: Record<TranslationLocale, TranslationData> = {
               description: 'Auto-chase data collection against plan to secure accurate, on-time data, so decarbonization and compliance timelines stay on track.'
             },
             goalManager: {
-              title: 'Abatement & SBTi Planner',
-              description: 'Turn supplier data into rigorous abatement/SBTi plans—ROI-backed and clearly prioritized—so approvals move faster.'
+              title: 'Reduction Planning Workspace',
+              description: 'Use supplier and product carbon data to compare reduction options and document assumptions, cost estimates, and emissions impact for review.'
             }
           },
           supplyChain: {
@@ -809,7 +809,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
             },
             costOptimizer: {
               title: 'Evidence Pack & Submission',
-              description: 'Auto-pack data and evidence into buyer/assurance formats—one-click submission, fewer errors, saving time and translation cost.'
+              description: 'Organize data and evidence into buyer or reviewer formats, with assumptions, review status, and missing items visible before submission.'
             },
             marketAnalyzer: {
               title: 'Market Analyzer',
@@ -1210,7 +1210,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       },
       messages: {
         success: 'Message sent successfully! We will reply to you soon.',
-        error: 'Send failed, please try again later or send email directly to xuguang.ma@climateseal.net',
+        error: 'Send failed, please try again later or send email directly to xuguang.ma@climate-seal.net',
         validation: 'Please fill in all required fields'
       }
     },
@@ -1294,119 +1294,134 @@ export const translations: Record<TranslationLocale, TranslationData> = {
     faq: {
       title: 'Frequently Asked Questions',
       seo: {
-        title: 'FAQ | Climate Seal',
-        description: 'Common questions about product, features, pricing, and support.',
+        title: 'Carbon Accounting Software FAQ | Climate Seal',
+        description: 'Learn how Climate Seal supports AI-powered product carbon footprints, Scope 1–3 accounting, CBAM reporting, supplier data processing, emission-factor matching, and audit-ready carbon reporting.',
         indexable: true,
       },
       groups: [
         {
-          name: 'How Climate Seal Works',
+          name: 'Getting Started',
           items: [
             {
-              q: 'What does Climate Seal do? How is it different from traditional consulting?',
+              q: 'What does Climate Seal do, and how is it different from traditional consulting?',
               a: [
-                'Climate Seal is an AI-powered platform for audit-ready product carbon footprint (PCF) calculation and compliance delivery. It automates BOM cleansing, factor matching, computation, risk assessment, and audit evidence packaging. Reports can be generated in hours with audit-ready materials. Comparing with consultancies, our platform help reduce reporting cycle and costs by over 90%.'
+                'Climate Seal is an AI-powered carbon management workspace supporting organization-, product-, project-, and supply-chain-level accounting and compliance workflows. It turns professional methodologies and regulatory requirements into structured, repeatable workflows while keeping experts in control of methodology, review, and final approval.'
               ]
             },
             {
-              q: 'What data is required to get started? Is it difficult?',
+              q: 'How do I get started with Climate Seal?',
               a: [
-                'Three minimum inputs are sufficient: product specifications/BOM/energy consumption/logistics. Missing items can be temporarily filled with industry defaults or similar processes, with assumptions and uncertainties clearly labeled. The system provides wizard-style templates, unit validation, and auto-completion. When data is incomplete, it guides users to data owners and helps them understand formats and requirements for low-barrier data acquisition.'
+                'Select the accounting or compliance workflow you need and provide basic information about your organization, product, project, reporting objective, and applicable requirements. Climate Seal asks guided questions to identify the minimum required data and documents. After you upload the available files, the platform organizes the data, identifies gaps, builds the accounting model, and prepares calculations and a traceable report draft for expert review.'
               ]
             },
             {
-              q: 'How quickly can the first result be obtained? What factors affect accuracy?',
+              q: 'Who is Climate Seal designed for?',
               a: [
-                'From importing the three inputs to generating results takes approximately 1–2 hours; including risk assessment and corrections, the total time is about 2–4 hours. For supply chain carbon management, the timeline depends on supplier count and product complexity. We first cover the top 80% of emission contributors, then iterate on the long tail. Accuracy primarily depends on the completeness of BOM and energy consumption data, and the clarity of understanding of your operations.'
-              ]
-            }
-          ]
-        },
-        {
-          name: 'Credibility & Audit Readiness',
-          items: [
-            {
-              q: 'Are the results reliable? Can they be audited/verified?',
-              a: [
-                'Aligned with ISO 14067, featuring built-in DQR scoring, risk analysis, uncertainty assessment, and data lineage. One-click export of audit packages supports third-party verification (SGS/BSI/TÜV, etc.).'
-              ]
-            }
-          ]
-        },
-        {
-          name: 'Methodology & Boundaries',
-          items: [
-            {
-              q: 'How to account for Scope 3 Category 1 (purchased goods and services)?',
-              a: [
-                'Follow the route: supplier-specific preference → hybrid method → average factor → expenditure-based (EEIO) as fallback; use a cradle-to-gate boundary; clearly delineate Categories 2/4/5 to prevent double counting; assign DQR and uncertainty to each procurement line, allowing recalculation when better data becomes available.'
+                'Climate Seal is designed for sustainability teams, carbon consultants, LCA practitioners, manufacturers, exporters, brands, procurement teams, and organizations managing carbon data across products, suppliers, projects, or business units.'
               ]
             },
             {
-              q: 'What are some common use cases?',
+              q: 'How quickly can a first product carbon footprint report be generated?',
               a: [
-                'Brand tenders require suppliers to provide PCF documentation; exporting goods to other countries or regions necessitates disclosure of PCF. Scenarios such as carbon taxes, batteries, and DPP (Digital Product Passport) also rely on PCF as foundational support.'
+                'For a standard product with sufficiently complete data, Climate Seal can typically parse the files, build the model, perform calculations, and generate a first report draft within 2–4 hours. More time may be required when applicable requirements call for additional evidence or when missing, inconsistent, or unclear information must be resolved.'
               ]
             }
           ]
         },
         {
-          name: 'Supply Chain & Data Intake',
+          name: 'Standards & Compliance',
           items: [
             {
-              q: 'Can BOMs be imported in bulk and automatically matched to factors?',
+              q: 'What carbon accounting standards and regulatory workflows does Climate Seal support?',
               a: [
-                'Supports Excel/CSV batch import (handles BOMs with hundreds of rows). The system performs multi-level parsing, unit normalization, and specification extraction, using rules and AI for bulk factor matching (with configurable confidence thresholds and manual review queues).'
+                'Climate Seal supports configurable workflows for product, organizational, project, and supply-chain carbon accounting. These can include ISO 14067, ISO 14064, the GHG Protocol, CBAM, and data preparation for EPD, PEF, and Digital Product Passport requirements. Applicable requirements should be confirmed for each project, jurisdiction, and reporting program.'
               ]
             },
             {
-              q: 'What if suppliers are uncooperative or data is incomplete?',
+              q: 'Can Climate Seal calculate product carbon footprints under ISO 14067 and the GHG Protocol?',
               a: [
-                'Provide a lightweight supplier portal and AI advisor that supports invitations, task assignments, and automatic reminders. The AI advisor enables low-barrier data completion without brand-side training, constrains and validates data quality, and triggers recalculation once backfilled data meets quality standards. The entire process is traceable for auditing.'
+                'Climate Seal helps teams prepare product carbon footprint calculations and documentation aligned with ISO 14067 and the GHG Protocol Product Standard. It structures boundaries, functional units, activity data, emission factors, allocation methods, assumptions, calculations, and evidence for professional review.'
+              ]
+            },
+            {
+              q: 'Does Climate Seal support Scope 1, Scope 2, and Scope 3 accounting?',
+              a: [
+                'Yes. Climate Seal can support organizational greenhouse-gas accounting workflows across Scope 1, Scope 2, and relevant Scope 3 categories. The platform helps organize activity data, define calculation methods, select factors, document assumptions, and maintain traceable calculation records.'
+              ]
+            },
+            {
+              q: 'How does Climate Seal support CBAM reporting?',
+              a: [
+                'Climate Seal helps organize product and production data, calculate relevant embedded emissions, document emission factors and methodologies, identify missing evidence, and prepare structured outputs for review. Final CBAM responsibilities and submissions remain with the authorised declarant and relevant professional advisers.'
               ]
             }
           ]
         },
         {
-          name: 'Deliverables & Formats',
+          name: 'Data & AI Workflow',
           items: [
             {
-              q: 'What are the deliverables and formats? Can they meet CBAM/PEF/EPD/DPP requirements?',
+              q: 'What data do I need to provide?',
               a: [
-                'Outputs include PDF reports, machine-readable formats (CSV/JSON), and audit packages; can generate user-specified data formats and provide QR codes for easy display and reuse.'
+                'Required data depends on the selected standard, regulation, product, and system boundary. Typical inputs include BOMs, specifications, energy records, procurement data, transport information, supplier documents, process data, invoices, and supporting evidence. Climate Seal identifies the minimum requirements for each workflow.'
+              ]
+            },
+            {
+              q: 'How does Climate Seal process BOM and supplier files?',
+              a: [
+                'Climate Seal extracts carbon-relevant information from spreadsheets, PDFs, specifications, and supporting documents. It organizes materials, quantities, units, suppliers, locations, energy use, transport, and evidence into structured project data while preserving the source record for review.'
+              ]
+            },
+            {
+              q: 'How are emission factors selected and reviewed?',
+              a: [
+                'Climate Seal suggests factors using available context such as material, process, geography, technology, reporting period, standard, and database source. Each suggestion can include its source, selection rationale, match quality, risk level, and review status. Experts can review, replace, or approve the factor.'
+              ]
+            },
+            {
+              q: 'What happens when carbon data is incomplete?',
+              a: [
+                'Climate Seal flags missing, inconsistent, or unclear information and generates clarification questions or data requests. Where an applicable methodology permits assumptions or default values, these can be documented with their limitations and risks. The platform does not treat uncertain data as confirmed evidence.'
               ]
             }
           ]
         },
         {
-          name: 'Data Security & Ownership',
+          name: 'Review & Deliverables',
           items: [
             {
-              q: 'Who owns my data? Is it secure?',
+              q: 'Can Climate Seal results be independently verified?',
               a: [
-                'Data and results belong to the client. Climate Seal does not retain users’ raw data but provides operational logs for traceability. Data residency, export, and deletion can be enabled as needed; on‑premises deployment is also supported for data security.'
+                'Climate Seal prepares structured calculations, factor records, assumptions, data-quality signals, and supporting evidence that can make third-party review more efficient. Climate Seal does not issue independent assurance or certification. Final verification is performed by an appropriately qualified independent body.'
+              ]
+            },
+            {
+              q: 'What is included in the audit ledger?',
+              a: [
+                'The audit ledger records source data, conversions, emission factors, selection rationale, formulas, assumptions, evidence, risk levels, results, and review status. It provides a traceable working record behind the final report rather than presenting only a final carbon figure.'
+              ]
+            },
+            {
+              q: 'What deliverables and export formats are available?',
+              a: [
+                'Climate Seal can generate PDF report drafts, structured CSV and JSON exports, and audit-ledger packages. Outputs can be adapted to customer-defined templates and formats, with QR codes available for sharing and reuse. These deliverables can support CBAM, PEF, EPD, and DPP workflows, subject to applicable requirements and final professional review.'
               ]
             }
           ]
         },
         {
-          name: 'Pricing & Trials',
+          name: 'Security & Pricing',
           items: [
             {
-              q: 'How are pricing and trials arranged?',
+              q: 'Who owns my data, and how is it protected?',
               a: [
-                'We offer one free trial report. The full version is billed based on calculation credits. The goal is to reduce the time and cost of a single PCF run to 1% of traditional methods.'
+                'Customer data and calculation results remain the customer’s property. Data access, retention, export, deletion, residency, and deployment requirements can be addressed according to the selected service plan and agreement.'
               ]
-            }
-          ]
-        },
-        {
-          name: 'Others',
-          items: [
+            },
             {
-              q: 'What is the difference between “Product Carbon Footprint (PCF)” and “Corporate Carbon Accounting (Scope 1/2/3)”?',
+              q: 'How do pricing and trials work?',
               a: [
-                'PCF measures greenhouse gas emissions across the entire life cycle of a single product, focusing on the product itself (raw materials/semi-finished/finished goods). Corporate carbon accounting, following the GHG Protocol, categorizes emissions into Scope 1/2/3 at the organizational level, focusing on overall corporate emissions (total energy consumption, employee activities, etc.).'
+                'Climate Seal uses a credit-based pricing model, with usage determined by the AI processing required for each task. Monthly subscriptions start at 200 credits, and additional credits can be purchased as needed. We offer one free trial report. Please contact us to discuss trial access and the right plan for your workflow.'
               ]
             }
           ]
@@ -1466,9 +1481,9 @@ export const translations: Record<TranslationLocale, TranslationData> = {
         carbonExpert: {
           title: '碳/ESG专业人士',
           role: 'ESG/可持续/碳/咨询专家',
-          needs: '我需要自动化、智能化工具，提高工作效率和报告精准度',
-          stat: '1分钟LCA & 95%准确率',
-          statDescription: '大幅缩短等待时间 & 确保信心',
+          needs: '通过结构化 AI 支持减少 LCA 与碳报告中的重复工作，包括数据准备、因子匹配、建模、风险复核和证据整理。',
+          stat: '结构化 AI 辅助 LCA 工作流',
+          statDescription: '减少重复搭建与复核工作',
           secondStatDescription: '自动批量因子匹配',
           thirdStatDescription: '确保可审计 & 可比较数据',
           fourthStat: 'DQR+行业数据 & 字段验证',
@@ -1502,7 +1517,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
         brandOwner: {
           title: '品牌方和采购负责人',
           role: '可持续负责人',
-          needs: '我需要完成品牌和供应链降碳目标，降低供应链碳管理成本和压力，让供应链无痛提供高质量碳排放数据',
+          needs: '我需要更高效地收集供应商数据、跟踪 Scope 3，并使用产品和供应链碳数据支持目标设定与减排规划。',
           stat: '≈$100 / 4 小时 / 每个SKU',
           statDescription: '降低合规成本与时间',
           secondStatDescription: '内置数据质量门槛',
@@ -1524,7 +1539,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
             },
             {
               title: '获得脱碳资金',
-              description: '没有明确的边际减排成本曲线（MACC）或经过验证的ROI，关键的脱碳项目被搁置，阻碍了SBTi和CSRD目标。'
+              description: '如果缺少透明的假设、成本估算和排放影响，管理层很难复核、比较并为减排方案提供资源。'
             }
           ],
           testimonial: '"Climate Seal将我们的供应链碳管理从合规负担转变为竞争优势。"',
@@ -1538,9 +1553,9 @@ export const translations: Record<TranslationLocale, TranslationData> = {
           stat: '3 个文件与一个简单流程',
           statDescription: '显著降低合规成本',
           secondStatDescription: '自动匹配与内置验证',
-          thirdStatDescription: '首次提交90%+通过率',
-          fourthStat: '4小时，核验就绪PCF',
-          fourthStatDescription: '轻松满足合规要求',
+          thirdStatDescription: '提交前复核质量风险',
+          fourthStat: '可追溯 PCF 交付包',
+          fourthStatDescription: '便于买方与核验机构审查',
           painPoints: [
             {
               title: '错过投标截止日期',
@@ -1582,15 +1597,15 @@ export const translations: Record<TranslationLocale, TranslationData> = {
             },
             supplyChainAnalyzer: {
               title: '质量风险分析师',
-              description: '提供字段级质量评分和风险预警，给出修复建议，确保报告一次性通过验证。'
+              description: '提供字段级质量检查、不确定性信号与修复建议，帮助专家在第三方审查前识别问题。'
             },
             reportGenerator: {
-              title: '外部交叉验证器',
-              description: '对照第三方报告和公开数据集交叉验证报告值，几分钟内返回带证据链接的置信度匹配结果，标记冲突以快速解决。'
+              title: '报告与证据包整理助手',
+              description: '把计算、因子记录、假设、支撑证据和复核状态整理成可追溯的报告草稿与交付包。'
             },
             dataValidator: {
-              title: '风险筛查器',
-              description: '评分法规/披露/供应链/声誉风险，排名前10个暴露风险，并生成带有边际减排成本（USD/tCO₂e）和ROI的90天修复计划。'
+              title: '复核风险筛查器',
+              description: '标记关键数据缺口、薄弱假设、不确定的因子匹配和其他复核风险，并整理成按优先级排序的专家跟进清单。'
             }
           },
           brandOwner: {
@@ -1607,8 +1622,8 @@ export const translations: Record<TranslationLocale, TranslationData> = {
               description: '自动追踪数据收集进度，确保准确、按时的数据，使去碳和合规时间表保持正轨。'
             },
             goalManager: {
-              title: '减排和SBTi规划器',
-              description: '将供应商数据转化为严格的减排/SBTi计划——基于ROI并清晰优先排序——使审批更快通过。'
+              title: '减排规划工作台',
+              description: '使用供应商与产品碳数据比较减排方案，并记录假设、成本估算和排放影响，便于复核。'
             }
           },
           supplyChain: {
@@ -1622,7 +1637,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
             },
             costOptimizer: {
               title: '证据包装和提交',
-              description: '自动将数据和证据打包成采购方/保证格式——一键提交，减少错误，节省时间和翻译成本。'
+              description: '把数据与证据整理成买方或审查方要求的格式，并在提交前展示假设、复核状态和缺失项。'
             },
             marketAnalyzer: {
               title: '市场分析器',
@@ -2023,7 +2038,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       },
       messages: {
         success: '消息发送成功！我们会尽快回复您。',
-        error: '发送失败，请稍后重试或直接发送邮件至 xuguang.ma@climateseal.net',
+        error: '发送失败，请稍后重试或直接发送邮件至 xuguang.ma@climate-seal.net',
         validation: '请填写所有必需字段'
       }
     },
@@ -2105,96 +2120,136 @@ export const translations: Record<TranslationLocale, TranslationData> = {
     }
     ,
     faq: {
-      title: '常见问题 FAQ',
+      title: '常见问题',
       seo: {
-        title: '常见问题 | Climate Seal',
-        description: '关于产品、功能、价格与支持的常见问题。',
+        title: '碳核算软件常见问题 | Climate Seal',
+        description: '了解 Climate Seal 如何支持 AI 产品碳足迹、Scope 1–3 核算、CBAM 报告、供应商数据处理、排放因子匹配和可审核的碳报告。',
         indexable: true,
       },
       groups: [
         {
-          name: '产品',
+          name: '开始使用',
           items: [
             {
-              q: '常见使用场景',
+              q: 'Climate Seal 是做什么的，与传统咨询有什么不同？',
               a: [
-                '品牌方招标需要供应商提供 PCF、出口其他国家地区的商品需要披露 PCF；碳税、电池、DPP 数字护照等场景也都需要以 PCF 作为支撑。'
+                'Climate Seal 是一个 AI 驱动的碳管理工作台，支持组织、产品、项目和供应链层面的核算与合规工作流程。它将专业方法和法规要求转化为结构化、可重复使用的工作流程，同时让专家保留对方法、复核和最终审批的控制权。'
               ]
             },
             {
-              q: 'Climate Seal 是做什么的？跟传统咨询有什么不同？',
+              q: '如何开始使用 Climate Seal？',
               a: [
-                'Climate Seal 是一个面向产品碳足迹（PCF）审计与合规交付的 AI 平台。自动完成 BOM 清洗、因子匹配、计算、风险评估与审计证据打包，在数小时内生成具备审计准备的报告。与传统咨询相比，可将报告周期与成本降低 90% 以上。'
+                '选择所需的碳核算或合规工作流程，并提供组织、产品、项目、报告目标和适用要求等基本信息。Climate Seal 会通过引导式问题识别最低数据与文件要求。上传现有文件后，平台会整理数据、识别缺口、搭建核算模型，并准备计算结果和可追溯的报告草稿，供专家复核。'
               ]
             },
             {
-              q: '开始用需要提供哪些数据？会不会很难？',
+              q: 'Climate Seal 适合哪些用户？',
               a: [
-                '三个最少文件即可：产品说明/BOM/能耗/物流；缺项可用行业默认或相似工艺暂填，并标注假设与不确定性。系统提供向导式模板、单位校验与自动补全；在资料不全时，会引导找到数据所有者并帮助其理解数据格式与要求，实现低门槛的数据获取。'
+                'Climate Seal 适合可持续发展团队、碳咨询顾问、LCA 专业人员、制造商、出口企业、品牌方、采购团队，以及需要管理跨产品、供应商、项目或业务单元碳数据的组织。'
               ]
             },
             {
-              q: '多快能拿到第一个结果？准确性受什么影响？',
+              q: '多快能生成首份产品碳足迹报告？',
               a: [
-                '从导入三个文件到产生结果约需 1–2 小时；加上风险评估与矫正，总时长约 2–4 小时。供应链碳管理因供应商数量与产品复杂度会更久，我们先覆盖前 80% 排放贡献，再迭代长尾。准确性主要取决于：BOM 与能耗信息的完整度，以及对业务流程的理解清晰度。'
-              ]
-            },
-            {
-              q: '如何核算 Scope 3 范畴 1（采购的商品与服务）？',
-              a: [
-                '遵循“供应商特定优先 → 混合法 → 平均因子 → 支出法（EEIO）兜底”的路线；边界为 cradle-to-gate；与范畴 2/4/5 明确分工防止双算；为每条采购项给出 DQR 与不确定性，后续拿到更好数据可回填重算。'
-              ]
-            },
-            {
-              q: '结果靠不靠谱？能审计/可验证吗？',
-              a: [
-                '对齐 ISO 14067，内置 DQR 数据质量评分、风险分析、不确定性与数据血缘；一键导出审计包，可对接第三方核证（SGS/BSI/TÜV 等）。'
-              ]
-            },
-            {
-              q: 'BOM 能否批量导入并自动匹配因子？',
-              a: [
-                '支持 Excel/CSV 批量导入（可处理上百行 BOM）；系统进行多层级解析、单位清洗、规格抽取，并用规则 + AI 批量因子匹配（可设置信心阈值与人工复核队列）。'
-              ]
-            },
-            {
-              q: '交付物与格式有哪些？能满足 CBAM / PEF / EPD / DPP 吗？',
-              a: [
-                '输出 PDF 报告 + 机器可读格式（CSV/JSON）+ 审计包；可按用户要求生成数据格式，并提供二维码便于外显与复用。'
-              ]
-            },
-            {
-              q: '供应商不配合/数据不全怎么办？',
-              a: [
-                '提供供应商轻量门户与 AI 顾问，支持邀请与任务分发/自动提醒；AI 顾问引导供应商低门槛补数，无需品牌方培训；可约束并验证供应商上传数据质量，回填达标后自动重算；全程留痕，便于审核。'
-              ]
-            },
-            {
-              q: '我的数据归谁？安全吗？',
-              a: [
-                '数据与结果归客户；Climate Seal 不保留用户原始数据，提供操作日志留痕。可按需启用数据驻留与导出/删除；亦支持本地化部署以保障数据安全。'
+                '对于数据较完整的标准产品，Climate Seal 通常可在 2–4 小时内完成文件解析、模型搭建和计算，并生成首份报告草稿。如适用要求需要更多证据，或必须解决数据缺失、不一致或含义不清等问题，所需时间可能更长。'
               ]
             }
           ]
         },
         {
-          name: '价格',
+          name: '标准与合规',
           items: [
             {
-              q: '价格与试用怎么安排？',
+              q: 'Climate Seal 支持哪些碳核算标准和法规工作流程？',
               a: [
-                '提供 1 个报告的免费试用额度；正式版按计算额度（request credits）计费。目标是将一次 PCF 的时间与费用降至传统路径的 1%。'
+                'Climate Seal 支持可配置的产品、组织、项目和供应链碳核算工作流程，包括 ISO 14067、ISO 14064、GHG Protocol、CBAM，以及针对 EPD、PEF 和数字产品护照要求的数据准备。每个项目的适用要求应根据所在司法管辖区和报告项目进行确认。'
+              ]
+            },
+            {
+              q: 'Climate Seal 能否按照 ISO 14067 和 GHG Protocol 计算产品碳足迹？',
+              a: [
+                'Climate Seal 帮助团队准备与 ISO 14067 和 GHG Protocol Product Standard 对齐的产品碳足迹计算与文件。平台会结构化系统边界、功能单位、活动数据、排放因子、分配方法、假设、计算和证据，供专业人员复核。'
+              ]
+            },
+            {
+              q: 'Climate Seal 是否支持 Scope 1、Scope 2 和 Scope 3 核算？',
+              a: [
+                '支持。Climate Seal 可支持覆盖 Scope 1、Scope 2 和相关 Scope 3 类别的组织温室气体核算工作流程。平台帮助整理活动数据、定义计算方法、选择排放因子、记录假设，并保留可追溯的计算记录。'
+              ]
+            },
+            {
+              q: 'Climate Seal 如何支持 CBAM 报告？',
+              a: [
+                'Climate Seal 帮助整理产品和生产数据、计算相关嵌入排放、记录排放因子与方法、识别缺失证据，并准备供复核的结构化输出。最终 CBAM 责任和申报仍由授权 CBAM 申报人及相关专业顾问承担。'
               ]
             }
           ]
         },
         {
-          name: '其他',
+          name: '数据与 AI 工作流程',
           items: [
             {
-              q: '“产品碳足迹（PCF）”与“企业碳核算（Scope 1/2/3）”的区别？',
+              q: '我需要提供哪些数据？',
               a: [
-                'PCF 衡量的是单个产品全生命周期的温室气体排放，关注对象是产品（原材料/半成品/成品）；企业碳核算遵循 GHG Protocol，将企业排放分为 Scope 1/2/3，关注对象是组织层面的总体排放（整体能耗/员工活动等）。'
+                '所需数据取决于所选标准、法规、产品和系统边界。常见输入包括 BOM、产品规格、能源记录、采购数据、运输信息、供应商文件、工艺数据、发票和支撑证据。Climate Seal 会识别每个工作流程的最低要求。'
+              ]
+            },
+            {
+              q: 'Climate Seal 如何处理 BOM 和供应商文件？',
+              a: [
+                'Climate Seal 从电子表格、PDF、规格文件和支撑材料中提取与碳核算相关的信息。平台将材料、数量、单位、供应商、地点、能源使用、运输和证据整理为结构化项目数据，同时保留源记录供复核。'
+              ]
+            },
+            {
+              q: '排放因子是如何选择和复核的？',
+              a: [
+                'Climate Seal 会结合材料、工艺、地理位置、技术、报告期、标准和数据库来源等上下文建议排放因子。每个建议可包含因子来源、选择理由、匹配质量、风险等级和复核状态。专家可以复核、替换或批准因子。'
+              ]
+            },
+            {
+              q: '碳数据不完整时怎么办？',
+              a: [
+                'Climate Seal 会标记缺失、不一致或含义不清的信息，并生成澄清问题或数据请求。如适用方法允许使用假设或默认值，平台会同时记录其局限性和风险。平台不会将不确定数据视为已确认证据。'
+              ]
+            }
+          ]
+        },
+        {
+          name: '复核与交付',
+          items: [
+            {
+              q: 'Climate Seal 的结果能否接受独立核验？',
+              a: [
+                'Climate Seal 会整理结构化计算、因子记录、假设、数据质量信号和支撑证据，从而帮助第三方审查更高效。Climate Seal 不提供独立鉴证或认证。最终核验应由具备相应资质的独立机构完成。'
+              ]
+            },
+            {
+              q: '审计底稿包含哪些内容？',
+              a: [
+                '审计底稿记录源数据、换算、排放因子、选择理由、公式、假设、证据、风险等级、结果和复核状态。它提供最终报告背后可追溯的工作记录，而不只是展示最终碳数值。'
+              ]
+            },
+            {
+              q: '可以生成哪些交付物和导出格式？',
+              a: [
+                'Climate Seal 可生成 PDF 报告草稿、结构化 CSV 和 JSON 导出，以及审计底稿包。输出也可根据客户指定的模板和格式进行调整，并可提供二维码便于分享和复用。这些交付物可支持 CBAM、PEF、EPD 和 DPP 工作流程，但仍需遵循适用要求并完成最终专业复核。'
+              ]
+            }
+          ]
+        },
+        {
+          name: '安全与价格',
+          items: [
+            {
+              q: '我的数据归谁，如何受到保护？',
+              a: [
+                '客户数据和计算结果归客户所有。数据访问、保留、导出、删除、驻留和部署要求，可根据所选服务方案和协议进行安排。'
+              ]
+            },
+            {
+              q: '价格与试用如何安排？',
+              a: [
+                'Climate Seal 采用额度制计费模式，额度用量取决于每项任务所需的 AI 处理量。月度订阅起步为 200 个额度，如有需要可购买额外额度。我们提供一份免费试用报告。请联系我们，了解试用方式并选择适合您工作流程的方案。'
               ]
             }
           ]

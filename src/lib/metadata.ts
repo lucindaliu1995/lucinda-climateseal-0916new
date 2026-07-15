@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
-import { buildLanguageAlternates, isChineseLanguage, resolveLanguage } from '@/lib/language';
+import {
+  buildLanguageAlternates,
+  buildLocalizedCanonical,
+  isChineseLanguage,
+  resolveLanguage,
+} from '@/lib/language';
 
 type LocalizedText = {
   en: string;
@@ -30,7 +35,7 @@ export async function createLocalizedPageMetadata(
     title,
     description,
     alternates: {
-      canonical: options.canonical,
+      canonical: buildLocalizedCanonical(options.canonical, language),
       languages: buildLanguageAlternates(options.canonical),
     },
     openGraph: image

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { headers } from 'next/headers';
-import { buildLanguageAlternates, isChineseLanguage, resolveLanguage } from '@/lib/language';
+import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage, resolveLanguage } from '@/lib/language';
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
 
@@ -15,7 +15,7 @@ const content = {
     heroBody:
       'If you are preparing Product Carbon Footprint delivery, Scope 3 collaboration, supplier data collection, export compliance, or a carbon pilot, we can help you assess scope, data readiness, and the right working model.',
     contactWays: [
-      { label: 'Email', value: 'xuguang.ma@climateseal.net' },
+      { label: 'Email', value: 'xuguang.ma@climate-seal.net' },
       { label: 'Phone', value: '+86 15652618365' },
       { label: 'Locations', value: 'Beijing · Germany · Dubai · Singapore' },
     ],
@@ -29,7 +29,7 @@ const content = {
     ],
     fastLabel: 'Fastest path',
     fastBody:
-      'Email xuguang.ma@climateseal.net with your product type, target market, and current data readiness. That usually gives us enough to guide the next step quickly.',
+      'Email xuguang.ma@climate-seal.net with your product type, target market, and current data readiness. That usually gives us enough to guide the next step quickly.',
     processEyebrow: 'How it works',
     processTitle: 'From first contact to project start, the path is usually simple',
     process: [
@@ -68,7 +68,7 @@ const content = {
     heroBody:
       '如果你正在准备产品碳足迹交付、Scope 3 协同、供应商数据采集、出口合规或碳核算试点，我们可以先帮助你判断范围、数据准备度和更合适的合作方式。',
     contactWays: [
-      { label: 'Email', value: 'xuguang.ma@climateseal.net' },
+      { label: 'Email', value: 'xuguang.ma@climate-seal.net' },
       { label: 'Phone', value: '+86 15652618365' },
       { label: 'Locations', value: 'Beijing · Germany · Dubai · Singapore' },
     ],
@@ -82,7 +82,7 @@ const content = {
     ],
     fastLabel: 'Fastest path',
     fastBody:
-      '直接发邮件到 xuguang.ma@climateseal.net，并附上产品类型、目标市场和当前数据准备情况，通常就足够我们快速给出下一步建议。',
+      '直接发邮件到 xuguang.ma@climate-seal.net，并附上产品类型、目标市场和当前数据准备情况，通常就足够我们快速给出下一步建议。',
     processEyebrow: 'How it works',
     processTitle: '从第一次接触到项目启动，路径通常并不复杂',
     process: [
@@ -116,14 +116,15 @@ const content = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const headerList = await headers();
-  const locale = isChineseLanguage(resolveLanguage(headerList.get('x-language'))) ? 'zh' : 'en';
+  const language = resolveLanguage(headerList.get('x-language'));
+  const locale = isChineseLanguage(language) ? 'zh' : 'en';
   const copy = content[locale];
 
   return {
     title: copy.title,
     description: copy.description,
     alternates: {
-      canonical: '/contact',
+      canonical: buildLocalizedCanonical('/contact', language),
       languages: buildLanguageAlternates('/contact'),
     },
     openGraph: {
@@ -163,7 +164,8 @@ export default async function ContactPage() {
     mainEntity: {
       '@type': 'Organization',
       name: 'Climate Seal',
-      email: 'xuguang.ma@climateseal.net',
+      legalName: 'Climate Seal (Beijing) Technology Co., Ltd.',
+      email: 'xuguang.ma@climate-seal.net',
       telephone: '+86 15652618365',
     },
   };

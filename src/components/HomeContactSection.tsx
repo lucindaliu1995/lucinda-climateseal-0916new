@@ -94,7 +94,7 @@ export default function HomeContactSection() {
             <div className="mt-9 grid gap-4 border-t border-white/12 pt-6 text-sm text-white/72 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9bc7bd]">Email</p>
-                <p className="mt-2 break-words font-medium text-white">xuguang.ma@climateseal.net</p>
+                <p className="mt-2 break-words font-medium text-white">xuguang.ma@climate-seal.net</p>
               </div>
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9bc7bd]">Phone</p>

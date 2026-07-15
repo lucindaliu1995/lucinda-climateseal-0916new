@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { headers } from 'next/headers';
-import { buildLanguageAlternates, isChineseLanguage, resolveLanguage } from '@/lib/language';
+import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage, resolveLanguage } from '@/lib/language';
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
 
@@ -166,14 +166,15 @@ const content = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const headerList = await headers();
-  const locale = isChineseLanguage(resolveLanguage(headerList.get('x-language'))) ? 'zh' : 'en';
+  const language = resolveLanguage(headerList.get('x-language'));
+  const locale = isChineseLanguage(language) ? 'zh' : 'en';
   const copy = content[locale];
 
   return {
     title: copy.title,
     description: copy.description,
     alternates: {
-      canonical: '/products',
+      canonical: buildLocalizedCanonical('/products', language),
       languages: buildLanguageAlternates('/products'),
     },
     openGraph: {

@@ -1,11 +1,18 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
-import { getAllCategories, getMeaningfulArticleById, getMeaningfulArticles, type ArticleItem } from '@/lib/content';
+import {
+  getAllCategories,
+  getMeaningfulArticleById,
+  getMeaningfulArticles,
+  hasChineseArticleVersion,
+  type ArticleItem,
+} from '@/lib/content';
 import { extractToc, renderMarkdown } from '@/lib/article-markdown';
 import type { Language } from '@/lib/i18n';
-import { isChineseLanguage, resolveLanguage } from '@/lib/language';
+import { isChineseLanguage, LANGUAGE_HEADER, resolveLanguage } from '@/lib/language';
 import {
   buildResourcePageUrl,
   createMissingResourceMetadata,
@@ -13,6 +20,7 @@ import {
   createResourceBreadcrumbJsonLd,
   createResourceDetailMetadata,
   formatResourceDate,
+  getAvailableResourceLanguage,
   getLocalizedSummary,
   getLocalizedTitle,
 } from '@/lib/resource-detail';
@@ -53,13 +61,16 @@ export function generateStaticParams() {
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  const language = resolveLanguage(resolvedSearchParams?.lang);
+  const headerList = await headers();
+  const requestedLanguage = resolveLanguage(resolvedSearchParams?.lang || headerList.get(LANGUAGE_HEADER));
   const article = getMeaningfulArticleById(id);
 
   if (!article) {
     return createMissingResourceMetadata('Article Not Found');
   }
 
+  const hasChineseVersion = hasChineseArticleVersion(article);
+  const language = getAvailableResourceLanguage(requestedLanguage, hasChineseVersion);
   const title = getLocalizedTitle(article, language);
   const description = getLocalizedSummary(article, language);
   const canonical = `/resources/${id}`;
@@ -67,7 +78,8 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 
   return createResourceDetailMetadata({
     canonical,
-    language,
+    language: requestedLanguage,
+    hasChineseVersion,
     title,
     description,
     image,
@@ -78,12 +90,18 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 export default async function ArticleDetailPage({ params, searchParams }: PageProps) {
   const { id } = await params;
   const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  const language = resolveLanguage(resolvedSearchParams?.lang);
+  const headerList = await headers();
+  const requestedLanguage = resolveLanguage(resolvedSearchParams?.lang || headerList.get(LANGUAGE_HEADER));
   const article = getMeaningfulArticleById(id);
 
   if (!article) {
     notFound();
   }
+
+  const language = getAvailableResourceLanguage(
+    requestedLanguage,
+    hasChineseArticleVersion(article)
+  );
 
   const articleTitle = getLocalizedTitle(article, language);
   const articleDescription = getLocalizedSummary(article, language);
@@ -111,7 +129,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
   });
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" lang={isChineseLanguage(language) ? 'zh-CN' : 'en'}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 

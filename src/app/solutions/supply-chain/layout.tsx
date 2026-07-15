@@ -9,8 +9,8 @@ export async function generateMetadata(): Promise<Metadata> {
       zh: '供应链解决方案',
     },
     description: {
-      en: 'Climate Seal for suppliers and exporters: compliant PCFs, pre-verification checks, and one-click sustainability submissions for buyers and audits.',
-      zh: '面向供应商与出口团队的合规 PCF、预核验检查和一键式可持续发展提交流程。',
+      en: 'Climate Seal for suppliers and exporters: structured PCF preparation, quality checks, and traceable submission packages for buyers and reviewers.',
+      zh: '面向供应商与出口团队的结构化 PCF 准备、质量检查和可追溯买方提交材料。',
     },
     image: '/supply-chain-assessment.png',
     imageAlt: 'Climate Seal supply chain solution',

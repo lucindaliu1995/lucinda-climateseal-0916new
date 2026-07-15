@@ -3,7 +3,7 @@ import Script from 'next/script';
 import type { Metadata } from 'next';
 import FAQClient from '@/components/FAQClient';
 import { translations, type Language } from '@/lib/i18n';
-import { buildLanguageAlternates, getTranslationLocale, resolveLanguage } from '@/lib/language';
+import { buildLanguageAlternates, buildLocalizedCanonical, getTranslationLocale, resolveLanguage } from '@/lib/language';
 
 const zh = translations.zh.faq;
 const en = translations.en.faq;
@@ -14,10 +14,10 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   const locale = getTranslationLocale(language);
   const faq = locale === 'en' ? en : zh;
   return {
-    title: faq.title,
+    title: { absolute: faq.seo.title },
     description: faq.seo.description,
     alternates: {
-      canonical: '/faq',
+      canonical: buildLocalizedCanonical('/faq', language),
       languages: buildLanguageAlternates('/faq'),
     },
     openGraph: {

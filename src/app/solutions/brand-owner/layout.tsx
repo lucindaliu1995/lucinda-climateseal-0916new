@@ -9,8 +9,8 @@ export async function generateMetadata(): Promise<Metadata> {
       zh: '品牌方解决方案',
     },
     description: {
-      en: 'Climate Seal for brand owners: supplier data collection, Scope 3 tracking, sustainability reporting, and faster SBTi-ready planning.',
-      zh: '面向品牌方的供应商数据收集、Scope 3 跟踪、可持续发展报告和更快推进 SBTi 规划的解决方案。',
+      en: 'Climate Seal for brand owners: supplier data collection, Scope 3 tracking, sustainability reporting, target-setting support, and reduction planning.',
+      zh: '面向品牌方的供应商数据收集、Scope 3 跟踪、可持续发展报告、目标设定支持与减排规划。',
     },
     image: '/brand-analyzer.png',
     imageAlt: 'Climate Seal brand owner solution',
