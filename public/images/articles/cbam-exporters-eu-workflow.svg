@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">CBAM workflow for exporters selling covered goods to the EU</title>
+  <desc id="desc">A workflow showing how a non-EU exporter provides embedded emissions data to an EU importer for CBAM declarations, certificates, and commercial decisions.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f5f7f3; }
+      .panel { fill: #ffffff; stroke: #c8d7cf; stroke-width: 2; }
+      .box { fill: #f7f3ea; stroke: #c9d5ce; stroke-width: 1.5; }
+      .box-alt { fill: #e8f3ef; stroke: #9bb9ad; stroke-width: 1.5; }
+      .box-risk { fill: #fff7df; stroke: #e2ca8b; stroke-width: 1.5; }
+      .num { fill: #1f625b; font: 700 17px Arial, sans-serif; }
+      .label { fill: #123f3d; font: 700 19px Arial, sans-serif; }
+      .small { fill: #5f7672; font: 500 14px Arial, sans-serif; }
+      .arrow { stroke: #2f7770; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .dashed { stroke-dasharray: 7 7; }
+      .title { fill: #123f3d; font: 700 32px Arial, sans-serif; }
+      .subtitle { fill: #5f7672; font: 500 17px Arial, sans-serif; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#2f7770"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="520"/>
+  <rect class="panel" x="34" y="34" width="1132" height="452" rx="8"/>
+
+  <text class="title" x="600" y="86" text-anchor="middle">How CBAM Reaches Non-EU Exporters</text>
+  <text class="subtitle" x="600" y="118" text-anchor="middle">Embedded emissions data now influences declarations, carbon cost, and buyer decisions</text>
+
+  <g transform="translate(68 170)">
+    <rect class="box" width="156" height="116" rx="7"/>
+    <text class="num" x="20" y="32">01</text>
+    <text class="label" x="20" y="65">Non-EU</text>
+    <text class="label" x="20" y="90">exporter</text>
+  </g>
+  <g transform="translate(246 170)">
+    <rect class="box" width="156" height="116" rx="7"/>
+    <text class="num" x="20" y="32">02</text>
+    <text class="label" x="20" y="65">Covered</text>
+    <text class="label" x="20" y="90">goods</text>
+  </g>
+  <g transform="translate(424 170)">
+    <rect class="box-alt" width="156" height="116" rx="7"/>
+    <text class="num" x="20" y="32">03</text>
+    <text class="label" x="20" y="65">EU importer</text>
+    <text class="small" x="20" y="90">Requests data</text>
+  </g>
+  <g transform="translate(602 170)">
+    <rect class="box-alt" width="156" height="116" rx="7"/>
+    <text class="num" x="20" y="32">04</text>
+    <text class="label" x="20" y="65">Embedded</text>
+    <text class="label" x="20" y="90">emissions</text>
+  </g>
+  <g transform="translate(780 170)">
+    <rect class="box-alt" width="156" height="116" rx="7"/>
+    <text class="num" x="20" y="32">05</text>
+    <text class="label" x="20" y="65">CBAM</text>
+    <text class="label" x="20" y="90">declaration</text>
+  </g>
+  <g transform="translate(958 170)">
+    <rect class="box-risk" width="156" height="116" rx="7"/>
+    <text class="num" x="20" y="32">06</text>
+    <text class="label" x="20" y="65">Certificates</text>
+    <text class="small" x="20" y="90">Carbon cost</text>
+  </g>
+
+  <path class="arrow" d="M224 228H244"/>
+  <path class="arrow" d="M402 228H422"/>
+  <path class="arrow" d="M580 228H600"/>
+  <path class="arrow" d="M758 228H778"/>
+  <path class="arrow" d="M936 228H956"/>
+
+  <g transform="translate(224 344)">
+    <rect class="box" width="322" height="82" rx="7"/>
+    <text class="label" x="24" y="34">Credible actual data</text>
+    <text class="small" x="24" y="60">Lower uncertainty and stronger buyer trust</text>
+  </g>
+  <g transform="translate(654 344)">
+    <rect class="box" width="322" height="82" rx="7"/>
+    <text class="label" x="24" y="34">Commercial response</text>
+    <text class="small" x="24" y="60">Pricing, contracts, and supplier selection</text>
+  </g>
+
+  <path class="arrow dashed" d="M324 286V340"/>
+  <path class="arrow" d="M546 385H650"/>
+  <path class="arrow dashed" d="M976 385C1080 385 1096 310 1096 286"/>
+</svg>
