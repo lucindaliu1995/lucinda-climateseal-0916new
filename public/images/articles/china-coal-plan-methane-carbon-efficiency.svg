@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">China's 2026-2030 coal plan</title>
+  <desc id="desc">A dual-track view of energy security, smart mining, methane control, and carbon efficiency in China's coal industry.</desc>
+  <defs>
+    <style>
+      .eyebrow { fill: #58716d; font: 700 20px Arial, sans-serif; letter-spacing: 3px; }
+      .headline { fill: #123f3d; font: 700 50px Arial, sans-serif; }
+      .subhead { fill: #4f6864; font: 500 22px Arial, sans-serif; }
+      .label { fill: #123f3d; font: 700 23px Arial, sans-serif; }
+      .body { fill: #58716d; font: 500 17px Arial, sans-serif; }
+      .metric { fill: #123f3d; font: 700 31px Arial, sans-serif; }
+      .metric-label { fill: #58716d; font: 600 15px Arial, sans-serif; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0 0L12 6L0 12Z" fill="#2f7770"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#f5f7f3"/>
+  <rect x="62" y="58" width="1476" height="784" rx="8" fill="#ffffff" stroke="#bfd0c7" stroke-width="2"/>
+
+  <text class="eyebrow" x="118" y="124">POLICY OUTLOOK · 2026-2030</text>
+  <text class="headline" x="118" y="192">China's Coal Transition</text>
+  <text class="subhead" x="118" y="234">Energy security remains central. Methane and carbon efficiency become measurable priorities.</text>
+
+  <g transform="translate(118 300)">
+    <rect width="598" height="354" rx="7" fill="#eef3f0" stroke="#b8cbc1" stroke-width="2"/>
+    <rect width="598" height="68" rx="7" fill="#123f3d"/>
+    <text x="32" y="43" fill="#ffffff" font-family="Arial, sans-serif" font-size="23" font-weight="700">ENERGY SECURITY</text>
+
+    <g transform="translate(36 106)">
+      <path d="M18 190V74L70 30L122 74V190" fill="#dce8e2" stroke="#2f7770" stroke-width="4"/>
+      <path d="M70 30V0M38 106H102M38 138H102" stroke="#2f7770" stroke-width="4"/>
+      <circle cx="70" cy="190" r="12" fill="#2f7770"/>
+    </g>
+
+    <text class="label" x="208" y="130">Modernized supply system</text>
+    <text class="body" x="208" y="169">Larger, safer, and more advanced mines</text>
+    <text class="label" x="208" y="226">Smart mining and AI</text>
+    <text class="body" x="208" y="265">Automation, digital operations, better control</text>
+    <text class="label" x="208" y="322">Coal and new energy integration</text>
+  </g>
+
+  <path d="M740 477H850" stroke="#2f7770" stroke-width="5" marker-end="url(#arrow)"/>
+  <circle cx="795" cy="477" r="35" fill="#dcebe3" stroke="#9bb9ad" stroke-width="2"/>
+  <path d="M779 477L791 489L813 461" fill="none" stroke="#1f625b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g transform="translate(884 300)">
+    <rect width="598" height="354" rx="7" fill="#f8f4e9" stroke="#d7c89f" stroke-width="2"/>
+    <rect width="598" height="68" rx="7" fill="#215b57"/>
+    <text x="32" y="43" fill="#ffffff" font-family="Arial, sans-serif" font-size="23" font-weight="700">MEASURABLE TRANSITION</text>
+
+    <g transform="translate(42 112)">
+      <path d="M72 184C72 184 20 132 20 84C20 44 44 18 72 18C100 18 124 44 124 84C124 132 72 184 72 184Z" fill="#dcebe3" stroke="#2f7770" stroke-width="4"/>
+      <path d="M72 50V145M48 83C62 91 82 91 96 83M46 113C61 122 83 122 98 113" fill="none" stroke="#2f7770" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <text class="label" x="208" y="130">Methane capture and use</text>
+    <text class="body" x="208" y="169">Monitoring, drainage, utilization, accounting</text>
+    <text class="label" x="208" y="226">Energy and carbon efficiency</text>
+    <text class="body" x="208" y="265">Mine-level intensity and footprint data</text>
+    <text class="label" x="208" y="322">Evidence-based performance</text>
+  </g>
+
+  <g transform="translate(118 708)">
+    <rect width="432" height="88" rx="6" fill="#ffffff" stroke="#c8d7cf" stroke-width="2"/>
+    <text class="metric" x="26" y="42">87%</text>
+    <text class="metric-label" x="126" y="34">LARGE MODERN MINES</text>
+    <text class="body" x="126" y="61">Share of national coal capacity</text>
+  </g>
+  <g transform="translate(584 708)">
+    <rect width="432" height="88" rx="6" fill="#ffffff" stroke="#c8d7cf" stroke-width="2"/>
+    <text class="metric" x="26" y="42">75%</text>
+    <text class="metric-label" x="126" y="34">SMART-MINE CAPACITY</text>
+    <text class="body" x="126" y="61">Target share by 2030</text>
+  </g>
+  <g transform="translate(1050 708)">
+    <rect width="432" height="88" rx="6" fill="#ffffff" stroke="#d7c89f" stroke-width="2"/>
+    <text class="metric" x="26" y="42">26bn m3</text>
+    <text class="metric-label" x="190" y="34">COAL-BED METHANE</text>
+    <text class="body" x="190" y="61">Production target by 2030</text>
+  </g>
+</svg>
