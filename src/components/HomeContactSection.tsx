@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { trackEvent } from '@/lib/analytics';
 
 export default function HomeContactSection() {
   const { t, language } = useLanguage();
@@ -48,6 +49,8 @@ export default function HomeContactSection() {
       const data = await response.json();
 
       if (response.ok) {
+        trackEvent('contact_form_submit', { form: 'homepage_contact' });
+        trackEvent('demo_request_submit', { form: 'homepage_contact' });
         setSubmitMessage(data.message || t.contact.messages.success);
         setFormData({
           name: '',

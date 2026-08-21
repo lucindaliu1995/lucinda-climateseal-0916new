@@ -288,7 +288,7 @@ export default async function PricingPage() {
                     ))}
                   </ul>
                 </div>
-                <Link href="/contact" className="mt-8 rounded-[0.5rem] border border-[#123F3D] bg-[#123F3D] px-5 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
+                <Link href="/contact" data-analytics-event="pricing_cta_click" className="mt-8 rounded-[0.5rem] border border-[#123F3D] bg-[#123F3D] px-5 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
                   {plan.cta}
                 </Link>
                 {plan.name === (locale === 'zh' ? '专业版' : 'Professional') ? (
@@ -346,7 +346,7 @@ export default async function PricingPage() {
             <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.ctaTitle}</h2>
             <p className="mt-4 max-w-3xl text-[16px] leading-7 text-[#5f7672] sm:text-[17px]">{copy.ctaBody}</p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link href="/contact" className="rounded-[0.5rem] border border-[#123F3D] bg-[#123F3D] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
+              <Link href="/contact" data-analytics-event="pricing_cta_click" className="rounded-[0.5rem] border border-[#123F3D] bg-[#123F3D] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
                 {copy.ctaPrimary}
               </Link>
               <Link href="/resources" className="rounded-[0.5rem] border border-[#123F3D] px-6 py-3 text-center font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">

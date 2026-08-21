@@ -208,6 +208,7 @@ export default function SolutionPageRefresh({
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/#contact"
+                data-analytics-event="book_demo_click"
                 className={`inline-flex min-h-12 items-center justify-center gap-2 px-7 py-3 text-sm font-semibold text-white transition sm:text-base ${theme.accentBg} ${theme.accentHover}`}
               >
                 {primaryCta}
@@ -399,6 +400,7 @@ export default function SolutionPageRefresh({
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/#contact"
+                data-analytics-event="book_demo_click"
                 className={`inline-flex min-h-12 items-center justify-center gap-2 px-7 py-3 text-sm font-semibold text-white transition sm:text-base ${theme.accentBg} ${theme.accentHover}`}
               >
                 {contactLabel}

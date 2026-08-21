@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Script from 'next/script';
 import TitleUpdater from "@/components/TitleUpdater";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
+import { ANALYTICS_MEASUREMENT_ID } from '@/lib/analytics';
 import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage, resolveLanguage } from "@/lib/language";
 
 const sourceSansPro = Source_Sans_3({
@@ -177,46 +179,19 @@ export default async function RootLayout({
         </Script>
         {/* Google Analytics 4 */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-BM7079RZZH"
+          src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-BM7079RZZH', {
+            window.gtag = function(){window.dataLayer.push(arguments);};
+            window.gtag('js', new Date());
+            window.gtag('config', '${ANALYTICS_MEASUREMENT_ID}', {
               page_title: document.title,
               page_location: window.location.href,
             });
-            
-            // 简单的关键事件追踪
-            document.addEventListener('DOMContentLoaded', function() {
-              // 联系按钮点击追踪
-              document.addEventListener('click', function(e) {
-                const target = e.target.closest('a, button');
-                if (!target) return;
-                
-                // 联系相关按钮
-                if (target.getAttribute('href') === '#contact' || 
-                    target.textContent.includes('Contact') || 
-                    target.textContent.includes('联系') ||
-                    target.textContent.includes('Get Started')) {
-                  gtag('event', 'contact_click', {
-                    event_category: 'conversion',
-                    event_label: target.textContent.trim()
-                  });
-                }
-              });
-              
-              // 表单提交追踪
-              document.addEventListener('submit', function(e) {
-                gtag('event', 'form_submit', {
-                  event_category: 'conversion',
-                  event_label: 'contact_form'
-                });
-              });
-            });
+            window.__climateSealAnalyticsInitialized = true;
           `}
         </Script>
       </head>
@@ -225,6 +200,7 @@ export default async function RootLayout({
       >
         <LanguageProvider initialLanguage={initialLanguage}>
           <TitleUpdater />
+          <AnalyticsTracker />
           <Navbar />
           <main className="min-h-screen bg-[var(--brand-bg)]">
             {children}

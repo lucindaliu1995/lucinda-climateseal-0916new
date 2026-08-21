@@ -7,6 +7,11 @@ export type ArticleItem = {
   title: string;
   titleZh: string;
   coverImage: string;
+  imageCredit?: string;
+  imageCreditZh?: string;
+  imageSourceUrl?: string;
+  imageLicense?: string;
+  imageLicenseUrl?: string;
   excerpt: string;
   excerptZh: string;
   content: string;

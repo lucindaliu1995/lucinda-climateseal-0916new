@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackEvent } from '@/lib/analytics';
 
 type Props = {
   isZh: boolean;
@@ -101,6 +102,8 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
       const data = await response.json();
 
       if (response.ok) {
+        trackEvent('contact_form_submit', { form: 'referral_program' });
+        trackEvent('demo_request_submit', { form: 'referral_program' });
         setSubmitMessage(data.message || labels.success);
         setFormData({
           name: '',

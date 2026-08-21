@@ -199,6 +199,7 @@ const Navbar = () => {
             </div>
             <Link
               href="/#contact"
+              data-analytics-event="book_demo_click"
               className="inline-flex items-center justify-center rounded-[0.6rem] bg-white px-4 py-2 text-[0.88rem] font-semibold tracking-[0.01em] text-[#003531] transition duration-300 hover:bg-[#d6e8df]"
             >
               {language === 'zh' ? '预约演示' : 'Book a Demo'}
@@ -212,6 +213,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center gap-2">
             <Link
               href="/#contact"
+              data-analytics-event="book_demo_click"
               className="inline-flex items-center justify-center rounded-[0.55rem] bg-white px-3 py-2 text-xs font-semibold text-[#003531]"
             >
               {language === 'zh' ? '演示' : 'Demo'}

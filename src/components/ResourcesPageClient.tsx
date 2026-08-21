@@ -143,12 +143,12 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
           <div className="max-w-4xl">
             <p className="cs-section-eyebrow">{language === 'zh' ? '资源中心' : 'Resource center'}</p>
             <h1 className="mt-5 max-w-[19ch] font-lora text-[2.55rem] font-bold leading-[1.04] text-[#123f3d] sm:text-[3.35rem]">
-              {language === 'zh' ? '碳核算与合规的实用工作知识' : 'Practical Working Knowledge for Carbon Accounting and Compliance'}
+              {language === 'zh' ? '关注碳与气候变化中的新闻、洞察与实践指南' : 'News, Insights, and Guidance for a Changing Carbon Landscape'}
             </h1>
             <p className="mt-6 max-w-3xl text-[17px] leading-8 text-[#5e706d]">
               {language === 'zh'
-                ? '围绕产品碳足迹、Scope 3、LCA、法规方法学、供应链协同与复核交付，持续整理更适合业务与专业团队使用的资料。'
-                : 'Explore practical guidance on product carbon footprints, Scope 3, LCA methods, supplier collaboration, regulatory workflows, and review-ready carbon delivery.'}
+                ? '了解最新新闻、法规动态、方法学解读，以及碳核算、可持续发展和合规方面的实用观点。'
+                : 'Explore regulatory updates, market developments, methodology explainers, and practical perspectives on carbon accounting, sustainability, and compliance.'}
             </p>
           </div>
           <div className="grid grid-cols-2 border-y border-[#c8d7cf] py-5 lg:grid-cols-1 lg:gap-5 lg:border-y-0 lg:border-l lg:py-0 lg:pl-8">

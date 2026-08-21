@@ -6,11 +6,15 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="text-sm">© {new Date().getFullYear()} Climate Seal</div>
         <div className="flex items-center gap-6">
+          <a href="mailto:xuguang.ma@climate-seal.net" data-analytics-event="email_click" className="text-sm text-[var(--brand-muted)] hover:text-[var(--brand-accent-strong)]">
+            Email
+          </a>
           <Link href="/privacy" className="text-sm text-[var(--brand-muted)] hover:text-[var(--brand-accent-strong)]" aria-label="Privacy Policy">
             Privacy Policy
           </Link>
           <Link
             href="https://www.linkedin.com/company/climateseal/"
+            data-analytics-event="linkedin_click"
             aria-label="LinkedIn"
             target="_blank"
             rel="noopener noreferrer"

@@ -159,14 +159,31 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
             {articleTitle}
           </h1>
 
-          <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-8">
-            <Image
-              src={article.coverImage || '/climate-seal-logo-green.png'}
-              alt={`${articleTitle} - cover image`}
-              fill
-              className="object-cover"
-              priority
-            />
+          <div className="mb-8">
+            <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden">
+              <Image
+                src={article.coverImage || '/climate-seal-logo-green.png'}
+                alt={`${articleTitle} - cover image`}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            {article.imageCredit && article.imageSourceUrl && (
+              <p className="mt-2 text-xs leading-relaxed text-slate-500">
+                <a href={article.imageSourceUrl} target="_blank" rel="noreferrer" className="hover:text-emerald-700 hover:underline">
+                  {isChineseLanguage(language) ? article.imageCreditZh || article.imageCredit : article.imageCredit}
+                </a>
+                {article.imageLicense && article.imageLicenseUrl && (
+                  <>
+                    {' · '}
+                    <a href={article.imageLicenseUrl} target="_blank" rel="noreferrer" className="hover:text-emerald-700 hover:underline">
+                      {article.imageLicense}
+                    </a>
+                  </>
+                )}
+              </p>
+            )}
           </div>
         </div>
       </section>
@@ -207,6 +224,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
               <div className="flex flex-wrap items-center gap-3">
                 <a
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`}
+                  data-analytics-event="linkedin_click"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-full bg-[#0077B5] hover:bg-[#005885] text-white font-medium transition-all duration-300 flex items-center gap-2"
