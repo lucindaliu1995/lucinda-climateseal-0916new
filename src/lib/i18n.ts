@@ -20,8 +20,22 @@ export interface TranslationData {
     subtitle: string;
     description: string;
     getStarted: string;
+    workflowCta: string;
     learnMore: string;
     trustedBy: string;
+  };
+
+  standardsCoverage: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    groups: Array<{
+      label: string;
+      items: Array<{
+        mark: string;
+        name: string;
+      }>;
+    }>;
   };
 
   resourcesPage: {
@@ -617,9 +631,57 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       title: 'The AI Workspace for Credible Carbon Accounting',
       subtitle: 'Climate Seal uses professional-grade AI to help teams model, review, and document product carbon, corporate carbon, Scope 3, and project carbon workflows with transparent evidence trails.',
       description: 'Product, corporate, and project carbon - Support multiple carbon accounting workflows in one flexible platform.\nCredible and transparent by design - Preserve assumptions, factor choices, data gaps, and evidence trails for review.\nISO 14067 and GHG Protocol aligned - Built for standards-aligned delivery with more frameworks coming.',
-      getStarted: 'Book a Demo with First Report Free',
+      getStarted: 'Book a Demo',
+      workflowCta: 'See How the Workflow Works',
       learnMore: 'Learn More',
       trustedBy: 'Trusted by'
+    },
+
+    standardsCoverage: {
+      eyebrow: 'SUPPORTED REGULATIONS & METHODOLOGIES',
+      title: 'One workspace for different sustainability requirements.',
+      description: 'Use the same structured workflow across corporate reporting, product requirements, market access rules, and industry methodologies. Climate Seal organizes the relevant requirements, data, calculations, evidence, and review steps for each supported package.',
+      groups: [
+        {
+          label: 'Product & life-cycle standards',
+          items: [
+            { mark: 'GHG', name: 'GHG Protocol Corporate Inventory' },
+            { mark: 'ISO', name: 'ISO 14067 (2018)' },
+            { mark: 'ISO', name: 'ISO 14040 / 14044' },
+            { mark: 'PAS', name: 'PAS 2050 (2011)' },
+            { mark: 'EPD', name: 'International EPD System GPI 5.0.1' },
+            { mark: 'AI', name: 'AI Compute & Token Lifecycle' },
+          ],
+        },
+        {
+          label: 'Corporate reporting & due diligence',
+          items: [
+            { mark: 'ESRS', name: 'CSRD / current ESRS' },
+            { mark: 'EU', name: 'EU Corporate Sustainability Due Diligence Directive' },
+          ],
+        },
+        {
+          label: 'Market access & product requirements',
+          items: [
+            { mark: 'CBAM', name: 'EU CBAM Installation Communication' },
+            { mark: 'BAT', name: 'EU Battery Regulation 2023/1542' },
+            { mark: 'DPP', name: 'EU ESPR & Digital Product Passport' },
+            { mark: 'PPWR', name: 'EU Packaging & Packaging Waste 2025/40' },
+            { mark: 'EPR', name: 'Textile & Footwear EPR' },
+            { mark: 'EU', name: 'EU Forced Labour Product Prohibition' },
+          ],
+        },
+        {
+          label: 'Industry methodologies',
+          items: [
+            { mark: 'BRM', name: 'Higg BRM 2026' },
+            { mark: 'FEM', name: 'Higg FEM 2025' },
+            { mark: 'FSLM', name: 'Higg FSLM / SLCP CAF 1.7.1' },
+            { mark: 'MSI', name: 'Higg MSI (2024)' },
+            { mark: 'PM', name: 'Higg PM (2024)' },
+          ],
+        },
+      ],
     },
 
     resourcesPage: {
@@ -1292,7 +1354,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
     }
     ,
     faq: {
-      title: 'Frequently Asked Questions',
+      title: 'Frequently Asked Questions about Climate Seal',
       seo: {
         title: 'Carbon Accounting Software FAQ | Climate Seal',
         description: 'Learn how Climate Seal supports AI-powered product carbon footprints, Scope 1–3 accounting, CBAM reporting, supplier data processing, emission-factor matching, and audit-ready carbon reporting.',
@@ -1445,9 +1507,57 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       title: '可信碳核算的 AI 工作台',
       subtitle: 'Climate Seal 用专业级 AI 帮助团队建模、复核和记录产品碳、企业碳、Scope 3 与项目碳工作流，并保留透明证据链。',
       description: '产品碳、企业碳与项目碳——在同一套灵活平台中支持多类碳核算工作流。\n可信且透明——保留假设、因子选择、数据缺口与证据链，便于复核。\n对齐 ISO 14067 与 GHG Protocol——围绕主流标准交付，并持续扩展更多框架。',
-      getStarted: '预约演示，首份报告免费',
+      getStarted: '预约演示',
+      workflowCta: '查看工作流程',
       learnMore: '了解更多',
       trustedBy: '信赖我们的客户'
+    },
+
+    standardsCoverage: {
+      eyebrow: '支持的法规与方法学',
+      title: '一套工作空间，适配不同的可持续发展要求',
+      description: '同一套结构化工作流程可以用于企业报告、产品要求、市场准入法规和行业方法学。Climate Seal 会围绕每个支持的法规或方法学，组织相关要求、数据、计算、证据和复核步骤。',
+      groups: [
+        {
+          label: '产品与生命周期标准',
+          items: [
+            { mark: 'GHG', name: 'GHG Protocol 企业温室气体核算' },
+            { mark: 'ISO', name: 'ISO 14067（2018）' },
+            { mark: 'ISO', name: 'ISO 14040 / 14044' },
+            { mark: 'PAS', name: 'PAS 2050（2011）' },
+            { mark: 'EPD', name: 'International EPD System GPI 5.0.1' },
+            { mark: 'AI', name: 'AI 计算与 Token 生命周期' },
+          ],
+        },
+        {
+          label: '企业报告与尽职调查',
+          items: [
+            { mark: 'ESRS', name: 'CSRD / 当前 ESRS' },
+            { mark: 'EU', name: '欧盟企业可持续发展尽职调查指令' },
+          ],
+        },
+        {
+          label: '市场准入与产品要求',
+          items: [
+            { mark: 'CBAM', name: '欧盟 CBAM 装置通信模板' },
+            { mark: 'BAT', name: '欧盟电池法规 2023/1542' },
+            { mark: 'DPP', name: '欧盟 ESPR 与数字产品护照' },
+            { mark: 'PPWR', name: '欧盟包装与包装废弃物法规 2025/40' },
+            { mark: 'EPR', name: '纺织品与鞋类 EPR' },
+            { mark: 'EU', name: '欧盟强迫劳动产品禁令' },
+          ],
+        },
+        {
+          label: '行业方法学',
+          items: [
+            { mark: 'BRM', name: 'Higg BRM 2026' },
+            { mark: 'FEM', name: 'Higg FEM 2025' },
+            { mark: 'FSLM', name: 'Higg FSLM / SLCP CAF 1.7.1' },
+            { mark: 'MSI', name: 'Higg MSI（2024）' },
+            { mark: 'PM', name: 'Higg PM（2024）' },
+          ],
+        },
+      ],
     },
 
     resourcesPage: {
@@ -2120,7 +2230,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
     }
     ,
     faq: {
-      title: '常见问题',
+      title: '关于 Climate Seal 的常见问题',
       seo: {
         title: '碳核算软件常见问题 | Climate Seal',
         description: '了解 Climate Seal 如何支持 AI 产品碳足迹、Scope 1–3 核算、CBAM 报告、供应商数据处理、排放因子匹配和可审核的碳报告。',

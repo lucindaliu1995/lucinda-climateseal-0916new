@@ -6,16 +6,16 @@ type KnowHowNumbersSectionProps = {
 const content = {
   en: {
     eyebrow: 'Trust foundation',
-    title: 'Built for Credible, AI-Assisted Carbon Accounting',
+    title: 'Built for credible, AI-assisted sustainability compliance',
     homeIntro:
-      'Climate Seal combines structured carbon accounting workflows, reusable models, and verification-oriented review logic so teams can deliver more confidently across product, corporate, and supply-chain carbon work.',
+      'Climate Seal combines structured compliance workflows, reusable models, and review-oriented logic so teams can deliver more confidently across environmental, product, supplier, and operational requirements.',
     consultantIntro:
       'Consultants need more than a UI. They need working carbon know-how that compresses project delivery while preserving professional review, traceability, and verification readiness.',
     rows: [
       {
         value: '60+',
-        title: 'carbon accounting workflow models',
-        description: 'Reusable process logic for product and operational carbon accounting workflows.',
+        title: 'workflow models',
+        description: 'Reusable process logic for environmental, product, supplier, and operational data workflows.',
       },
       {
         value: '50+',
@@ -24,28 +24,28 @@ const content = {
       },
       {
         value: '12k+',
-        title: 'verification factor matches',
-        description: 'Structured factor matching pathways designed for traceable review and checking.',
+        title: 'traceable data matches',
+        description: 'Structured matching pathways designed for transparent review, checking, and evidence capture.',
       },
       {
         value: '20k+',
-        title: 'benchmark product models',
-        description: 'Reference product structures that accelerate setup, comparison, and review.',
+        title: 'reference models',
+        description: 'Reference structures that accelerate setup, comparison, and review across use cases.',
       },
     ],
   },
   zh: {
     eyebrow: '可信基础',
-    title: '面向可信、AI 辅助碳核算而构建',
+    title: '面向可信、AI 辅助的可持续合规而构建',
     homeIntro:
-      'Climate Seal 把结构化碳核算工作流、可复用模型和面向核验的复核逻辑放进同一套系统里，让团队在产品、企业和供应链碳核算项目中更稳地交付结果。',
+      'Climate Seal 把结构化合规工作流、可复用模型和面向复核的逻辑放进同一套系统里，让团队在环境、产品、供应商和运营要求中更稳地交付结果。',
     consultantIntro:
       '顾问需要的不只是一个界面，而是一套真正能压缩项目交付时间、同时保留专业复核、可追溯性和核验准备能力的 carbon know-how。',
     rows: [
       {
         value: '60+',
-        title: '碳核算工作流模型',
-        description: '覆盖产品与运营类碳核算场景的可复用流程逻辑。',
+        title: '工作流模型',
+        description: '覆盖环境、产品、供应商与运营数据场景的可复用流程逻辑。',
       },
       {
         value: '50+',
@@ -54,13 +54,13 @@ const content = {
       },
       {
         value: '12k+',
-        title: '核验因子匹配',
-        description: '面向可追溯复核与检查的结构化因子匹配路径。',
+        title: '可追溯数据匹配',
+        description: '面向透明复核、检查与证据记录的结构化匹配路径。',
       },
       {
         value: '20k+',
-        title: '基准产品模型',
-        description: '帮助更快完成搭建、对比与复核的参考产品模型。',
+        title: '参考模型',
+        description: '帮助在不同使用场景中更快完成搭建、对比与复核。',
       },
     ],
   },

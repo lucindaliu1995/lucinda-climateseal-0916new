@@ -34,7 +34,6 @@ const Navbar = () => {
     },
     { name: t.nav.resources, href: '/resources', route: '/resources', isLink: true },
     { name: t.nav.pricing, href: '#pricing', route: '/' },
-    { name: t.nav.about, href: '#about', route: '/' },
   ];
 
   const handleNavClick = (href: string, route: string) => {

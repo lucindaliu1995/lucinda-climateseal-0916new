@@ -26,11 +26,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const isZh = isChineseLanguage(language);
 
   const title = isZh
-    ? 'Climate Seal | 可信碳核算的 AI 工作台'
-    : 'AI Carbon Accounting Workspace | Climate Seal';
+    ? 'Climate Seal | AI 可持续合规工作台'
+    : 'AI-Powered Sustainability Compliance Workspace | Climate Seal';
   const description = isZh
-    ? 'Climate Seal 用专业级 AI 支持产品碳、企业碳、Scope 3 与项目碳工作流，帮助团队完成可信、透明、可复核的碳报告交付。'
-    : 'Automate carbon accounting from BOM and supplier data into verification-ready PCF, Scope 3, CBAM and EPD reports with AI agents.';
+    ? 'Climate Seal 用专业级 AI 处理环境、产品、供应商与运营数据，帮助团队完成结构化评估、可追溯计算、合规报告与可复核证据交付。'
+    : 'Turn fragmented environmental, product, supplier, and operational data into structured assessments, traceable calculations, compliance-ready reports, and auditable evidence with AI agents.';
 
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),

@@ -121,25 +121,41 @@ function WorkflowVideo({
   const videoRef = useRef<HTMLVideoElement>(null);
   const reduceMotion = useReducedMotion();
   const [hasError, setHasError] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || reduceMotion || hasError) return;
+    if (!video || hasError) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch(() => undefined);
+          setShouldLoad(true);
+          if (!reduceMotion) video.play().catch(() => undefined);
         } else {
           video.pause();
         }
       },
-      { threshold: 0.25 },
+      { rootMargin: '600px 0px', threshold: 0.1 },
     );
 
     observer.observe(video);
     return () => observer.disconnect();
   }, [hasError, reduceMotion]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !shouldLoad || reduceMotion) return;
+
+    const playWhenReady = () => video.play().catch(() => undefined);
+    video.addEventListener('canplay', playWhenReady);
+
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      playWhenReady();
+    }
+
+    return () => video.removeEventListener('canplay', playWhenReady);
+  }, [reduceMotion, shouldLoad]);
 
   if (hasError) {
     return (
@@ -153,14 +169,14 @@ function WorkflowVideo({
   return (
     <video
       ref={videoRef}
-      src={src}
+      src={shouldLoad ? src : undefined}
       poster={poster}
       className="h-full w-full object-contain"
       aria-label={title}
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="none"
       onError={() => setHasError(true)}
     />
   );

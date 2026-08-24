@@ -56,27 +56,27 @@ const interfaceCopy = {
     review: 'Expert review required',
     sourceFiles: 'Source files',
     parsed: 'Parsed',
-    intakeTitle: 'Carbon-relevant data extracted',
+    intakeTitle: 'Requirement-relevant data extracted',
     intakeBody: 'Materials, quantities, energy, transport, suppliers, and evidence are mapped back to their source files.',
     records: ['18 material records', '4 energy records', '7 evidence links'],
     questionsTitle: 'Clarifications prepared',
     questionsBody: 'The workflow pauses where project requirements or source data need confirmation.',
     questions: ['Confirm recycled content for steel body', 'Provide supplier country for silicone seal', 'Validate transport distance and mode'],
-    modelTitle: 'Accounting model and factor review',
-    modelBody: 'Boundaries, sources, factors, and review risks remain visible to the expert.',
+    modelTitle: 'Assessment model and methodology review',
+    modelBody: 'Scope, sources, methods, and review risks remain visible to the expert.',
     factorRows: [
       ['Stainless steel', 'Worldsteel 2024', 'Strong'],
       ['Silicone seal', 'Industry proxy', 'Review'],
       ['Electricity', 'Regional grid', 'Strong'],
     ],
-    reportTitle: 'Report draft and audit ledger',
+    reportTitle: 'Report draft and evidence ledger',
     reportBody: 'Every result remains connected to source data, calculations, assumptions, and evidence.',
-    outputs: ['PCF report draft', 'Audit ledger', 'Evidence package'],
+    outputs: ['Compliance report draft', 'Evidence ledger', 'Evidence package'],
     complete: '12 of 14 review checks complete',
-    stages: ['File intake', 'Clarify gaps', 'Build model', 'Report & ledger'],
-    visualLabels: ['Structured inputs', 'Clarification queue', 'Factor review', 'Review package'],
-    workflowLabel: 'Live accounting workflow',
-    workspaceTitle: 'From source files to review-ready carbon data',
+    stages: ['File intake', 'Clarify gaps', 'Build assessment', 'Report & evidence'],
+    visualLabels: ['Structured inputs', 'Clarification queue', 'Methodology review', 'Review package'],
+    workflowLabel: 'Live compliance workflow',
+    workspaceTitle: 'From source files to review-ready compliance data',
   },
   zh: {
     project: '演示项目 · 保温水杯',
@@ -84,50 +84,50 @@ const interfaceCopy = {
     review: '需要专家复核',
     sourceFiles: '源文件',
     parsed: '已解析',
-    intakeTitle: '已提取碳核算相关数据',
+    intakeTitle: '已提取与要求相关的数据',
     intakeBody: '材料、数量、能源、运输、供应商和证据都可追溯到源文件。',
     records: ['18 条材料记录', '4 条能源记录', '7 个证据链接'],
     questionsTitle: '已整理澄清问题',
     questionsBody: '当项目要求或源数据需要确认时，工作流程会暂停等待复核。',
     questions: ['确认不锈钢杯身的再生材料含量', '补充硅胶密封圈的供应商国家', '确认运输距离和方式'],
-    modelTitle: '核算模型与因子复核',
-    modelBody: '系统边界、排放源、因子和复核风险始终对专家可见。',
+    modelTitle: '评估模型与方法学复核',
+    modelBody: '范围、数据来源、方法和复核风险始终对专家可见。',
     factorRows: [
       ['不锈钢', 'Worldsteel 2024', '强匹配'],
       ['硅胶密封圈', '行业代理因子', '需复核'],
       ['电力', '区域电网', '强匹配'],
     ],
-    reportTitle: '报告草稿与审计底稿',
+    reportTitle: '报告草稿与证据台账',
     reportBody: '每个结果都与源数据、计算、假设和证据保持关联。',
-    outputs: ['PCF 报告草稿', '审计底稿', '证据包'],
+    outputs: ['合规报告草稿', '证据台账', '证据包'],
     complete: '14 项复核检查中已完成 12 项',
-    stages: ['文件接入', '澄清缺口', '搭建模型', '报告与底稿'],
-    visualLabels: ['结构化输入', '澄清队列', '因子复核', '复核交付包'],
-    workflowLabel: '实时核算工作流程',
-    workspaceTitle: '从源文件到可复核碳数据',
+    stages: ['文件接入', '澄清缺口', '搭建评估模型', '报告与证据'],
+    visualLabels: ['结构化输入', '澄清队列', '方法学复核', '复核交付包'],
+    workflowLabel: '实时合规工作流程',
+    workspaceTitle: '从源文件到可复核的合规数据',
   },
 };
 
 const dashboardCopy = {
   en: {
-    workspace: 'Carbon workspace',
-    navigation: ['Overview', 'Source data', 'Accounting model', 'Factor library', 'Reports', 'Audit trail'],
-    breadcrumb: 'Projects / Product carbon footprint',
-    title: 'Insulated bottle · PCF',
+    workspace: 'Sustainability workspace',
+    navigation: ['Overview', 'Source data', 'Assessment model', 'Methodology library', 'Reports', 'Evidence trail'],
+    breadcrumb: 'Projects / Sustainability assessment',
+    title: 'Insulated bottle · Assessment',
     standard: 'ISO 14067 · Cradle-to-gate',
     search: 'Search project data',
     metrics: [
       ['Data readiness', '86%', '+12% after AI review'],
-      ['Emission sources', '29', '4 require review'],
+      ['Requirements mapped', '12', '4 require review'],
       ['Evidence coverage', '78%', '23 linked records'],
-      ['Estimated footprint', '8.42', 'kg CO₂e / unit'],
+      ['Review readiness', '84%', '2 checks remain'],
     ],
-    tableLabels: ['Structured source data', 'Clarification queue', 'Emission source model', 'Delivery workspace'],
-    tableCounts: ['29 records', '3 open items', '29 emission sources', '3 deliverables'],
+    tableLabels: ['Structured source data', 'Clarification queue', 'Assessment model', 'Delivery workspace'],
+    tableCounts: ['29 records', '3 open items', '12 requirements', '3 deliverables'],
     tableHeaders: [
       ['Data item', 'Source', 'Value', 'Status'],
       ['Clarification', 'Owner', 'Priority', 'Status'],
-      ['Emission source', 'Activity data', 'Factor source', 'Match'],
+      ['Assessment item', 'Input data', 'Method / source', 'Review'],
       ['Deliverable', 'Progress', 'Review status', 'Output'],
     ],
     rows: [
@@ -150,18 +150,18 @@ const dashboardCopy = {
         ['Regional electricity', '0.62 kWh', 'IEA 2025', 'Strong'],
       ],
       [
-        ['PCF report draft', '100%', 'Ready for expert', 'PDF'],
-        ['Audit ledger', '86%', '2 checks open', 'XLSX'],
+        ['Compliance report draft', '100%', 'Ready for expert', 'PDF'],
+        ['Evidence ledger', '86%', '2 checks open', 'XLSX'],
         ['Evidence package', '78%', '6 files pending', 'ZIP'],
         ['Client data request', '100%', 'Ready to send', 'XLSX'],
       ],
     ],
-    assistant: 'AI audit assistant',
+    assistant: 'AI compliance assistant',
     assistantStatus: 'Reviewing this project',
     assistantSummaries: [
-      '29 carbon-relevant records were extracted and connected to their source files.',
+      '29 requirement-relevant records were extracted and connected to their source files.',
       'Three questions need confirmation before the model can be finalized.',
-      'Two factor matches require expert review because supplier-specific data is unavailable.',
+      'Two methodology matches require expert review because supplier-specific data is unavailable.',
       'The report draft is ready. Two audit checks remain open before delivery.',
     ],
     assistantItems: [
@@ -173,24 +173,24 @@ const dashboardCopy = {
     ask: 'Ask about this project',
   },
   zh: {
-    workspace: '碳管理工作台',
-    navigation: ['概览', '源数据', '核算模型', '因子库', '报告', '审计底稿'],
-    breadcrumb: '项目 / 产品碳足迹',
-    title: '保温水杯 · PCF',
+    workspace: '可持续发展工作台',
+    navigation: ['概览', '源数据', '评估模型', '方法学库', '报告', '证据链'],
+    breadcrumb: '项目 / 可持续发展评估',
+    title: '保温水杯 · 评估项目',
     standard: 'ISO 14067 · 从摇篮到大门',
     search: '搜索项目数据',
     metrics: [
       ['数据准备度', '86%', 'AI 复核后提升 12%'],
-      ['排放源', '29', '4 项需要复核'],
+      ['已映射要求', '12', '4 项需要复核'],
       ['证据覆盖率', '78%', '23 条关联记录'],
-      ['预计碳足迹', '8.42', 'kg CO₂e / 件'],
+      ['复核准备度', '84%', '2 项检查待完成'],
     ],
-    tableLabels: ['结构化源数据', '澄清问题队列', '排放源核算模型', '交付工作区'],
-    tableCounts: ['29 条记录', '3 个待处理项', '29 个排放源', '3 项交付物'],
+    tableLabels: ['结构化源数据', '澄清问题队列', '评估模型', '交付工作区'],
+    tableCounts: ['29 条记录', '3 个待处理项', '12 项要求', '3 项交付物'],
     tableHeaders: [
       ['数据项', '来源', '数值', '状态'],
       ['澄清问题', '负责人', '优先级', '状态'],
-      ['排放源', '活动数据', '因子来源', '匹配'],
+      ['评估项目', '输入数据', '方法 / 来源', '复核'],
       ['交付物', '进度', '复核状态', '输出'],
     ],
     rows: [
@@ -213,18 +213,18 @@ const dashboardCopy = {
         ['区域电力', '0.62 kWh', 'IEA 2025', '强匹配'],
       ],
       [
-        ['PCF 报告草稿', '100%', '待专家复核', 'PDF'],
-        ['审计底稿', '86%', '2 项检查待完成', 'XLSX'],
+        ['合规报告草稿', '100%', '待专家复核', 'PDF'],
+        ['证据台账', '86%', '2 项检查待完成', 'XLSX'],
         ['证据包', '78%', '6 个文件待补充', 'ZIP'],
         ['客户数据请求', '100%', '可发送', 'XLSX'],
       ],
     ],
-    assistant: 'AI 审计助手',
+    assistant: 'AI 合规助手',
     assistantStatus: '正在复核本项目',
     assistantSummaries: [
-      '已提取 29 条碳核算相关记录，并关联到对应源文件。',
+      '已提取 29 条与要求相关的记录，并关联到对应源文件。',
       '模型最终确认前仍有 3 个问题需要补充。',
-      '由于缺少供应商特定数据，2 个因子匹配需要专家复核。',
+      '由于缺少供应商特定数据，2 个方法学匹配需要专家复核。',
       '报告草稿已经准备完成，交付前仍有 2 项审计检查待处理。',
     ],
     assistantItems: [
@@ -322,8 +322,8 @@ function WorkflowStagePanel({ stage, language, compact = false }: WorkflowStageP
             <p className="text-sm leading-6 text-[#5e706d]">{copy.modelBody}</p>
             <div className="mt-4 overflow-hidden border border-[#dbe3de] bg-white">
               <div className="grid grid-cols-[1.1fr_1fr_auto] gap-3 bg-[#edf4f0] px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#58716d]">
-                <span>{language === 'zh' ? '排放源' : 'Emission source'}</span>
-                <span>{language === 'zh' ? '因子来源' : 'Factor source'}</span>
+                <span>{language === 'zh' ? '评估项目' : 'Assessment item'}</span>
+                <span>{language === 'zh' ? '方法 / 来源' : 'Method / source'}</span>
                 <span>{language === 'zh' ? '状态' : 'Status'}</span>
               </div>
               {copy.factorRows.map((row) => (
@@ -410,10 +410,10 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
       normalized.includes('已解决') ||
       normalized.includes('可发送')
     ) {
-      return 'border-[#bcd8ca] bg-[#edf7f1] text-[#28665f]';
+      return 'border-[#4b8c7d] bg-[#193f3e] text-[#9fe1c5]';
     }
 
-    return 'border-[#c9d8df] bg-[#eff5f7] text-[#416979]';
+    return 'border-[#527284] bg-[#1a3641] text-[#a8c8d8]';
   };
 
   useEffect(() => {
@@ -429,29 +429,29 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
       transition={{ duration: 0.65, delay: 0.12, ease: 'easeOut' }}
       className="mx-auto w-full max-w-[1240px]"
     >
-      <div className="overflow-hidden border border-[#b9cbc2] bg-white shadow-[0_30px_80px_rgba(18,63,61,0.16)]">
-        <div className="flex h-9 items-center justify-between border-b border-[#dbe3de] bg-[#f4f7f5] px-3 sm:px-4">
+      <div className="overflow-hidden border border-[#315d58] bg-[#0f2b2d] shadow-[0_30px_90px_rgba(8,35,36,0.32)]">
+        <div className="flex h-10 items-center justify-between border-b border-white/10 bg-[#0b2325] px-3 sm:px-4">
           <div className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-[#c8d2cc]" />
-            <span className="h-2 w-2 rounded-full bg-[#c8d2cc]" />
-            <span className="h-2 w-2 rounded-full bg-[#c8d2cc]" />
+            <span className="h-2 w-2 rounded-full bg-[#5b7772]" />
+            <span className="h-2 w-2 rounded-full bg-[#5b7772]" />
+            <span className="h-2 w-2 rounded-full bg-[#5b7772]" />
           </div>
-          <div className="hidden min-w-[280px] items-center justify-center gap-2 border border-[#d5dfd9] bg-white px-3 py-1 text-[9px] text-[#71827f] sm:flex">
-            <ShieldCheck className="h-3 w-3 text-[#2f7770]" />
-            app.climate-seal.com/workspace/pcf-024
+          <div className="hidden min-w-[300px] items-center justify-center gap-2 border border-white/10 bg-[#122f31] px-3 py-1 text-[9px] text-white/45 sm:flex">
+            <ShieldCheck className="h-3 w-3 text-[#8ed9bd]" />
+            app.climate-seal.com/workspace/assessment-024
           </div>
-          <PanelRight className="h-3.5 w-3.5 text-[#71827f]" />
+          <PanelRight className="h-3.5 w-3.5 text-white/45" />
         </div>
 
         <div className="grid min-h-[560px] lg:grid-cols-[176px_minmax(0,1fr)]">
-          <aside className="hidden flex-col bg-[#123f3d] text-white lg:flex">
+          <aside className="hidden flex-col bg-[#0c2527] text-white lg:flex">
             <div className="flex h-[68px] items-center gap-2.5 border-b border-white/10 px-4">
-              <div className="flex h-8 w-8 items-center justify-center bg-[#d6e8df] text-[#123f3d]">
+              <div className="flex h-8 w-8 items-center justify-center bg-[#9fe1c5] text-[#0c2527]">
                 <Sparkles className="h-4 w-4" />
               </div>
               <div>
                 <p className="text-[12px] font-semibold">Climate Seal</p>
-                <p className="mt-0.5 text-[9px] text-white/52">{dashboard.workspace}</p>
+                <p className="mt-0.5 text-[9px] text-white/45">{dashboard.workspace}</p>
               </div>
             </div>
 
@@ -462,11 +462,11 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
                 return (
                   <div
                     key={label}
-                    className={`mb-1 flex items-center gap-2.5 px-3 py-2 text-[11px] font-medium ${
-                      isActive ? 'bg-white/12 text-white' : 'text-white/56'
+                    className={`mb-1 flex items-center gap-2.5 border-l-2 px-3 py-2.5 text-[11px] font-medium ${
+                      isActive ? 'border-[#8ed9bd] bg-[#173b3c] text-white' : 'border-transparent text-white/48'
                     }`}
                   >
-                    <NavigationIcon className={`h-3.5 w-3.5 ${isActive ? 'text-[#9fd5c1]' : 'text-white/42'}`} strokeWidth={1.8} />
+                    <NavigationIcon className={`h-3.5 w-3.5 ${isActive ? 'text-[#8ed9bd]' : 'text-white/36'}`} strokeWidth={1.8} />
                     <span>{label}</span>
                   </div>
                 );
@@ -484,35 +484,35 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
             </div>
           </aside>
 
-          <div className="min-w-0 bg-[#f5f7f5]">
-            <header className="border-b border-[#dbe3de] bg-white px-4 py-3 sm:px-5">
+          <div className="min-w-0 bg-[#102f31]">
+            <header className="border-b border-white/10 bg-[#123638] px-4 py-3 sm:px-5">
               <div className="flex items-center justify-between gap-4">
                 <div className="min-w-0">
-                  <div className="flex items-center gap-1 text-[9px] font-medium text-[#71827f]">
+                  <div className="flex items-center gap-1 text-[9px] font-medium text-white/42">
                     <FolderKanban className="h-3 w-3" />
                     <span className="truncate">{dashboard.breadcrumb}</span>
                     <ChevronRight className="h-3 w-3" />
-                    <span>PCF-024</span>
+                    <span className="text-[#8ed9bd]">ASSESSMENT-024</span>
                   </div>
                   <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <h3 className="text-[15px] font-semibold text-[#123f3d] sm:text-[17px]">{dashboard.title}</h3>
-                    <span className="border border-[#c3d8cc] bg-[#edf7f1] px-2 py-0.5 text-[9px] font-semibold text-[#28665f]">{dashboard.standard}</span>
+                    <h3 className="text-[15px] font-semibold text-white sm:text-[17px]">{dashboard.title}</h3>
+                    <span className="border border-[#477b71] bg-[#193f3e] px-2 py-0.5 text-[9px] font-semibold text-[#9fe1c5]">{dashboard.standard}</span>
                   </div>
                 </div>
 
                 <div className="flex shrink-0 items-center gap-2">
-                  <div className="hidden h-8 items-center gap-2 border border-[#dbe3de] bg-[#f8faf8] px-3 text-[10px] text-[#71827f] md:flex">
+                  <div className="hidden h-8 items-center gap-2 border border-white/10 bg-[#0e292b] px-3 text-[10px] text-white/42 md:flex">
                     <Search className="h-3.5 w-3.5" />
                     <span>{dashboard.search}</span>
                   </div>
-                  <button type="button" aria-label={language === 'zh' ? '通知' : 'Notifications'} className="flex h-8 w-8 items-center justify-center border border-[#dbe3de] bg-white text-[#58716d]">
+                  <button type="button" aria-label={language === 'zh' ? '通知' : 'Notifications'} className="flex h-8 w-8 items-center justify-center border border-white/10 bg-[#0e292b] text-white/55">
                     <Bell className="h-3.5 w-3.5" />
                   </button>
                 </div>
               </div>
             </header>
 
-            <div className="flex gap-1 overflow-x-auto border-b border-[#dbe3de] bg-white px-3 py-2 sm:px-5">
+            <div className="flex gap-1 overflow-x-auto border-b border-white/10 bg-[#0d292b] px-3 py-2 sm:px-5">
               {copy.stages.map((label, index) => (
                 <button
                   key={label}
@@ -520,19 +520,19 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
                   onClick={() => setActiveStage(index)}
                   className={`flex shrink-0 items-center gap-2 border px-3 py-1.5 text-[10px] font-semibold transition-colors ${
                     activeStage === index
-                      ? 'border-[#2f7770] bg-[#2f7770] text-white'
-                      : 'border-transparent bg-white text-[#667b77] hover:bg-[#eef4f0]'
+                      ? 'border-[#4d9684] bg-[#2f7770] text-white'
+                      : 'border-transparent bg-transparent text-white/45 hover:bg-white/5'
                   }`}
                   aria-pressed={activeStage === index}
                 >
-                  <span className={activeStage === index ? 'text-white/72' : 'text-[#95a5a1]'}>{String(index + 1).padStart(2, '0')}</span>
+                  <span className={activeStage === index ? 'text-white/72' : 'text-white/28'}>{String(index + 1).padStart(2, '0')}</span>
                   {label}
                 </button>
               ))}
-              <div className="ml-auto hidden items-center gap-2 pl-4 text-[9px] font-semibold text-[#2f7770] sm:flex">
+              <div className="ml-auto hidden items-center gap-2 pl-4 text-[9px] font-semibold text-[#8ed9bd] sm:flex">
                 <span className="relative flex h-1.5 w-1.5">
-                  {!reduceMotion ? <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#5fba9b] opacity-50" /> : null}
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#5fba9b]" />
+                  {!reduceMotion ? <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#8ed9bd] opacity-50" /> : null}
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#8ed9bd]" />
                 </span>
                 {copy.workflowLabel}
               </div>
@@ -543,33 +543,33 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
                 {dashboard.metrics.map(([label, value, note], index) => {
                   const MetricIcon = [BarChart3, Database, ShieldCheck, Calculator][index];
                   return (
-                    <div key={label} className="border border-[#dbe3de] bg-white p-3">
+                    <div key={label} className="border border-white/10 bg-[#143739] p-3">
                       <div className="flex items-center justify-between gap-2">
-                        <p className="text-[9px] font-semibold uppercase tracking-[0.1em] text-[#71827f]">{label}</p>
-                        <MetricIcon className="h-3.5 w-3.5 text-[#2f7770]" strokeWidth={1.7} />
+                        <p className="text-[9px] font-semibold uppercase tracking-[0.1em] text-[#a9c7bd]">{label}</p>
+                        <MetricIcon className="h-3.5 w-3.5 text-[#8ed9bd]" strokeWidth={1.7} />
                       </div>
-                      <p className="mt-2 text-[18px] font-semibold leading-none text-[#123f3d]">{value}</p>
-                      <p className="mt-2 truncate text-[9px] text-[#71827f]">{note}</p>
+                      <p className="mt-2 font-mono text-[18px] font-semibold leading-none text-[#9fe1c5]">{value}</p>
+                      <p className="mt-2 truncate text-[9px] text-[#a9c7bd]">{note}</p>
                     </div>
                   );
                 })}
               </div>
 
               <div className="mt-3 grid gap-3 lg:grid-cols-[minmax(0,1fr)_250px]">
-                <section className="min-w-0 border border-[#dbe3de] bg-white">
-                  <div className="flex items-center justify-between gap-3 border-b border-[#e1e7e3] px-3 py-3">
+                <section className="min-w-0 border border-white/10 bg-[#143739]">
+                  <div className="flex items-center justify-between gap-3 border-b border-white/10 px-3 py-3">
                     <div>
-                      <p className="text-[12px] font-semibold text-[#123f3d]">{dashboard.tableLabels[activeStage]}</p>
-                      <p className="mt-0.5 text-[9px] text-[#71827f]">{dashboard.tableCounts[activeStage]}</p>
+                      <p className="text-[12px] font-semibold text-[#e3f0ea]">{dashboard.tableLabels[activeStage]}</p>
+                      <p className="mt-0.5 text-[9px] text-[#a9c7bd]">{dashboard.tableCounts[activeStage]}</p>
                     </div>
-                    <button type="button" aria-label={language === 'zh' ? '更多操作' : 'More actions'} className="flex h-7 w-7 items-center justify-center text-[#71827f]">
+                    <button type="button" aria-label={language === 'zh' ? '更多操作' : 'More actions'} className="flex h-7 w-7 items-center justify-center text-white/45">
                       <MoreHorizontal className="h-4 w-4" />
                     </button>
                   </div>
 
                   <div className="overflow-x-auto">
                     <div className="min-w-[640px]">
-                      <div className="grid grid-cols-[1.25fr_1fr_.78fr_.68fr] gap-3 bg-[#f5f7f5] px-3 py-2 text-[8px] font-semibold uppercase tracking-[0.1em] text-[#71827f]">
+                      <div className="grid grid-cols-[1.25fr_1fr_.78fr_.68fr] gap-3 bg-[#102f31] px-3 py-2 text-[8px] font-semibold uppercase tracking-[0.1em] text-[#a9c7bd]">
                         {dashboard.tableHeaders[activeStage].map((header) => <span key={header}>{header}</span>)}
                       </div>
                       <AnimatePresence mode="wait">
@@ -581,10 +581,10 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
                           transition={{ duration: 0.22 }}
                         >
                           {dashboard.rows[activeStage].map((row) => (
-                            <div key={row[0]} className="grid grid-cols-[1.25fr_1fr_.78fr_.68fr] items-center gap-3 border-t border-[#edf0ee] px-3 py-2.5 text-[10px] text-[#58716d] first:border-t-0">
-                              <span className="font-semibold text-[#274b48]">{row[0]}</span>
-                              <span className="truncate">{row[1]}</span>
-                              <span className="truncate">{row[2]}</span>
+                            <div key={row[0]} className="grid grid-cols-[1.25fr_1fr_.78fr_.68fr] items-center gap-3 border-t border-white/10 px-3 py-2.5 text-[10px] text-[#c0d5cd] first:border-t-0">
+                              <span className="font-semibold text-[#e3f0ea]">{row[0]}</span>
+                              <span className="truncate text-[#c0d5cd]">{row[1]}</span>
+                              <span className="truncate text-[#c0d5cd]">{row[2]}</span>
                               <span className={`w-fit border px-2 py-0.5 text-[8px] font-semibold ${statusTone(row[3])}`}>{row[3]}</span>
                             </div>
                           ))}
@@ -593,21 +593,21 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between border-t border-[#e1e7e3] px-3 py-2 text-[8px] text-[#71827f]">
+                  <div className="flex items-center justify-between border-t border-white/10 px-3 py-2 text-[8px] text-[#a9c7bd]">
                     <span>{language === 'zh' ? '显示 1–4 条' : 'Showing 1–4'}</span>
                     <span>{language === 'zh' ? '最近由 AI 更新' : 'Last updated by AI just now'}</span>
                   </div>
                 </section>
 
-                <aside className="hidden border border-[#c8d9d1] bg-white lg:flex lg:flex-col">
-                  <div className="flex items-center gap-2.5 border-b border-[#e1e7e3] px-3 py-3">
-                    <div className="flex h-7 w-7 items-center justify-center bg-[#123f3d] text-[#9fd5c1]">
+                <aside className="hidden border border-[#3d746c] bg-[#122f31] lg:flex lg:flex-col">
+                  <div className="flex items-center gap-2.5 border-b border-white/10 px-3 py-3">
+                    <div className="flex h-7 w-7 items-center justify-center bg-[#8ed9bd] text-[#0c2527]">
                       <Sparkles className="h-3.5 w-3.5" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold text-[#123f3d]">{dashboard.assistant}</p>
-                      <p className="mt-0.5 flex items-center gap-1.5 text-[8px] text-[#2f7770]">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#5fba9b]" />
+                      <p className="text-[11px] font-semibold text-white/90">{dashboard.assistant}</p>
+                      <p className="mt-0.5 flex items-center gap-1.5 text-[8px] text-[#8ed9bd]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#8ed9bd]" />
                         {dashboard.assistantStatus}
                       </p>
                     </div>
@@ -622,14 +622,14 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
                       transition={{ duration: 0.22 }}
                       className="flex-1 px-3 py-3"
                     >
-                      <p className="text-[10px] leading-5 text-[#58716d]">{dashboard.assistantSummaries[activeStage]}</p>
-                      <div className="mt-3 divide-y divide-[#e5eae6] border-y border-[#e5eae6]">
+                      <p className="text-[10px] leading-5 text-white/70">{dashboard.assistantSummaries[activeStage]}</p>
+                      <div className="mt-3 divide-y divide-white/10 border-y border-white/10">
                         {dashboard.assistantItems.map(([label, value], index) => (
                           <div key={label} className="flex gap-2 py-2.5">
-                            {index === 2 ? <CircleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#aa7416]" /> : <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#2f7770]" />}
+                            {index === 2 ? <CircleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#f2c66d]" /> : <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#8ed9bd]" />}
                             <div>
-                              <p className="text-[9px] font-semibold text-[#274b48]">{label}</p>
-                              <p className="mt-0.5 text-[8px] leading-4 text-[#71827f]">{value}</p>
+                              <p className="text-[9px] font-semibold text-white/82">{label}</p>
+                              <p className="mt-0.5 text-[8px] leading-4 text-white/55">{value}</p>
                             </div>
                           </div>
                         ))}
@@ -637,12 +637,12 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
                     </motion.div>
                   </AnimatePresence>
 
-                  <div className="border-t border-[#e1e7e3] p-3">
-                    <button type="button" className="flex w-full items-center justify-center gap-2 bg-[#215b57] px-3 py-2 text-[9px] font-semibold text-white">
+                  <div className="border-t border-white/10 p-3">
+                    <button type="button" className="flex w-full items-center justify-center gap-2 bg-[#2f7770] px-3 py-2 text-[9px] font-semibold text-white transition hover:bg-[#3a8b82]">
                       <ScanSearch className="h-3.5 w-3.5" />
                       {dashboard.reviewAction}
                     </button>
-                    <div className="mt-2 flex items-center gap-2 border border-[#dbe3de] bg-[#f8faf8] px-2.5 py-2 text-[8px] text-[#71827f]">
+                    <div className="mt-2 flex items-center gap-2 border border-white/10 bg-[#0e292b] px-2.5 py-2 text-[8px] text-white/38">
                       <MessageSquareText className="h-3.5 w-3.5" />
                       <span>{dashboard.ask}</span>
                     </div>
