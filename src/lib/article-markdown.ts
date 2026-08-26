@@ -33,7 +33,7 @@ export function renderMarkdown(raw: string): string {
   ));
 
   text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, url) => {
-    if (typeof url === 'string' && url.startsWith('#')) {
+    if (typeof url === 'string' && (url.startsWith('#') || url.startsWith('/'))) {
       return `<a href="${url}" class="${linkClass}">${label}</a>`;
     }
 
@@ -43,7 +43,7 @@ export function renderMarkdown(raw: string): string {
   text = text.replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 rounded bg-slate-100 text-slate-800">$1</code>');
   text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-  text = text.replace(/^---$/gm, '<hr class="my-10 border-white/20" />');
+  text = text.replace(/^---$/gm, '<hr class="my-12 border-slate-200" />');
 
   const lines = text.split('\n');
   const html: string[] = [];
@@ -78,17 +78,24 @@ export function renderMarkdown(raw: string): string {
       const level = Math.min(6, headingMatch[1].length);
       const content = headingMatch[2].trim();
       const id = createUniqueSlug(content, seenHeadingIds);
-      html.push(`<h${level} id="${id}" class="text-2xl md:text-3xl font-bold text-slate-900 mb-6 mt-12 first:mt-0">${content}</h${level}>`);
+      const headingClass = level === 2
+        ? 'mt-14 border-t border-slate-200 pt-10 font-lora text-[1.9rem] font-semibold leading-tight text-[#123f3d] sm:text-[2.15rem]'
+        : level === 3
+          ? 'mt-9 text-[1.3rem] font-semibold leading-snug text-slate-900 sm:text-[1.4rem]'
+          : level === 4
+            ? 'mt-7 text-[1.1rem] font-semibold leading-snug text-slate-900'
+            : 'mt-7 text-base font-semibold leading-snug text-slate-900';
+      html.push(`<h${level} id="${id}" class="${headingClass} mb-4 scroll-mt-28">${content}</h${level}>`);
       continue;
     }
 
     if (/^>\s?/.test(line)) {
       closeLists();
       if (!inBlockquote) {
-        html.push('<blockquote class="border-l-4 border-emerald-200 pl-4 italic text-slate-700 bg-emerald-50/70 py-2 pr-4 rounded-r-lg my-6">');
+        html.push('<blockquote class="my-8 border-l-4 border-[#7ca99a] bg-[#f1f7f3] py-4 pl-5 pr-5 text-[1.05rem] font-medium leading-8 text-[#284f4b]">');
         inBlockquote = true;
       }
-      html.push(line.replace(/^>\s?/, ''));
+      html.push(`<p>${line.replace(/^>\s?/, '')}</p>`);
       continue;
     }
 
@@ -97,20 +104,26 @@ export function renderMarkdown(raw: string): string {
     if (/^\s*-\s+/.test(line)) {
       if (!inUL) {
         closeLists();
-        html.push('<ul class="list-disc pl-6 my-4 space-y-2">');
+        html.push('<ul class="my-6 list-disc space-y-3 pl-6 marker:text-[#4f8277]">');
         inUL = true;
       }
-      html.push(`<li>${line.replace(/^\s*-\s+/, '')}</li>`);
+      html.push(`<li class="pl-1 text-[1.05rem] leading-8 text-slate-700">${line.replace(/^\s*-\s+/, '')}</li>`);
       continue;
     }
 
-    if (/^\s*\d+\)\s+/.test(line)) {
+    if (/^\s*\d+[.)]\s+/.test(line)) {
       if (!inOL) {
         closeLists();
-        html.push('<ol class="list-decimal pl-6 my-4 space-y-2">');
+        html.push('<ol class="my-6 list-decimal space-y-3 pl-6 marker:font-semibold marker:text-[#215b57]">');
         inOL = true;
       }
-      html.push(`<li>${line.replace(/^\s*\d+\)\s+/, '')}</li>`);
+      html.push(`<li class="pl-1 text-[1.05rem] leading-8 text-slate-700">${line.replace(/^\s*\d+[.)]\s+/, '')}</li>`);
+      continue;
+    }
+
+    if (/^<hr\b/.test(line)) {
+      closeLists();
+      html.push(line);
       continue;
     }
 
@@ -121,7 +134,7 @@ export function renderMarkdown(raw: string): string {
     }
 
     closeLists();
-    html.push(`<p class="text-slate-700 text-lg leading-relaxed mb-6">${line}</p>`);
+    html.push(`<p class="mb-5 text-[1.05rem] leading-8 text-slate-700">${line}</p>`);
   }
 
   closeLists();
@@ -136,7 +149,7 @@ export function extractToc(raw: string): { level: number; text: string; id: stri
 
   return text
     .split('\n')
-    .map((line) => line.match(/^(#{2,3})\s+(.+)$/))
+    .map((line) => line.match(/^(##)\s+(.+)$/))
     .filter((match): match is RegExpMatchArray => Boolean(match))
     .map((match) => ({
       level: match[1].length,

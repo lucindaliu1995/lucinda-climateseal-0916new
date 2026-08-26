@@ -133,7 +133,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
-      <section className="py-16 px-4 bg-white">
+      <section className="bg-white px-4 pb-12 pt-12 sm:pb-14 sm:pt-16">
         <div className="max-w-4xl mx-auto">
           <nav className="mb-8">
             <Link href="/resources" className="text-emerald-600 hover:text-emerald-700 underline text-sm">
@@ -155,12 +155,12 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight font-lora">
+          <h1 className="mb-8 max-w-[19ch] font-lora text-[2.5rem] font-semibold leading-[1.08] text-slate-900 sm:text-[3.15rem]">
             {articleTitle}
           </h1>
 
           <div className="mb-8">
-            <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden">
+            <div className="relative aspect-[3/2] max-h-[540px] overflow-hidden bg-slate-100">
               <Image
                 src={article.coverImage || '/climate-seal-logo-green.png'}
                 alt={`${articleTitle} - cover image`}
@@ -189,15 +189,15 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
       </section>
 
       <section className="pb-16 px-4 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-xl">
+        <div className="mx-auto max-w-4xl">
+          <div className="border-y border-slate-200 py-10 md:py-14">
             {toc.length > 0 && (
-              <nav aria-label={isChineseLanguage(language) ? '目录' : 'Table of contents'} className="mb-10 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <h2 className="text-slate-800 font-semibold mb-3 text-lg">{isChineseLanguage(language) ? '目录' : 'Contents'}</h2>
-                <ul className="space-y-2">
+              <nav aria-label={isChineseLanguage(language) ? '目录' : 'Table of contents'} className="mb-12 border-l-2 border-[#8eb4a7] bg-[#f6f9f7] px-6 py-6">
+                <h2 className="mb-4 text-lg font-semibold text-slate-800">{isChineseLanguage(language) ? '目录' : 'Contents'}</h2>
+                <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
                   {toc.map((item) => (
-                    <li key={item.id} className={item.level === 2 ? 'pl-0' : 'pl-4'}>
-                      <a href={`#${item.id}`} className="text-emerald-600 hover:text-emerald-700 underline">
+                    <li key={item.id}>
+                      <a href={`#${item.id}`} className="text-sm leading-6 text-[#356d64] underline decoration-[#b8cec5] underline-offset-4 hover:text-[#174d47]">
                         {item.text}
                       </a>
                     </li>
@@ -206,8 +206,8 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
               </nav>
             )}
 
-            <div className="prose prose-xl max-w-none prose-slate">
-              <div className="text-slate-700 leading-relaxed space-y-4" dangerouslySetInnerHTML={{ __html: html }} />
+            <div className="mx-auto max-w-[760px]">
+              <div dangerouslySetInnerHTML={{ __html: html }} />
             </div>
           </div>
 
