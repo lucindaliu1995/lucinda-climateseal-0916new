@@ -667,7 +667,7 @@ export function HomeWorkflowStory({ language, content }: { language: Language; c
       <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
           <p className="cs-section-eyebrow">{content.sectionEyebrow}</p>
-          <h2 className="mt-4 max-w-[18ch] font-lora text-[2.3rem] font-bold leading-[1.05] text-[#123f3d] sm:text-[2.8rem] lg:text-[3.15rem]">
+          <h2 className="mt-4 max-w-[28ch] font-lora text-[2.3rem] font-bold leading-[1.05] text-[#123f3d] sm:text-[2.8rem] lg:text-[3.15rem]">
             {content.sectionTitle}
           </h2>
           <p className="mt-6 max-w-3xl text-[16px] leading-8 text-[#5e706d] sm:text-[17px]">{content.sectionSubtitle}</p>

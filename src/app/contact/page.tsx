@@ -181,7 +181,7 @@ export default async function ContactPage() {
             <p className="cs-section-eyebrow">
               {copy.eyebrow}
             </p>
-            <h1 className="font-lora text-balance text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-[3.45rem]">
+            <h1 className="font-lora text-balance text-4xl font-semibold leading-[1.05] sm:text-5xl lg:!text-[3.05rem]">
               {copy.heroTitle}
             </h1>
             <p className="text-lg leading-8 text-[#5f7672]">{copy.heroBody}</p>

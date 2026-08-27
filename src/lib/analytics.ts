@@ -7,6 +7,9 @@ export type AnalyticsEventName =
   | 'pricing_cta_click'
   | 'email_click'
   | 'linkedin_click'
+  | 'newsletter_subscribe'
+  | 'pcf_pack_download'
+  | 'pcf_pack_form_submit'
   | 'case_study_view'
   | 'scroll_75'
   | 'solution_page_view';

@@ -215,7 +215,7 @@ export default function SolutionPageRefresh({
             <p className={`text-[11px] font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>
               {eyebrow}
             </p>
-            <h1 className="mx-auto mt-5 max-w-[19ch] font-lora text-[2.6rem] font-semibold leading-[1.02] text-[#123f3d] sm:text-[3.45rem] lg:text-[4rem]">
+            <h1 className="mx-auto mt-5 max-w-[27ch] font-lora text-[2.6rem] font-semibold leading-[1.02] text-[#123f3d] sm:text-[3.45rem] lg:text-[4rem]">
               {title}
             </h1>
             <p className="mx-auto mt-6 max-w-4xl text-[17px] leading-8 text-[#506a66] sm:text-[19px]">
@@ -291,7 +291,7 @@ export default function SolutionPageRefresh({
             <p className={`text-[11px] font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>
               {eyebrow}
             </p>
-            <h2 className="mt-4 max-w-[13ch] font-lora text-[2.3rem] font-bold leading-[1.06] text-[#123f3d] sm:text-[2.8rem]">
+            <h2 className="mt-4 max-w-[22ch] font-lora text-[2.3rem] font-bold leading-[1.06] text-[#123f3d] sm:text-[2.8rem]">
               {challengeTitle}
             </h2>
           </Reveal>
@@ -328,7 +328,7 @@ export default function SolutionPageRefresh({
             <p className={`text-[11px] font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>
               {workflowEyebrow}
             </p>
-            <h2 className="mt-4 max-w-[20ch] font-lora text-[2.3rem] font-bold leading-[1.06] text-[#123f3d] sm:text-[2.8rem]">
+            <h2 className="mt-4 max-w-[28ch] font-lora text-[2.3rem] font-bold leading-[1.06] text-[#123f3d] sm:text-[2.8rem]">
               {workflowTitle}
             </h2>
             <p className="mt-5 max-w-3xl text-[16px] leading-8 text-[#5e706d] sm:text-[18px]">

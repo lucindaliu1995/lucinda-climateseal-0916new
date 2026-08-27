@@ -387,7 +387,7 @@ export default function HomePageRefresh() {
           <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-12">
             <Reveal className="max-w-3xl">
               <p className="cs-section-eyebrow">{t.standardsCoverage.eyebrow}</p>
-              <h2 className="mt-4 max-w-[18ch] font-lora text-[2.25rem] font-bold leading-[1.06] text-[#123f3d] sm:text-[2.9rem]">
+              <h2 className="mt-4 max-w-[26ch] font-lora text-[2.25rem] font-bold leading-[1.06] text-[#123f3d] sm:text-[2.9rem]">
                 {t.standardsCoverage.title}
               </h2>
               <div className="mt-10 border-l-2 border-[#9db4aa] pl-5">
@@ -421,7 +421,7 @@ export default function HomePageRefresh() {
           <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <p className="cs-section-eyebrow">{isZh ? '解决方案' : 'Solution paths'}</p>
-              <h2 className="mt-4 max-w-[19ch] font-lora text-[2.3rem] font-bold leading-[1.06] text-[#123f3d] sm:text-[2.8rem]">
+              <h2 className="mt-4 max-w-[27ch] font-lora text-[2.3rem] font-bold leading-[1.06] text-[#123f3d] sm:text-[2.8rem]">
                 {isZh ? '同一个平台，不同的专业工作方式' : 'One platform, adapted to different professional workflows'}
               </h2>
             </div>
@@ -475,7 +475,7 @@ export default function HomePageRefresh() {
           <Reveal className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#9fd5c1]">{isZh ? '专业控制' : 'Professional control'}</p>
-              <h2 className="mt-4 max-w-[13ch] font-lora text-[2.35rem] font-bold leading-[1.05] text-white sm:text-[2.9rem]">
+              <h2 className="mt-4 max-w-[22ch] font-lora text-[2.35rem] font-bold leading-[1.05] text-white sm:text-[2.9rem]">
                 {isZh ? '更快地执行，不牺牲透明度' : 'Move faster without sacrificing transparency'}
               </h2>
             </div>

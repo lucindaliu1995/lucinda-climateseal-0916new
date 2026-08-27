@@ -181,6 +181,50 @@ body {
   font-size: clamp(1.35rem, 2.1vw, 1.8rem);
 }
 
+/* Shared editorial rules for HTML generated from Resource Center Markdown. */
+.article-first-paragraph {
+  text-indent: 1.5em;
+}
+
+.article-list {
+  margin: 1.75rem 0;
+  padding-left: 2.25rem;
+  color: #334155;
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.article-list-unordered {
+  list-style-type: disc;
+}
+
+.article-list-ordered {
+  list-style-type: decimal;
+}
+
+.article-list-item {
+  padding-left: 0.5rem;
+}
+
+.article-list-item + .article-list-item {
+  margin-top: 0.75rem;
+}
+
+.article-list-unordered ::marker {
+  color: #4f8277;
+}
+
+.article-list-ordered ::marker {
+  color: #215b57;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .article-list {
+    padding-left: 1.9rem;
+  }
+}
+
 /* Scenarios & Value Section Animations */
 @keyframes slideInUp {
   from {

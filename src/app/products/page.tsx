@@ -233,7 +233,7 @@ export default async function ProductsPage() {
               {copy.eyebrow}
             </p>
             <div className="space-y-5">
-              <h1 className="font-lora text-4xl font-bold leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:text-[3.5rem]">
+              <h1 className="font-lora text-4xl font-bold leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:!text-[3.1rem]">
                 {copy.heroTitle}
               </h1>
               <p className="max-w-3xl text-lg leading-8 text-[#5f7672]">{copy.heroBody}</p>

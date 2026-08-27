@@ -87,6 +87,23 @@ export type ConsultantPartnerApplication = {
   status: 'new' | 'reviewing' | 'accepted' | 'rejected';
 };
 
+export type NewsletterSubscriber = {
+  id: string;
+  subscribedAt: string;
+  email: string;
+  source: string;
+};
+
+export type PcfResponsePackRequest = {
+  id: string;
+  submittedAt: string;
+  email: string;
+  company: string;
+  role: string;
+  industry: string;
+  marketingOptIn: boolean;
+};
+
 const ADMIN_DATA_DIR = path.join(process.cwd(), 'data', 'admin');
 const CONTACTS_FILE = path.join(ADMIN_DATA_DIR, 'contact-submissions.json');
 const WHITEPAPERS_FILE = path.join(ADMIN_DATA_DIR, 'whitepaper-submissions.json');
@@ -94,6 +111,8 @@ const ASSETS_FILE = path.join(ADMIN_DATA_DIR, 'uploaded-assets.json');
 const REFERRAL_OWNERS_FILE = path.join(ADMIN_DATA_DIR, 'referral-owners.json');
 const REFERRAL_USES_FILE = path.join(ADMIN_DATA_DIR, 'referral-uses.json');
 const CONSULTANT_APPLICATIONS_FILE = path.join(ADMIN_DATA_DIR, 'consultant-partner-applications.json');
+const NEWSLETTER_SUBSCRIBERS_FILE = path.join(ADMIN_DATA_DIR, 'newsletter-subscribers.json');
+const PCF_RESPONSE_PACK_REQUESTS_FILE = path.join(ADMIN_DATA_DIR, 'pcf-response-pack-requests.json');
 
 let cachedDatabaseUrl = '';
 let cachedSql: ReturnType<typeof neon> | null = null;
@@ -163,10 +182,82 @@ async function ensureContactTables() {
         payload jsonb NOT NULL
       )
     `;
+
+    await sql`
+      CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+        email text PRIMARY KEY,
+        subscribed_at timestamptz NOT NULL,
+        source text NOT NULL,
+        payload jsonb NOT NULL
+      )
+    `;
+
+    await sql`
+      CREATE TABLE IF NOT EXISTS pcf_response_pack_requests (
+        id text PRIMARY KEY,
+        submitted_at timestamptz NOT NULL,
+        email text NOT NULL,
+        company text NOT NULL,
+        role text NOT NULL,
+        industry text NOT NULL,
+        marketing_opt_in boolean NOT NULL,
+        payload jsonb NOT NULL
+      )
+    `;
   })();
 
   await ensureContactTablesPromise;
   return sql;
+}
+
+async function saveNewsletterSubscriberToDatabase(subscriber: NewsletterSubscriber): Promise<boolean> {
+  const sql = await ensureContactTables();
+
+  if (!sql) {
+    return false;
+  }
+
+  await sql`
+    INSERT INTO newsletter_subscribers (email, subscribed_at, source, payload)
+    VALUES (
+      ${subscriber.email},
+      ${subscriber.subscribedAt},
+      ${subscriber.source},
+      ${JSON.stringify(subscriber)}::jsonb
+    )
+    ON CONFLICT (email) DO UPDATE SET
+      subscribed_at = EXCLUDED.subscribed_at,
+      source = EXCLUDED.source,
+      payload = EXCLUDED.payload
+  `;
+
+  return true;
+}
+
+async function savePcfResponsePackRequestToDatabase(request: PcfResponsePackRequest): Promise<boolean> {
+  const sql = await ensureContactTables();
+
+  if (!sql) {
+    return false;
+  }
+
+  await sql`
+    INSERT INTO pcf_response_pack_requests (
+      id, submitted_at, email, company, role, industry, marketing_opt_in, payload
+    )
+    VALUES (
+      ${request.id},
+      ${request.submittedAt},
+      ${request.email},
+      ${request.company},
+      ${request.role},
+      ${request.industry},
+      ${request.marketingOptIn},
+      ${JSON.stringify(request)}::jsonb
+    )
+  `;
+
+  return true;
 }
 
 function normalizePayload<T>(payload: unknown): T {
@@ -470,6 +561,48 @@ export async function updateReferralUse(
 
 export async function saveConsultantPartnerApplication(application: ConsultantPartnerApplication) {
   await appendJsonRow(CONSULTANT_APPLICATIONS_FILE, application);
+}
+
+export async function saveNewsletterSubscriber(subscriber: NewsletterSubscriber) {
+  let savedToDatabase = false;
+
+  try {
+    savedToDatabase = await saveNewsletterSubscriberToDatabase(subscriber);
+  } catch (error) {
+    logStoreWarning('newsletter subscriber database save failed', error);
+  }
+
+  try {
+    const subscribers = await readJsonFile<NewsletterSubscriber>(NEWSLETTER_SUBSCRIBERS_FILE);
+    const nextSubscribers = [subscriber, ...subscribers.filter((item) => item.email !== subscriber.email)];
+    await writeJsonFile(NEWSLETTER_SUBSCRIBERS_FILE, nextSubscribers);
+  } catch (error) {
+    logStoreWarning('newsletter subscriber file save failed', error);
+
+    if (!savedToDatabase) {
+      throw error;
+    }
+  }
+}
+
+export async function savePcfResponsePackRequest(request: PcfResponsePackRequest) {
+  let savedToDatabase = false;
+
+  try {
+    savedToDatabase = await savePcfResponsePackRequestToDatabase(request);
+  } catch (error) {
+    logStoreWarning('PCF response pack request database save failed', error);
+  }
+
+  try {
+    await appendJsonRow(PCF_RESPONSE_PACK_REQUESTS_FILE, request);
+  } catch (error) {
+    logStoreWarning('PCF response pack request file save failed', error);
+
+    if (!savedToDatabase) {
+      throw error;
+    }
+  }
 }
 
 export async function listConsultantPartnerApplications(): Promise<ConsultantPartnerApplication[]> {

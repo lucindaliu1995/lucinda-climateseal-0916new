@@ -400,7 +400,7 @@ export default async function ReferralProgramPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:grid-cols-[minmax(0,0.92fr)_minmax(360px,0.78fr)] lg:px-8 lg:pb-20 lg:pt-36">
           <div className="relative z-10">
             <p className="cs-section-eyebrow">{copy.eyebrow}</p>
-            <h1 className="mt-4 max-w-[13ch] font-lora text-[2.45rem] font-bold leading-[0.98] tracking-[-0.03em] text-[#123F3D] sm:text-[3rem] lg:text-[4rem]">
+            <h1 className="mt-4 max-w-[24ch] font-lora text-[2.45rem] font-bold leading-[0.98] tracking-[-0.03em] text-[#123F3D] sm:text-[3rem] lg:text-[4rem]">
               {copy.heroTitle}
             </h1>
             <p className="mt-5 max-w-2xl text-[16px] leading-8 text-[#5f7672]">
