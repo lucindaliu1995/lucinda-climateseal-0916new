@@ -24,6 +24,8 @@ import {
   getLocalizedSummary,
   getLocalizedTitle,
 } from '@/lib/resource-detail';
+import NewsletterSubscribe from '@/components/NewsletterSubscribe';
+import PcfResponsePackCta from '@/components/PcfResponsePackCta';
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -52,6 +54,28 @@ function getArticleCategoryLabel(article: ArticleItem, language: Language): stri
   return isChineseLanguage(language)
     ? article.categoryZh || category?.nameZh || article.category
     : category?.name || article.category;
+}
+
+function splitPcfResponsePackPlacement(content: string, language: Language): { before: string; after: string } | null {
+  const bomHeading = language === 'zh' ? '## 只有 BOM，可以先做吗？' : '## Can you start with only a BOM?';
+  const sectionStart = content.indexOf(bomHeading);
+
+  if (sectionStart < 0) {
+    return null;
+  }
+
+  const nextHeading = content.slice(sectionStart + bomHeading.length).search(/\n#{2,3}\s+/);
+
+  if (nextHeading < 0) {
+    return null;
+  }
+
+  const sectionEnd = sectionStart + bomHeading.length + nextHeading + 1;
+
+  return {
+    before: content.slice(0, sectionEnd),
+    after: content.slice(sectionEnd),
+  };
 }
 
 export function generateStaticParams() {
@@ -109,7 +133,13 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
   const cleanedContent = removeDuplicatedArticleHeading(getArticleContent(article, language), articleTitle)
     .replace(/^CTA:?\s*$/gim, '');
   const toc = extractToc(cleanedContent);
-  const html = renderMarkdown(cleanedContent);
+  const pcfResponsePackSections = article.id === 'customer-requested-pcf-three-day-response'
+    ? splitPcfResponsePackPlacement(cleanedContent, language)
+    : null;
+  const html = renderMarkdown(cleanedContent, {
+    editorialFormatting: Boolean(pcfResponsePackSections),
+    indentFirstParagraph: Boolean(pcfResponsePackSections),
+  });
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
   const pageUrl = buildResourcePageUrl(`/resources/${article.id}`, language, baseUrl);
   const relatedArticles = getMeaningfulArticles()
@@ -155,7 +185,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
             </div>
           </div>
 
-          <h1 className="mb-8 max-w-[19ch] font-lora text-[2.5rem] font-semibold leading-[1.08] text-slate-900 sm:text-[3.15rem]">
+          <h1 className="mb-8 max-w-3xl font-lora text-[2.5rem] font-semibold leading-[1.08] text-slate-900 sm:text-[3.15rem]">
             {articleTitle}
           </h1>
 
@@ -207,7 +237,16 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
             )}
 
             <div className="mx-auto max-w-[760px]">
-              <div dangerouslySetInnerHTML={{ __html: html }} />
+              {pcfResponsePackSections ? (
+                <>
+                  <div dangerouslySetInnerHTML={{ __html: renderMarkdown(pcfResponsePackSections.before, { editorialFormatting: true, indentFirstParagraph: true }) }} />
+                  <PcfResponsePackCta language={language} />
+                  <div dangerouslySetInnerHTML={{ __html: renderMarkdown(pcfResponsePackSections.after, { editorialFormatting: true }) }} />
+                </>
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: html }} />
+              )}
+              {pcfResponsePackSections && <PcfResponsePackCta language={language} compact />}
             </div>
           </div>
 
@@ -252,6 +291,8 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
           </div>
         </div>
       </section>
+
+      <NewsletterSubscribe language={language} source={`resource_article:${article.id}`} />
 
       {relatedArticles.length > 0 && (
         <section className="pb-16 px-4 bg-slate-50">

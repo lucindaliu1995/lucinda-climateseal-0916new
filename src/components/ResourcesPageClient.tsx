@@ -142,7 +142,7 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div className="max-w-4xl">
             <p className="cs-section-eyebrow">{language === 'zh' ? '资源中心' : 'Resource center'}</p>
-            <h1 className="mt-5 max-w-[19ch] font-lora text-[2.55rem] font-bold leading-[1.04] text-[#123f3d] sm:text-[3.35rem]">
+            <h1 className="mt-5 max-w-[28ch] font-lora !text-[2.25rem] font-bold leading-[1.08] text-[#123f3d] sm:!text-[3.35rem]">
               {language === 'zh' ? '关注碳与气候变化中的新闻、洞察与实践指南' : 'News, Insights, and Guidance for a Changing Carbon Landscape'}
             </h1>
             <p className="mt-6 max-w-3xl text-[17px] leading-8 text-[#5e706d]">
@@ -215,7 +215,7 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
                       <span>{formatDate(leadArticle.publishDate)}</span>
                       <span className="inline-flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" />{getReadingTime(leadArticle)}</span>
                     </div>
-                    <h3 className="mt-6 max-w-[18ch] font-lora text-[2rem] font-bold leading-[1.06] text-[#123f3d] sm:text-[2.45rem]">{getArticleTitle(leadArticle)}</h3>
+                    <h3 className="mt-6 max-w-[28ch] font-lora text-[2rem] font-bold leading-[1.06] text-[#123f3d] sm:text-[2.45rem]">{getArticleTitle(leadArticle)}</h3>
                     <p className="mt-5 max-w-xl text-[16px] leading-8 text-[#5e706d]">{getArticleExcerpt(leadArticle)}</p>
                     <span className="mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold text-[#215b57]">
                       {language === 'zh' ? '阅读文章' : 'Read article'}

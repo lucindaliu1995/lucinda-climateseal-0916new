@@ -48,6 +48,38 @@ export interface TranslationData {
       title: string;
       subtitle: string;
     };
+    newsletter: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      emailLabel: string;
+      emailPlaceholder: string;
+      submit: string;
+      submitting: string;
+      success: string;
+      error: string;
+    };
+    pcfResponsePack: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      items: string[];
+      cta: string;
+      form: {
+        email: string;
+        company: string;
+        role: string;
+        industry: string;
+        marketingOptIn: string;
+        privacyNote: string;
+        privacyLink: string;
+        submit: string;
+        submitting: string;
+        success: string;
+        download: string;
+        error: string;
+      };
+    };
     form: {
       title: string;
       description: string;
@@ -693,6 +725,43 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       articles: {
         title: 'Articles & Insights',
         subtitle: 'Practical guides, regulatory breakdowns, and operating notes from the Climate Seal team.'
+      },
+      newsletter: {
+        eyebrow: 'Climate Seal Resources',
+        title: 'Do you find our content useful? Get updated once a week',
+        description: 'Receive a concise weekly digest of new articles, regulatory insights, and practical guidance.',
+        emailLabel: 'Email address',
+        emailPlaceholder: 'you@company.com',
+        submit: 'Subscribe',
+        submitting: 'Subscribing...',
+        success: 'Thanks. You are on the list for weekly updates.',
+        error: 'We could not complete the subscription. Please try again.'
+      },
+      pcfResponsePack: {
+        eyebrow: 'Free response pack',
+        title: 'Customer asking for a PCF?',
+        description: 'Download a practical three-day response pack for clarifying the request, collecting priority data, checking BOM readiness, and wording a preliminary result responsibly.',
+        items: [
+          'Customer clarification email template',
+          'PCF data collection checklist',
+          'BOM readiness check',
+          'Safe wording for preliminary estimates',
+        ],
+        cta: 'Get the free response pack',
+        form: {
+          email: 'Work email',
+          company: 'Company',
+          role: 'Role',
+          industry: 'Industry (optional)',
+          marketingOptIn: 'Yes, send me occasional Climate Seal updates and marketing emails.',
+          privacyNote: 'By submitting this form, you agree that Climate Seal may process your information to provide this resource and respond to your request.',
+          privacyLink: 'Privacy Policy',
+          submit: 'Get the free response pack',
+          submitting: 'Preparing your download...',
+          success: 'Your response pack is ready to download.',
+          download: 'Download the PDF',
+          error: 'We could not process your request. Please check your details and try again.',
+        },
       },
       form: {
         title: 'Get the whitepaper',
@@ -1569,6 +1638,43 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       articles: {
         title: '博客与洞察',
         subtitle: 'Climate Seal 团队输出的实操指南、法规解读与产品碳足迹最佳实践。'
+      },
+      newsletter: {
+        eyebrow: 'Climate Seal 资源中心',
+        title: '觉得我们的内容有帮助吗？每周获取一次更新',
+        description: '每周接收新文章、法规洞察与实用指南摘要。',
+        emailLabel: '邮箱地址',
+        emailPlaceholder: 'you@company.com',
+        submit: '订阅更新',
+        submitting: '提交中...',
+        success: '感谢订阅。您已加入每周更新列表。',
+        error: '订阅暂时未完成，请稍后再试。'
+      },
+      pcfResponsePack: {
+        eyebrow: '免费响应资料包',
+        title: '客户正在要求 PCF？',
+        description: '下载一份实用的三天响应资料包，帮助你澄清客户需求、收集关键数据、检查 BOM 准备情况，并以负责任的方式表述初步结果。',
+        items: [
+          '客户澄清邮件模板',
+          'PCF 数据收集清单',
+          'BOM 准备度检查表',
+          '初步估算的稳妥表达方式',
+        ],
+        cta: '获取免费响应资料包',
+        form: {
+          email: '工作邮箱',
+          company: '公司',
+          role: '职位',
+          industry: '行业（可选）',
+          marketingOptIn: '是的，我愿意接收 Climate Seal 的后续更新与营销信息。',
+          privacyNote: '提交表单即表示你同意 Climate Seal 为提供该资料并回应你的请求而处理相关信息。',
+          privacyLink: '隐私政策',
+          submit: '获取免费响应资料包',
+          submitting: '正在准备下载...',
+          success: '响应资料包已准备好，可以下载。',
+          download: '下载 PDF',
+          error: '暂时无法处理你的请求，请检查填写的信息后重试。',
+        },
       },
       form: {
         title: '领取白皮书',

@@ -16,7 +16,13 @@ function createUniqueSlug(value: string, seen: Map<string, number>): string {
   return count === 0 ? baseSlug : `${baseSlug}-${count + 1}`;
 }
 
-export function renderMarkdown(raw: string): string {
+type RenderMarkdownOptions = {
+  editorialFormatting?: boolean;
+  indentFirstParagraph?: boolean;
+};
+
+export function renderMarkdown(raw: string, options: RenderMarkdownOptions = {}): string {
+  const { editorialFormatting = false, indentFirstParagraph = false } = options;
   const linkClass = 'text-emerald-600 underline hover:text-emerald-700 transition-colors';
   let text = raw
     .replace(/\\n/g, '\n')
@@ -51,6 +57,7 @@ export function renderMarkdown(raw: string): string {
   let inUL = false;
   let inOL = false;
   let inBlockquote = false;
+  let paragraphCount = 0;
 
   const closeLists = () => {
     if (inUL) {
@@ -104,20 +111,30 @@ export function renderMarkdown(raw: string): string {
     if (/^\s*-\s+/.test(line)) {
       if (!inUL) {
         closeLists();
-        html.push('<ul class="my-6 list-disc space-y-3 pl-6 marker:text-[#4f8277]">');
+        html.push(editorialFormatting
+          ? '<ul class="article-list article-list-unordered">'
+          : '<ul class="my-6 list-disc space-y-3 pl-6 marker:text-[#4f8277]">');
         inUL = true;
       }
-      html.push(`<li class="pl-1 text-[1.05rem] leading-8 text-slate-700">${line.replace(/^\s*-\s+/, '')}</li>`);
+      const listItemClass = editorialFormatting
+        ? 'article-list-item'
+        : 'pl-1 text-[1.05rem] leading-8 text-slate-700';
+      html.push(`<li class="${listItemClass}">${line.replace(/^\s*-\s+/, '')}</li>`);
       continue;
     }
 
     if (/^\s*\d+[.)]\s+/.test(line)) {
       if (!inOL) {
         closeLists();
-        html.push('<ol class="my-6 list-decimal space-y-3 pl-6 marker:font-semibold marker:text-[#215b57]">');
+        html.push(editorialFormatting
+          ? '<ol class="article-list article-list-ordered">'
+          : '<ol class="my-6 list-decimal space-y-3 pl-6 marker:font-semibold marker:text-[#215b57]">');
         inOL = true;
       }
-      html.push(`<li class="pl-1 text-[1.05rem] leading-8 text-slate-700">${line.replace(/^\s*\d+[.)]\s+/, '')}</li>`);
+      const listItemClass = editorialFormatting
+        ? 'article-list-item'
+        : 'pl-1 text-[1.05rem] leading-8 text-slate-700';
+      html.push(`<li class="${listItemClass}">${line.replace(/^\s*\d+[.)]\s+/, '')}</li>`);
       continue;
     }
 
@@ -134,7 +151,13 @@ export function renderMarkdown(raw: string): string {
     }
 
     closeLists();
-    html.push(`<p class="mb-5 text-[1.05rem] leading-8 text-slate-700">${line}</p>`);
+    const paragraphClass = editorialFormatting
+      ? indentFirstParagraph && paragraphCount === 0
+        ? 'article-first-paragraph mb-6 text-[1.08rem] leading-[1.85] text-slate-700'
+        : 'mb-6 text-[1.08rem] leading-[1.85] text-slate-700'
+      : 'mb-5 text-[1.05rem] leading-8 text-slate-700';
+    html.push(`<p class="${paragraphClass}">${line}</p>`);
+    paragraphCount += 1;
   }
 
   closeLists();
