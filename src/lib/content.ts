@@ -14,6 +14,14 @@ export type ArticleItem = {
   imageLicenseUrl?: string;
   excerpt: string;
   excerptZh: string;
+  metaDescription?: string;
+  metaDescriptionZh?: string;
+  ogTitle?: string;
+  ogTitleZh?: string;
+  ogDescription?: string;
+  ogDescriptionZh?: string;
+  imageAlt?: string;
+  imageAltZh?: string;
   content: string;
   contentZh: string;
   publishDate: string;

@@ -21,7 +21,10 @@ import {
   createResourceDetailMetadata,
   formatResourceDate,
   getAvailableResourceLanguage,
-  getLocalizedSummary,
+  getLocalizedImageAlt,
+  getLocalizedMetaDescription,
+  getLocalizedOgDescription,
+  getLocalizedOgTitle,
   getLocalizedTitle,
 } from '@/lib/resource-detail';
 import NewsletterSubscribe from '@/components/NewsletterSubscribe';
@@ -96,7 +99,9 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const hasChineseVersion = hasChineseArticleVersion(article);
   const language = getAvailableResourceLanguage(requestedLanguage, hasChineseVersion);
   const title = getLocalizedTitle(article, language);
-  const description = getLocalizedSummary(article, language);
+  const description = getLocalizedMetaDescription(article, language);
+  const ogTitle = getLocalizedOgTitle(article, language);
+  const ogDescription = getLocalizedOgDescription(article, language);
   const canonical = `/resources/${id}`;
   const image = article.coverImage || '/climate-seal-logo-green.png';
 
@@ -106,6 +111,8 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     hasChineseVersion,
     title,
     description,
+    ogTitle,
+    ogDescription,
     image,
     missingTitle: 'Article Not Found',
   });
@@ -128,7 +135,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
   );
 
   const articleTitle = getLocalizedTitle(article, language);
-  const articleDescription = getLocalizedSummary(article, language);
+  const articleDescription = getLocalizedMetaDescription(article, language);
   const articleCategoryLabel = getArticleCategoryLabel(article, language);
   const cleanedContent = removeDuplicatedArticleHeading(getArticleContent(article, language), articleTitle)
     .replace(/^CTA:?\s*$/gim, '');
@@ -136,9 +143,11 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
   const pcfResponsePackSections = article.id === 'customer-requested-pcf-three-day-response'
     ? splitPcfResponsePackPlacement(cleanedContent, language)
     : null;
+  const editorialFormatting = article.id === 'customer-requested-pcf-three-day-response'
+    || article.id === 'bom-ready-for-pcf';
   const html = renderMarkdown(cleanedContent, {
-    editorialFormatting: Boolean(pcfResponsePackSections),
-    indentFirstParagraph: Boolean(pcfResponsePackSections),
+    editorialFormatting,
+    indentFirstParagraph: editorialFormatting,
   });
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
   const pageUrl = buildResourcePageUrl(`/resources/${article.id}`, language, baseUrl);
@@ -193,7 +202,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
             <div className="relative aspect-[3/2] max-h-[540px] overflow-hidden bg-slate-100">
               <Image
                 src={article.coverImage || '/climate-seal-logo-green.png'}
-                alt={`${articleTitle} - cover image`}
+                alt={getLocalizedImageAlt(article, language)}
                 fill
                 className="object-cover"
                 priority

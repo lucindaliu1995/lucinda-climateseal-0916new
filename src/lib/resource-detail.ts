@@ -14,12 +14,25 @@ type LocalizedSummaryRecord = LocalizedRecord & {
   introZh?: string;
 };
 
+type LocalizedSeoRecord = LocalizedSummaryRecord & {
+  metaDescription?: string;
+  metaDescriptionZh?: string;
+  ogTitle?: string;
+  ogTitleZh?: string;
+  ogDescription?: string;
+  ogDescriptionZh?: string;
+  imageAlt?: string;
+  imageAltZh?: string;
+};
+
 type DetailMetadataOptions = {
   canonical: string;
   language: Language;
   hasChineseVersion: boolean;
   title: string;
   description: string;
+  ogTitle?: string;
+  ogDescription?: string;
   image: string;
   missingTitle: string;
 };
@@ -46,6 +59,38 @@ export function getLocalizedSummary(item: LocalizedSummaryRecord, language: Lang
   return item.excerpt || item.intro || item.excerptZh || item.introZh || '';
 }
 
+export function getLocalizedMetaDescription(item: LocalizedSeoRecord, language: Language): string {
+  if (isChineseLanguage(language)) {
+    return item.metaDescriptionZh || getLocalizedSummary(item, language) || item.metaDescription || '';
+  }
+
+  return item.metaDescription || getLocalizedSummary(item, language) || item.metaDescriptionZh || '';
+}
+
+export function getLocalizedOgTitle(item: LocalizedSeoRecord, language: Language): string {
+  if (isChineseLanguage(language)) {
+    return item.ogTitleZh || getLocalizedTitle(item, language);
+  }
+
+  return item.ogTitle || getLocalizedTitle(item, language);
+}
+
+export function getLocalizedOgDescription(item: LocalizedSeoRecord, language: Language): string {
+  if (isChineseLanguage(language)) {
+    return item.ogDescriptionZh || getLocalizedMetaDescription(item, language);
+  }
+
+  return item.ogDescription || getLocalizedMetaDescription(item, language);
+}
+
+export function getLocalizedImageAlt(item: LocalizedSeoRecord, language: Language): string {
+  if (isChineseLanguage(language)) {
+    return item.imageAltZh || `${getLocalizedTitle(item, language)} - cover image`;
+  }
+
+  return item.imageAlt || `${getLocalizedTitle(item, language)} - cover image`;
+}
+
 export function formatResourceDate(dateString: string, language: Language): string {
   const date = new Date(dateString);
   return isChineseLanguage(language)
@@ -69,15 +114,15 @@ export function createResourceDetailMetadata(options: DetailMetadataOptions): Me
       ? { robots: { index: false, follow: true } }
       : {}),
     openGraph: {
-      title: options.title,
-      description: options.description,
+      title: options.ogTitle || options.title,
+      description: options.ogDescription || options.description,
       type: 'article',
       images: [{ url: options.image, width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: options.title,
-      description: options.description,
+      title: options.ogTitle || options.title,
+      description: options.ogDescription || options.description,
       images: [options.image],
     },
   };
