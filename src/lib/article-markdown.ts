@@ -19,10 +19,11 @@ function createUniqueSlug(value: string, seen: Map<string, number>): string {
 type RenderMarkdownOptions = {
   editorialFormatting?: boolean;
   indentFirstParagraph?: boolean;
+  compactLists?: boolean;
 };
 
 export function renderMarkdown(raw: string, options: RenderMarkdownOptions = {}): string {
-  const { editorialFormatting = false, indentFirstParagraph = false } = options;
+  const { editorialFormatting = false, indentFirstParagraph = false, compactLists = false } = options;
   const linkClass = 'text-emerald-600 underline hover:text-emerald-700 transition-colors';
   let text = raw
     .replace(/\\n/g, '\n')
@@ -77,7 +78,39 @@ export function renderMarkdown(raw: string, options: RenderMarkdownOptions = {})
     }
   };
 
-  for (const line of lines) {
+  const splitTableRow = (line: string): string[] => line.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim());
+  const isTableSeparator = (line: string): boolean => {
+    const cells = splitTableRow(line);
+    return cells.length > 0 && cells.every((cell) => /^:?-{3,}:?$/.test(cell));
+  };
+
+  for (let lineIndex = 0; lineIndex < lines.length; lineIndex += 1) {
+    const line = lines[lineIndex];
+    if (line.includes('|') && lineIndex + 1 < lines.length && isTableSeparator(lines[lineIndex + 1])) {
+      closeLists();
+      closeBlockquote();
+      const headers = splitTableRow(line);
+      const rows: string[][] = [];
+      lineIndex += 2;
+
+      while (lineIndex < lines.length && lines[lineIndex].includes('|') && lines[lineIndex].trim()) {
+        rows.push(splitTableRow(lines[lineIndex]));
+        lineIndex += 1;
+      }
+
+      html.push('<div class="article-table-wrap"><table class="article-table"><thead><tr>');
+      headers.forEach((cell) => html.push(`<th scope="col">${cell}</th>`));
+      html.push('</tr></thead><tbody>');
+      rows.forEach((row) => {
+        html.push('<tr>');
+        headers.forEach((_header, cellIndex) => html.push(`<td>${row[cellIndex] || ''}</td>`));
+        html.push('</tr>');
+      });
+      html.push('</tbody></table></div>');
+      lineIndex -= 1;
+      continue;
+    }
+
     const headingMatch = line.match(/^(#{1,6})\s+(.+)$/);
     if (headingMatch) {
       closeLists();
@@ -112,7 +145,7 @@ export function renderMarkdown(raw: string, options: RenderMarkdownOptions = {})
       if (!inUL) {
         closeLists();
         html.push(editorialFormatting
-          ? '<ul class="article-list article-list-unordered">'
+          ? `<ul class="article-list article-list-unordered${compactLists ? ' article-list-compact' : ''}">`
           : '<ul class="my-6 list-disc space-y-3 pl-6 marker:text-[#4f8277]">');
         inUL = true;
       }
@@ -145,6 +178,9 @@ export function renderMarkdown(raw: string, options: RenderMarkdownOptions = {})
     }
 
     if (/^\s*$/.test(line)) {
+      if (compactLists && inUL && lineIndex + 1 < lines.length && /^\s*-\s+/.test(lines[lineIndex + 1])) {
+        continue;
+      }
       closeLists();
       html.push('');
       continue;

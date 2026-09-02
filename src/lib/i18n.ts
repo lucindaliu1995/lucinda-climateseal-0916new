@@ -48,6 +48,13 @@ export interface TranslationData {
       title: string;
       subtitle: string;
     };
+    filters: {
+      browse: string;
+      searchPlaceholder: string;
+      results: string;
+      noResults: string;
+      clearSearch: string;
+    };
     newsletter: {
       eyebrow: string;
       title: string;
@@ -725,6 +732,13 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       articles: {
         title: 'Articles & Insights',
         subtitle: 'Practical guides, regulatory breakdowns, and operating notes from the Climate Seal team.'
+      },
+      filters: {
+        browse: 'Browse by topic',
+        searchPlaceholder: 'Search articles and insights',
+        results: 'articles',
+        noResults: 'No articles match your search. Try a different keyword or topic.',
+        clearSearch: 'Clear search',
       },
       newsletter: {
         eyebrow: 'Climate Seal Resources',
@@ -1638,6 +1652,13 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       articles: {
         title: '博客与洞察',
         subtitle: 'Climate Seal 团队输出的实操指南、法规解读与产品碳足迹最佳实践。'
+      },
+      filters: {
+        browse: '按主题浏览',
+        searchPlaceholder: '搜索文章与洞察',
+        results: '篇文章',
+        noResults: '没有找到匹配内容，请尝试其他关键词或主题。',
+        clearSearch: '清除搜索',
       },
       newsletter: {
         eyebrow: 'Climate Seal 资源中心',

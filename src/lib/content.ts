@@ -16,12 +16,15 @@ export type ArticleItem = {
   excerptZh: string;
   metaDescription?: string;
   metaDescriptionZh?: string;
+  seoTitle?: string;
+  seoTitleZh?: string;
   ogTitle?: string;
   ogTitleZh?: string;
   ogDescription?: string;
   ogDescriptionZh?: string;
   imageAlt?: string;
   imageAltZh?: string;
+  keywords?: string[];
   content: string;
   contentZh: string;
   publishDate: string;

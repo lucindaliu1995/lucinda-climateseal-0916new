@@ -198,6 +198,14 @@ body {
   list-style-type: disc;
 }
 
+.article-list-compact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem 2.5rem;
+  padding-left: 1.35rem;
+  list-style-type: disc;
+}
+
 .article-list-ordered {
   list-style-type: decimal;
 }
@@ -208,6 +216,52 @@ body {
 
 .article-list-item + .article-list-item {
   margin-top: 0.75rem;
+}
+
+.article-list-compact .article-list-item {
+  margin-top: 0;
+  padding-left: 0.35rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.article-table-wrap {
+  margin: 2rem 0 2.5rem;
+  overflow-x: auto;
+  border: 1px solid #dce8e2;
+  background: #fff;
+}
+
+.article-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  color: #334155;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.article-table th,
+.article-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #e5eee9;
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-table th {
+  background: #eef5f1;
+  color: #123f3d;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.article-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.article-table tbody tr:nth-child(even) td {
+  background: #fbfdfc;
 }
 
 .article-list-unordered ::marker {
@@ -221,6 +275,11 @@ body {
 
 @media (max-width: 640px) {
   .article-list {
+    padding-left: 1.9rem;
+  }
+
+  .article-list-compact {
+    grid-template-columns: minmax(0, 1fr);
     padding-left: 1.9rem;
   }
 }

@@ -17,12 +17,15 @@ type LocalizedSummaryRecord = LocalizedRecord & {
 type LocalizedSeoRecord = LocalizedSummaryRecord & {
   metaDescription?: string;
   metaDescriptionZh?: string;
+  seoTitle?: string;
+  seoTitleZh?: string;
   ogTitle?: string;
   ogTitleZh?: string;
   ogDescription?: string;
   ogDescriptionZh?: string;
   imageAlt?: string;
   imageAltZh?: string;
+  keywords?: string[];
 };
 
 type DetailMetadataOptions = {
@@ -31,6 +34,7 @@ type DetailMetadataOptions = {
   hasChineseVersion: boolean;
   title: string;
   description: string;
+  keywords?: string[];
   ogTitle?: string;
   ogDescription?: string;
   image: string;
@@ -65,6 +69,14 @@ export function getLocalizedMetaDescription(item: LocalizedSeoRecord, language: 
   }
 
   return item.metaDescription || getLocalizedSummary(item, language) || item.metaDescriptionZh || '';
+}
+
+export function getLocalizedSeoTitle(item: LocalizedSeoRecord, language: Language): string {
+  if (isChineseLanguage(language)) {
+    return item.seoTitleZh || getLocalizedTitle(item, language);
+  }
+
+  return item.seoTitle || getLocalizedTitle(item, language);
 }
 
 export function getLocalizedOgTitle(item: LocalizedSeoRecord, language: Language): string {
@@ -102,6 +114,7 @@ export function createResourceDetailMetadata(options: DetailMetadataOptions): Me
   return {
     title: options.title,
     description: options.description,
+    ...(options.keywords?.length ? { keywords: options.keywords } : {}),
     alternates: {
       canonical: buildLocalizedCanonical(
         options.canonical,

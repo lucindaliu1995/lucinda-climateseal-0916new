@@ -25,6 +25,7 @@ import {
   getLocalizedMetaDescription,
   getLocalizedOgDescription,
   getLocalizedOgTitle,
+  getLocalizedSeoTitle,
   getLocalizedTitle,
 } from '@/lib/resource-detail';
 import NewsletterSubscribe from '@/components/NewsletterSubscribe';
@@ -98,7 +99,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 
   const hasChineseVersion = hasChineseArticleVersion(article);
   const language = getAvailableResourceLanguage(requestedLanguage, hasChineseVersion);
-  const title = getLocalizedTitle(article, language);
+  const title = getLocalizedSeoTitle(article, language);
   const description = getLocalizedMetaDescription(article, language);
   const ogTitle = getLocalizedOgTitle(article, language);
   const ogDescription = getLocalizedOgDescription(article, language);
@@ -111,6 +112,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     hasChineseVersion,
     title,
     description,
+    keywords: article.keywords,
     ogTitle,
     ogDescription,
     image,
@@ -144,10 +146,12 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
     ? splitPcfResponsePackPlacement(cleanedContent, language)
     : null;
   const editorialFormatting = article.id === 'customer-requested-pcf-three-day-response'
-    || article.id === 'bom-ready-for-pcf';
+    || article.id === 'bom-ready-for-pcf'
+    || article.id === 'secondary-data-for-pcf';
   const html = renderMarkdown(cleanedContent, {
     editorialFormatting,
     indentFirstParagraph: editorialFormatting,
+    compactLists: article.id === 'secondary-data-for-pcf',
   });
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
   const pageUrl = buildResourcePageUrl(`/resources/${article.id}`, language, baseUrl);
@@ -199,7 +203,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
           </h1>
 
           <div className="mb-8">
-            <div className="relative aspect-[3/2] max-h-[540px] overflow-hidden bg-slate-100">
+            <div className={`relative overflow-hidden bg-slate-100 ${article.id === 'secondary-data-for-pcf' ? 'aspect-[1200/630]' : 'aspect-[3/2] max-h-[540px]'}`}>
               <Image
                 src={article.coverImage || '/climate-seal-logo-green.png'}
                 alt={getLocalizedImageAlt(article, language)}

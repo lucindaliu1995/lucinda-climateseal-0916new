@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
-import { ArrowRight, BookOpen, Clock, FileText } from 'lucide-react';
+import { ArrowRight, BookOpen, Clock, FileText, Search, X } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import SafeImage from '@/components/SafeImage';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -20,12 +20,18 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
   const { language, t } = useLanguage();
   const reduceMotion = useReducedMotion();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState('');
   const [filteredArticles, setFilteredArticles] = useState<ArticleItem[]>(articles);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const category = params.get('category');
+    const query = params.get('q');
     const categoryHasArticles = (id: string) => articles.some((article) => article.category === id);
+
+    if (query) {
+      setSearchQuery(query);
+    }
 
     if (category && (category === 'all' || (categories.some((item) => item.id === category) && categoryHasArticles(category)))) {
       setSelectedCategory(category);
@@ -35,49 +41,60 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
   }, [articles, categories]);
 
   useEffect(() => {
-    setFilteredArticles(selectedCategory === 'all' ? articles : articles.filter((article) => article.category === selectedCategory));
-  }, [selectedCategory, articles]);
+    const normalizedQuery = searchQuery.trim().toLocaleLowerCase();
+    setFilteredArticles(
+      articles.filter((article) => {
+        const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
+        const searchableText = [
+          article.title,
+          article.titleZh,
+          article.excerpt,
+          article.excerptZh,
+          article.content,
+          article.contentZh,
+          article.category,
+          article.categoryZh,
+        ]
+          .join(' ')
+          .toLocaleLowerCase();
+
+        return matchesCategory && (!normalizedQuery || searchableText.includes(normalizedQuery));
+      }),
+    );
+  }, [selectedCategory, searchQuery, articles]);
 
   const categoryDescriptions: Record<string, { en: string; zh: string }> = {
-    'supply-chain-scope-3': {
-      en: 'Practical guides for supplier data collection, value-chain modeling, and Scope 3 reporting.',
-      zh: '聚焦供应商数据采集、价值链建模与范围 3 披露的实操指南。',
-    },
-    'cbam-csrd-pef-compliance': {
-      en: 'How to prepare evidence and carbon data for CBAM, CSRD, PEF, and DPP workflows.',
-      zh: '为 CBAM、CSRD、PEF 和 DPP 工作流程准备证据与碳数据。',
+    'getting-started': {
+      en: 'Foundational guides and practical checklists for starting a sustainability assessment.',
+      zh: '帮助团队开始开展可持续发展评估的基础指南与实用清单。',
     },
     'pcf-lca-methods': {
-      en: 'Functional units, boundaries, allocation, data quality, and uncertainty for credible PCFs.',
-      zh: '功能单位、系统边界、分配、数据质量与不确定性，支撑可信 PCF。',
+      en: 'Methods, boundaries, allocation, and evidence for product and life-cycle assessments.',
+      zh: '产品与生命周期评估的方法、边界、分配与证据。',
     },
-    'data-factors-baselines': {
-      en: 'Emission factors, provenance, baselines, and data-quality management for defensible calculations.',
-      zh: '排放因子来源、基线与数据质量管理，使核算结果更可解释。',
+    'data-readiness': {
+      en: 'How to prepare source data, assess quality, and close the gaps before calculation.',
+      zh: '计算前如何准备源数据、评估数据质量并补齐缺口。',
     },
-    'industry-playbooks': {
-      en: 'Sector playbooks for food, textiles, manufacturing, logistics, and construction.',
-      zh: '面向食品、纺织、制造、物流与建材的行业方法指南。',
+    'regulations-market-access': {
+      en: 'Regulatory explainers and practical guidance for sustainability-related market requirements.',
+      zh: '可持续发展相关市场要求的法规解读与实用指南。',
     },
-    'case-studies': {
-      en: 'Implementation examples, delivery lessons, and workflow improvements.',
-      zh: '实际落地案例、交付经验与工作流程改进。',
+    'supply-chain-scope-3': {
+      en: 'Supplier data, value-chain emissions, and practical approaches to Scope 3 work.',
+      zh: '供应商数据、价值链排放与范围 3 工作的实用方法。',
     },
-    'research-insights': {
-      en: 'Policy trends, methodology updates, and market insights for carbon accounting and assurance.',
-      zh: '政策趋势、方法学更新与碳核算和鉴证市场洞察。',
+    'ai-technology': {
+      en: 'How AI can support structured sustainability data work, analysis, and review.',
+      zh: 'AI 如何支持结构化可持续发展数据工作、分析与审查。',
     },
-    'getting-started': {
-      en: 'Foundational guides, checklists, and FAQs for teams beginning carbon accounting work.',
-      zh: '面向初次开展碳核算工作的基础指南、清单与常见问题。',
-    },
-    technology: {
-      en: 'Technology topics and implementation notes for AI-assisted carbon workflows.',
-      zh: 'AI 辅助碳核算工作流程的技术主题与实施要点。',
+    'standards-policy': {
+      en: 'Updates and explainers on standards, policy developments, and reporting expectations.',
+      zh: '标准、政策发展与披露要求的更新与解读。',
     },
   };
 
-  const displayArticles = filteredArticles.length ? filteredArticles : articles;
+  const displayArticles = filteredArticles;
   const leadArticle = displayArticles[0];
   const latestArticles = displayArticles.slice(1);
 
@@ -165,24 +182,52 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
       </section>
 
       <div className="sticky top-20 z-30 border-b border-[#d7ddd6] bg-white/95 px-4 backdrop-blur-md sm:top-24 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto py-3">
-          <button
-            type="button"
-            onClick={() => setSelectedCategory('all')}
-            className={`shrink-0 border px-4 py-2 text-sm font-semibold transition-colors ${selectedCategory === 'all' ? 'border-[#123f3d] bg-[#123f3d] text-white' : 'border-[#d7ddd6] bg-white text-[#456864] hover:border-[#9fb8ad]'}`}
-          >
-            {language === 'zh' ? '全部内容' : 'All resources'}
-          </button>
-          {categories.filter((category) => articles.some((article) => article.category === category.id)).map((category) => (
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 py-3 lg:flex-row lg:items-center">
+          <div className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#58716d] lg:mr-2">
+            <span className="shrink-0">{t.resourcesPage.filters.browse}</span>
+            <span className="h-4 w-px bg-[#c8d7cf]" aria-hidden="true" />
+          </div>
+          <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto">
             <button
-              key={category.id}
               type="button"
-              onClick={() => setSelectedCategory(category.id)}
-              className={`shrink-0 border px-4 py-2 text-sm font-semibold transition-colors ${selectedCategory === category.id ? 'border-[#123f3d] bg-[#123f3d] text-white' : 'border-[#d7ddd6] bg-white text-[#456864] hover:border-[#9fb8ad]'}`}
+              onClick={() => setSelectedCategory('all')}
+              className={`shrink-0 border px-4 py-2 text-sm font-semibold transition-colors ${selectedCategory === 'all' ? 'border-[#123f3d] bg-[#123f3d] text-white' : 'border-[#d7ddd6] bg-white text-[#456864] hover:border-[#9fb8ad]'}`}
             >
-              {getCategoryName(category)}
+              {language === 'zh' ? '全部内容' : 'All resources'} <span className="ml-1 text-xs opacity-70">{articles.length}</span>
             </button>
-          ))}
+            {categories.filter((category) => articles.some((article) => article.category === category.id)).map((category) => (
+              <button
+                key={category.id}
+                type="button"
+                onClick={() => setSelectedCategory(category.id)}
+                className={`shrink-0 border px-4 py-2 text-sm font-semibold transition-colors ${selectedCategory === category.id ? 'border-[#123f3d] bg-[#123f3d] text-white' : 'border-[#d7ddd6] bg-white text-[#456864] hover:border-[#9fb8ad]'}`}
+              >
+                {getCategoryName(category)} <span className="ml-1 text-xs opacity-70">{articles.filter((article) => article.category === category.id).length}</span>
+              </button>
+            ))}
+          </div>
+          <label className="flex w-full items-center gap-2 border border-[#c8d7cf] bg-[#f8faf8] px-3 py-2 text-sm text-[#456864] lg:ml-auto lg:max-w-[300px]">
+            <Search className="h-4 w-4 shrink-0 text-[#58716d]" aria-hidden="true" />
+            <span className="sr-only">{t.resourcesPage.filters.searchPlaceholder}</span>
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder={t.resourcesPage.filters.searchPlaceholder}
+              className="min-w-0 flex-1 bg-transparent text-sm text-[#123f3d] outline-none placeholder:text-[#78908b]"
+            />
+            {searchQuery ? (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                aria-label={t.resourcesPage.filters.clearSearch}
+                title={t.resourcesPage.filters.clearSearch}
+                className="shrink-0 text-[#58716d] transition-colors hover:text-[#123f3d]"
+              >
+                <X className="h-4 w-4" aria-hidden="true" />
+              </button>
+            ) : null}
+          </label>
         </div>
       </div>
 
@@ -192,7 +237,10 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
             <div className="flex flex-col gap-4 border-b border-[#d7ddd6] pb-7 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="cs-section-eyebrow">{selectedCategory === 'all' ? (language === 'zh' ? '精选与最新' : 'Featured and latest') : getCategoryName(categories.find((category) => category.id === selectedCategory) || categories[0])}</p>
-                <h2 className="mt-3 font-lora text-[2rem] font-bold text-[#123f3d] sm:text-[2.35rem]">{t.resourcesPage.articles.title}</h2>
+                <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                  <h2 className="font-lora text-[2rem] font-bold text-[#123f3d] sm:text-[2.35rem]">{t.resourcesPage.articles.title}</h2>
+                  <span className="text-sm text-[#6a817d]">{displayArticles.length} {t.resourcesPage.filters.results}</span>
+                </div>
               </div>
               <p className="max-w-lg text-sm leading-6 text-[#5e706d] sm:text-right">
                 {selectedCategory === 'all'
@@ -201,10 +249,25 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
               </p>
             </div>
 
-            {leadArticle ? (
+            {displayArticles.length === 0 ? (
+              <div className="border-b border-[#d7ddd6] py-16 text-center">
+                <Search className="mx-auto h-7 w-7 text-[#7c9890]" strokeWidth={1.5} aria-hidden="true" />
+                <p className="mx-auto mt-4 max-w-md text-base leading-7 text-[#5e706d]">{t.resourcesPage.filters.noResults}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery('');
+                    setSelectedCategory('all');
+                  }}
+                  className="mt-5 border border-[#215b57] px-4 py-2 text-sm font-semibold text-[#215b57] transition-colors hover:bg-[#eef4f0]"
+                >
+                  {t.resourcesPage.filters.clearSearch}
+                </button>
+              </div>
+            ) : leadArticle ? (
               <motion.div {...revealProps} transition={{ duration: reduceMotion ? 0 : 0.5 }}>
                 <Link href={`/resources/${leadArticle.id}`} className="group grid gap-0 border-b border-[#d7ddd6] py-9 md:grid-cols-[1.02fr_0.98fr] md:items-stretch">
-                  <div className="relative min-h-[280px] overflow-hidden bg-[#eef4f0] md:order-2 md:min-h-[380px]">
+                  <div className="relative aspect-[1200/630] w-full overflow-hidden bg-[#eef4f0] md:order-2 md:self-start">
                     {leadArticle.coverImage ? (
                       <Image src={leadArticle.coverImage} alt={`${getArticleTitle(leadArticle)} cover`} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.035]" />
                     ) : null}
@@ -230,7 +293,7 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
               <div className="pt-10">
                 <div className="flex items-center justify-between gap-4">
                   <h2 className="font-lora text-[1.75rem] font-bold text-[#123f3d]">{language === 'zh' ? '更多资源' : 'More resources'}</h2>
-                  <span className="text-sm text-[#6a817d]">{latestArticles.length} {language === 'zh' ? '篇' : 'articles'}</span>
+                  <span className="text-sm text-[#6a817d]">{latestArticles.length} {t.resourcesPage.filters.results}</span>
                 </div>
                 <div className="mt-5 grid gap-x-8 md:grid-cols-2">
                   {latestArticles.map((article, index) => (
@@ -240,8 +303,8 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
                       transition={{ duration: reduceMotion ? 0 : 0.42, delay: reduceMotion ? 0 : Math.min(index * 0.04, 0.2) }}
                       className="border-t border-[#d7ddd6] py-6"
                     >
-                      <Link href={`/resources/${article.id}`} className="group grid grid-cols-[112px_minmax(0,1fr)] gap-5">
-                        <div className="relative min-h-[138px] overflow-hidden bg-[#eef4f0]">
+                      <Link href={`/resources/${article.id}`} className="group grid grid-cols-[150px_minmax(0,1fr)] gap-5 sm:grid-cols-[180px_minmax(0,1fr)]">
+                        <div className="relative aspect-[1200/630] w-full overflow-hidden bg-[#eef4f0]">
                           {article.coverImage ? (
                             <Image src={article.coverImage} alt={`${getArticleTitle(article)} cover`} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
                           ) : null}
