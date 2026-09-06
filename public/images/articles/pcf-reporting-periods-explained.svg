@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">PCF Reporting Periods Explained</title>
+  <desc id="desc">A clean editorial illustration showing factory, supplier, and emissions data aligned across reporting years.</desc>
+  <rect width="1200" height="630" fill="#f4f1ed"/>
+  <text x="64" y="132" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="3">PRODUCT CARBON FOOTPRINT DATA</text>
+  <text x="64" y="214" fill="#111111" font-family="Georgia, serif" font-size="58">PCF Reporting</text>
+  <text x="64" y="278" fill="#111111" font-family="Georgia, serif" font-size="58">Periods Explained</text>
+  <text x="64" y="328" fill="#4d5f5a" font-family="Arial, Helvetica, sans-serif" font-size="22">Align factory, supplier, and emission data</text>
+  <line x1="700" y1="190" x2="1080" y2="190" stroke="#66847a" stroke-width="4"/>
+  <line x1="700" y1="190" x2="700" y2="410" stroke="#66847a" stroke-width="4"/>
+  <line x1="700" y1="410" x2="1080" y2="410" stroke="#66847a" stroke-width="4"/>
+  <line x1="1080" y1="190" x2="1080" y2="410" stroke="#66847a" stroke-width="4"/>
+  <circle cx="700" cy="190" r="12" fill="#c4dfd3" stroke="#171717" stroke-width="4"/>
+  <circle cx="1080" cy="190" r="12" fill="#c4dfd3" stroke="#171717" stroke-width="4"/>
+  <circle cx="700" cy="410" r="12" fill="#c4dfd3" stroke="#171717" stroke-width="4"/>
+  <circle cx="1080" cy="410" r="12" fill="#c4dfd3" stroke="#171717" stroke-width="4"/>
+  <rect x="774" y="237" width="210" height="118" fill="#ffffff" stroke="#171717" stroke-width="4"/>
+  <line x1="800" y1="272" x2="955" y2="272" stroke="#171717" stroke-width="4"/>
+  <line x1="800" y1="302" x2="930" y2="302" stroke="#66847a" stroke-width="4"/>
+  <line x1="800" y1="332" x2="900" y2="332" stroke="#66847a" stroke-width="4"/>
+  <text x="710" y="166" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="2">2024</text>
+  <text x="1030" y="166" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="2">2025</text>
+  <text x="710" y="462" fill="#4d5f5a" font-family="Arial, Helvetica, sans-serif" font-size="17">SUPPLIER DATA</text>
+  <text x="948" y="462" fill="#4d5f5a" font-family="Arial, Helvetica, sans-serif" font-size="17">FACTORY DATA</text>
+  <path d="M1005 530h72M1041 494v72M1019 507l22-13 22 13M1019 553l22 13 22-13" fill="none" stroke="#171717" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -147,11 +147,12 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
     : null;
   const editorialFormatting = article.id === 'customer-requested-pcf-three-day-response'
     || article.id === 'bom-ready-for-pcf'
-    || article.id === 'secondary-data-for-pcf';
+    || article.id === 'secondary-data-for-pcf'
+    || article.id === 'pcf-reporting-periods-explained';
   const html = renderMarkdown(cleanedContent, {
     editorialFormatting,
     indentFirstParagraph: editorialFormatting,
-    compactLists: article.id === 'secondary-data-for-pcf',
+    compactLists: article.id === 'secondary-data-for-pcf' || article.id === 'pcf-reporting-periods-explained',
   });
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
   const pageUrl = buildResourcePageUrl(`/resources/${article.id}`, language, baseUrl);
@@ -203,7 +204,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
           </h1>
 
           <div className="mb-8">
-            <div className={`relative overflow-hidden bg-slate-100 ${article.id === 'secondary-data-for-pcf' ? 'aspect-[1200/630]' : 'aspect-[3/2] max-h-[540px]'}`}>
+            <div className={`relative overflow-hidden bg-slate-100 ${article.id === 'secondary-data-for-pcf' || article.id === 'pcf-reporting-periods-explained' ? 'aspect-[1200/630]' : 'aspect-[3/2] max-h-[540px]'}`}>
               <Image
                 src={article.coverImage || '/climate-seal-logo-green.png'}
                 alt={getLocalizedImageAlt(article, language)}
