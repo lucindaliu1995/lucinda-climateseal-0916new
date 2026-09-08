@@ -3,6 +3,7 @@ export type Language = 'en' | 'zh' | 'de' | 'fr' | 'ja' | 'ko' | 'it' | 'es';
 export type TranslationLocale = 'en' | 'zh';
 
 export interface TranslationData {
+  notFound: { title: string; description: string; returnHome: string };
   // 导航栏
   nav: {
     home: string;
@@ -510,6 +511,9 @@ export interface TranslationData {
     form: {
       name: string;
       email: string;
+      workEmail: string;
+      optional: string;
+      industryOrRole: string;
       phone: string;
       company: string;
       industry: string;
@@ -526,6 +530,8 @@ export interface TranslationData {
         message: string;
       };
       industries: {
+        consulting: string;
+        procurement: string;
         automotive: string;
         electronics: string;
         textiles: string;
@@ -657,6 +663,11 @@ export interface TranslationData {
 // 英文翻译
 export const translations: Record<TranslationLocale, TranslationData> = {
   en: {
+    notFound: {
+      title: 'Page not found',
+      description: 'The page you requested does not exist.',
+      returnHome: 'Return home',
+    },
     nav: {
       home: 'Home',
       products: 'Products',
@@ -1316,6 +1327,9 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       form: {
         name: 'Name',
         email: 'Email',
+        workEmail: 'Work email',
+        optional: '(optional)',
+        industryOrRole: 'Industry or role',
         phone: 'Phone',
         company: 'Company Name',
         industry: 'Industry',
@@ -1332,6 +1346,8 @@ export const translations: Record<TranslationLocale, TranslationData> = {
           message: 'Please describe your needs or questions'
         },
         industries: {
+          consulting: 'Consulting & Sustainability Services',
+          procurement: 'Procurement & Supply Chain',
           automotive: 'Automotive Manufacturing',
           electronics: 'Electronics & Electrical',
           textiles: 'Textiles & Apparel',
@@ -1577,6 +1593,11 @@ export const translations: Record<TranslationLocale, TranslationData> = {
   
   // 中文翻译
   zh: {
+    notFound: {
+      title: '页面未找到',
+      description: '您访问的页面不存在。',
+      returnHome: '返回首页',
+    },
     nav: {
       home: '首页',
       products: '产品',
@@ -2236,6 +2257,9 @@ export const translations: Record<TranslationLocale, TranslationData> = {
       form: {
         name: '姓名',
         email: '邮箱',
+        workEmail: '工作邮箱',
+        optional: '（选填）',
+        industryOrRole: '行业或职能',
         phone: '电话',
         company: '公司名称',
         industry: '行业',
@@ -2252,6 +2276,8 @@ export const translations: Record<TranslationLocale, TranslationData> = {
           message: '请描述您的需求或问题'
         },
         industries: {
+          consulting: '咨询与可持续发展服务',
+          procurement: '采购与供应链',
           automotive: '汽车制造业',
           electronics: '电子电器',
           textiles: '纺织服装',

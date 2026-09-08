@@ -29,7 +29,9 @@ function createLocalizedEntries(
     lastModified: options.lastModified,
     changeFrequency: options.changeFrequency,
     priority: options.priority,
-    alternates: { languages },
+    alternates: {
+      languages: path === '/' ? { ...languages, 'x-default': englishUrl } : languages,
+    },
   }));
 }
 
@@ -64,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articleEntries = getMeaningfulArticles().flatMap((article) =>
     createLocalizedEntries(base, `/resources/${article.id}`, {
-      lastModified: new Date(article.publishDate).toISOString(),
+      lastModified: new Date(article.modifiedDate || article.publishDate).toISOString(),
       changeFrequency: 'monthly',
       priority: 0.6,
       includeChinese: hasChineseArticleVersion(article),

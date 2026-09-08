@@ -28,6 +28,7 @@ export type ArticleItem = {
   content: string;
   contentZh: string;
   publishDate: string;
+  modifiedDate?: string;
   category: string;
   categoryZh: string;
   featured: boolean;

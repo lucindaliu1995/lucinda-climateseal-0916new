@@ -46,7 +46,10 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  const language = resolveLanguage(queryLanguage || cookieLanguage);
+  // The home URL identifies its language even when a previous visit set a cookie.
+  const language = resolveLanguage(
+    request.nextUrl.pathname === '/' ? queryLanguage : queryLanguage || cookieLanguage
+  );
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set(LANGUAGE_HEADER, language);

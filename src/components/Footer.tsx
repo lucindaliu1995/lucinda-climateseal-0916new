@@ -1,11 +1,28 @@
+'use client';
+
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="border-t border-[var(--brand-border)] bg-[var(--brand-surface)] text-[var(--brand-muted)]">
       <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="text-sm">© {new Date().getFullYear()} Climate Seal</div>
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <Link href="/about" className="text-sm text-[var(--brand-muted)] hover:text-[var(--brand-accent-strong)]">
+            {t.nav.about}
+          </Link>
+          <Link href="/products" className="text-sm text-[var(--brand-muted)] hover:text-[var(--brand-accent-strong)]">
+            {t.nav.products}
+          </Link>
+          <Link href="/pricing" className="text-sm text-[var(--brand-muted)] hover:text-[var(--brand-accent-strong)]">
+            {t.nav.pricing}
+          </Link>
+          <Link href="/contact" className="text-sm text-[var(--brand-muted)] hover:text-[var(--brand-accent-strong)]">
+            {t.nav.contact}
+          </Link>
           <a href="mailto:xuguang.ma@climate-seal.net" data-analytics-event="email_click" className="text-sm text-[var(--brand-muted)] hover:text-[var(--brand-accent-strong)]">
             Email
           </a>

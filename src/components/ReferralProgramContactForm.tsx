@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { trackEvent } from '@/lib/analytics';
 
 type Props = {
@@ -16,6 +16,7 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
     industry: '',
     message: '',
   });
+  const submittingRef = useRef(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
@@ -24,7 +25,8 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
         title: '预约演示，获得推荐资格',
         body: '填写信息后，我们会安排一场简短演示，帮助你判断 ClimateSeal 是否适合你网络中的顾问、品牌团队或制造企业。',
         name: '姓名',
-        email: '邮箱',
+        email: '工作邮箱',
+        optional: '（选填）',
         phone: '电话',
         company: '公司 / 机构',
         industry: '行业',
@@ -48,7 +50,8 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
         title: 'Book a demo to become eligible',
         body: 'Fill this out and we will arrange a short demo so you can see the product, understand who it fits, and start making qualified referrals with confidence.',
         name: 'Name',
-        email: 'Email',
+        email: 'Work email',
+        optional: '(optional)',
         phone: 'Phone',
         company: 'Company / organization',
         industry: 'Industry',
@@ -81,12 +84,14 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submittingRef.current) return;
 
-    if (!formData.name || !formData.email || !formData.phone || !formData.company || !formData.industry || !formData.message) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.company.trim()) {
       setSubmitMessage(labels.validation);
       return;
     }
 
+    submittingRef.current = true;
     setIsSubmitting(true);
     setSubmitMessage('');
 
@@ -101,7 +106,7 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
 
       const data = await response.json();
 
-      if (response.ok) {
+      if (response.ok && data.success === true) {
         trackEvent('contact_form_submit', { form: 'referral_program' });
         trackEvent('demo_request_submit', { form: 'referral_program' });
         setSubmitMessage(data.message || labels.success);
@@ -114,12 +119,13 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
           message: '',
         });
       } else {
-        setSubmitMessage(data.message || labels.error);
+        setSubmitMessage(data.message || data.error || labels.error);
       }
     } catch (error) {
       console.error('Referral form submission error:', error);
       setSubmitMessage(labels.error);
     } finally {
+      submittingRef.current = false;
       setIsSubmitting(false);
     }
   };
@@ -161,7 +167,7 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-black sm:text-sm">{labels.phone}*</label>
+            <label className="mb-1 block text-xs font-medium text-black sm:text-sm">{labels.phone} {labels.optional}</label>
             <input
               type="tel"
               name="phone"
@@ -169,7 +175,6 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
               onChange={handleInputChange}
               className="w-full rounded-[0.5rem] border border-[#d7ddd6] bg-[#fbf9f4] p-2 text-sm text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent-strong)]"
               placeholder={labels.placeholders.phone}
-              required
             />
           </div>
           <div>
@@ -186,13 +191,12 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
           </div>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-black sm:text-sm">{labels.industry}*</label>
+          <label className="mb-1 block text-xs font-medium text-black sm:text-sm">{labels.industry} {labels.optional}</label>
           <select
             name="industry"
             value={formData.industry}
             onChange={handleInputChange}
             className="w-full rounded-[0.5rem] border border-[#d7ddd6] bg-[#fbf9f4] p-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent-strong)]"
-            required
           >
             <option value="">{labels.placeholders.industry}</option>
             <option value="consulting">{isZh ? '咨询服务' : 'Consulting'}</option>
@@ -204,7 +208,7 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-black sm:text-sm">{labels.message}*</label>
+          <label className="mb-1 block text-xs font-medium text-black sm:text-sm">{labels.message} {labels.optional}</label>
           <textarea
             rows={3}
             name="message"
@@ -212,7 +216,6 @@ export default function ReferralProgramContactForm({ isZh }: Props) {
             onChange={handleInputChange}
             className="w-full resize-none rounded-[0.5rem] border border-[#d7ddd6] bg-[#fbf9f4] p-2 text-sm text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--brand-accent-strong)]"
             placeholder={labels.placeholders.message}
-            required
           />
         </div>
 

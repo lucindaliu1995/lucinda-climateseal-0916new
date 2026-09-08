@@ -48,6 +48,7 @@ type DetailJsonLdOptions = {
   title: string;
   description: string;
   publishDate: string;
+  modifiedDate?: string;
   image: string;
 };
 
@@ -183,7 +184,7 @@ export function createResourceArticleJsonLd(options: DetailJsonLdOptions) {
     headline: options.title,
     description: options.description,
     datePublished: options.publishDate,
-    dateModified: options.publishDate,
+    dateModified: options.modifiedDate || options.publishDate,
     inLanguage: isChineseLanguage(options.language) ? 'zh-CN' : 'en-US',
     image: [`${options.baseUrl}${options.image}`],
     mainEntityOfPage: options.pageUrl,

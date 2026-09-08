@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
 
     const missingFields = validateRequiredFields(
       { name, email, phone, company, industry, message },
-      ['name', 'email', 'phone', 'company', 'industry', 'message']
+      ['name', 'email', 'company']
     );
 
     if (missingFields.length > 0) {
@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
       return badRequest(requestId, 'Please provide a valid email address');
     }
 
-    if (!isValidPhone(phone)) {
+    if (phone && !isValidPhone(phone)) {
       return badRequest(requestId, 'Please provide a valid phone number');
     }
 
@@ -255,7 +255,7 @@ export async function POST(request: NextRequest) {
               <tr>
                 <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold; color: #555;">电话:</td>
                 <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">
-                  <a href="tel:${safePhone}" style="color: #667eea; text-decoration: none;">${safePhone}</a>
+                  ${safePhone ? `<a href="tel:${safePhone}" style="color: #667eea; text-decoration: none;">${safePhone}</a>` : '未填写'}
                 </td>
               </tr>
               <tr>
@@ -264,7 +264,7 @@ export async function POST(request: NextRequest) {
               </tr>
               <tr>
                 <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold; color: #555;">行业:</td>
-                <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">${safeIndustry}</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">${safeIndustry || '未填写'}</td>
               </tr>
               <tr>
                 <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: bold; color: #555;">推荐码:</td>
@@ -276,7 +276,7 @@ export async function POST(request: NextRequest) {
               </tr>
               <tr>
                 <td style="padding: 10px 0; font-weight: bold; color: #555;">留言:</td>
-                <td style="padding: 10px 0; color: #333;">${safeMessage}</td>
+                <td style="padding: 10px 0; color: #333;">${safeMessage || '未填写'}</td>
               </tr>
             </table>
             

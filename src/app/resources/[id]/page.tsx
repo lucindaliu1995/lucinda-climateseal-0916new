@@ -169,6 +169,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
     title: articleTitle,
     description: articleDescription,
     publishDate: article.publishDate,
+    modifiedDate: article.modifiedDate,
     image: article.coverImage || '/climate-seal-logo-green.png',
   });
 
@@ -191,6 +192,11 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
                 {articleCategoryLabel}
               </span>
               <span className="text-slate-500 text-sm">{formatResourceDate(article.publishDate, language)}</span>
+              {article.modifiedDate && (
+                <span className="text-slate-500 text-sm">
+                  {isChineseLanguage(language) ? '更新于' : 'Updated'} {formatResourceDate(article.modifiedDate, language)}
+                </span>
+              )}
               {article.featured && (
                 <span className="bg-amber-200 text-amber-800 px-3 py-1 rounded-full text-sm font-semibold">
                   {isChineseLanguage(language) ? '推荐' : 'Featured'}

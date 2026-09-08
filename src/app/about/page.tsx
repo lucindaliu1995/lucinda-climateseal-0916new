@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import { headers } from 'next/headers';
 import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage, resolveLanguage } from '@/lib/language';
 
@@ -9,109 +7,19 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
 const content = {
   en: {
     title: 'About Climate Seal',
-    description:
-      'Learn how Climate Seal uses AI to automate Product Carbon Footprint, Scope 3, project carbon, and LCA workflows for faster compliance and verification-ready delivery.',
+    description: 'Our mission is to lower the cost of establishing and using credible sustainability data through AI execution, structured workflows, and expert review.',
     eyebrow: 'About Climate Seal',
-    heroTitle: 'We are building carbon accounting infrastructure that works like software, not consulting overhead.',
-    heroBody:
-      'Climate Seal helps teams move from files and fragmented requests to verification-ready carbon outputs with AI that handles more of the accounting, review, and delivery workload.',
-    stats: [
-      { value: 'PCF', label: 'Product Carbon Footprint workflows' },
-      { value: 'Scope 3', label: 'Corporate carbon and supplier workflows' },
-      { value: 'ISO 14067', label: 'Supported regulation and methodology coverage' },
-    ],
-    missionTitle: 'What we believe',
-    missionBody:
-      'Most carbon projects do not fail because teams do not care. They stall because methodology, boundary setting, file preparation, factor matching, review, and delivery are still too manual.',
-    principlesEyebrow: 'How we think',
-    principlesTitle: 'Built to reduce manual carbon work without reducing credibility',
-    principles: [
-      {
-        title: 'Automate the heavy work',
-        description:
-          'Climate Seal is designed so teams can upload files, review AI guidance, and confirm only when needed instead of rebuilding methodology and calculations from scratch.',
-      },
-      {
-        title: 'Keep every data point traceable',
-        description:
-          'Outputs are not only final numbers. They include the supporting logic, data trail, and review signals that make third-party verification easier to manage.',
-      },
-      {
-        title: 'Leave more room for decarbonization',
-        description:
-          'When accounting and audit-style review become lighter, teams can spend more time on supplier action, operational change, and business follow-through.',
-      },
-    ],
-    footprintEyebrow: 'Where we fit',
-    footprintTitle: 'Climate Seal is built for teams that need carbon work to move faster and land more credibly.',
-    footprintItems: [
-      'Product Carbon Footprint, Scope 3 corporate carbon, project carbon, and LCA workflows',
-      'Brand teams, manufacturers, consultants, suppliers, and export compliance teams',
-      'Cradle-to-grave and cradle-to-cradle assessments with verification-ready delivery needs',
-    ],
-    ctaTitle: 'Want to see how that looks in practice?',
-    ctaBody:
-      'Explore the platform view, solution pages, or talk with the team about your accounting scope, data readiness, and delivery timeline.',
-    ctaPrimary: 'Explore products',
-    ctaSecondary: 'Contact the team',
+    heroTitle: 'Credibility Drives Better Climate.',
+    heroBody: 'We started Climate Seal because proving credible sustainability performance should not be harder or more expensive than improving it. Too much time is spent gathering scattered information, repeating calculations, and rebuilding evidence for each new requirement. We use AI execution, structured workflows, and expert review to reduce that burden, making credible results more accessible without compromising transparency or professional judgment. Our vision is a future where trustworthy environmental data can be put to work across reporting, procurement, compliance, and everyday business decisions, with its sources, assumptions, and limitations intact. By lowering the cost of both establishing credibility and using it, we aim to help more organizations turn evidence into meaningful climate action.',
     breadcrumbHome: 'Home',
-    breadcrumbCurrent: 'About Climate Seal',
-    orgDescription:
-      'Climate Seal is an AI platform for Product Carbon Footprint, Scope 3, project carbon, LCA, and supply chain carbon workflows, helping teams deliver compliance and verification-ready carbon outputs faster.',
-    missionLabel: 'Mission',
   },
   zh: {
     title: '关于 Climate Seal',
-    description:
-      '了解 Climate Seal 如何用 AI 自动化产品碳足迹、Scope 3、项目碳核算与 LCA 流程，帮助团队更快完成合规与审计交付。',
-    eyebrow: 'About Climate Seal',
-    heroTitle: '我们在做的，是一套更像软件基础设施、而不是传统顾问项目负担的碳核算系统。',
-    heroBody:
-      'Climate Seal 帮助团队从零散文件、重复问答和手工整理，转向由 AI 承担更多核算、复核与交付工作的流程，让结果更快进入可验证状态。',
-    stats: [
-      { value: 'PCF', label: '产品碳足迹工作流' },
-      { value: 'Scope 3', label: '企业碳与供应链协同场景' },
-      { value: 'ISO 14067', label: '已支持的法规与方法学覆盖' },
-    ],
-    missionTitle: '我们相信什么',
-    missionBody:
-      '很多碳项目推进缓慢，并不是因为团队不重视，而是因为方法学选择、边界设定、文件整理、因子匹配、复核与交付仍然太依赖人工。',
-    principlesEyebrow: 'How we think',
-    principlesTitle: '把人工负担降下来，同时把可信度留住',
-    principles: [
-      {
-        title: '让 AI 承担重的部分',
-        description:
-          'Climate Seal 的设计目标，是让团队上传文件、查看 AI 引导、只在需要时确认，而不是每次都从零搭方法和算式。',
-      },
-      {
-        title: '让每个数据点都可追溯',
-        description:
-          '输出不只是最后一个结果数字，还包括支撑逻辑、数据轨迹和复核信号，方便直接进入第三方验证或客户审阅。',
-      },
-      {
-        title: '把时间和预算留给真正的减排',
-        description:
-          '当核算和审计式复核工作变轻，团队才能把更多资源放在供应商推进、运营改善和减排行动本身。',
-      },
-    ],
-    footprintEyebrow: 'Where we fit',
-    footprintTitle: 'Climate Seal 服务的是那些既想做快、也想做对的碳工作团队。',
-    footprintItems: [
-      '覆盖产品碳足迹、Scope 3 企业碳、项目碳核算与 LCA 工作流',
-      '适合品牌方、制造企业、顾问团队、供应商与出口合规团队',
-      '支持 cradle-to-grave、cradle-to-cradle 及审计交付要求更高的场景',
-    ],
-    ctaTitle: '想看看这些能力怎样落到实际项目里？',
-    ctaBody:
-      '你可以继续看产品页和解决方案页，也可以直接联系我们，根据你的核算范围、数据准备度和交付时间来判断起点。',
-    ctaPrimary: '查看产品页',
-    ctaSecondary: '联系团队',
+    description: '通过 AI 执行、结构化工作流和专家审查，Climate Seal 致力于降低建立与应用可持续发展数据可信度的成本。',
+    eyebrow: '关于 Climate Seal',
+    heroTitle: '以可信，推动更好的气候未来。',
+    heroBody: '我们创立 Climate Seal，是因为证明可持续发展表现可信，不应比改善表现本身更困难、更昂贵。太多时间被用于收集零散信息、重复计算，以及为每一项新要求重新整理证据。我们通过 AI 执行、结构化工作流和专家审查减轻这些负担，在不牺牲透明度与专业判断的前提下，让更多组织能够获得可信的结果。我们期待的未来，是可信的环境数据能够广泛应用于报告、采购、合规和日常商业决策，同时始终保留其来源、假设和适用限制。通过降低建立可信度与应用可信信息的成本，我们希望帮助更多组织把证据转化为有意义的气候行动。',
     breadcrumbHome: '首页',
-    breadcrumbCurrent: '关于 Climate Seal',
-    orgDescription:
-      'Climate Seal 是面向产品碳足迹、Scope 3、项目碳核算、LCA 与供应链碳管理的 AI 平台，帮助团队更快完成合规与审计就绪交付。',
-    missionLabel: 'Mission',
   },
 } as const;
 
@@ -152,7 +60,7 @@ export default async function AboutPage() {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: copy.breadcrumbHome, item: `${siteUrl}/` },
-      { '@type': 'ListItem', position: 2, name: copy.breadcrumbCurrent, item: `${siteUrl}/about` },
+      { '@type': 'ListItem', position: 2, name: copy.title, item: `${siteUrl}/about` },
     ],
   };
 
@@ -163,7 +71,7 @@ export default async function AboutPage() {
     legalName: 'Climate Seal (Beijing) Technology Co., Ltd.',
     url: siteUrl,
     logo: `${siteUrl}/climate-seal-logo-green.png`,
-    description: copy.orgDescription,
+    description: copy.description,
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -175,103 +83,20 @@ export default async function AboutPage() {
   };
 
   return (
-    <main className="bg-[#FAF8F3] text-[#123F3D]">
+    <div className="bg-white text-[#123F3D]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-
-      <section className="border-b border-[#d7ddd6] bg-[#faf8f3]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-16">
-          <div className="space-y-6">
-            <p className="cs-section-eyebrow">
-              {copy.eyebrow}
-            </p>
-            <div className="space-y-4">
-              <h1 className="max-w-3xl font-lora !text-[clamp(2.15rem,3.1vw,2.75rem)] font-semibold leading-[1.08] text-[#123F3D]">
-                {copy.heroTitle}
-              </h1>
-              <p className="max-w-2xl text-[16px] leading-7 text-[#57716d] sm:text-[17px]">{copy.heroBody}</p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {copy.stats.map((item) => (
-                <div key={item.label} className="cs-glass-panel p-5">
-                  <div className="text-xl font-semibold text-[#123F3D]">{item.value}</div>
-                  <p className="mt-2 text-sm leading-6 text-[#5f7672]">{item.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid gap-5 self-start">
-            <div className="relative min-h-[360px] overflow-hidden rounded-[0.55rem] border border-[#d6ddd6] bg-[#0f4746]">
-              <Image
-                src="/polar-bears.png"
-                alt="Climate Seal mission visual with polar bears"
-                fill
-                className="object-cover object-center"
-                unoptimized={true}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f4746] via-[#0f4746]/25 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-[#0f4746]/92 p-5 text-white">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#BEE5DB]">{copy.missionLabel}</p>
-                <h2 className="mt-2 font-lora text-[1.75rem] font-semibold leading-tight">{copy.missionTitle}</h2>
-                <p className="mt-2 text-sm leading-6 text-white/78">{copy.missionBody}</p>
-              </div>
-            </div>
-          </div>
+      <section aria-labelledby="about-title" className="px-6 pb-20 pt-32 sm:px-8 sm:pb-24 sm:pt-40">
+        <div className="mx-auto max-w-4xl">
+          <p className="cs-section-eyebrow">{copy.eyebrow}</p>
+          <h1 id="about-title" className="mt-6 font-lora !text-[2.25rem] font-semibold leading-[1.15] text-[#123F3D] sm:!text-[3rem]">
+            {copy.heroTitle}
+          </h1>
+          <p className="mt-8 max-w-3xl text-[18px] leading-[1.9] text-[#486662] sm:mt-10 sm:text-[20px]">
+            {copy.heroBody}
+          </p>
         </div>
       </section>
-
-      <section className="border-b border-[#d7ddd6] bg-[#fcfbf8]">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="cs-section-eyebrow">{copy.principlesEyebrow}</p>
-            <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.principlesTitle}</h2>
-          </div>
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {copy.principles.map((item, index) => (
-              <article key={item.title} className="rounded-[0.55rem] border border-[#d7ddd6] bg-[#FBF9F4] p-7">
-                <div className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5f7a76]">0{index + 1}</div>
-                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.02em] text-[#123F3D]">{item.title}</h3>
-                <p className="mt-4 text-base leading-7 text-[#5f7672]">{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-[#d7ddd6] bg-[#f7f4ec]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-          <div>
-            <p className="cs-section-eyebrow">{copy.footprintEyebrow}</p>
-            <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.footprintTitle}</h2>
-          </div>
-          <div className="grid gap-4">
-            {copy.footprintItems.map((item) => (
-              <div key={item} className="cs-glass-panel px-5 py-4 text-base leading-7 text-[#486662]">
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#faf8f3]">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="cs-glass-panel p-8 sm:p-10">
-            <p className="cs-section-eyebrow">{locale === 'zh' ? '下一步' : 'Next step'}</p>
-            <h2 className="mt-4 font-lora text-3xl font-bold tracking-[-0.02em] sm:text-4xl">{copy.ctaTitle}</h2>
-            <p className="mt-4 max-w-3xl text-base leading-7 text-[#5f7672]">{copy.ctaBody}</p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link href="/products" className="rounded-[0.5rem] border border-[#123F3D] bg-[#123F3D] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#0f4a47]">
-                {copy.ctaPrimary}
-              </Link>
-              <Link href="/contact" className="rounded-[0.5rem] border border-[#123F3D] px-6 py-3 text-center font-semibold text-[#123F3D] transition hover:bg-[#123F3D] hover:text-white">
-                {copy.ctaSecondary}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+    </div>
   );
 }

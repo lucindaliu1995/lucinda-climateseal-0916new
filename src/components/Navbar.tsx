@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: t.nav.home, href: '#home', route: '/' },
-    { name: t.nav.contact, href: '#contact', route: '/' },
+    { name: t.nav.contact, href: '/contact', route: '/contact', isLink: true },
     { name: 'FAQ', href: '/faq', route: '/faq', isLink: true },
     { 
       name: language === 'zh' ? '解决方案' : 'Solutions', 
@@ -33,7 +33,7 @@ const Navbar = () => {
       ]
     },
     { name: t.nav.resources, href: '/resources', route: '/resources', isLink: true },
-    { name: t.nav.pricing, href: '#pricing', route: '/' },
+    { name: t.nav.pricing, href: '/pricing', route: '/pricing', isLink: true },
   ];
 
   const handleNavClick = (href: string, route: string) => {
