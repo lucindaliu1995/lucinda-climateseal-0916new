@@ -377,13 +377,48 @@ function WorkflowStagePanel({ stage, language, compact = false }: WorkflowStageP
   );
 }
 
-export function HeroWorkflowPreview({ language }: { language: Language }) {
+export function HeroWorkflowPreview({ language, compact = false }: { language: Language; compact?: boolean }) {
   const [activeStage, setActiveStage] = useState(0);
   const reduceMotion = useReducedMotion();
   const copy = interfaceCopy[language === 'zh' ? 'zh' : 'en'];
   const dashboard = dashboardCopy[language === 'zh' ? 'zh' : 'en'];
   const navigationIcons = [LayoutDashboard, Table2, Calculator, Library, FileText, ShieldCheck];
   const activeNavigation = [1, 1, 2, 4][activeStage];
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const timer = window.setInterval(() => setActiveStage((current) => (current + 1) % copy.stages.length), 4400);
+    return () => window.clearInterval(timer);
+  }, [copy.stages.length, reduceMotion]);
+
+  if (compact) {
+    const compactStages = language === 'zh'
+      ? ['接收文件', '结构化数据', '专家复核', '报告与证据']
+      : ['Bring in files', 'Structure data', 'Expert review', 'Report & evidence'];
+    return (
+      <div className="mx-auto w-full max-w-5xl border-y border-[#b8cbc1] bg-white/70 px-5 py-5 shadow-[0_18px_45px_rgba(18,63,61,0.08)] sm:px-8 sm:py-6">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#58716d]">
+              {language === 'zh' ? '碳数据工作流' : 'Carbon data workflow'}
+            </p>
+            <p className="mt-2 text-sm font-semibold text-[#123f3d]">
+              {language === 'zh' ? '从零散输入到可审查结果' : 'From fragmented inputs to review-ready results'}
+            </p>
+          </div>
+          <div className="grid flex-1 gap-2 sm:grid-cols-4 sm:pl-8">
+            {compactStages.map((stage, index) => (
+              <div key={stage} className="flex items-center gap-2 sm:block">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#215b57] text-[10px] font-semibold text-white">0{index + 1}</span>
+                <span className="text-xs font-semibold text-[#486662]">{stage}</span>
+                {index < compactStages.length - 1 ? <span className="hidden h-px flex-1 bg-[#c8d7cf] sm:mt-[-1.1rem] sm:ml-8 sm:block" /> : null}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const statusTone = (status: string) => {
     const normalized = status.toLowerCase();
@@ -415,12 +450,6 @@ export function HeroWorkflowPreview({ language }: { language: Language }) {
 
     return 'border-[#527284] bg-[#1a3641] text-[#a8c8d8]';
   };
-
-  useEffect(() => {
-    if (reduceMotion) return;
-    const timer = window.setInterval(() => setActiveStage((current) => (current + 1) % copy.stages.length), 4400);
-    return () => window.clearInterval(timer);
-  }, [copy.stages.length, reduceMotion]);
 
   return (
     <motion.div

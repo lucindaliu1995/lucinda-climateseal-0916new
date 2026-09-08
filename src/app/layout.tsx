@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Script from 'next/script';
+import { organizationSchema } from '@/lib/structured-data';
 import TitleUpdater from "@/components/TitleUpdater";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import { ANALYTICS_MEASUREMENT_ID } from '@/lib/analytics';
@@ -128,55 +129,7 @@ export default async function RootLayout({
         <link rel="preload" as="image" href="/climate-seal-logo-white.png" />
         {/* RSS link for content discovery */}
         <link rel="alternate" type="application/rss+xml" title="Climate Seal RSS" href="/rss.xml" />
-        {/* Organization JSON-LD（仅注入元信息，不影响视觉） */}
-        <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "Climate Seal",
-            legalName: "Climate Seal (Beijing) Technology Co., Ltd.",
-            url: (process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),
-            logo: new URL("/climate-seal-logo-green.png", process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com").toString(),
-            description: "Automate carbon accounting from BOM and supplier data into verification-ready PCF, Scope 3, CBAM and EPD reports with AI agents.",
-            foundingDate: "2024",
-            sameAs: [
-              "https://twitter.com/ClimateSeal",
-              "https://linkedin.com/company/climate-seal"
-            ],
-            contactPoint: {
-              "@type": "ContactPoint",
-              contactType: "customer service",
-              email: "contact@climate-seal.net"
-            }
-          })}
-        </Script>
-        {/* SoftwareApplication JSON-LD */}
-        <Script id="software-jsonld" type="application/ld+json" strategy="afterInteractive">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            name: "Climate Seal AI Platform",
-            applicationCategory: "BusinessApplication",
-            operatingSystem: "Web",
-            description: "Automate carbon accounting from BOM and supplier data into verification-ready PCF, Scope 3, CBAM and EPD reports with AI agents.",
-            url: (process.env.NEXT_PUBLIC_APP_URL || "https://climate-seal.com"),
-            offers: {
-              "@type": "Offer",
-              price: "0",
-              priceCurrency: "USD",
-              description: "Free one report to start your decarbonization journey"
-            },
-            featureList: [
-              "AI-powered carbon footprint calculation",
-              "Automated LCA generation",
-              "ISO 14067 compliance",
-              "GHG Protocol alignment",
-              "Audit-ready reporting",
-              "BOM parsing",
-              "Evidence pre-verification"
-            ]
-          })}
-        </Script>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
         {/* Google Analytics 4 */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_MEASUREMENT_ID}`}

@@ -1,22 +1,25 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
+import { resolveLanguage } from '@/lib/language';
+import { solutionCopy } from '@/lib/solution-copy';
+import { breadcrumbSchema } from '@/lib/structured-data';
 import { createLocalizedPageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
   return createLocalizedPageMetadata({
     canonical: '/solutions/supply-chain',
-    title: {
-      en: 'Supply Chain Solution',
-      zh: '供应链解决方案',
-    },
-    description: {
-      en: 'Climate Seal for suppliers and exporters: structured PCF preparation, quality checks, and traceable submission packages for buyers and reviewers.',
-      zh: '面向供应商与出口团队的结构化 PCF 准备、质量检查和可追溯买方提交材料。',
-    },
+    title: { en: solutionCopy['supply-chain'].en.title, zh: solutionCopy['supply-chain'].zh.title },
+    description: { en: solutionCopy['supply-chain'].en.description, zh: solutionCopy['supply-chain'].zh.description },
     image: '/supply-chain-assessment.png',
     imageAlt: 'Climate Seal supply chain solution',
   });
 }
 
-export default function SupplyChainLayout({ children }: { children: React.ReactNode }) {
-  return children;
+export default async function SupplyChainLayout({ children }: { children: React.ReactNode }) {
+  const language = resolveLanguage((await headers()).get('x-language'));
+  const copy = solutionCopy['supply-chain'][language === 'zh' ? 'zh' : 'en'];
+  return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema('/solutions/supply-chain', copy.title, language)) }} />
+    {children}
+  </>;
 }

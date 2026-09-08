@@ -21,12 +21,12 @@ export default function HomeContactSection() {
               {language === 'zh' ? '准备看看 Climate Seal？' : 'Ready to see Climate Seal?'}
             </p>
             <h2 className="mt-6 max-w-xl font-lora text-balance text-[2.35rem] font-semibold leading-[1.04] text-white sm:text-[2.9rem] lg:text-[3.25rem]">
-              {language === 'zh' ? '看看 AI 如何加速你的碳报告交付' : 'See how AI can accelerate your carbon reporting workflow'}
+              {language === 'zh' ? '看看 AI 如何推进你的评估与报告工作' : 'See how AI supports your assessment and reporting workflow'}
             </h2>
             <p className="mt-6 max-w-2xl text-[17px] leading-8 text-white/72 sm:text-[18px]">
               {language === 'zh'
-                ? '留下你的信息，我们会联系你，了解你的 PCF、Scope 3 或供应链碳数据需求，并安排一次简短演示。'
-                : "Leave your details and we'll contact you as soon as possible :)"}
+                ? '告诉我们你的项目、已有数据与交付要求。我们会联系你，确认适合的工作流并讨论演示安排。'
+                : 'Tell us about your project, available data, and delivery requirements. We will contact you to identify the relevant workflow and discuss a demonstration.'}
             </p>
 
             <div className="mt-9 grid gap-4 border-t border-white/12 pt-6 text-sm text-white/72 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">

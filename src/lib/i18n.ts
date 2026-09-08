@@ -55,6 +55,8 @@ export interface TranslationData {
       results: string;
       noResults: string;
       clearSearch: string;
+      searching: string;
+      searchError: string;
     };
     newsletter: {
       eyebrow: string;
@@ -750,6 +752,8 @@ export const translations: Record<TranslationLocale, TranslationData> = {
         results: 'articles',
         noResults: 'No articles match your search. Try a different keyword or topic.',
         clearSearch: 'Clear search',
+        searching: 'Searching articles...',
+        searchError: 'Search is unavailable. Clear your search to browse by topic, or try another search.',
       },
       newsletter: {
         eyebrow: 'Climate Seal Resources',
@@ -1455,8 +1459,8 @@ export const translations: Record<TranslationLocale, TranslationData> = {
     faq: {
       title: 'Frequently Asked Questions about Climate Seal',
       seo: {
-        title: 'Carbon Accounting Software FAQ | Climate Seal',
-        description: 'Learn how Climate Seal supports AI-powered product carbon footprints, Scope 1–3 accounting, CBAM reporting, supplier data processing, emission-factor matching, and audit-ready carbon reporting.',
+        title: 'Climate Seal FAQ: Workflows, Data, Review & Pricing',
+        description: 'Answers about the Climate Seal AI sustainability workspace, carbon accounting workflows, source data, expert review, supported requirements, trials, and pricing.',
         indexable: true,
       },
       groups: [
@@ -1466,7 +1470,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
             {
               q: 'What does Climate Seal do, and how is it different from traditional consulting?',
               a: [
-                'Climate Seal is an AI-powered carbon management workspace supporting organization-, product-, project-, and supply-chain-level accounting and compliance workflows. It turns professional methodologies and regulatory requirements into structured, repeatable workflows while keeping experts in control of methodology, review, and final approval.'
+                'Climate Seal is an AI-powered sustainability compliance workspace for environmental, product, supplier, and operational data. Built-in expert knowledge and structured workflows help AI prepare assessments, calculations, reports, and evidence. Carbon accounting and footprinting are core applications; experts retain control of methodology, assumptions, review, and final approval.'
               ]
             },
             {
@@ -1478,7 +1482,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
             {
               q: 'Who is Climate Seal designed for?',
               a: [
-                'Climate Seal is designed for sustainability teams, carbon consultants, LCA practitioners, manufacturers, exporters, brands, procurement teams, and organizations managing carbon data across products, suppliers, projects, or business units.'
+                'Climate Seal is designed for sustainability and environmental teams, consultants, LCA practitioners, manufacturers, exporters, brands, and procurement teams managing data and delivery requirements across products, suppliers, projects, or business units.'
               ]
             },
             {
@@ -1493,9 +1497,9 @@ export const translations: Record<TranslationLocale, TranslationData> = {
           name: 'Standards & Compliance',
           items: [
             {
-              q: 'What carbon accounting standards and regulatory workflows does Climate Seal support?',
+              q: 'Which workflows are supported, and what should I confirm before starting?',
               a: [
-                'Climate Seal supports configurable workflows for product, organizational, project, and supply-chain carbon accounting. These can include ISO 14067, ISO 14064, the GHG Protocol, CBAM, and data preparation for EPD, PEF, and Digital Product Passport requirements. Applicable requirements should be confirmed for each project, jurisdiction, and reporting program.'
+                'Core carbon workflows include product footprints and LCA, corporate and Scope 3 accounting, and supplier carbon-data collection. CBAM and other reporting uses need their own requirements mapping and review. Data preparation for a declaration does not mean independent certification or automatic acceptance. Before starting, confirm the exact regulation or standard version, available workflow, required inputs, deliverables, and any external verification. Planned extensions should not be treated as available functionality.'
               ]
             },
             {
@@ -1680,6 +1684,8 @@ export const translations: Record<TranslationLocale, TranslationData> = {
         results: '篇文章',
         noResults: '没有找到匹配内容，请尝试其他关键词或主题。',
         clearSearch: '清除搜索',
+        searching: '正在搜索文章…',
+        searchError: '搜索暂时不可用。请清除搜索后按主题浏览，或重新搜索。',
       },
       newsletter: {
         eyebrow: 'Climate Seal 资源中心',
@@ -2385,8 +2391,8 @@ export const translations: Record<TranslationLocale, TranslationData> = {
     faq: {
       title: '关于 Climate Seal 的常见问题',
       seo: {
-        title: '碳核算软件常见问题 | Climate Seal',
-        description: '了解 Climate Seal 如何支持 AI 产品碳足迹、Scope 1–3 核算、CBAM 报告、供应商数据处理、排放因子匹配和可审核的碳报告。',
+        title: 'Climate Seal 常见问题：工作流、数据、审查与价格',
+        description: '了解 Climate Seal AI 可持续合规工作台、碳核算工作流、源数据、专家审查、支持范围、试用和价格。',
         indexable: true,
       },
       groups: [
@@ -2396,7 +2402,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
             {
               q: 'Climate Seal 是做什么的，与传统咨询有什么不同？',
               a: [
-                'Climate Seal 是一个 AI 驱动的碳管理工作台，支持组织、产品、项目和供应链层面的核算与合规工作流程。它将专业方法和法规要求转化为结构化、可重复使用的工作流程，同时让专家保留对方法、复核和最终审批的控制权。'
+                'Climate Seal 是面向环境、产品、供应商和运营数据的 AI 可持续合规工作台。平台结合内置专家知识和结构化工作流，由 AI 准备评估、计算、报告和证据。碳核算与碳足迹是核心应用，专家始终掌握方法学、假设、审查和最终确认。'
               ]
             },
             {
@@ -2408,7 +2414,7 @@ export const translations: Record<TranslationLocale, TranslationData> = {
             {
               q: 'Climate Seal 适合哪些用户？',
               a: [
-                'Climate Seal 适合可持续发展团队、碳咨询顾问、LCA 专业人员、制造商、出口企业、品牌方、采购团队，以及需要管理跨产品、供应商、项目或业务单元碳数据的组织。'
+                'Climate Seal 适合可持续发展与环境团队、顾问、LCA 专业人员、制造商、出口商、品牌方和采购团队，帮助管理跨产品、供应商、项目及业务单元的数据与交付要求。'
               ]
             },
             {
@@ -2423,9 +2429,9 @@ export const translations: Record<TranslationLocale, TranslationData> = {
           name: '标准与合规',
           items: [
             {
-              q: 'Climate Seal 支持哪些碳核算标准和法规工作流程？',
+              q: '目前支持哪些工作流，开始前应确认什么？',
               a: [
-                'Climate Seal 支持可配置的产品、组织、项目和供应链碳核算工作流程，包括 ISO 14067、ISO 14064、GHG Protocol、CBAM，以及针对 EPD、PEF 和数字产品护照要求的数据准备。每个项目的适用要求应根据所在司法管辖区和报告项目进行确认。'
+                '核心碳工作流包括产品碳足迹与 LCA、企业与范围 3 核算及供应商碳数据收集。CBAM 等披露用途需要各自的要求映射与审查。准备申报数据不等于独立认证或自动获接受。开始前请确认具体法规或标准版本、可用工作流、所需输入、交付物及外部核验要求；规划中的扩展不能视为已上线功能。'
               ]
             },
             {

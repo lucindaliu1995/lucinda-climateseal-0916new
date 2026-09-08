@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import HomeContactSection from '@/components/HomeContactSection';
-import { HeroWorkflowPreview, HomeWorkflowStory } from '@/components/HomeWorkflowExperience';
+import { HomeWorkflowStory } from '@/components/HomeWorkflowExperience';
 import KnowHowNumbersSection from '@/components/KnowHowNumbersSection';
 import { PricingIcon } from '@/components/ProgramIcons';
 
@@ -197,18 +197,6 @@ export default function HomePageRefresh() {
         },
       ];
 
-  const trustItems = isZh
-    ? [
-        { label: '可配置', title: '灵活知识库与工作流程', body: '使用 Climate Seal 的专业知识、上传自有资料，或在客户已指定方法和来源时调整选择。' },
-        { label: '可控制', title: 'AI 不会擅自修改原始数据', body: 'AI 可以整理、匹配、检查和生成计算逻辑，但不会在没有人工确认时覆盖原始数据。' },
-        { label: '可追溯', title: '完整证据与决策记录', body: '每个输入、来源、假设、证据和修改都被记录，便于第三方复核方或买方检查。' },
-      ]
-    : [
-        { label: 'Configurable', title: 'Flexible knowledge bases and workflows', body: 'Use Climate Seal expertise, upload your own materials, or adjust methods and sources when buyers or internal teams already have approved options.' },
-        { label: 'Controlled', title: 'AI never changes source data alone', body: 'AI can organize, match, check, and build calculation logic, but it never overwrites original data without human confirmation.' },
-        { label: 'Traceable', title: 'A complete evidence and decision record', body: 'Every input, source, assumption, evidence file, and edit is logged so third-party reviewers or buyers can inspect the workflow directly.' },
-      ];
-
   const resourceCards = isZh
     ? [
         {
@@ -333,9 +321,6 @@ export default function HomePageRefresh() {
             </div>
           </Reveal>
 
-          <div className="mt-9 sm:mt-10">
-            <HeroWorkflowPreview language={language} />
-          </div>
         </div>
       </section>
 
@@ -467,28 +452,6 @@ export default function HomePageRefresh() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
           </Link>
-        </div>
-      </section>
-
-      <section className="bg-[#0f3433] py-20 text-white sm:py-24">
-        <div className={sectionClass}>
-          <Reveal className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#9fd5c1]">{isZh ? '专业控制' : 'Professional control'}</p>
-              <h2 className="mt-4 max-w-[22ch] font-lora text-[2.35rem] font-bold leading-[1.05] text-white sm:text-[2.9rem]">
-                {isZh ? '更快地执行，不牺牲透明度' : 'Move faster without sacrificing transparency'}
-              </h2>
-            </div>
-            <div className="grid gap-9 sm:grid-cols-3 sm:gap-0">
-              {trustItems.map((item) => (
-                <div key={item.title} className="sm:border-l sm:border-white/12 sm:px-8">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#9fd5c1]">{item.label}</p>
-                  <h3 className="mt-4 text-[1.18rem] font-semibold leading-tight text-white">{item.title}</h3>
-                  <p className="mt-3 text-[14px] leading-7 text-white/66">{item.body}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 

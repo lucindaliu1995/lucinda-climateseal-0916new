@@ -3,16 +3,15 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Script from 'next/script';
 import { ArrowRight, BookOpen, Clock, FileText, Search, X } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import SafeImage from '@/components/SafeImage';
 import { useLanguage } from '@/contexts/LanguageContext';
-import type { ArticleCategory, ArticleItem, WhitepaperItem } from '@/lib/content';
+import type { ArticleCategory, ArticleSummary, WhitepaperItem } from '@/lib/content';
 
 type ResourcesPageClientProps = {
   categories: ArticleCategory[];
-  articles: ArticleItem[];
+  articles: ArticleSummary[];
   whitepapers: WhitepaperItem[];
 };
 
@@ -21,7 +20,10 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
   const reduceMotion = useReducedMotion();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredArticles, setFilteredArticles] = useState<ArticleItem[]>(articles);
+  const query = searchQuery.trim();
+  const [search, setSearch] = useState<{ query: string; ids: string[]; status: 'ready' | 'error' }>({
+    query: '', ids: [], status: 'ready',
+  });
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -41,27 +43,26 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
   }, [articles, categories]);
 
   useEffect(() => {
-    const normalizedQuery = searchQuery.trim().toLocaleLowerCase();
-    setFilteredArticles(
-      articles.filter((article) => {
-        const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
-        const searchableText = [
-          article.title,
-          article.titleZh,
-          article.excerpt,
-          article.excerptZh,
-          article.content,
-          article.contentZh,
-          article.category,
-          article.categoryZh,
-        ]
-          .join(' ')
-          .toLocaleLowerCase();
+    if (!query) return;
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      try {
+        const response = await fetch(`/api/resources/search?q=${encodeURIComponent(query)}`, { signal: controller.signal });
+        if (!response.ok) throw new Error('Search failed');
+        const data = await response.json();
+        if (!controller.signal.aborted) setSearch({ query, ids: data.ids, status: 'ready' });
+      } catch {
+        if (!controller.signal.aborted) setSearch({ query, ids: [], status: 'error' });
+      }
+    }, 250);
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+  }, [query]);
 
-        return matchesCategory && (!normalizedQuery || searchableText.includes(normalizedQuery));
-      }),
-    );
-  }, [selectedCategory, searchQuery, articles]);
+  const isSearching = Boolean(query && search.query !== query);
+  const searchFailed = Boolean(query && search.query === query && search.status === 'error');
 
   const categoryDescriptions: Record<string, { en: string; zh: string }> = {
     'getting-started': {
@@ -94,14 +95,17 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
     },
   };
 
-  const displayArticles = filteredArticles;
+  const displayArticles = articles.filter((article) =>
+    (selectedCategory === 'all' || article.category === selectedCategory)
+    && (!query || (!isSearching && !searchFailed && search.ids.includes(article.id)))
+  );
   const leadArticle = displayArticles[0];
   const latestArticles = displayArticles.slice(1);
 
-  const getArticleTitle = (article: ArticleItem) => (language === 'zh' ? article.titleZh : article.title);
-  const getArticleExcerpt = (article: ArticleItem) => (language === 'zh' ? article.excerptZh : article.excerpt);
+  const getArticleTitle = (article: ArticleSummary) => (language === 'zh' ? article.titleZh : article.title);
+  const getArticleExcerpt = (article: ArticleSummary) => (language === 'zh' ? article.excerptZh : article.excerpt);
   const getCategoryName = (category: ArticleCategory) => (language === 'zh' ? category.nameZh : category.name);
-  const getArticleCategoryName = (article: ArticleItem) => {
+  const getArticleCategoryName = (article: ArticleSummary) => {
     const category = categories.find((item) => item.id === article.category);
     return language === 'zh' ? article.categoryZh || category?.nameZh || article.category : category?.name || article.category;
   };
@@ -115,10 +119,8 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
       : date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   };
 
-  const getReadingTime = (article: ArticleItem) => {
-    const content = language === 'zh' ? article.contentZh || article.content : article.content;
-    const units = language === 'zh' ? (content.match(/[\u3400-\u9fff]/g) || []).length : content.trim().split(/\s+/).length;
-    const minutes = Math.max(3, Math.ceil(units / (language === 'zh' ? 450 : 220)));
+  const getReadingTime = (article: ArticleSummary) => {
+    const minutes = language === 'zh' ? article.readingMinutesZh : article.readingMinutes;
     return language === 'zh' ? `${minutes} 分钟阅读` : `${minutes} min read`;
   };
 
@@ -128,33 +130,6 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
 
   return (
     <div className="min-h-screen bg-white text-[#123f3d]">
-      <Script id="jsonld-breadcrumb-sr" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: language === 'zh' ? '首页' : 'Home', item: `${process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com'}/` },
-            { '@type': 'ListItem', position: 2, name: language === 'zh' ? '资源中心' : 'Resource Center', item: `${process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com'}/resources` },
-          ],
-        })}
-      </Script>
-
-      <Script id="jsonld-itemlist-sr" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'ItemList',
-          itemListElement: displayArticles.slice(0, 50).map((article, index) => ({
-            '@type': 'ListItem',
-            position: index + 1,
-            url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com'}/resources/${article.id}`,
-            name: getArticleTitle(article),
-            image: article.coverImage || `${process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com'}/climate-seal-logo-green.png`,
-            datePublished: article.publishDate,
-            description: getArticleExcerpt(article),
-          })),
-        })}
-      </Script>
-
       <section className="border-b border-[#d7ddd6] bg-[#f8faf8] px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div className="max-w-4xl">
@@ -211,6 +186,7 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
             <span className="sr-only">{t.resourcesPage.filters.searchPlaceholder}</span>
             <input
               type="search"
+              maxLength={300}
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
               placeholder={t.resourcesPage.filters.searchPlaceholder}
@@ -233,7 +209,7 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
 
       <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 xl:grid-cols-[minmax(0,1fr)_320px] xl:gap-16">
-          <main className="min-w-0">
+          <div className="min-w-0">
             <div className="flex flex-col gap-4 border-b border-[#d7ddd6] pb-7 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="cs-section-eyebrow">{selectedCategory === 'all' ? (language === 'zh' ? '精选与最新' : 'Featured and latest') : getCategoryName(categories.find((category) => category.id === selectedCategory) || categories[0])}</p>
@@ -249,10 +225,12 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
               </p>
             </div>
 
-            {displayArticles.length === 0 ? (
+            {isSearching ? (
+              <p role="status" className="py-12 text-[#5e706d]">{t.resourcesPage.filters.searching}</p>
+            ) : displayArticles.length === 0 ? (
               <div className="border-b border-[#d7ddd6] py-16 text-center">
                 <Search className="mx-auto h-7 w-7 text-[#7c9890]" strokeWidth={1.5} aria-hidden="true" />
-                <p className="mx-auto mt-4 max-w-md text-base leading-7 text-[#5e706d]">{t.resourcesPage.filters.noResults}</p>
+                <p className="mx-auto mt-4 max-w-md text-base leading-7 text-[#5e706d]">{searchFailed ? t.resourcesPage.filters.searchError : t.resourcesPage.filters.noResults}</p>
                 <button
                   type="button"
                   onClick={() => {
@@ -269,7 +247,7 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
                 <Link href={`/resources/${leadArticle.id}`} className="group grid gap-0 border-b border-[#d7ddd6] py-9 md:grid-cols-[1.02fr_0.98fr] md:items-stretch">
                   <div className="relative aspect-[1200/630] w-full overflow-hidden bg-[#eef4f0] md:order-2 md:self-start">
                     {leadArticle.coverImage ? (
-                      <Image src={leadArticle.coverImage} alt={`${getArticleTitle(leadArticle)} cover`} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.035]" />
+                      <Image sizes="(min-width: 1280px) 440px, (min-width: 768px) 48vw, 100vw" src={leadArticle.coverImage} alt={`${getArticleTitle(leadArticle)} cover`} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.035]" />
                     ) : null}
                   </div>
                   <div className="flex flex-col py-7 md:order-1 md:py-8 md:pr-10">
@@ -306,7 +284,7 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
                       <Link href={`/resources/${article.id}`} className="group grid grid-cols-[150px_minmax(0,1fr)] gap-5 sm:grid-cols-[180px_minmax(0,1fr)]">
                         <div className="relative aspect-[1200/630] w-full overflow-hidden bg-[#eef4f0]">
                           {article.coverImage ? (
-                            <Image src={article.coverImage} alt={`${getArticleTitle(article)} cover`} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+                            <Image sizes="(min-width: 640px) 180px, 150px" src={article.coverImage} alt={`${getArticleTitle(article)} cover`} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
                           ) : null}
                         </div>
                         <div className="min-w-0">
@@ -328,7 +306,7 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
                 </div>
               </div>
             ) : null}
-          </main>
+          </div>
 
           {whitepapers.length ? (
             <aside className="xl:sticky xl:top-40 xl:self-start">
@@ -345,6 +323,7 @@ export default function ResourcesPageClient({ categories, articles, whitepapers 
                           src={whitepaper.thumbnail}
                           alt={`${getWhitepaperTitle(whitepaper)} thumbnail`}
                           fill
+                          sizes="(min-width: 1280px) 320px, 100vw"
                           className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                           fallbackSrc="/climate-seal-logo-green.png"
                         />

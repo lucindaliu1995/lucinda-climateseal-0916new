@@ -64,28 +64,10 @@ export default async function AboutPage() {
     ],
   };
 
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Climate Seal',
-    legalName: 'Climate Seal (Beijing) Technology Co., Ltd.',
-    url: siteUrl,
-    logo: `${siteUrl}/climate-seal-logo-green.png`,
-    description: copy.description,
-    contactPoint: [
-      {
-        '@type': 'ContactPoint',
-        contactType: 'sales',
-        email: 'xuguang.ma@climate-seal.net',
-        telephone: '+86 15652618365',
-      },
-    ],
-  };
 
   return (
     <div className="bg-white text-[#123F3D]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <section aria-labelledby="about-title" className="px-6 pb-20 pt-32 sm:px-8 sm:pb-24 sm:pt-40">
         <div className="mx-auto max-w-4xl">
           <p className="cs-section-eyebrow">{copy.eyebrow}</p>

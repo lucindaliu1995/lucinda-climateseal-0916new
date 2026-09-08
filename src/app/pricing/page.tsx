@@ -7,11 +7,11 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
 
 const content = {
   en: {
-    title: 'Pricing',
+    title: 'Sustainability Compliance Workspace Pricing',
     description:
-      'View Climate Seal pricing for Free Start, Professional, and Enterprise carbon accounting workflows across Product Carbon Footprint, Scope 3, and LCA use cases.',
+      'Compare Climate Seal trial, Professional, and Enterprise plans for AI-assisted assessments, carbon accounting, supplier data, and compliance reporting workflows.',
     eyebrow: 'Pricing',
-    heroTitle: 'Choose the right way to start your carbon reporting workflow.',
+    heroTitle: 'Plans for AI-assisted assessment and reporting workflows.',
     heroBody:
       'Every plan starts with a conversation so we can understand your report scope, data readiness, and whether Climate Seal is the right fit.',
     plans: [
@@ -30,10 +30,10 @@ const content = {
       {
         name: 'Professional',
         price: 'From $299 / month',
-        description: 'For consultants, experts, and small teams delivering recurring carbon accounting work with AI.',
+        description: 'For consultants, experts, and small teams delivering recurring assessments, carbon accounting, and reporting work with AI.',
         features: [
           'Access the full Climate Seal accounting workflow, with support for multiple regulations, standards, and methodologies.',
-          'Pricing is based on token / credit usage, so teams can scale report delivery according to actual project volume.',
+          'Monthly subscriptions start at 200 credits. Credit usage depends on AI processing for each task; additional credits can be purchased as needed.',
           'Best for professionals who want to increase delivery capacity without adding more manual workload.',
         ],
         accent: 'border-[#8ece8f]',
@@ -42,11 +42,11 @@ const content = {
       {
         name: 'Enterprise',
         price: 'Custom',
-        description: 'For corporates managing carbon data across products, suppliers, business units, or compliance programs.',
+        description: 'For organizations managing environmental and carbon data across products, suppliers, business units, or compliance programs.',
         features: [
           'Built for supplier management, internal data governance, multi-product reporting, and cross-team review.',
           'Includes enterprise-ready workflows such as supplier data collection, custom factor databases, approval controls, traceability packages, and reusable product data models.',
-          'Best for companies that need a long-term carbon compliance operating system, not only individual reports.',
+          'Confirm the applicable workflow, reporting requirements, and implementation scope with our team.',
         ],
         accent: 'border-[#123F3D]',
         cta: 'Talk to the team',
@@ -85,7 +85,7 @@ const content = {
     ],
     ctaTitle: 'Want help choosing the right entry point?',
     ctaBody:
-      'Send us your carbon accounting scope, target market, and current data readiness. We can help you decide whether to start with a free report trial, a professional monthly workflow, or a broader enterprise setup.',
+      'Send us your assessment or reporting scope, target market, and current data readiness. We can help you decide whether to start with a free report trial, a professional monthly workflow, or a broader enterprise setup.',
     ctaPrimary: 'Contact the team',
     ctaSecondary: 'Read resources first',
     partnerPricingCta: 'Explore Early Access Preferential Pricing',
@@ -99,11 +99,11 @@ const content = {
       'Yes. We can help evaluate your product complexity, target market, and data readiness to recommend a lighter pilot path before scaling up.',
   },
   zh: {
-    title: '价格方案',
+    title: '可持续合规工作台价格方案',
     description:
-      '查看 Climate Seal 面向免费开始、专业版和企业版碳核算工作流的价格方案，覆盖产品碳足迹、Scope 3 与 LCA 场景。',
+      '比较 Climate Seal 试用、专业版和企业版方案，支持 AI 辅助评估、碳核算、供应商数据和合规报告工作流。',
     eyebrow: 'Pricing',
-    heroTitle: '选择最适合你启动碳报告工作流的方式。',
+    heroTitle: '为 AI 辅助评估与报告工作选择适合的方案。',
     heroBody:
       '每一种方案都先从沟通开始，我们会了解你的报告范围、数据准备度和适配场景，再建议合适的入口。',
     plans: [
@@ -122,10 +122,10 @@ const content = {
       {
         name: '专业版',
         price: '$299 / 月起',
-        description: '适合顾问、专家和小团队用 AI 持续交付碳核算工作。',
+        description: '适合顾问、专家和小团队用 AI 持续开展评估、碳核算与报告工作。',
         features: [
           '访问完整 Climate Seal 核算工作流，支持多种法规、标准和方法学。',
-          '价格基于 token / credit 使用量，可按实际项目量扩展报告交付。',
+          '月度订阅从 200 点数起。点数消耗取决于每项任务的 AI 处理量，超出套餐后可按需购买额外点数。',
           '适合希望提升交付能力、减少人工负担的专业团队。',
         ],
         accent: 'border-[#8ece8f]',
@@ -134,11 +134,11 @@ const content = {
       {
         name: '企业版',
         price: '定制',
-        description: '适合管理产品、供应商、业务单元或合规项目碳数据的企业。',
+        description: '适合跨产品、供应商、业务单元或合规项目管理环境与碳数据的组织。',
         features: [
           '面向供应商管理、内部数据治理、多产品报告和跨团队复核。',
           '包含供应商数据收集、自定义因子库、审批控制、追溯包和可复用产品数据模型。',
-          '适合需要长期碳合规操作系统，而不只是单份报告的企业。',
+          '请与团队确认适用工作流、披露要求和实施范围。',
         ],
         accent: 'border-[#123F3D]',
         cta: '联系团队',

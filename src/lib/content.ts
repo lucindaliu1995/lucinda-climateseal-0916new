@@ -40,6 +40,35 @@ export type ArticleCategory = {
   nameZh: string;
 };
 
+export type ArticleSummary = Pick<ArticleItem,
+  'id' | 'title' | 'titleZh' | 'excerpt' | 'excerptZh' | 'coverImage' | 'publishDate' | 'category' | 'categoryZh'> & {
+  readingMinutes: number;
+  readingMinutesZh: number;
+};
+
+export function getArticleSummaries(): ArticleSummary[] {
+  return getMeaningfulArticles().map((article) => {
+    const { id, title, titleZh, excerpt, excerptZh, coverImage, publishDate, category, categoryZh } = article;
+    const chinese = hasChineseArticleVersion(article);
+    const readingMinutes = Math.max(3, Math.ceil(article.content.trim().split(/\s+/).length / 220));
+    return {
+      id, title, titleZh, excerpt, excerptZh, coverImage, publishDate, category, categoryZh,
+      readingMinutes,
+      readingMinutesZh: chinese
+        ? Math.max(3, Math.ceil((article.contentZh.match(/[\u3400-\u9fff]/g) || []).length / 450))
+        : readingMinutes,
+    };
+  });
+}
+
+export function searchArticleIds(query: string): string[] {
+  const normalized = query.trim().toLocaleLowerCase();
+  return getMeaningfulArticles().filter((article) => [
+    article.title, article.titleZh, article.excerpt, article.excerptZh,
+    article.content, article.contentZh, article.category, article.categoryZh,
+  ].join(' ').toLocaleLowerCase().includes(normalized)).map((article) => article.id);
+}
+
 export type WhitepaperItem = {
   id: string;
   title: string;

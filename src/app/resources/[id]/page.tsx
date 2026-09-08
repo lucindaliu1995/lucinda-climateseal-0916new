@@ -210,11 +210,12 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
           </h1>
 
           <div className="mb-8">
-            <div className={`relative overflow-hidden bg-slate-100 ${article.id === 'secondary-data-for-pcf' || article.id === 'pcf-reporting-periods-explained' ? 'aspect-[1200/630]' : 'aspect-[3/2] max-h-[540px]'}`}>
+            <div className="relative aspect-[1200/630] overflow-hidden bg-slate-100">
               <Image
                 src={article.coverImage || '/climate-seal-logo-green.png'}
                 alt={getLocalizedImageAlt(article, language)}
                 fill
+                sizes="(min-width: 928px) 896px, calc(100vw - 32px)"
                 className="object-cover"
                 priority
               />
@@ -332,6 +333,7 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
                       src={relatedArticle.coverImage || '/climate-seal-logo-green.png'}
                       alt={`${getLocalizedTitle(relatedArticle, language)} - cover image`}
                       fill
+                      sizes="(min-width: 1024px) 280px, (min-width: 768px) 30vw, calc(100vw - 32px)"
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>

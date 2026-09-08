@@ -2,11 +2,13 @@
 
 import SolutionPageRefresh from '@/components/SolutionPageRefresh';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { solutionCopy } from '@/lib/solution-copy';
 
 export default function SupplyChainSolutionPage() {
   const { t, language } = useLanguage();
   const persona = t.sections.personas.supplyChain;
   const isZh = language === 'zh';
+  const copy = solutionCopy['supply-chain'][isZh ? 'zh' : 'en'];
 
   const features = [
     {
@@ -36,10 +38,8 @@ export default function SupplyChainSolutionPage() {
     <SolutionPageRefresh
       accent="amber"
       eyebrow={isZh ? '供应链解决方案' : 'Supply Chain Solution'}
-      title={persona.title}
-      description={isZh
-        ? '为供应链企业与出口团队打造的 AI 工作流，帮助团队整理 PCF 数据、提前识别质量风险，并按买方要求准备提交材料。'
-        : 'An AI workflow for suppliers and export teams that helps structure PCF data, identify quality risks before submission, and prepare materials for buyer requirements.'}
+      title={copy.heading}
+      description={copy.description}
       heroVideo="/videos/supplier-video1.mp4"
       heroMediaLabel={isZh ? '供应链工作流程演示' : 'Supplier workflow demo'}
       heroHighlights={isZh

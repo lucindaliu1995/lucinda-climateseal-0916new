@@ -2,12 +2,14 @@
 
 import SolutionPageRefresh from '@/components/SolutionPageRefresh';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { solutionCopy } from '@/lib/solution-copy';
 
 export default function BrandOwnerSolutionPage() {
   const { t, language } = useLanguage();
   const persona = t.sections.personas.brandOwner;
   const assistants = t.sections.aiAssistants.assistants.brandOwner;
   const isZh = language === 'zh';
+  const copy = solutionCopy['brand-owner'][isZh ? 'zh' : 'en'];
 
   const features = [
     {
@@ -40,10 +42,8 @@ export default function BrandOwnerSolutionPage() {
     <SolutionPageRefresh
       accent="green"
       eyebrow={isZh ? '品牌方解决方案' : 'Brand Owner Solution'}
-      title={persona.title}
-      description={isZh
-        ? '为品牌方和可持续发展负责人打造的 AI 工作流，帮助你更快掌握供应链碳数据、推进目标管理，并把减排计划讲清楚。'
-        : 'An AI workflow for brand owners and sustainability leaders who need faster supplier carbon visibility, stronger target management, and clearer decarbonization planning.'}
+      title={copy.heading}
+      description={copy.description}
       heroVideo="/videos/brand-video1.mp4"
       heroMediaLabel={isZh ? '品牌方工作流程演示' : 'Brand owner workflow demo'}
       heroHighlights={isZh

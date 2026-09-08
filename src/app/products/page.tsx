@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { headers } from 'next/headers';
+import { organizationId } from '@/lib/structured-data';
 import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage, resolveLanguage } from '@/lib/language';
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
@@ -155,6 +156,7 @@ export default async function ProductsPage() {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Climate Seal Platform',
+    publisher: { '@id': organizationId },
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
     url: `${siteUrl}/products`,

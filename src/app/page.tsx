@@ -1,6 +1,8 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import { headers } from 'next/headers';
 import { buildLanguageAlternates, buildLocalizedCanonical, resolveLanguage } from '@/lib/language';
+import HomePageRefresh from '@/components/HomePageRefresh';
+import { organizationId, siteUrl } from '@/lib/structured-data';
 
 export async function generateMetadata(
   _props: unknown,
@@ -26,4 +28,14 @@ export async function generateMetadata(
   };
 }
 
-export { default } from '@/components/HomePageRefresh';
+export default function HomePage() {
+  const website = {
+    '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${siteUrl}/#website`,
+    name: 'Climate Seal', url: `${siteUrl}/`, publisher: { '@id': organizationId },
+    inLanguage: ['en', 'zh'],
+  };
+  return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }} />
+    <HomePageRefresh />
+  </>;
+}

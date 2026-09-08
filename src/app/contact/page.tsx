@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ContactForm from '@/components/ContactForm';
+import { organizationId } from '@/lib/structured-data';
 import { headers } from 'next/headers';
 import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage, resolveLanguage } from '@/lib/language';
 
@@ -10,11 +11,11 @@ const content = {
   en: {
     title: 'Contact Climate Seal',
     description:
-      'Talk with Climate Seal about Product Carbon Footprint, Scope 3, LCA, supplier data, project carbon accounting, and verification-ready delivery.',
+      'Talk with Climate Seal about AI-assisted assessments, carbon accounting, supplier data, reporting requirements, and reviewable evidence.',
     eyebrow: 'Contact',
     heroTitle: 'Send us the project context. We will help you find the lightest path to start.',
     heroBody:
-      'If you are preparing Product Carbon Footprint delivery, Scope 3 collaboration, supplier data collection, export compliance, or a carbon pilot, we can help you assess scope, data readiness, and the right working model.',
+      'Tell us about your assessment, carbon accounting, supplier data, or reporting needs. We will help you confirm the applicable workflow, data readiness, deliverables, and expert review requirements.',
     contactWays: [
       { label: 'Email', value: 'xuguang.ma@climate-seal.net' },
       { label: 'Phone', value: '+86 15652618365' },
@@ -52,11 +53,11 @@ const content = {
   zh: {
     title: '联系 Climate Seal',
     description:
-      '联系 Climate Seal 团队，沟通产品碳足迹、Scope 3、LCA、供应链碳数据、项目碳核算与审计交付。',
+      '联系 Climate Seal 团队，沟通 AI 辅助评估、碳核算、供应商数据、披露要求和可审查证据。',
     eyebrow: 'Contact',
     heroTitle: '把你的项目背景发给我们，我们一起判断最轻的启动路径。',
     heroBody:
-      '如果你正在准备产品碳足迹交付、Scope 3 协同、供应商数据采集、出口合规或碳核算试点，我们可以先帮助你判断范围、数据准备度和更合适的合作方式。',
+      '告诉我们你的评估、碳核算、供应商数据或报告需求。我们会帮助你确认适用工作流、数据准备度、交付物及专家审查要求。',
     contactWays: [
       { label: 'Email', value: 'xuguang.ma@climate-seal.net' },
       { label: 'Phone', value: '+86 15652618365' },
@@ -141,11 +142,7 @@ export default async function ContactPage() {
     url: `${siteUrl}/contact`,
     description: copy.contactDescription,
     mainEntity: {
-      '@type': 'Organization',
-      name: 'Climate Seal',
-      legalName: 'Climate Seal (Beijing) Technology Co., Ltd.',
-      email: 'xuguang.ma@climate-seal.net',
-      telephone: '+86 15652618365',
+      '@id': organizationId,
     },
   };
 

@@ -66,8 +66,8 @@ export default async function FAQPage({ searchParams }: { searchParams: Promise<
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[#5f7672]">
             {locale === 'en'
-              ? 'Straight answers on Product Carbon Footprint, Scope 3, methodology choices, data preparation, verification readiness, and how Climate Seal fits different operating models.'
-              : '围绕产品碳足迹、Scope 3、方法学、数据准备、第三方验证以及 Climate Seal 适用场景的常见问题。'}
+              ? 'Answers about available workflows, data preparation, expert review, pricing, and how Climate Seal supports sustainability and carbon accounting work.'
+              : '了解可用工作流、数据准备、专家审查和价格，以及 Climate Seal 如何支持可持续发展与碳核算工作。'}
           </p>
         </div>
         <div className="mt-10">

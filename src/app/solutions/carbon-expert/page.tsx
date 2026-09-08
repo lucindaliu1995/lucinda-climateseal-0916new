@@ -2,12 +2,14 @@
 
 import SolutionPageRefresh from '@/components/SolutionPageRefresh';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { solutionCopy } from '@/lib/solution-copy';
 
 export default function CarbonExpertSolutionPage() {
   const { t, language } = useLanguage();
   const persona = t.sections.personas.carbonExpert;
   const assistants = t.sections.aiAssistants.assistants.carbonExpert;
   const isZh = language === 'zh';
+  const copy = solutionCopy['carbon-expert'][isZh ? 'zh' : 'en'];
 
   const features = [
     {
@@ -60,10 +62,8 @@ export default function CarbonExpertSolutionPage() {
     <SolutionPageRefresh
       accent="blue"
       eyebrow={isZh ? '碳专家解决方案' : 'Carbon Expert Solution'}
-      title={persona.title}
-      description={isZh
-        ? '为碳咨询师、LCA 团队和企业碳专家打造的 AI 工作流，更快完成建模、因子匹配、质量检查与报告交付。'
-        : 'An AI workflow for carbon experts, LCA teams, and advisory groups that speeds up modeling, factor matching, QA, and report delivery.'}
+      title={copy.heading}
+      description={copy.description}
       heroVideo="/videos/video1-card.mp4"
       heroMediaLabel={isZh ? '碳专家工作流程演示' : 'Carbon expert workflow demo'}
       heroHighlights={isZh

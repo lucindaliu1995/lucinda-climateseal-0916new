@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { organizationId } from '@/lib/structured-data';
 import type { Language } from '@/lib/i18n';
 import { buildLanguageAlternates, buildLocalizedCanonical, isChineseLanguage } from '@/lib/language';
 
@@ -189,10 +190,12 @@ export function createResourceArticleJsonLd(options: DetailJsonLdOptions) {
     image: [`${options.baseUrl}${options.image}`],
     mainEntityOfPage: options.pageUrl,
     author: {
+      '@id': organizationId,
       '@type': 'Organization',
       name: 'Climate Seal',
     },
     publisher: {
+      '@id': organizationId,
       '@type': 'Organization',
       name: 'Climate Seal',
       logo: {
