@@ -148,11 +148,14 @@ export default async function ArticleDetailPage({ params, searchParams }: PagePr
   const editorialFormatting = article.id === 'customer-requested-pcf-three-day-response'
     || article.id === 'bom-ready-for-pcf'
     || article.id === 'secondary-data-for-pcf'
-    || article.id === 'pcf-reporting-periods-explained';
+    || article.id === 'pcf-reporting-periods-explained'
+    || article.id === 'iso-14067-data-requirements-checklist';
   const html = renderMarkdown(cleanedContent, {
     editorialFormatting,
     indentFirstParagraph: editorialFormatting,
-    compactLists: article.id === 'secondary-data-for-pcf' || article.id === 'pcf-reporting-periods-explained',
+    compactLists: article.id === 'secondary-data-for-pcf'
+      || article.id === 'pcf-reporting-periods-explained'
+      || article.id === 'iso-14067-data-requirements-checklist',
   });
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://climate-seal.com';
   const pageUrl = buildResourcePageUrl(`/resources/${article.id}`, language, baseUrl);
