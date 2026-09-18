@@ -1,4 +1,5 @@
 import articlesData from '@/data/articles.json';
+import { cbamExpansionArticle } from '@/data/cbam-expansion-2026';
 import { listManagedArticles } from '@/lib/article-admin-store';
 import { listManagedWhitepapers } from '@/lib/whitepaper-admin-store';
 
@@ -94,6 +95,7 @@ function hasSubstantiveChineseText(value: string): boolean {
 
 export function getAllArticles(): ArticleItem[] {
   const baseArticles = ((articlesData as { articles?: ArticleItem[] }).articles || []).slice();
+  const editorialArticles = [cbamExpansionArticle as ArticleItem];
   const managedArticles = listManagedArticles()
     .filter((article) => article.published)
     .map<ArticleItem>((article) => ({
@@ -111,7 +113,7 @@ export function getAllArticles(): ArticleItem[] {
       featured: article.featured,
     }));
 
-  return [...managedArticles, ...baseArticles];
+  return [...managedArticles, ...editorialArticles, ...baseArticles];
 }
 
 export function isMeaningfulArticle(article: ArticleItem): boolean {

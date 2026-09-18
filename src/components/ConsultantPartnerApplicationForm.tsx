@@ -50,7 +50,6 @@ export default function ConsultantPartnerApplicationForm({
     consultantType: 'carbon',
     teamSize: '',
     expectedProjectsNext3Months: '',
-    wantsReferralAccess: false,
     website: '',
     linkedin: '',
     message: '',
@@ -107,7 +106,6 @@ export default function ConsultantPartnerApplicationForm({
         consultantType: 'carbon',
         teamSize: '',
         expectedProjectsNext3Months: '',
-        wantsReferralAccess: false,
         website: '',
         linkedin: '',
         message: '',
@@ -260,7 +258,7 @@ export default function ConsultantPartnerApplicationForm({
           </div>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
+        <div>
           <label className="space-y-2">
             <span className="text-sm font-medium text-[#123F3D]">{isZh ? '未来 3 个月预计项目数' : 'Expected client projects in the next 3 months'}</span>
             <select
@@ -279,20 +277,6 @@ export default function ConsultantPartnerApplicationForm({
               ))}
             </select>
           </label>
-          <div className="space-y-2">
-            <span className="text-sm font-medium text-[#123F3D]">{isZh ? '是否希望开通推荐合作资格？' : 'Do you want referral partner access?'}</span>
-            <label className="flex items-center gap-3 border border-[#d7ddd6] bg-[#FBF9F4] px-4 py-3 text-sm text-[#486662]">
-              <input
-                type="checkbox"
-                checked={formData.wantsReferralAccess}
-                onChange={(event) =>
-                  setFormData((current) => ({ ...current, wantsReferralAccess: event.target.checked }))
-                }
-                className="h-4 w-4 accent-[#123F3D]"
-              />
-              <span>{isZh ? '希望同步了解 referral 合作机制' : 'Yes, I want referral partner access as well'}</span>
-            </label>
-          </div>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2">
